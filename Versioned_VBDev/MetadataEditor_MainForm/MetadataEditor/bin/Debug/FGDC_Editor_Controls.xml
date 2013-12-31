@@ -1,0 +1,98 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+FGDC_Editor_Controls
+</name>
+</assembly>
+<members>
+<member name="E:FGDC_Editor_Controls.ExpandableGroupbox.Expand">
+	<summary>
+ Fired when the control is Expanded or Collapsed.
+ </summary>
+</member><member name="P:FGDC_Editor_Controls.ExpandableGroupbox.Caption">
+	<summary>
+ The text shown as the caption of the <see cref="T:FGDC_Editor_Controls.ExpandableGroupbox"/>.
+ </summary>
+</member><member name="P:FGDC_Editor_Controls.ExpandableGroupbox.BorderColor">
+	<summary>
+ The color of the custom-drawn rounded border.
+ </summary>
+</member><member name="P:FGDC_Editor_Controls.ExpandableGroupbox.BorderWidth">
+	<summary>
+ The width of the custom-drawn rounded border.
+ </summary>
+</member><member name="P:FGDC_Editor_Controls.ExpandableGroupbox.Expanded">
+	<summary>
+ True when the control is expanded.
+ </summary>
+</member><member name="P:FGDC_Editor_Controls.ExpandableGroupbox.IsValid">
+	<summary>
+ Displays an alert state on form.
+ </summary>
+</member><member name="P:FGDC_Editor_Controls.ExpandableGroupbox.CaptionColor">
+	<summary>
+ The ForeColor of the text shown as the caption of the <see cref="T:FGDC_Editor_Controls.ExpandableGroupbox"/>.
+ </summary>
+</member><member name="P:FGDC_Editor_Controls.ExpandableGroupbox.CaptionFont">
+	<summary>
+ The font to use on the caption <see cref="T:FGDC_Editor_Controls.ExpandableGroupbox"/>.
+ </summary>
+</member><member name="P:FGDC_Editor_Controls.ExpandableGroupbox.ExpandedSize">
+	<summary>
+ The Size of the <see cref="T:FGDC_Editor_Controls.ExpandableGroupbox"/> when expanded. Should be set by resizing the control in the designer as usual.
+ </summary>
+</member><member name="P:FGDC_Editor_Controls.ExpandableGroupbox.HeaderClickExpand">
+	<summary>
+ If True, expands / collapses the control when the header (caption) is clicked, instead of using the button only.
+ </summary>
+</member><member name="P:FGDC_Editor_Controls.ExpandableGroupbox.ShowExpandButton">
+	<summary>
+ True when the control is expanded.
+ </summary>
+</member><member name="P:FGDC_Editor_Controls.ExpandableGroupbox.ShowAsQuestion">
+	<summary>
+ True when configured as question.
+ </summary>
+</member><member name="M:FGDC_Editor_Controls.ExpandableGroupbox.OnExpand">
+	<summary>
+ Changes the Size property of the control when it is expanded/collapsed.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:FGDC_Editor_Controls.ExpandableGroupboxDesigner">
+	<summary>
+ Designer class that enables the user to expand/collapse the <see cref="T:FGDC_Editor_Controls.ExpandableGroupbox"/> control during Design-Time.
+ </summary>
+	<remarks></remarks>
+</member><member name="P:FGDC_Editor_Controls.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:FGDC_Editor_Controls.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:FGDC_Editor_Controls.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="P:FGDC_Editor_Controls.BaseControl.DescriptionLabel">
+	<summary>
+ The text to include int he description slot <see cref="T:FGDC_Editor_Controls.ExpandableGroupbox"/>.
+ </summary>
+</member><member name="P:FGDC_Editor_Controls.BaseControl.TitleCaption">
+	<summary>
+ The text to include in the main title slot <see cref="T:FGDC_Editor_Controls.ExpandableGroupbox"/>.
+ </summary>
+</member><member name="P:FGDC_Editor_Controls.BaseControl.CaptionFont">
+	<summary>
+ The font to use on the caption <see cref="T:FGDC_Editor_Controls.ExpandableGroupbox"/>.
+ </summary>
+</member><member name="P:FGDC_Editor_Controls.BaseControl.CaptionColor">
+	<summary>
+ The ForeColor of the text shown as the caption of the <see cref="T:FGDC_Editor_Controls.ExpandableGroupbox"/>.
+ </summary>
+</member>
+</members>
+</doc>

@@ -1,0 +1,11 @@
+N:\Metadata\NBII\TechnicalAssistance\OME_Tool\StandAloneEAEditor\StandAloneEAEditor2\bin\Release\StandAloneEAEditor2.exe
+N:\Metadata\NBII\TechnicalAssistance\OME_Tool\StandAloneEAEditor\StandAloneEAEditor2\bin\Release\StandAloneEAEditor2.pdb
+N:\Metadata\NBII\TechnicalAssistance\OME_Tool\StandAloneEAEditor\StandAloneEAEditor2\bin\Release\StandAloneEAEditor2.xml
+N:\Metadata\NBII\TechnicalAssistance\OME_Tool\StandAloneEAEditor\StandAloneEAEditor2\obj\x86\Release\ResolveAssemblyReference.cache
+N:\Metadata\NBII\TechnicalAssistance\OME_Tool\StandAloneEAEditor\StandAloneEAEditor2\obj\x86\Release\StandAloneEAEditor.frmGenEA.resources
+N:\Metadata\NBII\TechnicalAssistance\OME_Tool\StandAloneEAEditor\StandAloneEAEditor2\obj\x86\Release\StandAloneEAEditor.Resources.resources
+N:\Metadata\NBII\TechnicalAssistance\OME_Tool\StandAloneEAEditor\StandAloneEAEditor2\obj\x86\Release\ResGen.read.1.tlog
+N:\Metadata\NBII\TechnicalAssistance\OME_Tool\StandAloneEAEditor\StandAloneEAEditor2\obj\x86\Release\ResGen.write.1.tlog
+N:\Metadata\NBII\TechnicalAssistance\OME_Tool\StandAloneEAEditor\StandAloneEAEditor2\obj\x86\Release\StandAloneEAEditor2.exe
+N:\Metadata\NBII\TechnicalAssistance\OME_Tool\StandAloneEAEditor\StandAloneEAEditor2\obj\x86\Release\StandAloneEAEditor2.xml
+N:\Metadata\NBII\TechnicalAssistance\OME_Tool\StandAloneEAEditor\StandAloneEAEditor2\obj\x86\Release\StandAloneEAEditor2.pdb
