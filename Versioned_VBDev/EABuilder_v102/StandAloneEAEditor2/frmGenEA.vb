@@ -841,10 +841,10 @@ ErrorHandler:  'error handling routine
 
 
         Dim pStats As IStatisticsResults
-        Dim intMean As Double
+        'Dim intMean As Double
         Dim strMin As String
         Dim strMax As String
-        Dim intSTDV As Double
+        'Dim intSTDV As Double
         Dim sFieldName As String
         sFieldName = pField.Name
         'strFieldComplete = ""

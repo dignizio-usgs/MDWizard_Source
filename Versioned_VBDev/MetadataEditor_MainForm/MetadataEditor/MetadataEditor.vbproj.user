@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <StartArguments>"C:\temp\MetadataWizard\CO_NM_SolarFacilities.shp.xml" "C:\temp\MetadataWizard\Test\Wizard GUIoutput.xml" "C:\Program Files (x86)\Internet Explorer\iexplore.exe"</StartArguments>
+    <StartArguments>"C:\temp\MetadataWizard\nd_bndy_TESTING_FGDC.xml" "C:\temp\MetadataWizard\Test\Wizard GUIoutput.xml"</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <StartArguments>"C:\temp\MetadataWizard\CO_NM_SolarFacilities.shp.xml" "C:\temp\MetadataWizard\Test\Wizard GUIoutput.xml" "C:\Program Files (x86)\Internet Explorer\iexplore.exe"</StartArguments>
+    <StartArguments>"C:\temp\MetadataWizard\nd_bndy_TESTING_FGDC.xml" "C:\temp\MetadataWizard\Test\Wizard GUIoutput.xml"</StartArguments>
   </PropertyGroup>
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>

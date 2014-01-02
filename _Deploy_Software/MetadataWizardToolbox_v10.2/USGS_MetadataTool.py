@@ -35,10 +35,10 @@ InputData = arcpy.GetParameterAsText(0)
 WorkingDir = arcpy.GetParameterAsText(1)
 CreateStandAloneXML = arcpy.GetParameterAsText(2)#Toggle to delete/keep final modified stand-alone XML after it is re-imported into data set.
 UseStartTemplate = arcpy.GetParameterAsText(3)#Toggle to run MD Wizard using the custom template saved by the user as the starting point.
-Browser = arcpy.GetParameterAsText(4)
-
+#Browser = arcpy.GetParameterAsText(4)
+CustomStarterTemplate= arcpy.GetParameterAsText(4)
 GenericTemplate = os.path.join(os.path.dirname(sys.argv[0]), "GenericFGDCTemplate.xml")
-CustomStarterTemplate = os.path.join(os.path.dirname(sys.argv[0]), "CustomStarterTemplate.xml")
+#CustomStarterTemplate = os.path.join(os.path.dirname(sys.argv[0]), "CustomStarterTemplate.xml")
 
 #'Entity and Attribute Builder' tool and 'Metadata Editor' will be shipped with Toolbox in the '...\Scripts' directory.
 EAtool_V10 = os.path.join(os.path.dirname(sys.argv[0]), "StandAloneEAEditor2_V10.exe")
@@ -120,7 +120,7 @@ def ProcessRoutine(ArgVariables):
         arcpy.AddMessage("WorkingDir: " + WorkingDir)
         arcpy.AddMessage("CreateStandAloneXML: " + CreateStandAloneXML)
         arcpy.AddMessage("UseStartTemplate: " + UseStartTemplate)
-        arcpy.AddMessage("Browser: " + Browser)
+        arcpy.AddMessage("StarterTemplate: " + CustomStarterTemplate)
         
         myDataType, myFeatType = Get_Data_Type()#Determine data type, and feature type if applicable
         arcpy.AddMessage("Data type being evaluated: " + myDataType)
@@ -246,7 +246,8 @@ def ProcessRoutine(ArgVariables):
         
         #Open up Metadata Editor and allow user to review/update
         outXML = os.path.splitext(FGDCXML)[0] + "temp.xml"
-        Arg = '"' + MetadataEditor + '"' + " " + '"' + FGDCXML + '"' + " " + '"' + outXML + '"' + " " + '"' + Browser + '"' #Start and end quotes are necessary to handle spaces in file names and IE Path when passing to Command Prompt.
+        #Arg = '"' + MetadataEditor + '"' + " " + '"' + FGDCXML + '"' + " " + '"' + outXML + '"' + " " + '"' + Browser + '"' #Start and end quotes are necessary to handle spaces in file names and IE Path when passing to Command Prompt.
+        Arg = '"' + MetadataEditor + '"' + " " + '"' + FGDCXML + '"' + " " + '"' + outXML + '"' + " "
         arcpy.AddMessage("*************************")
         arcpy.AddMessage("\nPLEASE UPDATE/REVIEW THE METADATA INFO IN THE POP-UP WINDOW.")
         arcpy.AddMessage("(Allow a moment for the window to open).\n")

@@ -34,3 +34,14 @@ N:\Metadata\MetadataWizard\Versioned_VBDev\EABuilder_v101\StandAloneEAEditor2\ob
 N:\Metadata\MetadataWizard\Versioned_VBDev\EABuilder_v101\StandAloneEAEditor2\obj\x86\Debug\StandAloneEAEditor.Resources.resources
 N:\Metadata\MetadataWizard\Versioned_VBDev\EABuilder_v101\StandAloneEAEditor2\obj\x86\Debug\ResGen.read.1.tlog
 N:\Metadata\MetadataWizard\Versioned_VBDev\EABuilder_v101\StandAloneEAEditor2\obj\x86\Debug\ResGen.write.1.tlog
+N:\Metadata\MetadataWizard\MDWizard_Source\Versioned_VBDev\EABuilder_v101\StandAloneEAEditor2\obj\x86\Debug\StandAloneEAEditor2.exe
+N:\Metadata\MetadataWizard\MDWizard_Source\Versioned_VBDev\EABuilder_v101\StandAloneEAEditor2\obj\x86\Debug\StandAloneEAEditor2.xml
+N:\Metadata\MetadataWizard\MDWizard_Source\Versioned_VBDev\EABuilder_v101\StandAloneEAEditor2\obj\x86\Debug\StandAloneEAEditor2.pdb
+N:\Metadata\MetadataWizard\MDWizard_Source\Versioned_VBDev\EABuilder_v101\StandAloneEAEditor2\bin\Debug\StandAloneEAEditor2.exe
+N:\Metadata\MetadataWizard\MDWizard_Source\Versioned_VBDev\EABuilder_v101\StandAloneEAEditor2\bin\Debug\StandAloneEAEditor2.pdb
+N:\Metadata\MetadataWizard\MDWizard_Source\Versioned_VBDev\EABuilder_v101\StandAloneEAEditor2\bin\Debug\StandAloneEAEditor2.xml
+N:\Metadata\MetadataWizard\MDWizard_Source\Versioned_VBDev\EABuilder_v101\StandAloneEAEditor2\obj\x86\Debug\ResolveAssemblyReference.cache
+N:\Metadata\MetadataWizard\MDWizard_Source\Versioned_VBDev\EABuilder_v101\StandAloneEAEditor2\obj\x86\Debug\StandAloneEAEditor.frmGenEA.resources
+N:\Metadata\MetadataWizard\MDWizard_Source\Versioned_VBDev\EABuilder_v101\StandAloneEAEditor2\obj\x86\Debug\StandAloneEAEditor.Resources.resources
+N:\Metadata\MetadataWizard\MDWizard_Source\Versioned_VBDev\EABuilder_v101\StandAloneEAEditor2\obj\x86\Debug\ResGen.read.1.tlog
+N:\Metadata\MetadataWizard\MDWizard_Source\Versioned_VBDev\EABuilder_v101\StandAloneEAEditor2\obj\x86\Debug\ResGen.write.1.tlog

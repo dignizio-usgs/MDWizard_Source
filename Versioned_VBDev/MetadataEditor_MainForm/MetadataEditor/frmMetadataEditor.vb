@@ -11,7 +11,7 @@ Public Class frmMetadataEditor
     Private sPath As String
     Private sInFile As String
     Private sOutFile As String
-    Private sIExplorerPath As String
+    'Private sIExplorerPath As String
 
     Private sPreviewCount As Integer
 
@@ -815,7 +815,7 @@ Public Class frmMetadataEditor
 
         sInFile = My.Application.CommandLineArgs(0)
         sOutFile = My.Application.CommandLineArgs(1)
-        sIExplorerPath = My.Application.CommandLineArgs(2)
+        'sIExplorerPath = My.Application.CommandLineArgs(2)
 
         xmlMD.Load(sInFile)
         xmlMDOutput.Load(sInFile)
