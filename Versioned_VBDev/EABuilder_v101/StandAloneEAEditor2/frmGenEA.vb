@@ -841,10 +841,10 @@ ErrorHandler:  'error handling routine
 
 
         Dim pStats As IStatisticsResults
-        Dim intMean As Double
+        'Dim intMean As Double
         Dim strMin As String
         Dim strMax As String
-        Dim intSTDV As Double
+        'Dim intSTDV As Double
         Dim sFieldName As String
         sFieldName = pField.Name
         'strFieldComplete = ""
@@ -1032,7 +1032,20 @@ ErrorHandler:  'error handling routine
             'rowCount += 1
         End While
 
-        ReDim Preserve m_domainvals.attributeDomainValues(UBound(m_domainvals.attributeDomainValues) - 1)
+        If UBound(m_domainvals.attributeDomainValues) = 0 Then
+            'There were no values to iterate over!
+            'this probably means that all values were null
+            Dim unrep As New udom
+            unrep.udom = existingXMLEntry("udom", sFieldName)
+
+            Dim attributeDomainValue As New attribdomv
+            ReDim attributeDomainValue.attributeDomainValues(0)
+            attributeDomainValue.attributeDomainValues(0) = unrep
+            Return attributeDomainValue
+        Else
+            ReDim Preserve m_domainvals.attributeDomainValues(UBound(m_domainvals.attributeDomainValues) - 1)
+        End If
+
 
 
         Return m_domainvals
