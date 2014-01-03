@@ -1,4 +1,4 @@
-﻿Imports ESRI.ArcGIS.Geodatabase
+Imports ESRI.ArcGIS.Geodatabase
 Imports ESRI.ArcGIS.esriSystem
 Imports ESRI.ArcGIS.DataSourcesRaster
 Imports ESRI.ArcGIS.DataSourcesGDB

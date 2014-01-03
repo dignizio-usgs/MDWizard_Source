@@ -95,7 +95,7 @@ Public Class frmGenEA
         Inherits domain
         Public edomv As String
         Public edomvd As String
-        Public edonvds As String
+        Public edomvds As String
     End Class
 
     Private Class rdom
@@ -116,8 +116,6 @@ Public Class frmGenEA
         Inherits domain
         Public udom As String
     End Class
-
-
 
 #End Region
 
@@ -157,8 +155,6 @@ Public Class frmGenEA
         pXML = pPs
 
         If dataType = "multiband" Then
-            'InvalidDataType()
-            'Exit Sub
             loadMultiBand()
         ElseIf dataType = "singleband" Then
             loadSingleBand()
@@ -179,8 +175,6 @@ Public Class frmGenEA
             Me.txtEadetcit.ForeColor = Color.SlateGray
         End If
 
-
-        'add handlers
         AddHandler lstFields.SelectedIndexChanged, AddressOf lstFields_SelectedIndexChanged
         AddHandler lstUniqueVals.SelectedIndexChanged, AddressOf lstUniqueVals_SelectedIndexChanged
 
@@ -192,7 +186,6 @@ Public Class frmGenEA
 
         If sExt.ToLower = ".shp" Then
             Return "shapefile"
-            'DI: I added the '.img' check.
         ElseIf sExt.ToLower = ".tif" Or _
             sExt.ToLower = ".img" Or _
             sExt.ToLower = ".bmp" Or _
@@ -219,7 +212,7 @@ Public Class frmGenEA
         Return "Unhandled workspace type (function=getWorkspaceType())"
     End Function
 
-    Private Function isInfoTable(workspacePath As String, name As String) As Boolean
+    Private Function isInfoTable(ByVal workspacePath As String, ByVal name As String) As Boolean
 
         'Try
         '    Dim GP As GeoProcessor = New GeoProcessor()
@@ -261,7 +254,7 @@ Public Class frmGenEA
         End Try
     End Function
 
-    Private Function isCoverage(workspacePath As String, name As String) As Boolean
+    Private Function isCoverage(ByVal workspacePath As String, ByVal name As String) As Boolean
         'Try
         '    Dim covWorkspace As String = System.IO.Path.GetDirectoryName(sWorkspacePath)
         '    Dim covName As String = System.IO.Path.GetFileNameWithoutExtension(sWorkspacePath)
@@ -301,7 +294,7 @@ Public Class frmGenEA
 
     End Function
 
-    Private Sub loadFromGDB(pWorkspaceFactory As IWorkspaceFactory)
+    Private Sub loadFromGDB(ByVal pWorkspaceFactory As IWorkspaceFactory)
 
         Dim pWorkspace As IWorkspace
         Dim pFeatureWorkspace As IFeatureWorkspace
@@ -423,9 +416,6 @@ Public Class frmGenEA
         pMD = pTable
     End Sub
 
-
-
-
     Public Function ArcInfoWorkspaceFactory_Example(ByVal database As String, ByVal nameOfCoverage As String, ByVal nameOfFeature As String) As IFeatureClass
         'this function opens an ArcInfo coverage using a property set.        
         Dim propertySet As ESRI.ArcGIS.esriSystem.IPropertySet = New ESRI.ArcGIS.esriSystem.PropertySetClass()
@@ -440,7 +430,7 @@ Public Class frmGenEA
         Return featureClass
     End Function
 
-    Function GetContents(pWorkspace As IWorkspace) As Collection
+    Function GetContents(ByVal pWorkspace As IWorkspace) As Collection
         Dim c As New Collection
         Dim pEnumDSName As IEnumDatasetName
         pEnumDSName = pWorkspace.DatasetNames(esriDatasetType.esriDTAny)
@@ -460,7 +450,7 @@ Public Class frmGenEA
         GetContents = c
     End Function
 
-    Sub AddSubNames(pDSName1 As IDatasetName, c As Collection)
+    Sub AddSubNames(ByVal pDSName1 As IDatasetName, ByVal c As Collection)
         Dim pEnumDSName As IEnumDatasetName
         pEnumDSName = pDSName1.SubsetNames
         pEnumDSName.Reset()
@@ -474,8 +464,6 @@ Public Class frmGenEA
         Loop
     End Sub
 
-
-
 #End Region
 
 
@@ -484,7 +472,7 @@ Public Class frmGenEA
         Try
             pFields = pTable.Fields
         Catch ex As Exception
-            MsgBox("The Entity/Attribute builder tool only works on datasets with valid tables, attribute tables, VATs, etc. Multi-band raster files are not currently supported.", MsgBoxStyle.Information)
+            MsgBox("The Entity/Attribute builder tool only works on datasets with valid tables, attribute tables, VATs, etc.", MsgBoxStyle.Information)
             dataType = "invalid"
             Return Nothing
         End Try
@@ -591,7 +579,7 @@ Public Class frmGenEA
         Next
     End Sub
 
-    Function existingXMLEntry(strType As String, Optional strLbl As String = Nothing, Optional strEdomv As String = Nothing)
+    Function existingXMLEntry(ByVal strType As String, Optional ByVal strLbl As String = Nothing, Optional ByVal strEdomv As String = Nothing)
         Dim xpath As String = "Not set"
         Dim xpathTry1 As String = "Not set"
         Dim xpathTry2 As String = "Not set"
@@ -631,13 +619,10 @@ Public Class frmGenEA
 
             Case "eaover"
                 xpath = "eainfo/overview/eaover"
-                'DI: Updated
                 strDefault = "The entity and attribute information provided here describes the tabular data associated with the data set. Please review the detailed descriptions that are provided (the individual attribute descriptions) for information on the values that appear as fields/table entries of the data set."
 
             Case "eadetcit"
                 xpath = "eainfo/overview/eadetcit"
-                'strDefault = "Producer defined"
-                'DI: Updated
                 strDefault = "The entity and attribute information was generated by the individual and/or agency identified as the originator of the data set. Please review the rest of the metadata record for additional details and information."
 
             Case "codesetn"
@@ -706,7 +691,7 @@ Public Class frmGenEA
     Function DataTypeConvert(ByRef intDataType As Integer) As String
         On Error GoTo ErrorHandler
 
-        'Given the the integer, change to string
+        'Given the integer, change to string
         Select Case intDataType
             Case 0
                 DataTypeConvert = "Integer"
@@ -838,8 +823,6 @@ ErrorHandler:  'error handling routine
 
     Function NumericField(ByRef intEsriDataType As Integer, ByVal intIndex As Integer) As Object
 
-
-
         Dim pStats As IStatisticsResults
         'Dim intMean As Double
         Dim strMin As String
@@ -850,7 +833,6 @@ ErrorHandler:  'error handling routine
         'strFieldComplete = ""
 
         pTableSort = New TableSort
-
 
         With pTableSort
             .Fields = sFieldName
@@ -895,11 +877,15 @@ ErrorHandler:  'error handling routine
         If pField.Type = esriFieldType.esriFieldTypeDate Then
             Try
                 strMin = CDate(Date.FromOADate(pStats.Minimum))
-                strMax = CDate(Date.FromOADate(pStats.Maximum))
             Catch ex As Exception
                 strMin = "{Null Value / Empty Field Entry}"
+            End Try
+            Try
+                strMax = CDate(Date.FromOADate(pStats.Maximum))
+            Catch ex As Exception
                 strMax = "{Null Value / Empty Field Entry}"
             End Try
+
         Else
             strMin = pStats.Minimum
             strMax = pStats.Maximum
@@ -1013,7 +999,7 @@ ErrorHandler:  'error handling routine
                 End If
 
                 curEdom.edomvd = existingXMLEntry("edomvd", sFieldName, pEnumVar.Current)
-                curEdom.edonvds = existingXMLEntry("edomvds", sFieldName, pEnumVar.Current)
+                curEdom.edomvds = existingXMLEntry("edomvds", sFieldName, pEnumVar.Current)
                 m_domainvals.attributeDomainValues(UBound(m_domainvals.attributeDomainValues)) = curEdom
                 ReDim Preserve m_domainvals.attributeDomainValues(UBound(m_domainvals.attributeDomainValues) + 1)
                 'If rowCount > 1000 Then
@@ -1032,12 +1018,20 @@ ErrorHandler:  'error handling routine
             'rowCount += 1
         End While
 
-        ReDim Preserve m_domainvals.attributeDomainValues(UBound(m_domainvals.attributeDomainValues) - 1)
+        If UBound(m_domainvals.attributeDomainValues) = 0 Then
+            'There were no values to iterate over. (This probably means that all values were null.)
+            Dim unrep As New udom
+            unrep.udom = existingXMLEntry("udom", sFieldName)
 
+            Dim attributeDomainValue As New attribdomv
+            ReDim attributeDomainValue.attributeDomainValues(0)
+            attributeDomainValue.attributeDomainValues(0) = unrep
+            Return attributeDomainValue
+        Else
+            ReDim Preserve m_domainvals.attributeDomainValues(UBound(m_domainvals.attributeDomainValues) - 1)
+        End If
 
         Return m_domainvals
-
-
 
         Exit Function 'avoid error handler
 ErrorHandler:  'error handling routine
@@ -1069,7 +1063,7 @@ ErrorHandler:  'error handling routine
         curType = returnType(curFieldKey)
 
         Dim curDomain As domain
-        'DI: Updated with Try/Catch here to handle 'all fields empty or ' scenario in a column.
+        'DI: Updated with Try/Catch here to handle 'all fields empty' scenario in a column.
         Try
             curDomain = curEA.attributesDict(curFieldKey).c_attribdomv.attributeDomainValues(0)
         Catch ex As Exception
@@ -1151,7 +1145,6 @@ ErrorHandler:  'error handling routine
 
         Dim sFieldName As String
 
-
         sFieldName = Me.lstFields.SelectedItems(0).Text
 
         intField = pFields.FindField(sFieldName)
@@ -1162,7 +1155,6 @@ ErrorHandler:  'error handling routine
         If Me.optUnrep.Checked = True Then
             Dim curUnrep As New udom
             curUnrep.udom = existingXMLEntry("udom", sFieldName)
-
             curEA.attributesDict(Me.lstFields.SelectedItems(0).Text).c_attribdomv.attributeDomainValues(0) = curUnrep
 
         ElseIf Me.optRange.Checked = True Then
@@ -1170,9 +1162,7 @@ ErrorHandler:  'error handling routine
             Dim strMin As String
             Dim strMax As String
 
-
             pTableSort = New TableSort
-
 
             With pTableSort
                 .Fields = sFieldName
@@ -1238,7 +1228,6 @@ ErrorHandler:  'error handling routine
 
             pTableSort = New TableSort
 
-
             With pTableSort
                 .Fields = sFieldName 'Me.lstFields.value
                 .Ascending(sFieldName) = True
@@ -1280,7 +1269,7 @@ ErrorHandler:  'error handling routine
                     curEdom.edomv = curRowVal
 
                     curEdom.edomvd = existingXMLEntry("edomvd", sFieldName, curVal)
-                    curEdom.edonvds = existingXMLEntry("edomvds", sFieldName, curVal)
+                    curEdom.edomvds = existingXMLEntry("edomvds", sFieldName, curVal)
                     m_domainvals.attributeDomainValues(UBound(m_domainvals.attributeDomainValues)) = curEdom
                     ReDim Preserve m_domainvals.attributeDomainValues(UBound(m_domainvals.attributeDomainValues) + 1)
                 End If
@@ -1311,8 +1300,6 @@ ErrorHandler:  'error handling routine
             returnFormType = 4
         End If
 
-
-
     End Function
 
 
@@ -1329,16 +1316,13 @@ ErrorHandler:  'error handling routine
     End Sub
 
 
-
     Private Sub lstUniqueVals_AfterUpdate()
         Dim curEdom As edom
         curEdom = curEA.attributesDict(Me.lstFields.SelectedItems(0).Text).c_attribdomv.attributeDomainValues(Me.lstUniqueVals.SelectedIndex)
 
-
         Me.txtValDef.Text = curEdom.edomvd
-        Me.txtValDefSource.Text = curEdom.edonvds
+        Me.txtValDefSource.Text = curEdom.edomvds
     End Sub
-
 
 
     Private Sub frmGenEA_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -1371,12 +1355,11 @@ ErrorHandler:  'error handling routine
         curEdom = curEA.attributesDict(Me.lstFields.SelectedItems(0).Text).c_attribdomv.attributeDomainValues(Me.lstUniqueVals.SelectedIndex)
 
         Me.txtValDef.Text = curEdom.edomvd
-        Me.txtValDefSource.Text = curEdom.edonvds
+        Me.txtValDefSource.Text = curEdom.edomvds
     End Sub
 
 
 #End Region
-
 
 
     Private Sub txtValDef_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtValDef.TextChanged
@@ -1390,7 +1373,7 @@ ErrorHandler:  'error handling routine
         Dim curEdom As edom
         curEdom = curEA.attributesDict(Me.lstFields.SelectedItems(0).Text).c_attribdomv.attributeDomainValues(Me.lstUniqueVals.SelectedIndex)
 
-        curEdom.edonvds = Me.txtValDefSource.Text
+        curEdom.edomvds = Me.txtValDefSource.Text
 
     End Sub
 
@@ -1419,7 +1402,7 @@ ErrorHandler:  'error handling routine
 
     End Sub
 
-    Private Sub txtRngUnits_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtRngUnits.TextChanged
+    Private Sub txtRngUnits_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtRngUnits.TextChanged
 
         Dim curRange As rdom
         curRange = curEA.attributesDict(Me.lstFields.SelectedItems(0).Text).c_attribdomv.attributeDomainValues(0)
@@ -1427,7 +1410,7 @@ ErrorHandler:  'error handling routine
 
     End Sub
 
-    Private Sub txtRngResolution_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtRngResolution.TextChanged
+    Private Sub txtRngResolution_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtRngResolution.TextChanged
 
         Dim curRange As rdom
         curRange = curEA.attributesDict(Me.lstFields.SelectedItems(0).Text).c_attribdomv.attributeDomainValues(0)
@@ -1440,7 +1423,6 @@ ErrorHandler:  'error handling routine
     '    curCodeset = curEA.attributesDict(Me.lstFields.SelectedItems(0).Text).c_attribdomv.attributeDomainValues(0)
     '    curCodeset.codesetn = cboCodesetName.Text
     '    curCodeset.codesets = txtCodesetSource.Text
-
 
     'End Sub
 
@@ -1456,7 +1438,6 @@ ErrorHandler:  'error handling routine
         pXML.SetPropertyX("eainfo/detailed/enttyp/enttypl", curEA.ET.EntityTypeLabel, esriXmlPropertyType.esriXPTText, esriXmlSetPropertyAction.esriXSPAAddOrReplace, False)
         pXML.SetPropertyX("eainfo/detailed/enttyp/enttypd", curEA.ET.entityTypeDescription, esriXmlPropertyType.esriXPTText, esriXmlSetPropertyAction.esriXSPAAddOrReplace, False)
         pXML.SetPropertyX("eainfo/detailed/enttyp/enttypds", curEA.ET.entityTypeDefinitionSource, esriXmlPropertyType.esriXPTText, esriXmlSetPropertyAction.esriXSPAAddOrReplace, False)
-
 
         'Delete the previous Attributes
         While pXML.CountX("eainfo/detailed/attr")
@@ -1502,7 +1483,7 @@ ErrorHandler:  'error handling routine
                     curEdom = curEA.attributesDict(att.attrlabl).c_attribdomv.attributeDomainValues(j)
                     pXML.SetPropertyX("eainfo/detailed/attr[" & Str(i) & "]/attrdomv[" & Str(j) & "]/edom/edomv", curEdom.edomv, esriXmlPropertyType.esriXPTText, esriXmlSetPropertyAction.esriXSPAAddOrReplace, False)
                     pXML.SetPropertyX("eainfo/detailed/attr[" & Str(i) & "]/attrdomv[" & Str(j) & "]/edom/edomvd", curEdom.edomvd, esriXmlPropertyType.esriXPTText, esriXmlSetPropertyAction.esriXSPAAddOrReplace, False)
-                    pXML.SetPropertyX("eainfo/detailed/attr[" & Str(i) & "]/attrdomv[" & Str(j) & "]/edom/edomvds", curEdom.edonvds, esriXmlPropertyType.esriXPTText, esriXmlSetPropertyAction.esriXSPAAddOrReplace, False)
+                    pXML.SetPropertyX("eainfo/detailed/attr[" & Str(i) & "]/attrdomv[" & Str(j) & "]/edom/edomvds", curEdom.edomvds, esriXmlPropertyType.esriXPTText, esriXmlSetPropertyAction.esriXSPAAddOrReplace, False)
                 Next
             End If
             i += 1
@@ -1528,7 +1509,7 @@ ErrorHandler:  'error handling routine
 
     End Sub
 
-    Private Sub cmdSave_Click(sender As System.Object, e As System.EventArgs) Handles cmdSave.Click
+    Private Sub cmdSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSave.Click
         saveEA()
     End Sub
 
@@ -1536,23 +1517,9 @@ ErrorHandler:  'error handling routine
         Me.Dispose()
     End Sub
 
-    Private Sub cmdSaveAndClose_Click(sender As System.Object, e As System.EventArgs) Handles cmdSaveAndClose.Click
+    Private Sub cmdSaveAndClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSaveAndClose.Click
         saveEA()
         Me.Dispose()
-    End Sub
-
-
-
-    Private Sub Label16_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub pnlCodeset_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles pnlCodeset.Paint
-
-    End Sub
-
-    Private Sub ToolTip1_Popup(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PopupEventArgs)
-
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboCodesetName.SelectedIndexChanged
@@ -1588,44 +1555,8 @@ ErrorHandler:  'error handling routine
 
     End Sub
 
-    Private Sub Label17_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label17.Click
 
-    End Sub
-
-
-    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
-
-    End Sub
-
-    Private Sub Label1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label1.Click
-
-    End Sub
-
-    Private Sub Label16_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label16.Click
-
-    End Sub
-
-    Private Sub Label18_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label18.Click
-
-    End Sub
-
-    Private Sub Label15_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label15.Click
-
-    End Sub
-
-    Private Sub Label19_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label19.Click
-
-    End Sub
-
-    Private Sub Label22_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label22.Click
-
-    End Sub
-
-    Private Sub Label23_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label23.Click
-
-    End Sub
-
-    Private Sub txtOverview_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtOverview.TextChanged
+    Private Sub txtOverview_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtOverview.TextChanged
 
     End Sub
 
@@ -1638,4 +1569,5 @@ ErrorHandler:  'error handling routine
         ' Add any initialization after the InitializeComponent() call.
 
     End Sub
+
 End Class
