@@ -35,10 +35,8 @@ InputData = arcpy.GetParameterAsText(0)
 WorkingDir = arcpy.GetParameterAsText(1)
 CreateStandAloneXML = arcpy.GetParameterAsText(2)#Toggle to delete/keep final modified stand-alone XML after it is re-imported into data set.
 UseStartTemplate = arcpy.GetParameterAsText(3)#Toggle to run MD Wizard using the custom template saved by the user as the starting point.
-#Browser = arcpy.GetParameterAsText(4)
 CustomStarterTemplate= arcpy.GetParameterAsText(4)
 GenericTemplate = os.path.join(os.path.dirname(sys.argv[0]), "GenericFGDCTemplate.xml")
-#CustomStarterTemplate = os.path.join(os.path.dirname(sys.argv[0]), "CustomStarterTemplate.xml")
 
 #'Entity and Attribute Builder' tool and 'Metadata Editor' will be shipped with Toolbox in the '...\Scripts' directory.
 EAtool_V10 = os.path.join(os.path.dirname(sys.argv[0]), "StandAloneEAEditor2_V10.exe")
@@ -77,6 +75,13 @@ GeogCoordUnits = ["Decimal degrees", "Decimal minutes", "Decimal seconds",
 installInfo = arcpy.GetInstallInfo()
 installDir = installInfo["InstallDir"]
 GCS_PrjFile = os.path.join(installDir, r"Coordinate Systems\Geographic Coordinate Systems\World\WGS 1984.prj")
+
+#Check for Excel spreadsheet, and prompt to export.
+if os.path.splitext(InputData)[-1] == ".xls" or os.path.splitext(InputData)[-1] == ".xlsx":
+    arcpy.AddWarning("!!!!!!!")
+    arcpy.AddWarning("The Metadata Wizard does not operate on Excel files. Please try exporting to a .dbf and re-running the tool.")
+    arcpy.AddWarning("!!!!!!!")
+    sys.exit(1)
 
 #Determine if input is a stand-alone XML. If so, no attempt will be made to extract spatial data, etc. 'Re-import' to data set won't apply.
 if os.path.splitext(InputData)[-1] == ".xml":
@@ -155,6 +160,7 @@ def ProcessRoutine(ArgVariables):
             MDTools.CreateCopyMDRecord(GenericTemplate, FGDCXML)
             
         MDTools.RemoveNameSpace(FGDCXML)#Eliminate namespace tags from root element in xml if present (appear when tool is run on spatial data sets).
+        MDTools.CheckMasterNodes(FGDCXML)#Ensure all the key FGDC-CSDGM nodes are present in the record.
         
         
         if InputIsXML == False and desc.DatasetType != "Table": #Only attempt to extract/update spatial properties from spatial data sets.
@@ -163,13 +169,15 @@ def ProcessRoutine(ArgVariables):
                 GCS_ExtentList = Get_LatLon_BndBox()[1]
             except:
                 arcpy.AddWarning("!!!!!!!")
-                arcpy.AddWarning("A problem was encountered when attempting to retrieve the spatial extent of the input data set. Please review the tool documentation and ensure the data set is a valid input and that a coordinate system is defined.")
+                arcpy.AddWarning("A problem was encountered when attempting to retrieve the spatial extent of the input data set. Please review the tool documentation and ensure the data set is a valid input and ENSURE THAT A COORDINATE SYSTEM HAS BEEN DEFINED.")
                 arcpy.AddWarning("!!!!!!!\n")
-                sys.exit(1)
+                sys.exit()
                             
             #Get/Update Bounding Coordinates
             GCS_ExtentList = Get_LatLon_BndBox()[1]
             Local_ExtentList = Get_LatLon_BndBox()[0]
+            if "nan" in str(Local_ExtentList):
+                arcpy.AddWarning("No spatial extent could be found for the input spatial data set. Please review the 'Bounding Extent' in the final metadata record. (Values will be set to maximum global extent).\n")
             arcpy.AddMessage("Bounding Coordinates (Local): " + str(Local_ExtentList))
             arcpy.AddMessage("Bounding Coordinates (Geographic): " + str(GCS_ExtentList) + "\n")
             
@@ -438,7 +446,7 @@ def Get_LatLon_BndBox(): # Determine lat/long bounding coordinates for input dat
         boundaryPolygon  = arcpy.Polygon(array, SR_InDS)
         array.removeAll()
 
-        # Instead of projecting point project polygon
+        # Instead of projecting point, project polygon
         OutSR = arcpy.SpatialReference(GCS_PrjFile)
         arcpy.env.outputCoordinateSystem = arcpy.SpatialReference(GCS_PrjFile)
 

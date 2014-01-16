@@ -1,2 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<metadata><idinfo/><dataqual/><spdoinfo/><spref/><eainfo/><distinfo/><metainfo/><Esri><DataProperties><copyHistory><copy source="N:\Metadata\MetadataWizard\_Deploy_Software\MetadataWizardToolbox_v10\GenericFGDCTemplate" dest="\\IGSKBACBFS001\GIS$\Metadata\MetadataWizard\_Deploy_Software\MetadataWizardToolbox_v10\GenericFGDCTemplate" date="20131210" time="10424100"></copy></copyHistory></DataProperties></Esri></metadata>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <idinfo />
+  <dataqual />
+  <spdoinfo />
+  <spref />
+  <eainfo />
+  <distinfo />
+  <metainfo />
+</metadata>

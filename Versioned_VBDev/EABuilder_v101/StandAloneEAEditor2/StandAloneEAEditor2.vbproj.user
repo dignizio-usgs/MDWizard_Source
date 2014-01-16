@@ -12,10 +12,10 @@
     <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <StartArguments>"N:\Metadata\MetadataWizard\MDWizardTestingQAQC\Becker_Data\mt_project_dams_watersheds_final.gdb\project_dams" C:\temp\MetadataWizard\Demo\EAInfo.txt</StartArguments>
+    <StartArguments>"N:\Metadata\MetadataWizard\MDWizardTestingQAQC\Benson\ChesMMAPMBG.dbf" C:\temp\MetadataWizard\Demo\EAInfo.txt</StartArguments>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <StartArguments>"N:\Metadata\MetadataWizard\MDWizardTestingQAQC\Becker_Data\mt_project_dams_watersheds_final.gdb\project_dams" C:\temp\MetadataWizard\Demo\EAInfo.txt</StartArguments>
+    <StartArguments>"N:\Metadata\MetadataWizard\MDWizardTestingQAQC\Benson\ChesMMAPMBG.dbf" C:\temp\MetadataWizard\Demo\EAInfo.txt</StartArguments>
   </PropertyGroup>
 </Project>

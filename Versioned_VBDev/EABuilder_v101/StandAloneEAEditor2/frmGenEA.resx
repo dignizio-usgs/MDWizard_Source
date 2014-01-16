@@ -121,7 +121,7 @@
   <data name="PictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADcAAAA0CAYAAAAuT6DoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADr4AAA6+AepCscAAAATJSURBVGhD7ZrZbtQwFIZ5WioBYhNPAC2UdmiLeA0o6sIi
+        YQUAAAAJcEhZcwAADr0AAA69AUf7kK0AAATJSURBVGhD7ZrZbtQwFIZ5WioBYhNPAC2UdmiLeA0o6sIi
         hOCi8AjcICGBqtKqbXIydIGC0JBjz4nPeLzb6UVFJGsyWRx/+c9mz1yq6np0UduliwqGXP/hSqgL0IwA
         frbtl7eVeN65KDfK2HIhezPL1uSntqXN7dHKiy9dwwtuP35pbPxm7CsFtBe4pjnoxra8+XWEUHrjg0fA
         WyvTkHeerHWXAfyJBiwOxxUbbOx4wVAR2kwq3lh+zQDjFCwKh8GCtkcb02qhenwjU2uaXScgqkobwGmw
@@ -151,6 +151,16 @@
   <data name="txtOverview.Text" xml:space="preserve">
     <value>The entity and attribute information provided here describes the tabular data associated with the data set. Please review the detailed descriptions that are provided (the individual attribute descriptions) for information on the values that appear in the fields/table entries of the data set.</value>
   </data>
+  <data name="Label24.Text" xml:space="preserve">
+    <value>*Measurement resolution is the smallest unit increment to which measurements are taken.
+This usually corresponds to the number of decimal places captured in the min/max values.
+(Whole number values: resolution = 1, A value of 75.245: resolution = .001)</value>
+  </data>
+  <data name="Label22.Text" xml:space="preserve">
+    <value>This attribute type should be used when value entries will fall within some numerical range. The Range Minimum should represent the minimum value recorded in the field. The Range Maximum should represent the maximum value recorded in the field. (In some cases, these values could also represent the minimum and maximum values that could possibly be recorded for the field, although this is usually a little less useful). Include units when relevant.
+
+Examples: field data tallies, temperature measurements, measured percentage of some phenomenon, length/area/height, etc. </value>
+  </data>
   <data name="Label18.Text" xml:space="preserve">
     <value>This attribute type should be used for any attribute value that is not a codeset, an enumerated domain, or a range. When uncertain about which domain type should be used, this is often a good option. Clearly explain what a field represents to assist future data users. If a description is simple, it may be appropriate to have the same text in the 'Attribute Definition' and the free text description of the field. 
 
@@ -166,16 +176,6 @@ Examples: Zip codes, U.S. Census FIPS codes, established industry abbreviations/
     <value>This attribute type should be used when a finite set of values exist as possible entries for a field. Provide a definition for each possible entry. All values that appear in the field will be an entry from the enumerated list.
 
 Example: a field named "RoadType". Possible values are 'Heavy Duty', 'Light Duty', and 'Trail'. Three value definitions would be provided that clearly explain the criteria for each of the three classifications.</value>
-  </data>
-  <data name="Label24.Text" xml:space="preserve">
-    <value>*Measurement resolution is the smallest unit increment to which measurements are taken.
-This usually corresponds to the number of decimal places captured in the min/max values.
-(Whole number values: resolution = 1, A value of 75.245: resolution = .001)</value>
-  </data>
-  <data name="Label22.Text" xml:space="preserve">
-    <value>This attribute type should be used when value entries will fall within some numerical range. The Range Minimum should represent the minimum value recorded in the field. The Range Maximum should represent the maximum value recorded in the field. (In some cases, these values could also represent the minimum and maximum values that could possibly be recorded for the field, although this is usually a little less useful). Include units when relevant.
-
-Examples: field data tallies, temperature measurements, measured percentage of some phenomenon, length/area/height, etc. </value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

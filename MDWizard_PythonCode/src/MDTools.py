@@ -3,7 +3,7 @@ Author:  Drew Ignizio
 Created:  04/26/2012
 Script Purpose/Notes:
 
-A general suite of functions to support the CSAS Metadata editor tool.
+A general suite of functions to support the Metadata Wizard tool.
 
 These tools anticipate input XML files being in FGDC format. They can be expected
 to generate erroneous results or fail in non-FGDC records.
@@ -77,6 +77,27 @@ def RemoveStyleSheet(MDFile):
         MetafileClean.close
     except:
         pass
+
+def CheckMasterNodes(XMLfile):
+    '''
+    This function will ensure that the 7 key element nodes of an FGDC-CSDGM record are present.
+    If they are not found, the routine will add them to the input XML file.
+    '''
+    masterNodeList = ['idinfo', 'dataqual', 'spdoinfo', 'spref', 'eainfo', 'distinfo', 'metainfo']
+    missingNodes = []
+    
+    etree = ET.ElementTree(file=XMLfile)
+    root = etree.getroot()
+    
+    for iNode in masterNodeList:
+        if etree.find(iNode) == None:
+            missingNodes.append(iNode)
+            
+    for xNode in missingNodes:
+        insertNode = ET.Element(xNode)
+        root._children.insert(-1, insertNode)
+    
+    etree.write(XMLfile)    
     
 def removeNodeByName(XMLfile, NodeName):
     '''
@@ -201,7 +222,16 @@ def WriteMDDate(MDFile, MDDate):
 def WriteBoundingInfo(MDFile, WestBC, EastBC, NorthBC, SouthBC):#Update the bounding information of a spatial data set.
     
     try:#Update each bounding coordinate element.
-        
+        if str(WestBC) == "nan":
+            WestBC = "-180"
+        if str(EastBC) == "nan":
+            EastBC = "180"
+        if str(NorthBC) == "nan":
+            NorthBC = "90"
+        if str(SouthBC) == "nan":
+            SouthBC = "-90"
+            
+            
         changeXMLNodeText(MDFile, "idinfo/spdom/bounding/westbc", str(WestBC), addifmissing=True)
         changeXMLNodeText(MDFile, "idinfo/spdom/bounding/eastbc", str(EastBC), addifmissing=True)
         changeXMLNodeText(MDFile, "idinfo/spdom/bounding/northbc", str(NorthBC), addifmissing=True)

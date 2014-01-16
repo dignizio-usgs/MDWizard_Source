@@ -45,6 +45,19 @@ Partial Class frmGenEA
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtAttDef = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.pnlRange = New System.Windows.Forms.Panel()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.labelVATwarning = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.txtRngResolution = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.txtRngUnits = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtRngMax = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtRngMin = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.pnlUnrepresentable = New System.Windows.Forms.Panel()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -66,29 +79,16 @@ Partial Class frmGenEA
         Me.Label5 = New System.Windows.Forms.Label()
         Me.lstUniqueVals = New System.Windows.Forms.ListBox()
         Me.Label20 = New System.Windows.Forms.Label()
-        Me.pnlRange = New System.Windows.Forms.Panel()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.labelVATwarning = New System.Windows.Forms.Label()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.txtRngResolution = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.txtRngUnits = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.txtRngMax = New System.Windows.Forms.TextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.txtRngMin = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.cmdSave = New System.Windows.Forms.Button()
         Me.splitContainer_Main.Panel1.SuspendLayout()
         Me.splitContainer_Main.Panel2.SuspendLayout()
         Me.splitContainer_Main.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmDomain.SuspendLayout()
+        Me.pnlRange.SuspendLayout()
         Me.pnlUnrepresentable.SuspendLayout()
         Me.pnlCodeset.SuspendLayout()
         Me.pnlEnumerated.SuspendLayout()
-        Me.pnlRange.SuspendLayout()
         Me.SuspendLayout()
         '
         'cmdSaveAndClose
@@ -140,10 +140,10 @@ Partial Class frmGenEA
         Me.splitContainer_Main.Panel2.Controls.Add(Me.Label4)
         Me.splitContainer_Main.Panel2.Controls.Add(Me.txtAttDef)
         Me.splitContainer_Main.Panel2.Controls.Add(Me.Label3)
+        Me.splitContainer_Main.Panel2.Controls.Add(Me.pnlRange)
         Me.splitContainer_Main.Panel2.Controls.Add(Me.pnlUnrepresentable)
         Me.splitContainer_Main.Panel2.Controls.Add(Me.pnlCodeset)
         Me.splitContainer_Main.Panel2.Controls.Add(Me.pnlEnumerated)
-        Me.splitContainer_Main.Panel2.Controls.Add(Me.pnlRange)
         Me.splitContainer_Main.Size = New System.Drawing.Size(942, 578)
         Me.splitContainer_Main.SplitterDistance = 314
         Me.splitContainer_Main.TabIndex = 7
@@ -340,6 +340,133 @@ Partial Class frmGenEA
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "Attribute Definition"
         '
+        'pnlRange
+        '
+        Me.pnlRange.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.pnlRange.Controls.Add(Me.Label24)
+        Me.pnlRange.Controls.Add(Me.labelVATwarning)
+        Me.pnlRange.Controls.Add(Me.Label22)
+        Me.pnlRange.Controls.Add(Me.Label21)
+        Me.pnlRange.Controls.Add(Me.txtRngResolution)
+        Me.pnlRange.Controls.Add(Me.Label12)
+        Me.pnlRange.Controls.Add(Me.txtRngUnits)
+        Me.pnlRange.Controls.Add(Me.Label11)
+        Me.pnlRange.Controls.Add(Me.txtRngMax)
+        Me.pnlRange.Controls.Add(Me.Label10)
+        Me.pnlRange.Controls.Add(Me.txtRngMin)
+        Me.pnlRange.Controls.Add(Me.Label8)
+        Me.pnlRange.Location = New System.Drawing.Point(6, 208)
+        Me.pnlRange.Name = "pnlRange"
+        Me.pnlRange.Size = New System.Drawing.Size(611, 366)
+        Me.pnlRange.TabIndex = 8
+        Me.pnlRange.Tag = "range"
+        Me.pnlRange.Visible = False
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(15, 125)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(430, 39)
+        Me.Label24.TabIndex = 13
+        Me.Label24.Text = resources.GetString("Label24.Text")
+        '
+        'labelVATwarning
+        '
+        Me.labelVATwarning.AutoSize = True
+        Me.labelVATwarning.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelVATwarning.ForeColor = System.Drawing.SystemColors.Control
+        Me.labelVATwarning.Location = New System.Drawing.Point(397, 26)
+        Me.labelVATwarning.Name = "labelVATwarning"
+        Me.labelVATwarning.Size = New System.Drawing.Size(211, 64)
+        Me.labelVATwarning.TabIndex = 12
+        Me.labelVATwarning.Text = "If this raster contains categorical " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "data please close this tool, build " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "a rast" & _
+            "er attribute table for the data, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and then re-run this tool."
+        '
+        'Label22
+        '
+        Me.Label22.Location = New System.Drawing.Point(15, 214)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(524, 111)
+        Me.Label22.TabIndex = 11
+        Me.Label22.Text = resources.GetString("Label22.Text")
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.Location = New System.Drawing.Point(15, 192)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(102, 13)
+        Me.Label21.TabIndex = 10
+        Me.Label21.Text = """Range Domain"""
+        '
+        'txtRngResolution
+        '
+        Me.txtRngResolution.Location = New System.Drawing.Point(232, 93)
+        Me.txtRngResolution.Name = "txtRngResolution"
+        Me.txtRngResolution.Size = New System.Drawing.Size(159, 20)
+        Me.txtRngResolution.TabIndex = 9
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(15, 96)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(172, 13)
+        Me.Label12.TabIndex = 8
+        Me.Label12.Text = "Measurement Resolution (Optional)"
+        '
+        'txtRngUnits
+        '
+        Me.txtRngUnits.Location = New System.Drawing.Point(232, 67)
+        Me.txtRngUnits.Name = "txtRngUnits"
+        Me.txtRngUnits.Size = New System.Drawing.Size(159, 20)
+        Me.txtRngUnits.TabIndex = 7
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(15, 72)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(87, 13)
+        Me.Label11.TabIndex = 6
+        Me.Label11.Text = "Units of Measure"
+        '
+        'txtRngMax
+        '
+        Me.txtRngMax.Location = New System.Drawing.Point(232, 41)
+        Me.txtRngMax.Name = "txtRngMax"
+        Me.txtRngMax.Size = New System.Drawing.Size(159, 20)
+        Me.txtRngMax.TabIndex = 5
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(15, 46)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(211, 13)
+        Me.Label10.TabIndex = 4
+        Me.Label10.Text = "Range Maximum (Numeric or YYYYMMDD)"
+        '
+        'txtRngMin
+        '
+        Me.txtRngMin.Location = New System.Drawing.Point(232, 15)
+        Me.txtRngMin.Name = "txtRngMin"
+        Me.txtRngMin.Size = New System.Drawing.Size(159, 20)
+        Me.txtRngMin.TabIndex = 1
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(15, 20)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(201, 13)
+        Me.Label8.TabIndex = 0
+        Me.Label8.Text = "Range Minimum (Numeric or YYYMMDD)"
+        '
         'pnlUnrepresentable
         '
         Me.pnlUnrepresentable.Anchor = System.Windows.Forms.AnchorStyles.Bottom
@@ -374,7 +501,7 @@ Partial Class frmGenEA
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(12, 192)
+        Me.Label15.Location = New System.Drawing.Point(12, 10)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(266, 13)
         Me.Label15.TabIndex = 6
@@ -385,7 +512,7 @@ Partial Class frmGenEA
         Me.txtUnrep.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtUnrep.Location = New System.Drawing.Point(15, 14)
+        Me.txtUnrep.Location = New System.Drawing.Point(15, 30)
         Me.txtUnrep.Multiline = True
         Me.txtUnrep.Name = "txtUnrep"
         Me.txtUnrep.Size = New System.Drawing.Size(582, 175)
@@ -551,133 +678,6 @@ Partial Class frmGenEA
         Me.Label20.TabIndex = 9
         Me.Label20.Text = resources.GetString("Label20.Text")
         '
-        'pnlRange
-        '
-        Me.pnlRange.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.pnlRange.Controls.Add(Me.Label24)
-        Me.pnlRange.Controls.Add(Me.labelVATwarning)
-        Me.pnlRange.Controls.Add(Me.Label22)
-        Me.pnlRange.Controls.Add(Me.Label21)
-        Me.pnlRange.Controls.Add(Me.txtRngResolution)
-        Me.pnlRange.Controls.Add(Me.Label12)
-        Me.pnlRange.Controls.Add(Me.txtRngUnits)
-        Me.pnlRange.Controls.Add(Me.Label11)
-        Me.pnlRange.Controls.Add(Me.txtRngMax)
-        Me.pnlRange.Controls.Add(Me.Label10)
-        Me.pnlRange.Controls.Add(Me.txtRngMin)
-        Me.pnlRange.Controls.Add(Me.Label8)
-        Me.pnlRange.Location = New System.Drawing.Point(6, 208)
-        Me.pnlRange.Name = "pnlRange"
-        Me.pnlRange.Size = New System.Drawing.Size(611, 366)
-        Me.pnlRange.TabIndex = 8
-        Me.pnlRange.Tag = "range"
-        Me.pnlRange.Visible = False
-        '
-        'Label24
-        '
-        Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(15, 125)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(430, 39)
-        Me.Label24.TabIndex = 13
-        Me.Label24.Text = resources.GetString("Label24.Text")
-        '
-        'labelVATwarning
-        '
-        Me.labelVATwarning.AutoSize = True
-        Me.labelVATwarning.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labelVATwarning.ForeColor = System.Drawing.SystemColors.Control
-        Me.labelVATwarning.Location = New System.Drawing.Point(392, 34)
-        Me.labelVATwarning.Name = "labelVATwarning"
-        Me.labelVATwarning.Size = New System.Drawing.Size(211, 64)
-        Me.labelVATwarning.TabIndex = 12
-        Me.labelVATwarning.Text = "If this raster contains categorical " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "data please close this tool, build " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "a rast" & _
-            "er attribute table for the data, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and then re-run this tool."
-        '
-        'Label22
-        '
-        Me.Label22.Location = New System.Drawing.Point(15, 214)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(524, 111)
-        Me.Label22.TabIndex = 11
-        Me.Label22.Text = resources.GetString("Label22.Text")
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(15, 192)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(102, 13)
-        Me.Label21.TabIndex = 10
-        Me.Label21.Text = """Range Domain"""
-        '
-        'txtRngResolution
-        '
-        Me.txtRngResolution.Location = New System.Drawing.Point(193, 93)
-        Me.txtRngResolution.Name = "txtRngResolution"
-        Me.txtRngResolution.Size = New System.Drawing.Size(184, 20)
-        Me.txtRngResolution.TabIndex = 9
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(15, 96)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(172, 13)
-        Me.Label12.TabIndex = 8
-        Me.Label12.Text = "Measurement Resolution (Optional)"
-        '
-        'txtRngUnits
-        '
-        Me.txtRngUnits.Location = New System.Drawing.Point(143, 67)
-        Me.txtRngUnits.Name = "txtRngUnits"
-        Me.txtRngUnits.Size = New System.Drawing.Size(234, 20)
-        Me.txtRngUnits.TabIndex = 7
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(15, 72)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(87, 13)
-        Me.Label11.TabIndex = 6
-        Me.Label11.Text = "Units of Measure"
-        '
-        'txtRngMax
-        '
-        Me.txtRngMax.Location = New System.Drawing.Point(143, 41)
-        Me.txtRngMax.Name = "txtRngMax"
-        Me.txtRngMax.Size = New System.Drawing.Size(234, 20)
-        Me.txtRngMax.TabIndex = 5
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(15, 46)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(86, 13)
-        Me.Label10.TabIndex = 4
-        Me.Label10.Text = "Range Maximum"
-        '
-        'txtRngMin
-        '
-        Me.txtRngMin.Location = New System.Drawing.Point(143, 15)
-        Me.txtRngMin.Name = "txtRngMin"
-        Me.txtRngMin.Size = New System.Drawing.Size(234, 20)
-        Me.txtRngMin.TabIndex = 1
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(15, 20)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(83, 13)
-        Me.Label8.TabIndex = 0
-        Me.Label8.Text = "Range Minimum"
-        '
         'cmdSave
         '
         Me.cmdSave.BackColor = System.Drawing.Color.LightSteelBlue
@@ -712,14 +712,14 @@ Partial Class frmGenEA
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmDomain.ResumeLayout(False)
         Me.frmDomain.PerformLayout()
+        Me.pnlRange.ResumeLayout(False)
+        Me.pnlRange.PerformLayout()
         Me.pnlUnrepresentable.ResumeLayout(False)
         Me.pnlUnrepresentable.PerformLayout()
         Me.pnlCodeset.ResumeLayout(False)
         Me.pnlCodeset.PerformLayout()
         Me.pnlEnumerated.ResumeLayout(False)
         Me.pnlEnumerated.PerformLayout()
-        Me.pnlRange.ResumeLayout(False)
-        Me.pnlRange.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

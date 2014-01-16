@@ -96,9 +96,9 @@ def getLatResLongRes(GCS_ExtentList):
     longRes = float((1/len1SecondLong) * (1/3280.84) * float(DataScale) * float(1.0/12) * float(DigPrecision))
     longRes = str(format(longRes, '.10f'))
     
-    print "Latitude Midpoint= " + str(mid_lat)
+    print "Latitude Midpoint = " + str(mid_lat)
     print "Latitudinal Resolution = " + latRes
-    print "Longitudinal Resolution = " + longRes
+    print "Longitudinal Resolution = " + longRes + "\n"
     
     return(latRes, longRes)
 
@@ -162,40 +162,41 @@ def XML_SpatialReference(SR_List, myDataType):
                 SR_List["UPS_Zone"] == "[Unknown]" and SR_List["Arc_Zone"] == "[Unknown]":
             
             # Map Projection
-            ProjName = SR_List["PrjName"].lower().replace("_", " ")
+            #ProjName = SR_List["PrjName"].lower().replace("_", " ")
+            ProjName = SR_List["ProjType"].lower().replace("_", " ")
             
             if "albers" in ProjName:
                 Albers_Conical_Equal_Area(SR_List)
-            elif "azimuthal" and "equidistant" in ProjName:
+            elif "azimuthal" in ProjName and "equidistant" in ProjName:
                 Azimuthal_Equidistant(SR_List)
-            elif "equidistant" and "conic" in ProjName:
+            elif "equidistant" in ProjName and "conic" in ProjName:
                 Equidistant_Conic(SR_List)
             elif "equirectangular" in ProjName:
                 Equirectangular(SR_List)
-            elif "general" and "vertical" and "near" and "perspective" in ProjName:
+            elif "general" in ProjName and "vertical" in ProjName and "near" in ProjName and "perspective" in ProjName:
                 General_Vertical_Near_sided_Perspective(SR_List)
             elif "gnomonic" in ProjName:
                 Gnomonic(SR_List)
-            elif "lambert" and "azimuthal" in ProjName:
+            elif "lambert" in ProjName and "azimuthal" in ProjName:
                 Lambert_Azimuthal_Equal_Area(SR_List)
-            elif "lambert" and "conformal" and "conic" in ProjName:
+            elif "lambert" in ProjName and "conformal" in ProjName and "conic" in ProjName:
                 Lambert_Conformal_Conic(SR_List)
-            elif "modified" and "stereographic" and "alaska" in ProjName:
+            elif "modified" in ProjName and "stereographic" in ProjName and "alaska" in ProjName:
                 Modified_Stereographic_for_Alaska()
-            elif "miller" and "cylindrical" in ProjName:
+            elif "miller" in ProjName and "cylindrical" in ProjName:
                 Miller_Cylindrical(SR_List)
             
-            elif "space" and "oblique" and "mercator" and "landsat" in ProjName:
+            elif "space" in ProjName and "oblique" in ProjName and "mercator" in ProjName and "landsat" in ProjName:
                 Space_Oblique_Mercator_Landsat(SR_List)            
-            elif "transverse" and "mercator" in ProjName:
+            elif "transverse" in ProjName and "mercator" in ProjName:
                 Transverse_Mercator(SR_List)           
-            elif "oblique" and "mercator" in ProjName:
+            elif "oblique" in ProjName and "mercator" in ProjName:
                 Oblique_Mercator(SR_List)                        
             elif "mercator" in ProjName:
                 Mercator(SR_List)
 
 
-            elif "polar" and "stereographic" in ProjName:
+            elif "polar" in ProjName and "stereographic" in ProjName:
                 Polar_Stereographic(SR_List)
             elif "stereographic" in ProjName:
                 Stereographic(SR_List)            
@@ -268,6 +269,7 @@ def Get_SpatialRef(SR_InDS, myDataType, myFeatType, GCS_ExtentList, desc, InDS):
     ### Default units for GCS and PCS
     PCSname = "[Unknown]"
     PrjName = "[Unknown]"
+    ProjType = "[Unknown]" #DI Added
     GCSname = "[Unknown]"
     PCS_Units = "[Unknown]"
     GCS_Units = "[Unknown]"
@@ -365,6 +367,14 @@ def Get_SpatialRef(SR_InDS, myDataType, myFeatType, GCS_ExtentList, desc, InDS):
         VCSname = "[Unknown]"
 
 
+    ### D. Ignizio (Added. Populate new 'ProjType' variable to help with some projections)
+    try:
+        ProjType = ProjType = CRS.split(",PROJECTION[")[1].split("]")[0].strip("'")
+    except:
+        pass
+
+    
+    
     ### Map Projection information ---------------------------------------------
     if PCSname != "[Unknown]":
         ### Alter projection name for certain map projections
@@ -501,10 +511,55 @@ def Get_SpatialRef(SR_InDS, myDataType, myFeatType, GCS_ExtentList, desc, InDS):
                 UTM_Zone = UTM_Zone.replace("N", "")
                 UTM_Zone = UTM_Zone.replace("S", "")
             except:pass
+        
         if "StatePlane" in Name2:
+            #Handle State Plane Coordinate System Based for FGDC-CSDGM formatting
+            '''
+            Example:
+            PROJCS['NAD_1983_StatePlane_Alaska_2_FIPS_5002',
+            GEOGCS['GCS_North_American_1983',
+            DATUM['D_North_American_1983',
+            SPHEROID['GRS_1980',6378137.0,298.257222101]],
+            PRIMEM['Greenwich',0.0],
+            UNIT['Degree',0.0174532925199433]],
+            PROJECTION['Transverse_Mercator'],
+            PARAMETER['False_Easting',500000.0],
+            PARAMETER['False_Northing',0.0],
+            PARAMETER['Central_Meridian',-142.0],
+            PARAMETER['Scale_Factor',0.9999],
+            PARAMETER['Latitude_Of_Origin',54.0],
+            UNIT['Meter',1.0]];
+            -5122600 -15986400 450310428.589905;
+            -100000 10000;
+            -100000 10000;
+            0.001;
+            0.001;
+            0.001;
+            IsHighPrecision
+            '''
+            
+            ########################################
+            #Get the State Plane Coordinate System Zone number. 
             try:
-                SPCS_Zone = Name2[len_Name-2]
-            except: pass
+                termCt = 0
+                while isinstance(SPCS_Zone, int) == False:
+                    termCt +=1
+                    try:
+                        SPCS_Zone = int(Name2[len_Name-termCt])#Count back from the end.
+                    except:
+                        SPCS_Zone = Name2[len_Name-termCt]
+                    
+                    #if len()                        
+            except:
+                pass
+            SPCS_Zone = str(SPCS_Zone)
+            
+            #Must be a 4-digit number. The shortest is 3 digits, so we can check and prepend a '0'.
+            if len(SPCS_Zone)<4:
+                SPCS_Zone = "0" + SPCS_Zone                       
+            ########################################
+        
+        
         if "UPS" in Name2:
             try:
                 # "A", "B", "Y", "Z" -- How do I get this info
@@ -659,6 +714,7 @@ def Get_SpatialRef(SR_InDS, myDataType, myFeatType, GCS_ExtentList, desc, InDS):
     SR_List = \
         {"PCSname": PCSname,
         "PrjName": PrjName,
+        "ProjType": ProjType, #Added.
         "GCSname": GCSname,
         "GCS_Units": GCS_Units,
         "PCS_Units": PCS_Units,
@@ -1213,8 +1269,9 @@ def Universal_Polar_Stereographic(SR_List):
     FileOutW = open(OutXML_Tmp, 'a')
     FileOutW.write(ElemTab_3 + "<planar>")
     FileOutW.write(ElemTab_4 + "<gridsys>")
-    FileOutW.write(ElemTab_5 + "<gridsysn>Universal Polar Stereographic" + " (ESRI Full Name: " + SR_List["PCSname"] + ")</gridsysn>")
-    #FileOutW.write(ElemTab_5 + "<gridsysn>" + SR_List["PrjName"] + " (ESRI Full Name: " + SR_List["PCSname"] + ")</gridsysn>")
+    FileOutW.write(ElemTab_5 + "<gridsysn>Universal Polar Stereographic</gridsysn>")#Domain restricted. FGDC requires this (even though our approach below is more informative).
+    #FileOutW.write(ElemTab_5 + "<gridsysn>Universal Polar Stereographic" + " (ESRI Full Name: " + SR_List["PCSname"] + ")</gridsysn>")
+    
     FileOutW.write(ElemTab_5 + "<ups>")
     FileOutW.write(ElemTab_6 + "<upszone>" + SR_List["UPS_Zone"] + "</upszone>")
 
@@ -1244,11 +1301,20 @@ def State_Plane_Coordinate_System(SR_List):
     FileOutW = open(OutXML_Tmp, 'a')
     FileOutW.write(ElemTab_3 + "<planar>")
     FileOutW.write(ElemTab_4 + "<gridsys>")
-    FileOutW.write(ElemTab_5 + "<gridsysn>State Plane Coordinate System" + " (ESRI Full Name: " + SR_List["PCSname"] + ")</gridsysn>")
+    
+    DatumYear = ""
+    if "1927" in SR_List["PCSname"]:
+        DatumYear = "1927"
+    if "1983" in SR_List["PCSname"]:
+        DatumYear = "1983"
+    FileOutW.write(ElemTab_5 + "<gridsysn>State Plane Coordinate System " + DatumYear + "</gridsysn>")
+    #FileOutW.write(ElemTab_5 + "<gridsysn>State Plane Coordinate System" + " (ESRI Full Name: " + SR_List["PCSname"] + ")</gridsysn>")
+    
     FileOutW.write(ElemTab_5 + "<spcs>")
     FileOutW.write(ElemTab_6 + "<spcszone>" + SR_List["SPCS_Zone"] + "</spcszone>")
 
-    if SR_List["PrjName"] == "Lambert Conformal Conic":
+
+    if SR_List["ProjType"] == "Lambert Conformal Conic" or SR_List["ProjType"] == "Lambert_Conformal_Conic":
         # Lambert Conformal Conic
         # Std paral 1
         # Std paral 2 (if exists)
@@ -1262,14 +1328,14 @@ def State_Plane_Coordinate_System(SR_List):
             FileOutW.write(ElemTab_8 + "<stdparll>" + SR_List["SP2"] + "</stdparll>")
         else: pass
         FileOutW.write(ElemTab_8 + "<longcm>" + SR_List["LongCM"] + "</longcm>")
-        FileOutW.write(ElemTab_8 + "<latprjo></latprjo>")
+        FileOutW.write(ElemTab_8 + "<latprjo>" + SR_List["LatPrjOrigin"] + "</latprjo>")
         FileOutW.write(ElemTab_8 + "<feast>" + SR_List["FE"] + "</feast>")
         FileOutW.write(ElemTab_8 + "<fnorth>" + SR_List["FN"] + "</fnorth>")
         FileOutW.write(ElemTab_7 + "</lambertc>")
 
 
     # OR ----------------------------
-    if SR_List["PrjName"] == "Transverse Mercator":
+    if SR_List["ProjType"] == "Transverse Mercator" or SR_List["ProjType"] == "Transverse_Mercator":
         # Transverse Mercator
         # Scale Factor at Central Meridian
         # Longitude of Projection Center
@@ -1286,40 +1352,40 @@ def State_Plane_Coordinate_System(SR_List):
 
 
     # OR ----------------------------
-    if SR_List["PrjName"] == "Oblique Mercator":
+    if SR_List["ProjType"] == "Oblique Mercator" or SR_List["ProjType"] == "Oblique_Mercator":
         # Oblique Mercator
         # Scale Factor at Center Line
         FileOutW.write(ElemTab_7 + "<obqmerc>")
         FileOutW.write(ElemTab_8 + "<sfctrlin>" + SR_List["SF"] + "</sfctrlin>")
-    # --
-    if SR_List["PrjName"] == "Oblique Line Azimuth": #???????????????????????????????????????
-        # Oblique Line Azimuth
-        #   Azimuthal Angle
-        #   Azimuth Measure Point Longitude
-        FileOutW.write(ElemTab_8 + "<obqlazim>")
-        FileOutW.write(ElemTab_9 + "<azimangl>[Unknown]</azimangl>") #????????????????????????????????????????????????
-        FileOutW.write(ElemTab_9 + "<azimptl>[Unknown]</azimptl>") #????????????????????????????????????????????????
-        FileOutW.write(ElemTab_8 + "</obqlazim>")
-    # OR
-    if SR_List["PrjName"] == "Oblique Line Point": #???????????????????????????????????????
-        # Oblique Line Point
-        #   (two occurrences of both)??
-        #   Oblique Line Latitude
-        #   Oblique Line Longitude
-        FileOutW.write(ElemTab_8 + "<obqlpt>")
-        FileOutW.write(ElemTab_9 + "<obqllat>[Unknown]</obqllat>") #????????????????????????????????????????????????
-        FileOutW.write(ElemTab_9 + "<obqllat>[Unknown]</obqllat>") #????????????????????????????????????????????????
-        FileOutW.write(ElemTab_9 + "<obqllong>[Unknown]</obqllong>") #????????????????????????????????????????????????
-        FileOutW.write(ElemTab_9 + "<obqllong>[Unknown]</obqllong>") #????????????????????????????????????????????????
-        FileOutW.write(ElemTab_8 + "</obqlpt>")
-    # Longitude of Projection Origin
-    # False Easting
-    # False Northing
-    FileOutW.write(ElemTab_8 + "<latprjo>" + SR_List["LatPrjOrigin"] + "</latprjo>")
-    FileOutW.write(ElemTab_8 + "<feast>" + SR_List["FE"] + "</feast>")
-    FileOutW.write(ElemTab_8 + "<fnorth>" + SR_List["FN"] + "</fnorth>")
-    FileOutW.write(ElemTab_7 + "</obqmerc>")
-    # ---
+        # --
+        if SR_List["PrjName"] == "Oblique Line Azimuth": #???????????????????????????????????????
+            # Oblique Line Azimuth
+            #   Azimuthal Angle
+            #   Azimuth Measure Point Longitude
+            FileOutW.write(ElemTab_8 + "<obqlazim>")
+            FileOutW.write(ElemTab_9 + "<azimangl>[Unknown]</azimangl>") #????????????????????????????????????????????????
+            FileOutW.write(ElemTab_9 + "<azimptl>[Unknown]</azimptl>") #????????????????????????????????????????????????
+            FileOutW.write(ElemTab_8 + "</obqlazim>")
+        # OR
+        if SR_List["PrjName"] == "Oblique Line Point": #???????????????????????????????????????
+            # Oblique Line Point
+            #   (two occurrences of both)??
+            #   Oblique Line Latitude
+            #   Oblique Line Longitude
+            FileOutW.write(ElemTab_8 + "<obqlpt>")
+            FileOutW.write(ElemTab_9 + "<obqllat>[Unknown]</obqllat>") #????????????????????????????????????????????????
+            FileOutW.write(ElemTab_9 + "<obqllat>[Unknown]</obqllat>") #????????????????????????????????????????????????
+            FileOutW.write(ElemTab_9 + "<obqllong>[Unknown]</obqllong>") #????????????????????????????????????????????????
+            FileOutW.write(ElemTab_9 + "<obqllong>[Unknown]</obqllong>") #????????????????????????????????????????????????
+            FileOutW.write(ElemTab_8 + "</obqlpt>")
+        # Longitude of Projection Origin
+        # False Easting
+        # False Northing
+        FileOutW.write(ElemTab_8 + "<latprjo>" + SR_List["LatPrjOrigin"] + "</latprjo>")
+        FileOutW.write(ElemTab_8 + "<feast>" + SR_List["FE"] + "</feast>")
+        FileOutW.write(ElemTab_8 + "<fnorth>" + SR_List["FN"] + "</fnorth>")
+        FileOutW.write(ElemTab_7 + "</obqmerc>")
+        # ---
 
 
     # OR ----------------------------
@@ -1346,7 +1412,8 @@ def ARC_Coordinate_System(SR_List):
     FileOutW = open(OutXML_Tmp, 'a')
     FileOutW.write(ElemTab_3 + "<planar>")
     FileOutW.write(ElemTab_4 + "<gridsys>")
-    FileOutW.write(ElemTab_5 + "<gridsysn>Arc Coordinate System" + " (ESRI Full Name: " + SR_List["PCSname"] + ")</gridsysn>")
+    FileOutW.write(ElemTab_5 + "<gridsysn>Arc Coordinate System</gridsysn>")#Domain restricted. FGDC requires this (even though our approach below is more informative).
+    #FileOutW.write(ElemTab_5 + "<gridsysn>Arc Coordinate System" + " (ESRI Full Name: " + SR_List["PCSname"] + ")</gridsysn>")
     FileOutW.write(ElemTab_5 + "<arcsys>")
     FileOutW.write(ElemTab_6 + "<arczone>" + SR_List["Arc_Zone"] + "</arczone>")
 

@@ -49,4 +49,6 @@ FORT STAFF:
 
 The FORT team's ArcToolbox collection (...\GIS_LIBRARY\_FORT_Resources\ArcGIS_ToolBoxes) should also be updated with modified versions of the toolboxes. This also provides a nice final test space before re-posting any changed versions to Sciencebase. 
 
+After a tested round of changes are implemented (usually a suite of updates). Update the toolbox with a new version # (in ArcGIS description) and repost.
+
 Post updated, robust versions of software to www.sciencebase.gov/metadatawizard

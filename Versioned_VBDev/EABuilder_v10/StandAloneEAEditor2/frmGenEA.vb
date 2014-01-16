@@ -1181,12 +1181,16 @@ ErrorHandler:  'error handling routine
                     .Table = pFeatureClass
                 End If
             End With
+
+
             pTableSort.Sort(Nothing)
             pCursor = pTableSort.Rows
             pRow = pCursor.NextRow
             'strMin = pRow.Value(intField)
 
-            If pRow.Value(intField) Is DBNull.Value Then
+            If pRow Is Nothing Then
+                strMin = "{Null Value / Empty Field Entry}"
+            ElseIf pRow.Value(intField) Is DBNull.Value Then
                 strMin = "{Null Value / Empty Field Entry}"
             ElseIf CStr(pRow.Value(intField)) = "" Then
                 strMin = "{Null Value / Empty Field Entry}"
@@ -1201,7 +1205,9 @@ ErrorHandler:  'error handling routine
             pRow = pCursor.NextRow
             'strMax = pRow.Value(intField)
 
-            If pRow.Value(intField) Is DBNull.Value Then
+            If pRow Is Nothing Then
+                strMax = "{Null Value / Empty Field Entry}"
+            ElseIf pRow.Value(intField) Is DBNull.Value Then
                 strMax = "{Null Value / Empty Field Entry}"
             ElseIf CStr(pRow.Value(intField)) = "" Then
                 strMax = "{Null Value / Empty Field Entry}"
@@ -1286,7 +1292,7 @@ ErrorHandler:  'error handling routine
             curEA.attributesDict(Me.lstFields.SelectedItems(0).Text).c_attribdomv.attributeDomainValues(0) = curCodeset
         End If
 
-        Call RecordChange()
+            Call RecordChange()
     End Sub
 
     Private Function returnFormType() As Integer
