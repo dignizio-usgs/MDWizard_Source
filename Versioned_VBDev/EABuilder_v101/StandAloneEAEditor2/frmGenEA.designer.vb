@@ -45,6 +45,15 @@ Partial Class frmGenEA
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtAttDef = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.pnlEnumerated = New System.Windows.Forms.Panel()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.txtValDefSource = New System.Windows.Forms.TextBox()
+        Me.txtValDef = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lstUniqueVals = New System.Windows.Forms.ListBox()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.pnlRange = New System.Windows.Forms.Panel()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.labelVATwarning = New System.Windows.Forms.Label()
@@ -70,25 +79,16 @@ Partial Class frmGenEA
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.pnlEnumerated = New System.Windows.Forms.Panel()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.txtValDefSource = New System.Windows.Forms.TextBox()
-        Me.txtValDef = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.lstUniqueVals = New System.Windows.Forms.ListBox()
-        Me.Label20 = New System.Windows.Forms.Label()
         Me.cmdSave = New System.Windows.Forms.Button()
         Me.splitContainer_Main.Panel1.SuspendLayout()
         Me.splitContainer_Main.Panel2.SuspendLayout()
         Me.splitContainer_Main.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.frmDomain.SuspendLayout()
+        Me.pnlEnumerated.SuspendLayout()
         Me.pnlRange.SuspendLayout()
         Me.pnlUnrepresentable.SuspendLayout()
         Me.pnlCodeset.SuspendLayout()
-        Me.pnlEnumerated.SuspendLayout()
         Me.SuspendLayout()
         '
         'cmdSaveAndClose
@@ -340,6 +340,97 @@ Partial Class frmGenEA
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "Attribute Definition"
         '
+        'pnlEnumerated
+        '
+        Me.pnlEnumerated.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.pnlEnumerated.Controls.Add(Me.Label19)
+        Me.pnlEnumerated.Controls.Add(Me.txtValDefSource)
+        Me.pnlEnumerated.Controls.Add(Me.txtValDef)
+        Me.pnlEnumerated.Controls.Add(Me.Label7)
+        Me.pnlEnumerated.Controls.Add(Me.Label6)
+        Me.pnlEnumerated.Controls.Add(Me.Label5)
+        Me.pnlEnumerated.Controls.Add(Me.lstUniqueVals)
+        Me.pnlEnumerated.Controls.Add(Me.Label20)
+        Me.pnlEnumerated.Location = New System.Drawing.Point(6, 208)
+        Me.pnlEnumerated.Name = "pnlEnumerated"
+        Me.pnlEnumerated.Size = New System.Drawing.Size(611, 366)
+        Me.pnlEnumerated.TabIndex = 12
+        Me.pnlEnumerated.Tag = "enum"
+        Me.pnlEnumerated.Visible = False
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Location = New System.Drawing.Point(210, 179)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(132, 13)
+        Me.Label19.TabIndex = 8
+        Me.Label19.Text = """Enumerated Domain"""
+        '
+        'txtValDefSource
+        '
+        Me.txtValDefSource.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtValDefSource.Location = New System.Drawing.Point(213, 128)
+        Me.txtValDefSource.Multiline = True
+        Me.txtValDefSource.Name = "txtValDefSource"
+        Me.txtValDefSource.Size = New System.Drawing.Size(390, 36)
+        Me.txtValDefSource.TabIndex = 7
+        '
+        'txtValDef
+        '
+        Me.txtValDef.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtValDef.Location = New System.Drawing.Point(213, 26)
+        Me.txtValDef.Multiline = True
+        Me.txtValDef.Name = "txtValDef"
+        Me.txtValDef.Size = New System.Drawing.Size(390, 83)
+        Me.txtValDef.TabIndex = 6
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(210, 112)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(86, 13)
+        Me.Label7.TabIndex = 5
+        Me.Label7.Text = "Definition source"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(210, 9)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(111, 13)
+        Me.Label6.TabIndex = 3
+        Me.Label6.Text = "Definition of this value"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(15, 4)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(76, 13)
+        Me.Label5.TabIndex = 1
+        Me.Label5.Text = "Unique Values"
+        '
+        'lstUniqueVals
+        '
+        Me.lstUniqueVals.FormattingEnabled = True
+        Me.lstUniqueVals.Location = New System.Drawing.Point(15, 26)
+        Me.lstUniqueVals.Name = "lstUniqueVals"
+        Me.lstUniqueVals.Size = New System.Drawing.Size(182, 290)
+        Me.lstUniqueVals.TabIndex = 0
+        '
+        'Label20
+        '
+        Me.Label20.Location = New System.Drawing.Point(213, 196)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(390, 120)
+        Me.Label20.TabIndex = 9
+        Me.Label20.Text = resources.GetString("Label20.Text")
+        '
         'pnlRange
         '
         Me.pnlRange.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -463,9 +554,9 @@ Partial Class frmGenEA
         Me.Label8.AutoSize = True
         Me.Label8.Location = New System.Drawing.Point(15, 20)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(201, 13)
+        Me.Label8.Size = New System.Drawing.Size(208, 13)
         Me.Label8.TabIndex = 0
-        Me.Label8.Text = "Range Minimum (Numeric or YYYMMDD)"
+        Me.Label8.Text = "Range Minimum (Numeric or YYYYMMDD)"
         '
         'pnlUnrepresentable
         '
@@ -587,97 +678,6 @@ Partial Class frmGenEA
         Me.Label1.TabIndex = 15
         Me.Label1.Text = resources.GetString("Label1.Text")
         '
-        'pnlEnumerated
-        '
-        Me.pnlEnumerated.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.pnlEnumerated.Controls.Add(Me.Label19)
-        Me.pnlEnumerated.Controls.Add(Me.txtValDefSource)
-        Me.pnlEnumerated.Controls.Add(Me.txtValDef)
-        Me.pnlEnumerated.Controls.Add(Me.Label7)
-        Me.pnlEnumerated.Controls.Add(Me.Label6)
-        Me.pnlEnumerated.Controls.Add(Me.Label5)
-        Me.pnlEnumerated.Controls.Add(Me.lstUniqueVals)
-        Me.pnlEnumerated.Controls.Add(Me.Label20)
-        Me.pnlEnumerated.Location = New System.Drawing.Point(6, 208)
-        Me.pnlEnumerated.Name = "pnlEnumerated"
-        Me.pnlEnumerated.Size = New System.Drawing.Size(611, 366)
-        Me.pnlEnumerated.TabIndex = 12
-        Me.pnlEnumerated.Tag = "enum"
-        Me.pnlEnumerated.Visible = False
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(210, 179)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(132, 13)
-        Me.Label19.TabIndex = 8
-        Me.Label19.Text = """Enumerated Domain"""
-        '
-        'txtValDefSource
-        '
-        Me.txtValDefSource.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtValDefSource.Location = New System.Drawing.Point(213, 128)
-        Me.txtValDefSource.Multiline = True
-        Me.txtValDefSource.Name = "txtValDefSource"
-        Me.txtValDefSource.Size = New System.Drawing.Size(390, 36)
-        Me.txtValDefSource.TabIndex = 7
-        '
-        'txtValDef
-        '
-        Me.txtValDef.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtValDef.Location = New System.Drawing.Point(213, 26)
-        Me.txtValDef.Multiline = True
-        Me.txtValDef.Name = "txtValDef"
-        Me.txtValDef.Size = New System.Drawing.Size(390, 83)
-        Me.txtValDef.TabIndex = 6
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(210, 112)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(86, 13)
-        Me.Label7.TabIndex = 5
-        Me.Label7.Text = "Definition source"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(210, 9)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(111, 13)
-        Me.Label6.TabIndex = 3
-        Me.Label6.Text = "Definition of this value"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(15, 4)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(76, 13)
-        Me.Label5.TabIndex = 1
-        Me.Label5.Text = "Unique Values"
-        '
-        'lstUniqueVals
-        '
-        Me.lstUniqueVals.FormattingEnabled = True
-        Me.lstUniqueVals.Location = New System.Drawing.Point(15, 26)
-        Me.lstUniqueVals.Name = "lstUniqueVals"
-        Me.lstUniqueVals.Size = New System.Drawing.Size(182, 290)
-        Me.lstUniqueVals.TabIndex = 0
-        '
-        'Label20
-        '
-        Me.Label20.Location = New System.Drawing.Point(213, 196)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(390, 120)
-        Me.Label20.TabIndex = 9
-        Me.Label20.Text = resources.GetString("Label20.Text")
-        '
         'cmdSave
         '
         Me.cmdSave.BackColor = System.Drawing.Color.LightSteelBlue
@@ -712,14 +712,14 @@ Partial Class frmGenEA
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.frmDomain.ResumeLayout(False)
         Me.frmDomain.PerformLayout()
+        Me.pnlEnumerated.ResumeLayout(False)
+        Me.pnlEnumerated.PerformLayout()
         Me.pnlRange.ResumeLayout(False)
         Me.pnlRange.PerformLayout()
         Me.pnlUnrepresentable.ResumeLayout(False)
         Me.pnlUnrepresentable.PerformLayout()
         Me.pnlCodeset.ResumeLayout(False)
         Me.pnlCodeset.PerformLayout()
-        Me.pnlEnumerated.ResumeLayout(False)
-        Me.pnlEnumerated.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

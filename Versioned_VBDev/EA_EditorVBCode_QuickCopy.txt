@@ -823,7 +823,7 @@ ErrorHandler:  'error handling routine
 
     Function NumericField(ByRef intEsriDataType As Integer, ByVal intIndex As Integer) As Object
 
-        Dim pStats As IStatisticsResults
+        Dim pStats As IStatisticsResults = Nothing
         'Dim intMean As Double
         Dim strMin As String
         Dim strMax As String
@@ -872,7 +872,22 @@ ErrorHandler:  'error handling routine
 
         End If
 
-        pStats = pDataStatistics.Statistics
+        'Getting the stats seems to fail sometimes but work others... This is admittedly strange. Anyway, we'll try 10 times.
+        Dim trys As Integer = 0
+        Do While trys < 10
+            Try
+                pStats = pDataStatistics.Statistics
+            Catch x As Exception
+                trys += 1
+            End Try
+            If Not pStats Is Nothing Then
+                trys = 10
+            End If
+        Loop
+        If pStats Is Nothing Then
+            MsgBox("A problem was encountered while retrieving the statistics from the dataset's table.")
+        End If
+
 
         If pField.Type = esriFieldType.esriFieldTypeDate Then
             Try

@@ -12,10 +12,10 @@
     <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <StartArguments>"N:\Metadata\MetadataWizard\MDWizardTestingQAQC\TestData\DrewTesting\New_Shapefile.shp" C:\temp\MetadataWizard\Demo\EAInfo.txt</StartArguments>
+    <StartArguments>"K:\USERS\ISB\GIS\C_TALBERT\forDrew\topowx_tiles_NCSCS.shp" C:\temp\MetadataWizard\Demo\EAInfo.txt</StartArguments>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <StartArguments>"N:\Metadata\MetadataWizard\MDWizardTestingQAQC\TestData\DrewTesting\New_Shapefile.shp" C:\temp\MetadataWizard\Demo\EAInfo.txt</StartArguments>
+    <StartArguments>"K:\USERS\ISB\GIS\C_TALBERT\forDrew\topowx_tiles_NCSCS.shp" C:\temp\MetadataWizard\Demo\EAInfo.txt</StartArguments>
   </PropertyGroup>
 </Project>

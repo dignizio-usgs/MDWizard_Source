@@ -38,13 +38,13 @@ UseStartTemplate = arcpy.GetParameterAsText(3)#Toggle to run MD Wizard using the
 CustomStarterTemplate= arcpy.GetParameterAsText(4)
 GenericTemplate = os.path.join(os.path.dirname(sys.argv[0]), "GenericFGDCTemplate.xml")
 
-#'Entity and Attribute Builder' tool and 'Metadata Editor' will be shipped with Toolbox in the '...\Scripts' directory.
+#'Entity and Attribute Builder' tool and 'Metadata Editor' will be shipped with Toolbox.
 EAtool_V10 = os.path.join(os.path.dirname(sys.argv[0]), "StandAloneEAEditor2_V10.exe")
 EAtool_V101 = os.path.join(os.path.dirname(sys.argv[0]), "StandAloneEAEditor2_V101.exe")
 EAtool_V102 = os.path.join(os.path.dirname(sys.argv[0]), "StandAloneEAEditor2_V102.exe")
 MetadataEditor = os.path.join(os.path.dirname(sys.argv[0]), "MetadataEditor.exe")
 
-#Check/create the working directory at the user-specified location. This is also checked for the in the toolbox validation script.
+#Check/create the working directory at the user-specified location. This is also checked for in the toolbox validation script.
 if not os.path.exists(WorkingDir):
     try:
         os.makedirs(WorkingDir)

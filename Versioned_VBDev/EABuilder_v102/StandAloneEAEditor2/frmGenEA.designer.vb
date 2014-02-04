@@ -463,9 +463,9 @@ Partial Class frmGenEA
         Me.Label8.AutoSize = True
         Me.Label8.Location = New System.Drawing.Point(15, 20)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(201, 13)
+        Me.Label8.Size = New System.Drawing.Size(208, 13)
         Me.Label8.TabIndex = 0
-        Me.Label8.Text = "Range Minimum (Numeric or YYYMMDD)"
+        Me.Label8.Text = "Range Minimum (Numeric or YYYYMMDD)"
         '
         'pnlUnrepresentable
         '

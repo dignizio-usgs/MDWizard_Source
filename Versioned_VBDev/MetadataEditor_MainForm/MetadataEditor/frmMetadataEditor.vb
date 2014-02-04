@@ -1225,7 +1225,7 @@ Public Class frmMetadataEditor
         'Pad with quotes to handle any spaces in file names or paths when calling MP.
         p.FileName = Chr(34) & mpPath & Chr(34)
         p.Arguments = "-x " & Chr(34) & sOutFile & Chr(34) & " -c " & Chr(34) & configFile & Chr(34) & " " & Chr(34) & sOutFile & Chr(34)
-
+        'p.Arguments = "-x " & Chr(34) & sOutFile & Chr(34) & " " & Chr(34) & sOutFile & Chr(34)
         Try
             Process.Start(p)
             System.Threading.Thread.Sleep(500) 'Wait a moment for MP to run.
@@ -1758,7 +1758,6 @@ Public Class frmMetadataEditor
                     'in the Resources location and could be used if needed.
                 End If
             End If
-
 
         Loop Until ctl Is Nothing
 
@@ -3397,10 +3396,5 @@ Public Class frmMetadataEditor
         Next
     End Sub
 
-
-
-    Private Sub txtDSTimePeriodSingleDate_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDSTimePeriodSingleDate.TextChanged
-
-    End Sub
 End Class
 
