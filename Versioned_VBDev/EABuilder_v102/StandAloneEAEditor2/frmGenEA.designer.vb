@@ -172,9 +172,9 @@ Partial Class frmGenEA
         Me.Label14.AutoSize = True
         Me.Label14.Location = New System.Drawing.Point(4, 490)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(237, 13)
+        Me.Label14.Size = New System.Drawing.Size(255, 13)
         Me.Label14.TabIndex = 5
-        Me.Label14.Text = "Citation (required if Overview Citation is provided)"
+        Me.Label14.Text = "Citation (required if Overview Description is provided)"
         '
         'txtEadetcit
         '

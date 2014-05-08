@@ -232,6 +232,9 @@ remain unchanged and will be present in the output record.</value>
   <data name="cboMetaStandardVersion.HelpString" xml:space="preserve">
     <value>Please see the help info for the 'Metadata Standard Name' element above. If your record is in the basic FGDC-CSDGM format (most will be), the "FGDC-STD-001-1998" should be selected for this element. If your record contains elements from the Biological Data Profile (BDP) extension of the CSDGM, you should select "FGDC-STD-001.1-1999" from the drop-down menu.</value>
   </data>
+  <data name="cboDSTimePeriodCurrentRef.HelpString" xml:space="preserve">
+    <value>Provide additional detail about the time period of the information in the data set. How current is the data set? ["Ground Condition" = time period date(s) and the information in the data set reflect when a site was physically visited. This category may only be appropriate for certain data types.] ["Observed" = time period date(s) and the information in the data set reflect conditions at a particular time of data capture. Physical presence not required; information may have been collected by an instrument or tool.] ["Publication" = Additional information about how the data were captured is unavailable. Time period date(s) represent the publication date of the inputs used to produce the data set.]</value>
+  </data>
   <metadata name="DataGridViewTextBoxColumn4.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -255,9 +258,6 @@ remain unchanged and will be present in the output record.</value>
   </metadata>
   <data name="dgvDSTimePeriodMultiDate.HelpString" xml:space="preserve">
     <value>If the data represent information captured or recorded at various points through time, enter the individual dates here. This option should be used when the date range option is not appropriate – e.g., when data represent a disparate collection of measurements or when temporal currency of the data set can be linked to multiple distinct points in time. If the month and day are not known, simply enter the year (in the YYYY format). </value>
-  </data>
-  <data name="cboDSTimePeriodCurrentRef.HelpString" xml:space="preserve">
-    <value>Provide additional detail about the time period of the information in the data set. How current is the data set? ["Ground Condition" = time period date(s) and the information in the data set reflect when a site was physically visited. This category may only be appropriate for certain data types.] ["Observed" = time period date(s) and the information in the data set reflect conditions at a particular time of data capture. Physical presence not required; information may have been collected by an instrument or tool.] ["Publication" = Additional information about how the data were captured is unavailable. Time period date(s) represent the publication date of the inputs used to produce the data set.]</value>
   </data>
   <data name="txtDSPubDate.HelpString" xml:space="preserve">
     <value>Provide the date of publication. If a traditional 'publication date' is unknown, provide the date when the data set was finalized and / or made available. If month and day are not known, simply enter the year (in the YYYY format).</value>

@@ -74,38 +74,42 @@ Public Class frmMetadataEditor
             Try
                 Dim DSLargerWorkOrigin As Collection
                 DSLargerWorkOrigin = getMultiNodeValues(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/origin")
-                For Each iOrigin In DSLargerWorkOrigin
-                    dgvDSLargerWorkOriginator.Rows.Add(iOrigin)
-                Next iOrigin
+
+                If DSLargerWorkOrigin IsNot Nothing Then
+                    For Each iOrigin In DSLargerWorkOrigin
+                        dgvDSLargerWorkOriginator.Rows.Add(iOrigin)
+                    Next iOrigin
+                End If
+
             Catch ex As Exception
-            End Try
+        End Try
 
-            Dim DSLargerWorkTitle As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/title")
-            txtDSLargerWorkTitle.Text = DSLargerWorkTitle
+        Dim DSLargerWorkTitle As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/title")
+        txtDSLargerWorkTitle.Text = DSLargerWorkTitle
 
-            Dim DSLargerWorkFormat As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/geoform")
-            cboDSLargerWorkFormat.Text = DSLargerWorkFormat
+        Dim DSLargerWorkFormat As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/geoform")
+        cboDSLargerWorkFormat.Text = DSLargerWorkFormat
 
-            Dim DSLargerWorkPubDate As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/pubdate")
-            txtDSLargerWorkPubDate.Text = DSLargerWorkPubDate
+        Dim DSLargerWorkPubDate As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/pubdate")
+        txtDSLargerWorkPubDate.Text = DSLargerWorkPubDate
 
-            Dim DSLargerWorkPublisher As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/pubinfo/publish")
-            txtDSLargerWorkPublisher.Text = DSLargerWorkPublisher
+        Dim DSLargerWorkPublisher As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/pubinfo/publish")
+        txtDSLargerWorkPublisher.Text = DSLargerWorkPublisher
 
-            Dim DSLargerWorkPubPlace As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/pubinfo/pubplace")
-            txtDSLargerWorkPubPlace.Text = DSLargerWorkPubPlace
+        Dim DSLargerWorkPubPlace As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/pubinfo/pubplace")
+        txtDSLargerWorkPubPlace.Text = DSLargerWorkPubPlace
 
-            Dim DSLargerWorkSeriesName As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/serinfo/sername")
-            txtDSLargerWorkSeriesName.Text = DSLargerWorkSeriesName
+        Dim DSLargerWorkSeriesName As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/serinfo/sername")
+        txtDSLargerWorkSeriesName.Text = DSLargerWorkSeriesName
 
-            Dim DSLargerWorkSeriesNum As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/serinfo/issue")
-            txtDSLargerWorkSeriesNum.Text = DSLargerWorkSeriesNum
+        Dim DSLargerWorkSeriesNum As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/serinfo/issue")
+        txtDSLargerWorkSeriesNum.Text = DSLargerWorkSeriesNum
 
-            Dim DSLargerWorkOnlineLink As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/onlink")
-            txtDSLargerWorkOnlineLink.Text = DSLargerWorkOnlineLink
+        Dim DSLargerWorkOnlineLink As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/onlink")
+        txtDSLargerWorkOnlineLink.Text = DSLargerWorkOnlineLink
 
-            Dim DSLargerWorkEdition As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/edition")
-            txtDSLargerWorkEdition.Text = DSLargerWorkEdition
+        Dim DSLargerWorkEdition As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/edition")
+        txtDSLargerWorkEdition.Text = DSLargerWorkEdition
 
         End If
     End Sub
@@ -241,26 +245,28 @@ Public Class frmMetadataEditor
                 Dim tabCt As Integer = 1
                 Dim multiNodeList As XmlNodeList = xmlMD.SelectNodes("metadata/idinfo/keywords/place")
                 Dim node As XmlNode
-                For Each node In multiNodeList
+                If multiNodeList IsNot Nothing Then
+                    For Each node In multiNodeList
 
-                    If tabCt = 1 Then
-                        'For first instance of a place thesaurus/place keywords pairing, populate the existing tab.
+                        If tabCt = 1 Then
+                            'For first instance of a place thesaurus/place keywords pairing, populate the existing tab.
 
-                        populatePlaceKeywords1(node, tabCt)
+                            populatePlaceKeywords1(node, tabCt)
 
-                        tabCt = tabCt + 1
+                            tabCt = tabCt + 1
 
-                    ElseIf tabCt > 1 Then
-                        'For instance #2 and beyond, create new tabs as needed.
+                        ElseIf tabCt > 1 Then
+                            'For instance #2 and beyond, create new tabs as needed.
 
-                        clonePlaceKeywordsTab(tabCt)
-                        populateAdditionalPlaceKeywords(node, tabCt)
+                            clonePlaceKeywordsTab(tabCt)
+                            populateAdditionalPlaceKeywords(node, tabCt)
 
-                        tabCt = tabCt + 1
+                            tabCt = tabCt + 1
 
-                    End If
+                        End If
 
-                Next node
+                    Next node
+                End If
             Catch ex As Exception
             End Try
 
@@ -539,7 +545,6 @@ Public Class frmMetadataEditor
 
                 Next node
             End If
-
         End If
     End Sub
 
@@ -857,10 +862,11 @@ Public Class frmMetadataEditor
         If nodeExists(xmlMD, "metadata/idinfo/timeperd/timeinfo/mdattim/sngdate/caldate") Then
             tabCtrlDSTimePeriod.SelectedTab = tabDSMultiDate
             Dim dateList As Collection = getMultiNodeValues(xmlMD, "metadata/idinfo/timeperd/timeinfo/mdattim/sngdate/caldate")
-
-            For Each iDate In dateList
-                dgvDSTimePeriodMultiDate.Rows.Add(iDate)
-            Next iDate
+            If dateList IsNot Nothing Then
+                For Each iDate In dateList
+                    dgvDSTimePeriodMultiDate.Rows.Add(iDate)
+                Next iDate
+            End If
         End If
 
         '   Range of Dates
@@ -880,9 +886,11 @@ Public Class frmMetadataEditor
         'Data Set Originator(s)
         Dim originatorList As Collection = getMultiNodeValues(xmlMD, "metadata/idinfo/citation/citeinfo/origin")
 
-        For Each iOriginator In originatorList
-            dgvDSOriginator.Rows.Add(iOriginator)
-        Next iOriginator
+        If originatorList IsNot Nothing Then
+            For Each iOriginator In originatorList
+                dgvDSOriginator.Rows.Add(iOriginator)
+            Next iOriginator
+        End If
 
         'Data Set Data Status Progress
         Dim DSDataStatus As String = getNodeText(xmlMD, "metadata/idinfo/status/progress")
@@ -926,10 +934,11 @@ Public Class frmMetadataEditor
         If nodeExists(xmlMD, "metadata/idinfo/citation/citeinfo/onlink") Then
             Dim onLinkList As Collection
             onLinkList = getMultiNodeValues(xmlMD, "metadata/idinfo/citation/citeinfo/onlink")
-
-            For Each iLink In onLinkList
-                dgvDSOnlineLink.Rows.Add(iLink)
-            Next iLink
+            If onLinkList IsNot Nothing Then
+                For Each iLink In onLinkList
+                    dgvDSOnlineLink.Rows.Add(iLink)
+                Next iLink
+            End If
         End If
 
         'Data Set Currentness Reference
@@ -938,7 +947,6 @@ Public Class frmMetadataEditor
 
         'Data Set Place Keywords
         If nodeExists(xmlMD, "metadata/idinfo/keywords/place") Then
-
             rbPlaceKeywordsYes.Checked = True
             'The load routine is handled with the button check. See Radio Button section.
         End If
@@ -949,6 +957,7 @@ Public Class frmMetadataEditor
                 Dim tabCt As Integer = 1
                 Dim multiNodeList As XmlNodeList = xmlMD.SelectNodes("metadata/idinfo/keywords/theme")
                 Dim node As XmlNode
+
                 For Each node In multiNodeList
 
                     If tabCt = 1 Then
@@ -969,8 +978,9 @@ Public Class frmMetadataEditor
                     End If
 
                 Next node
+
             Catch ex As Exception
-            End Try
+        End Try
         End If
 
         loadTab1_LargerWork()
@@ -1076,26 +1086,28 @@ Public Class frmMetadataEditor
             Dim tabCt As Integer = 1
             Dim multiNodeList As XmlNodeList = xmlMD.SelectNodes("metadata/dataqual/lineage/procstep")
             Dim node As XmlNode
-            For Each node In multiNodeList
 
-                If tabCt = 1 Then
-                    'For first instance of a processing step, populate the existing tab.
+            If multiNodeList IsNot Nothing Then
+                For Each node In multiNodeList
 
-                    populateProcessStep1(node, tabCt)
+                    If tabCt = 1 Then
+                        'For first instance of a processing step, populate the existing tab.
 
-                    tabCt = tabCt + 1
+                        populateProcessStep1(node, tabCt)
 
-                ElseIf tabCt > 1 Then
-                    'For instance #2 and beyond, create new tabs as needed.
+                        tabCt = tabCt + 1
 
-                    cloneProcessStepTab(tabCt)
-                    populateAdditionalProcessStep(node, tabCt)
+                    ElseIf tabCt > 1 Then
+                        'For instance #2 and beyond, create new tabs as needed.
 
-                    tabCt = tabCt + 1
+                        cloneProcessStepTab(tabCt)
+                        populateAdditionalProcessStep(node, tabCt)
 
-                End If
+                        tabCt = tabCt + 1
 
-            Next node
+                    End If
+                Next node
+            End If
         Catch ex As Exception
         End Try
 
@@ -1194,7 +1206,7 @@ Public Class frmMetadataEditor
     Private Sub loadTab4()
 
         'POPULATE TAB 4 (DISTRIBUTION INFORMATION)
-        If nodeExists(xmlMD, "metadata/distinfo/distrib/cntinfo") Then
+        If nodeExists(xmlMD, "metadata/distinfo") Then
 
             rbDSYesDistributionInfo.Checked = True
             'The load routine is handled with the button check. See Radio Button section.
@@ -1368,7 +1380,27 @@ Public Class frmMetadataEditor
                             stub.InsertBefore(newNode, stub.FirstChild)
                         Next
                     End If
+                    '''''''''''''''''''''''''''''
+                    If ctl.Name = "dgvDSLargerWorkOriginator" Then
+                        deleteChildren(xmlMDOutput, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo", "origin")
 
+                        If nodeExists(xmlMDOutput, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo") = False Then
+                            AddNode(xmlMDOutput, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo", True)
+                        End If
+
+                        Dim stub As XmlNode = getNode(xmlMDOutput, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo")
+                        Dim RowList As List(Of String) = getDGVList(ctl)
+
+                        Dim reverseRowList As List(Of String) = New List(Of String)(RowList)
+                        reverseRowList.Reverse()
+
+                        For Each row In reverseRowList
+
+                            Dim newNode As XmlNode = xmlMDOutput.CreateElement("origin")
+                            newNode.InnerText = row
+                            stub.InsertBefore(newNode, stub.FirstChild)
+                        Next
+                    End If
                     ''''''''''''''''''''''''''''''
                     If ctl.Name = "dgvDSTimePeriodMultiDate" Then
                         deleteChildren(xmlMDOutput, "metadata/idinfo/timeperd/timeinfo", "mdattim")
@@ -2936,12 +2968,16 @@ Public Class frmMetadataEditor
     Private Sub populateProcessStep1(node As XmlNode, tabCt As Integer)
 
         Dim ProcessStep As String = getNodeTextAtNodeInstance(node, "procdesc")
-        txtProcessStep1.Text = ProcessStep
-        txtProcessStep1.ForeColor = Color.Black
+        If ProcessStep IsNot Nothing Then
+            txtProcessStep1.Text = ProcessStep
+            txtProcessStep1.ForeColor = Color.Black
+        End If
 
         Dim ProcessDate As String = getNodeTextAtNodeInstance(node, "procdate")
-        txtProcessDate1.Text = ProcessDate
-        txtProcessDate1.ForeColor = Color.Black
+        If ProcessDate IsNot Nothing Then
+            txtProcessDate1.Text = ProcessDate
+            txtProcessDate1.ForeColor = Color.Black
+        End If
 
     End Sub
 

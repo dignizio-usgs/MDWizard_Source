@@ -19,7 +19,6 @@ Public Class frmGenEA
     Private sFileName As String
     Private sFileNameWithExtension As String
     Private sExt As String
-
     Private sOutFile As String
 
     'Private validDataset As Boolean = True
@@ -127,8 +126,8 @@ Public Class frmGenEA
         sFileNameWithExtension = System.IO.Path.GetFileName(sPath)
         sExt = System.IO.Path.GetExtension(sPath)
 
-        Dim workspaceType As String = getWorkspaceType()
         Dim pWorkspaceFactory As IWorkspaceFactory
+        Dim workspaceType As String = getWorkspaceType()
         If workspaceType = "personalGDB" Then
             pWorkspaceFactory = New AccessWorkspaceFactory
             loadFromGDB(pWorkspaceFactory)
@@ -148,6 +147,8 @@ Public Class frmGenEA
             load_arcinfo_table()
         ElseIf workspaceType = "coverage" Then
             loadCoverage()
+        'ElseIf workspaceType = "SDEdata" Then
+        '    loadSDEdata()
         End If
 
 
@@ -207,6 +208,9 @@ Public Class frmGenEA
             Return "coverage"
         ElseIf isInfoTable(sWorkspacePath, sFileName) Then
             Return "arcTable"
+
+            'ElseIf sPath.Contains("Connection") And sPath.Contains(".sde") Then
+            '    Return "SDEdata"
 
         End If
         Return "Unhandled workspace type (function=getWorkspaceType())"
@@ -342,6 +346,52 @@ Public Class frmGenEA
         End If
 
     End Sub
+
+    '#This is a preliminary attempt to get the Wizard to work against SDE data. This is still not working due to a problem with the 'TableSort' against the SDE table object.
+    'Private Function loadSDEdata()
+    '    Dim factoryType As Type = Type.GetTypeFromProgID("esriDataSourcesGDB.SdeWorkspaceFactory")
+    '    Dim workspaceFactory As IWorkspaceFactory = CType(Activator.CreateInstance(factoryType), IWorkspaceFactory)
+    '    Dim pWorkspace As IWorkspace
+    '    Dim pFeatureWorkspace As IFeatureWorkspace
+    '    sFileName = sFileName + sExt 'The earlier code splits on the '.' For the SDE datasets, we have to put the string pieces back together.
+
+    '    Dim sdeConnectionFile As String
+    '    sdeConnectionFile = System.IO.Path.GetFileName(System.IO.Path.GetDirectoryName(sPath))
+
+    '    sWorkspacePath = "C:\Users\dignizio\AppData\Roaming\ESRI\Desktop10.0\ArcCatalog\" + sdeConnectionFile
+    '    pWorkspace = workspaceFactory.OpenFromFile(sWorkspacePath, 0)
+    '    pFeatureWorkspace = pWorkspace
+
+    '    Dim c As Collection
+    '    c = GetContents(pWorkspace)
+
+    '    Dim pDSName As IDatasetName = Nothing
+    '    For Each pDSName In c
+    '        If pDSName.Name = sFileName Then Exit For
+    '    Next
+
+    '    If pDSName.Type = "5" Then 'Type #5 is esriDTFeatureClass (see: http://resources.arcgis.com/en/help/arcobjects-net/componenthelp/index.html#//002500000042000000)
+    '        pFeatureClass = pFeatureWorkspace.OpenFeatureClass(sFileName)
+    '        pDataset = pFeatureClass
+    '        pTable = pDataset
+    '        pFields = getFields(pTable)
+    '    ElseIf TypeOf pDSName Is ITableName Then
+    '        pTable = pFeatureWorkspace.OpenTable(sFileName)
+    '        pFields = getFields(pTable)
+    '    ElseIf TypeOf pDSName Is IRasterDatasetName Then
+    '        pTable = openRasterTablefromGDB(sWorkspacePath, sFileName)
+    '        pFields = getFields(pTable)
+    '    Else
+    '        dataType = "invalid"
+    '    End If
+
+    '    pMD = pFeatureClass
+    '    If pMD Is Nothing Then
+    '        pMD = pTable
+    '    End If
+
+    'End Function
+
 
     Private Function openRasterTablefromGDB(ByVal filePath As String, ByVal name As String) As ITable
         Dim factoryType As Type = Type.GetTypeFromProgID("esriDataSourcesGDB.FileGDBWorkspaceFactory")
