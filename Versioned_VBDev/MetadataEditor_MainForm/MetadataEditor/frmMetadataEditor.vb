@@ -368,15 +368,18 @@ Public Class frmMetadataEditor
             Dim DSContactAddresses As Collection
             DSContactAddresses = getMultiNodeValues(xmlMD, "metadata/idinfo/ptcontac/cntinfo/cntaddr/address")
 
-            Try
-                Dim DSContactAddress1 As String = DSContactAddresses(1)
-                txtDSContactAddress1.Text = DSContactAddress1
-                Dim DSContactAddress2 As String = DSContactAddresses(2)
-                txtDSContactAddress2.Text = DSContactAddress2
-                Dim DSContactAddress3 As String = DSContactAddresses(3)
-                txtDSContactAddress3.Text = DSContactAddress3
-            Catch ex As Exception
-            End Try
+            If DSContactAddresses.Count > 0 Then
+                Try
+                    Dim DSContactAddress1 As String = DSContactAddresses(1)
+                    txtDSContactAddress1.Text = DSContactAddress1
+                    Dim DSContactAddress2 As String = DSContactAddresses(2)
+                    txtDSContactAddress2.Text = DSContactAddress2
+                    Dim DSContactAddress3 As String = DSContactAddresses(3)
+                    txtDSContactAddress3.Text = DSContactAddress3
+                Catch ex As Exception
+                End Try
+            End If
+
 
             Dim DSContactAddressType As String = getNodeText(xmlMD, "metadata/idinfo/ptcontac/cntinfo/cntaddr/addrtype")
             cboDSContactAddressType.Text = DSContactAddressType
@@ -634,15 +637,18 @@ Public Class frmMetadataEditor
             Dim DSDistAddresses As Collection
             DSDistAddresses = getMultiNodeValues(xmlMD, "metadata/distinfo/distrib/cntinfo/cntaddr/address")
 
-            Try
-                Dim DSDistAddress1 As String = DSDistAddresses(1)
-                txtDSDistAddress1.Text = DSDistAddress1
-                Dim DSDistAddress2 As String = DSDistAddresses(2)
-                txtDSDistAddress2.Text = DSDistAddress2
-                Dim DSDistAddress3 As String = DSDistAddresses(3)
-                txtDSDistAddress3.Text = DSDistAddress3
-            Catch ex As Exception
-            End Try
+            If DSDistAddresses.Count > 0 Then
+                Try
+                    Dim DSDistAddress1 As String = DSDistAddresses(1)
+                    txtDSDistAddress1.Text = DSDistAddress1
+                    Dim DSDistAddress2 As String = DSDistAddresses(2)
+                    txtDSDistAddress2.Text = DSDistAddress2
+                    Dim DSDistAddress3 As String = DSDistAddresses(3)
+                    txtDSDistAddress3.Text = DSDistAddress3
+                Catch ex As Exception
+                End Try
+            End If
+
 
             Dim DSDistCity As String = getNodeText(xmlMD, "metadata/distinfo/distrib/cntinfo/cntaddr/city")
             txtDSDistCity.Text = DSDistCity
@@ -1163,15 +1169,18 @@ Public Class frmMetadataEditor
         Dim MetaContactAddresses As Collection
         MetaContactAddresses = getMultiNodeValues(xmlMD, "metadata/metainfo/metc/cntinfo/cntaddr/address")
 
-        Try
-            Dim MetaContactAddress1 As String = MetaContactAddresses(1)
-            txtMetaContactAddress1.Text = MetaContactAddress1
-            Dim MetaContactAddress2 As String = MetaContactAddresses(2)
-            txtMetaContactAddress2.Text = MetaContactAddress2
-            Dim MetaContactAddress3 As String = MetaContactAddresses(3)
-            txtMetaContactAddress3.Text = MetaContactAddress3
-        Catch ex As Exception
-        End Try
+        If MetaContactAddresses.Count > 0 Then
+            Try
+                Dim MetaContactAddress1 As String = MetaContactAddresses(1)
+                txtMetaContactAddress1.Text = MetaContactAddress1
+                Dim MetaContactAddress2 As String = MetaContactAddresses(2)
+                txtMetaContactAddress2.Text = MetaContactAddress2
+                Dim MetaContactAddress3 As String = MetaContactAddresses(3)
+                txtMetaContactAddress3.Text = MetaContactAddress3
+            Catch ex As Exception
+            End Try
+        End If
+
 
         Dim MetaContactCity As String = getNodeText(xmlMD, "metadata/metainfo/metc/cntinfo/cntaddr/city")
         txtMetaContactCity.Text = MetaContactCity
@@ -1696,13 +1705,16 @@ Public Class frmMetadataEditor
 
                                             Dim multiDateList As Collection = getMultiNodeValuesAtNodeInstance(subTargetNode, "srctime/timeinfo/mdattim/sngdate/caldate")
 
-                                            For Each iDate In multiDateList
-                                                Dim sngDateNode As XmlNode = xmlMDOutput.CreateElement("sngdate")
-                                                Dim calDateNode As XmlNode = xmlMDOutput.CreateElement("caldate")
-                                                multiDateNode.AppendChild(sngDateNode)
-                                                sngDateNode.AppendChild(calDateNode)
-                                                calDateNode.InnerText = iDate
-                                            Next
+                                            If multiDateList.Count > 0 Then
+                                                For Each iDate In multiDateList
+                                                    Dim sngDateNode As XmlNode = xmlMDOutput.CreateElement("sngdate")
+                                                    Dim calDateNode As XmlNode = xmlMDOutput.CreateElement("caldate")
+                                                    multiDateNode.AppendChild(sngDateNode)
+                                                    sngDateNode.AppendChild(calDateNode)
+                                                    calDateNode.InnerText = iDate
+                                                Next
+                                            End If
+
                                         Catch ex As Exception
                                         End Try
 
@@ -1899,15 +1911,18 @@ Public Class frmMetadataEditor
         Dim DSDistAddresses As Collection
         DSDistAddresses = getMultiNodeValues(xmlMDOutput, "metadata/idinfo/ptcontac/cntinfo/cntaddr/address")
 
-        Try
-            Dim DSDistAddress1 As String = DSDistAddresses(1)
-            txtDSDistAddress1.Text = DSDistAddress1
-            Dim DSDistAddress2 As String = DSDistAddresses(2)
-            txtDSDistAddress2.Text = DSDistAddress2
-            Dim DSDistAddress3 As String = DSDistAddresses(3)
-            txtDSDistAddress3.Text = DSDistAddress3
-        Catch ex As Exception
-        End Try
+        If DSDistAddresses.Count > 0 Then
+            Try
+                Dim DSDistAddress1 As String = DSDistAddresses(1)
+                txtDSDistAddress1.Text = DSDistAddress1
+                Dim DSDistAddress2 As String = DSDistAddresses(2)
+                txtDSDistAddress2.Text = DSDistAddress2
+                Dim DSDistAddress3 As String = DSDistAddresses(3)
+                txtDSDistAddress3.Text = DSDistAddress3
+            Catch ex As Exception
+            End Try
+        End If
+
 
         Dim DSDistCity As String = getNodeText(xmlMDOutput, "metadata/idinfo/ptcontac/cntinfo/cntaddr/city")
         txtDSDistCity.Text = DSDistCity
@@ -1976,15 +1991,18 @@ Public Class frmMetadataEditor
         Dim DSDistAddresses As Collection
         DSDistAddresses = getMultiNodeValues(xmlMDOutput, "metadata/metainfo/metc/cntinfo/cntaddr/address")
 
-        Try
-            Dim DSDistAddress1 As String = DSDistAddresses(1)
-            txtDSDistAddress1.Text = DSDistAddress1
-            Dim DSDistAddress2 As String = DSDistAddresses(2)
-            txtDSDistAddress2.Text = DSDistAddress2
-            Dim DSDistAddress3 As String = DSDistAddresses(3)
-            txtDSDistAddress3.Text = DSDistAddress3
-        Catch ex As Exception
-        End Try
+        If DSDistAddresses.Count > 0 Then
+            Try
+                Dim DSDistAddress1 As String = DSDistAddresses(1)
+                txtDSDistAddress1.Text = DSDistAddress1
+                Dim DSDistAddress2 As String = DSDistAddresses(2)
+                txtDSDistAddress2.Text = DSDistAddress2
+                Dim DSDistAddress3 As String = DSDistAddresses(3)
+                txtDSDistAddress3.Text = DSDistAddress3
+            Catch ex As Exception
+            End Try
+        End If
+
 
         Dim DSDistCity As String = getNodeText(xmlMDOutput, "metadata/metainfo/metc/cntinfo/cntaddr/city")
         txtDSDistCity.Text = DSDistCity
@@ -2054,15 +2072,18 @@ Public Class frmMetadataEditor
         Dim MetaContactAddresses As Collection
         MetaContactAddresses = getMultiNodeValues(xmlMDOutput, "metadata/idinfo/ptcontac/cntinfo/cntaddr/address")
 
-        Try
-            Dim MetaContactAddress1 As String = MetaContactAddresses(1)
-            txtMetaContactAddress1.Text = MetaContactAddress1
-            Dim MetaContactAddress2 As String = MetaContactAddresses(2)
-            txtMetaContactAddress2.Text = MetaContactAddress2
-            Dim MetaContactAddress3 As String = MetaContactAddresses(3)
-            txtMetaContactAddress3.Text = MetaContactAddress3
-        Catch ex As Exception
-        End Try
+        If MetaContactAddresses.Count > 0 Then
+            Try
+                Dim MetaContactAddress1 As String = MetaContactAddresses(1)
+                txtMetaContactAddress1.Text = MetaContactAddress1
+                Dim MetaContactAddress2 As String = MetaContactAddresses(2)
+                txtMetaContactAddress2.Text = MetaContactAddress2
+                Dim MetaContactAddress3 As String = MetaContactAddresses(3)
+                txtMetaContactAddress3.Text = MetaContactAddress3
+            Catch ex As Exception
+            End Try
+        End If
+
 
         Dim MetaContactCity As String = getNodeText(xmlMDOutput, "metadata/idinfo/ptcontac/cntinfo/cntaddr/city")
         txtMetaContactCity.Text = MetaContactCity
@@ -2134,15 +2155,18 @@ Public Class frmMetadataEditor
             Dim DSContactAddresses As Collection
             DSContactAddresses = getMultiNodeValues(xmlContact, "cntinfo/cntaddr/address")
 
-            Try
-                Dim DSContactAddress1 As String = DSContactAddresses(1)
-                txtDSContactAddress1.Text = DSContactAddress1
-                Dim DSContactAddress2 As String = DSContactAddresses(2)
-                txtDSContactAddress2.Text = DSContactAddress2
-                Dim DSContactAddress3 As String = DSContactAddresses(3)
-                txtDSContactAddress3.Text = DSContactAddress3
-            Catch ex As Exception
-            End Try
+            If DSContactAddresses.Count > 0 Then
+                Try
+                    Dim DSContactAddress1 As String = DSContactAddresses(1)
+                    txtDSContactAddress1.Text = DSContactAddress1
+                    Dim DSContactAddress2 As String = DSContactAddresses(2)
+                    txtDSContactAddress2.Text = DSContactAddress2
+                    Dim DSContactAddress3 As String = DSContactAddresses(3)
+                    txtDSContactAddress3.Text = DSContactAddress3
+                Catch ex As Exception
+                End Try
+            End If
+
 
             txtDSContactCity.Text = getNodeText(xmlContact, "cntinfo/cntaddr/city")
             txtDSContactState.Text = getNodeText(xmlContact, "cntinfo/cntaddr/state")
@@ -2212,15 +2236,18 @@ Public Class frmMetadataEditor
             Dim MetaContactAddresses As Collection
             MetaContactAddresses = getMultiNodeValues(xmlContact, "cntinfo/cntaddr/address")
 
-            Try
-                Dim MetaContactAddress1 As String = MetaContactAddresses(1)
-                txtMetaContactAddress1.Text = MetaContactAddress1
-                Dim MetaContactAddress2 As String = MetaContactAddresses(2)
-                txtMetaContactAddress2.Text = MetaContactAddress2
-                Dim MetaContactAddress3 As String = MetaContactAddresses(3)
-                txtMetaContactAddress3.Text = MetaContactAddress3
-            Catch ex As Exception
-            End Try
+            If MetaContactAddresses.Count > 0 Then
+                Try
+                    Dim MetaContactAddress1 As String = MetaContactAddresses(1)
+                    txtMetaContactAddress1.Text = MetaContactAddress1
+                    Dim MetaContactAddress2 As String = MetaContactAddresses(2)
+                    txtMetaContactAddress2.Text = MetaContactAddress2
+                    Dim MetaContactAddress3 As String = MetaContactAddresses(3)
+                    txtMetaContactAddress3.Text = MetaContactAddress3
+                Catch ex As Exception
+                End Try
+            End If
+
 
             txtMetaContactCity.Text = getNodeText(xmlContact, "cntinfo/cntaddr/city")
             txtMetaContactState.Text = getNodeText(xmlContact, "cntinfo/cntaddr/state")
@@ -2290,15 +2317,18 @@ Public Class frmMetadataEditor
             Dim DSDistAddresses As Collection
             DSDistAddresses = getMultiNodeValues(xmlContact, "cntinfo/cntaddr/address")
 
-            Try
-                Dim DSDistAddress1 As String = DSDistAddresses(1)
-                txtDSDistAddress1.Text = DSDistAddress1
-                Dim DSDistAddress2 As String = DSDistAddresses(2)
-                txtDSDistAddress2.Text = DSDistAddress2
-                Dim DSDistAddress3 As String = DSDistAddresses(3)
-                txtDSDistAddress3.Text = DSDistAddress3
-            Catch ex As Exception
-            End Try
+            If DSDistAddresses.Count > 0 Then
+                Try
+                    Dim DSDistAddress1 As String = DSDistAddresses(1)
+                    txtDSDistAddress1.Text = DSDistAddress1
+                    Dim DSDistAddress2 As String = DSDistAddresses(2)
+                    txtDSDistAddress2.Text = DSDistAddress2
+                    Dim DSDistAddress3 As String = DSDistAddresses(3)
+                    txtDSDistAddress3.Text = DSDistAddress3
+                Catch ex As Exception
+                End Try
+            End If
+
 
             txtDSDistCity.Text = getNodeText(xmlContact, "cntinfo/cntaddr/city")
             txtDSDistState.Text = getNodeText(xmlContact, "cntinfo/cntaddr/state")
