@@ -1,4 +1,6 @@
-<<<<<<< HEAD
+Metadata Wizard
+===============
+
 Metadata Wizard version Beta release (Updated 122013)
 -Updated help tips and default values.
 -Ability to load from a template XML file.
