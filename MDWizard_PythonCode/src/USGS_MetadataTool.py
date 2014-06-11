@@ -3,24 +3,24 @@ Authors:  Drew Ignizio, Michael O'Donnell, Colin Talbert
 Created:  04/26/2012
 Script Purpose/Notes:
 
-This tool is designed as a resource to help geospatial data users with the creation and editing of metadata compliant 
+This tool is designed as a resource to help geospatial data users with the creation and editing of metadata compliant
 with the Federal Geographic Data Committee's 'Content Standard for Digital Geospatial Metadata' (FGDC-CSDGM).
 
-After any existing metadata has been extracted from the input data set, the tool will supplement the spatial domain 
-information and certain components of the spatial data organization, spatial reference, and entity/attribute sections 
-of the metadata record with information inherent in the data set. Users will then be provided with a graphical user 
-interface (GUI) to enter additional metadata information. While some defaults are provided, a user must ensure that 
-all required fields are populated with valid information to produce a fully compliant metadata record of quality. 
+After any existing metadata has been extracted from the input data set, the tool will supplement the spatial domain
+information and certain components of the spatial data organization, spatial reference, and entity/attribute sections
+of the metadata record with information inherent in the data set. Users will then be provided with a graphical user
+interface (GUI) to enter additional metadata information. While some defaults are provided, a user must ensure that
+all required fields are populated with valid information to produce a fully compliant metadata record of quality.
 
 When the tool finishes running, a completed copy of the metadata file will be re-associated with the original input data set.
 
-A copy of the original, unmodified metadata associated with a data set will also be saved to the 'Working Directory' as a 
+A copy of the original, unmodified metadata associated with a data set will also be saved to the 'Working Directory' as a
 stand-alone XML file.
 
 """
 import traceback
 import os, sys, subprocess, time, datetime
-import arcpy 
+import arcpy
 from arcpy import env
 from arcpy.sa import *
 arcpy.CheckOutExtension("Spatial")
@@ -39,10 +39,12 @@ CustomStarterTemplate= arcpy.GetParameterAsText(4)
 GenericTemplate = os.path.join(os.path.dirname(sys.argv[0]), "GenericFGDCTemplate.xml")
 
 #'Entity and Attribute Builder' tool and 'Metadata Editor' will be shipped with Toolbox.
-EAtool_V10 = os.path.join(os.path.dirname(sys.argv[0]), "StandAloneEAEditor2_V10.exe")
-EAtool_V101 = os.path.join(os.path.dirname(sys.argv[0]), "StandAloneEAEditor2_V101.exe")
-EAtool_V102 = os.path.join(os.path.dirname(sys.argv[0]), "StandAloneEAEditor2_V102.exe")
-MetadataEditor = os.path.join(os.path.dirname(sys.argv[0]), "MetadataEditor.exe")
+installDir = os.path.dirname(os.path.realpath(__file__))
+EAtool_V10 = os.path.join(installDir, "StandAloneEAEditor2_V10.exe")
+EAtool_V101 = os.path.join(installDir, "StandAloneEAEditor2_V101.exe")
+EAtool_V102 = os.path.join(installDir, "StandAloneEAEditor2_V102.exe")
+MetadataEditor = os.path.join(installDir, "MetadataEditor.exe")
+WGS84file = os.path.join(installDir, "WGS 1984.prj")
 
 #Check/create the working directory at the user-specified location. This is also checked for in the toolbox validation script.
 if not os.path.exists(WorkingDir):
@@ -51,30 +53,31 @@ if not os.path.exists(WorkingDir):
     except:
         arcpy.AddMessage("The user-specified working directory could not be located or created. Ensure that write access is granted.")
         sys.exit(1)
-        
+
 #Check that the necessary VB.exe files are present
 if not os.path.exists(EAtool_V10):
     arcpy.AddWarning("\nThe Entity & Attribute Builder tool for Arc 10.0 could not be found. Tool should be here: (" + EAtool_V10 + ")")
     sys.exit(1)
 if not os.path.exists(EAtool_V101):
     arcpy.AddWarning("\nThe Entity & Attribute Builder tool for Arc 10.1 could not be found. Tool should be here: (" + EAtool_V101 + ")")
-    sys.exit(1)    
+    sys.exit(1)
 if not os.path.exists(EAtool_V102):
     arcpy.AddWarning("\nThe Entity & Attribute Builder tool for Arc 10.2 could not be found. Tool should be here: (" + EAtool_V102 + ")")
-    sys.exit(1)   
+    sys.exit(1)
 if not os.path.exists(MetadataEditor):
     arcpy.AddWarning("\nThe Metadata Editor (Stand-Alone) tool could not be found. Tool should be here: (" + MetadataEditor + ")")
     sys.exit(1)
+if not os.path.exists(WGS84file):
+    arcpy.AddWarning("\nThe Metadata Editor (Stand-Alone) tool could not be found. Tool should be here: (" + MetadataEditor + ")")
+    sys.exit(1)
 
-###Spatial Reference (reference objects set at global level)-----------------------------------------------   
+###Spatial Reference (reference objects set at global level)-----------------------------------------------
 GeogCoordUnits = ["Decimal degrees", "Decimal minutes", "Decimal seconds",
     "Degrees and decimal minutes", "Degrees, minutes, and decimal seconds",
     "Radians", "Grads"]
 
 ###WGS 84 GCS File used to get lat/long bounding coordinates. Shipped with ToolBox.
-installInfo = arcpy.GetInstallInfo()
-installDir = installInfo["InstallDir"]
-GCS_PrjFile = os.path.join(installDir, r"Coordinate Systems\Geographic Coordinate Systems\World\WGS 1984.prj")
+GCS_PrjFile = WGS84file
 
 #Check for Excel spreadsheet, and prompt to export.
 if os.path.splitext(InputData)[-1] == ".xls" or os.path.splitext(InputData)[-1] == ".xlsx":
@@ -90,15 +93,15 @@ if os.path.splitext(InputData)[-1] == ".xml":
 
 else:
     InputIsXML = False
-    
+
     try:
         desc = arcpy.Describe(InputData)#**This 'desc' object is used extensively throughout program.**
-    
+
     except:
         arcpy.AddMessage("Error trying to execute an ESRI-Describe on input data set.")
         arcpy.AddMessage(arcpy.GetMessages())
         sys.exit(1)
-        
+
     #-----------
     if desc.DatasetType != "Table":
         try:
@@ -116,7 +119,7 @@ else:
         arcpy.AddMessage("Error trying to define spatial reference for geographic file.")
         arcpy.AddMessage(arcpy.GetMessages())
         sys.exit(1)
-           
+
 def ProcessRoutine(ArgVariables):
     """Main Function that operates the logic of the script."""
     try:
@@ -126,22 +129,22 @@ def ProcessRoutine(ArgVariables):
         arcpy.AddMessage("CreateStandAloneXML: " + CreateStandAloneXML)
         arcpy.AddMessage("UseStartTemplate: " + UseStartTemplate)
         arcpy.AddMessage("StarterTemplate: " + CustomStarterTemplate)
-        
+
         myDataType, myFeatType = Get_Data_Type()#Determine data type, and feature type if applicable
         arcpy.AddMessage("Data type being evaluated: " + myDataType)
-        arcpy.AddMessage("Feature type being evaluated: " + myFeatType + "\n")   
-                
-        
+        arcpy.AddMessage("Feature type being evaluated: " + myFeatType + "\n")
+
+
         SourceFile = os.path.split(os.path.splitext(InputData)[0])[1] #The name of the input file. No extension. No full path.
         OriginalMDRecord = os.path.join(WorkingDir, SourceFile + "_Original.xml")#File pointer to unmodified original.
         FGDCXML = os.path.join(WorkingDir, SourceFile + "_FGDC.xml")#File pointer to the copy we will modify/update.
 
         #Create and keep 'Original' metadata copy in working directory.
         try:
-            MDTools.CreateCopyMDRecord(InputData, OriginalMDRecord) 
+            MDTools.CreateCopyMDRecord(InputData, OriginalMDRecord)
         except:
             pass
-                
+
         #After we made a copy of the input's original MD, start process from custom template if it is toggled.
         if str(UseStartTemplate) == "true":
             try:
@@ -152,19 +155,19 @@ def ProcessRoutine(ArgVariables):
                 arcpy.AddWarning("There was a problem importing from the Custom Starter Template. Please ensure that the file is here: (" + CustomStarterTemplate + ")")
                 arcpy.AddWarning("!!!!!!!\n")
                 sys.exit(1)
-        
+
         try:#Extract any existing metadata, and translate to FGDC format if necessary.
             ExportFGDC_MD_Utility.GetMDContent(InputData, FGDCXML)#Export (translate if necessary) input metadata to FGDC format. Remove ESRI 'sync' & 'reminder' elements.
         except:
             arcpy.AddMessage("No metadata could be found for this record. A new file will be created.\n")
             MDTools.CreateCopyMDRecord(GenericTemplate, FGDCXML)
-            
+
         MDTools.RemoveNameSpace(FGDCXML)#Eliminate namespace tags from root element in xml if present (appear when tool is run on spatial data sets).
         MDTools.CheckMasterNodes(FGDCXML)#Ensure all the key FGDC-CSDGM nodes are present in the record.
-        
-        
+
+
         if InputIsXML == False and desc.DatasetType != "Table": #Only attempt to extract/update spatial properties from spatial data sets.
-            
+
             try:
                 GCS_ExtentList = Get_LatLon_BndBox()[1]
             except:
@@ -172,7 +175,7 @@ def ProcessRoutine(ArgVariables):
                 arcpy.AddWarning("A problem was encountered when attempting to retrieve the spatial extent of the input data set. Please review the tool documentation and ensure the data set is a valid input and ENSURE THAT A COORDINATE SYSTEM HAS BEEN DEFINED.")
                 arcpy.AddWarning("!!!!!!!\n")
                 sys.exit()
-                            
+
             #Get/Update Bounding Coordinates
             GCS_ExtentList = Get_LatLon_BndBox()[1]
             Local_ExtentList = Get_LatLon_BndBox()[0]
@@ -180,48 +183,48 @@ def ProcessRoutine(ArgVariables):
                 arcpy.AddWarning("No spatial extent could be found for the input spatial data set. Please review the 'Bounding Extent' in the final metadata record. (Values will be set to maximum global extent).\n")
             arcpy.AddMessage("Bounding Coordinates (Local): " + str(Local_ExtentList))
             arcpy.AddMessage("Bounding Coordinates (Geographic): " + str(GCS_ExtentList) + "\n")
-            
+
             WestBC = Get_LatLon_BndBox()[1][0]
             EastBC = Get_LatLon_BndBox()[1][2]
             NorthBC = Get_LatLon_BndBox()[1][3]
             SouthBC = Get_LatLon_BndBox()[1][1]
             MDTools.WriteBoundingInfo(FGDCXML, WestBC, EastBC, NorthBC, SouthBC)
-            
-            #Get/Update Spatial Data Organization 
+
+            #Get/Update Spatial Data Organization
             SpatialDataOrgInfo = Get_Spatial_Data_OrgInfo(InputData, myDataType, myFeatType)
-            MDTools.WriteSpatialDataOrgInfo(FGDCXML, SpatialDataOrgInfo)          
-            
+            MDTools.WriteSpatialDataOrgInfo(FGDCXML, SpatialDataOrgInfo)
+
             #Get/Update Spatial Reference Information
             SpatialReferenceInfo = SpatialRefTools.SpatialRefInfo(GCS_PrjFile, InputData, WorkingDir, GCS_ExtentList)
             MDTools.WriteSpatialRefInfo(FGDCXML, SpatialReferenceInfo)
             #Handle vertical coordinate system?
-        
+
         #Get/Update Geospatial Presentation Form. Also updates Format Name (within Distribution Info).
         #(Skip this step and leave existing content if tool input is XML).
         if InputIsXML == False:
             MDTools.WriteGeospatialForm(FGDCXML, myDataType, myFeatType)
-        
+
         #Get/Update Native Environment Details
-        #This will be used as a switch to determine which .exe for the EA builder needs to be run (for either 10.0, 10.1, or 10.2). 
+        #This will be used as a switch to determine which .exe for the EA builder needs to be run (for either 10.0, 10.1, or 10.2).
         #The version info is also written out to the XML record in the 'Native Environment' section.
         ESRIVersion = GetESRIVersion_WriteNativeEnv(FGDCXML)
-        
+
         #Get/Update Metadata Date of Editing
         Now = datetime.datetime.now()
         MDDate = Now.strftime("%Y%m%d")
         MDTools.WriteMDDate(FGDCXML, MDDate)
-        
+
         #Update Entity/Attribute Section
         if InputIsXML == False:
             EAtextfile = os.path.join(WorkingDir, "EAInfo.txt")
-            
-            if ESRIVersion == "10.1":
-                Arg = '"' + EAtool_V101 + '"' + " " + '"' + InputData + '"' + " " + '"' + EAtextfile + '"'#Start and end quotes are necessary to handle spaces in file names when passing to Command Prompt.
-            elif ESRIVersion == "10.2":
-                Arg = '"' + EAtool_V102 + '"' + " " + '"' + InputData + '"' + " " + '"' + EAtextfile + '"'#Start and end quotes are necessary to handle spaces in file names when passing to Command Prompt.
-            else:
-                Arg = '"' + EAtool_V10 + '"' + " " + '"' + InputData + '"' + " " + '"' + EAtextfile + '"'#Start and end quotes are necessary to handle spaces in file names when passing to Command Prompt.
-            
+
+            if ESRIVersion == "10.2": EAtool = EAtool_V102
+            elif ESRIVersion == "10.1": EAtool = EAtool_V101
+            elif ESRIVersion == "10.0": EAtool = EAtool_V10
+            else: raise Exception("This version of ArcGIS (%s) is not supported." % ESRIVersion)
+
+            Arg = '"%s" "%s" "%s"' % (EAtool, InputData, EAtextfile) #Start and end quotes are necessary to handle spaces in file names when passing to Command Prompt.
+
             arcpy.AddMessage("*************************")
             arcpy.AddMessage("\nPLEASE UPDATE THE ENTITY/ATTRIBUTE INFORMATION IN THE POP-UP WINDOW.")
             arcpy.AddMessage("(Allow a moment for the window to open-- this may take several minutes for larger data sets).\n")
@@ -233,29 +236,30 @@ def ProcessRoutine(ArgVariables):
             #os.popen(Arg)
             p = subprocess.Popen(Arg)
             p.wait()
-            
+
 
             try:
                 EAInfo = MDTools.RetrieveEAInfo(EAtextfile)
                 MDTools.WriteEAInfo(FGDCXML, EAInfo)
             except:
                 arcpy.AddWarning("No content was saved in the Entity / Attribute tool. The metadata element was not updated.\n")
-        
+
         #Rerun FGDC Translator tool to handle newly-added elements that are out of order in XML tree.
         MDTools.ReRunFGDCTranslator(FGDCXML)
-        
+
         #Re-import new metadata to the data set to capture E/A tool changes. If input file is a stand alone .xml this step is skipped
         if InputIsXML == False:
             try:
                 arcpy.MetadataImporter_conversion(FGDCXML, InputData) # This imports only: does not convert and does not sync
             except:
                 print "There was a problem during the metadata importation process."
-        
-        
+
+
         #Open up Metadata Editor and allow user to review/update
         outXML = os.path.splitext(FGDCXML)[0] + "temp.xml"
         #Arg = '"' + MetadataEditor + '"' + " " + '"' + FGDCXML + '"' + " " + '"' + outXML + '"' + " " + '"' + Browser + '"' #Start and end quotes are necessary to handle spaces in file names and IE Path when passing to Command Prompt.
-        Arg = '"' + MetadataEditor + '"' + " " + '"' + FGDCXML + '"' + " " + '"' + outXML + '"' + " "
+        #Arg = '"' + MetadataEditor + '"' + " " + '"' + FGDCXML + '"' + " " + '"' + outXML + '"' + " "
+        Arg = '"%s" "%s" "%s"' % (MetadataEditor, FGDCXML, outXML)
         arcpy.AddMessage("*************************")
         arcpy.AddMessage("\nPLEASE UPDATE/REVIEW THE METADATA INFO IN THE POP-UP WINDOW.")
         arcpy.AddMessage("(Allow a moment for the window to open).\n")
@@ -267,48 +271,48 @@ def ProcessRoutine(ArgVariables):
         #os.popen(Arg)
         p = subprocess.Popen(Arg)
         p.wait()
-        
-                
+
+
         try:
             MDTools.RemoveStyleSheet(outXML)#MP actually removes the stylesheet in VB.NET app... this is a redundancy here.
             MDTools.ReplaceXML(FGDCXML, outXML)
         except:
             arcpy.AddWarning("No content was saved in the Metadata Editor window. The metadata record was not updated.\n")
-       
-       
-        
+
+
+
         #Re-import new metadata to the data set to capture user edits from the Metadata Editor window.
         try:
             arcpy.MetadataImporter_conversion(FGDCXML, InputData) # This imports only: does not convert and does not sync
             arcpy.AddMessage("The updated metadata record is now being re-imported into the input data set...\n")
         except:
             arcpy.AddMessage("There was a problem during the metadata importation process!")
-        
-            
+
+
         #Remove FGDC XML file if the toggle to preserve 'stand-alone' file is configured to FALSE. This appears to be passed as a string rather than boolean.
         if str(CreateStandAloneXML) == "false":
             try:
                 arcpy.Delete_management(FGDCXML)
                 arcpy.AddMessage("The Wizard will now remove the stand-alone FGDC XML, as requested in the tool interface...\n")
             except:
-                arcpy.AddMessage("There was a problem removing the stand-alone XML file. Try removing the '...FGDC.xml' file manually from the working directory.\n")
-         
-    
+                arcpy.AddMessage("There was a problem removing the stand-alone XML file. Try removing the file (%s) manually from the working directory.\n" % FGDCXML)
+
+
     except arcpy.ExecuteError:
         arcpyError()
     except:
         pythonError()
-        
+
 
 def Get_Data_Type():#Determine what type of data set is being evaluated
 
-    ### Define type of data set    
+    ### Define type of data set
 
     if InputIsXML == True:
         myDataType = "XML File"
         myFeatType = "None"
         return myDataType, myFeatType
-    
+
     else:
         if desc.DatasetType == "RasterDataset":
             myDataType = "Raster"
@@ -328,8 +332,8 @@ def Get_Data_Type():#Determine what type of data set is being evaluated
         else:
             arcpy.AddWarning("The provided data set does not appear to be a valid input. Please review the tool documentation.")
             sys.exit(1)
-    
-        ### Define type of shape for non raster datasets 
+
+        ### Define type of shape for non raster datasets
         if myDataType not in ["Raster", "Table", "FeatureDataset", "GeometricNetwork"]:
             if desc.shapeType == "Polygon":
                 myFeatType = "Polygon"
@@ -355,7 +359,7 @@ def Get_Data_Type():#Determine what type of data set is being evaluated
             arcpy.AddWarning("The provided data set does not appear to be a valid input. Please review the tool documentation.")
             arcpy.AddWarning("!!!!!!!")
             sys.exit(1)
-    
+
         ### Return desired objects
         return myDataType, myFeatType
 
@@ -368,15 +372,15 @@ def GetESRIVersion_WriteNativeEnv(FGDCXML):
     NativeInfo = Get_NativeEnvironment()
     arcpy.AddMessage(NativeInfo + "\n")
     MDTools.WriteNativeEnvInfo(FGDCXML, NativeInfo)
-    if "ArcCatalog 10.0" in NativeInfo:
+    if "ArcGIS 10.0" in NativeInfo:
         ESRIVersion = "10.0"
-    elif "ArcCatalog 10.1" in NativeInfo:
+    elif "ArcGIS 10.1" in NativeInfo:
         ESRIVersion = "10.1"
-    elif "ArcCatalog 10.2" in NativeInfo:
+    elif "ArcGIS 10.2" in NativeInfo:
         ESRIVersion = "10.2"
-    
+
     return ESRIVersion
-        
+
 def Get_LatLon_BndBox(): # Determine lat/long bounding coordinates for input dataset, when applicable
 
     ### Get extent and spatial reference of input dataset
@@ -463,22 +467,22 @@ def Get_LatLon_BndBox(): # Determine lat/long bounding coordinates for input dat
         GCS_ExtentList = [GCS_XMin, GCS_YMin, GCS_XMax, GCS_YMax]
         del pointGeometry, PtList, point, OutSR, GCSextent, boundaryPolygon, boundaryPolygon2, array
 
-    return Local_ExtentList, GCS_ExtentList 
+    return Local_ExtentList, GCS_ExtentList
 
 def Get_Spatial_Data_OrgInfo(InputDS, myDataType, myFeatType):
-    
-    #Does not handle VPF data as this is rare/unseen. 
-    
+
+    #Does not handle VPF data as this is rare/unseen.
+
     ### Indirect ==========================================
     #Consider adding indirect spatial reference? Leave this out for now.
     #indspref = "<indspref>[Insert a descriptive location reference here]</indspref>"
 
     ### Direct Spatial Reference===========================
     Direct_Spatial_Reference_Method = ["Point", "Vector", "Raster"]
-    
+
     # myDataType = ["Raster", "Vector"]
     # myFeatType = ["Polygon", "Polyline", "Point", "None"] # 'None' will apply to: Raster, Table, feature DS, XML File
-    
+
     if myDataType == "Vector":
         if myFeatType == "Point":
             DirectSpatialRef = "<direct>" + Direct_Spatial_Reference_Method[0] + "</direct>"
@@ -490,7 +494,7 @@ def Get_Spatial_Data_OrgInfo(InputDS, myDataType, myFeatType):
 
 
     ### Point and Vector object information=================
-    
+
     if myFeatType in ["Point", "Polyline"]:
         if myFeatType == "Point":
             SDTS_Type = "Entity point" # Usually the type should be this versus "Point"--see meta standard
@@ -501,32 +505,32 @@ def Get_Spatial_Data_OrgInfo(InputDS, myDataType, myFeatType):
                 SDTS_Type = "String" # shapefiles can never have topology
             else:
                 SDTS_Type = "Link" # other feature classes MAY have topology
-                
+
         try: ObjCount = str(arcpy.GetCount_management(InputDS))
         except:
             arcpy.AddMessage("Error obtaining object count for the vector data set. The count information will be left blank. \n")
             ObjCount = 0
-        
+
         if ObjCount != 0:
             PVOI = \
             "<ptvctinf><sdtsterm>" + \
             "<sdtstype>" + SDTS_Type + "</sdtstype>" + \
             "<ptvctcnt>" + ObjCount + "</ptvctcnt>" + \
             "</sdtsterm></ptvctinf>"
-            
+
             SpatialDataOrgInfo = DirectSpatialRef + PVOI
             return SpatialDataOrgInfo
-        
+
         elif ObjCount == 0:#Omit object count if we cound't obtain it.
             PVOI = \
             "<ptvctinf><sdtsterm>" + \
             "<sdtstype>" + SDTS_Type + "</sdtstype>" + \
             "</sdtsterm></ptvctinf>"
-            
+
             SpatialDataOrgInfo = DirectSpatialRef + PVOI
             return SpatialDataOrgInfo
 
-    
+
     elif myFeatType == "Polygon":
         SDTS_Type = "G-polygon"
         try: ObjCount = str(arcpy.GetCount_management(InputDS))
@@ -540,18 +544,18 @@ def Get_Spatial_Data_OrgInfo(InputDS, myDataType, myFeatType):
             "<sdtstype>" + SDTS_Type + "</sdtstype>" + \
             "<ptvctcnt>" + ObjCount + "</ptvctcnt>" + \
             "</sdtsterm></ptvctinf>"
-            
+
             SpatialDataOrgInfo = DirectSpatialRef + PVOI
             return SpatialDataOrgInfo
-        
+
         elif ObjCount == 0:#Omit object count if we cound't obtain it.
             PVOI = \
             "<ptvctinf><sdtsterm>" + \
             "<sdtstype>" + SDTS_Type + "</sdtstype>" + \
             "</sdtsterm></ptvctinf>"
-            
+
             SpatialDataOrgInfo = DirectSpatialRef + PVOI
-            return SpatialDataOrgInfo        
+            return SpatialDataOrgInfo
 
 
     elif myDataType == "GeometricNetwork":
@@ -584,18 +588,18 @@ def Get_Spatial_Data_OrgInfo(InputDS, myDataType, myFeatType):
             "<sdtstype>" + SDTS_Type + "</sdtstype>" + \
             "<ptvctcnt>" + ObjCount + "</ptvctcnt>" + \
             "</sdtsterm></ptvctinf>"
-            
+
             SpatialDataOrgInfo = DirectSpatialRef + PVOI
             return SpatialDataOrgInfo
-        
+
         elif ObjCount == 0:#Omit object count if we cound't obtain it.
             PVOI = \
             "<ptvctinf><sdtsterm>" + \
             "<sdtstype>" + SDTS_Type + "</sdtstype>" + \
             "</sdtsterm></ptvctinf>"
-            
+
             SpatialDataOrgInfo = DirectSpatialRef + PVOI
-            return SpatialDataOrgInfo  
+            return SpatialDataOrgInfo
 
 
     ### Raster object information ================================
@@ -606,7 +610,7 @@ def Get_Spatial_Data_OrgInfo(InputDS, myDataType, myFeatType):
             RowCount = str(arcpy.GetRasterProperties_management(InputDS, "ROWCOUNT"))
             ColCount = str(arcpy.GetRasterProperties_management(InputDS, "COLUMNCOUNT"))
             BandCount = str(arcpy.GetRasterProperties_management(InputDS, "BANDCOUNT"))
-        
+
             ROI = \
             "<rastinfo>" + \
             "<rasttype>" + RasterType + "</rasttype>" + \
@@ -614,21 +618,21 @@ def Get_Spatial_Data_OrgInfo(InputDS, myDataType, myFeatType):
             "<colcount>" + ColCount + "</colcount>" + \
             "<vrtcount>" + BandCount + "</vrtcount>" + \
             "</rastinfo>"
-            
+
             SpatialDataOrgInfo = DirectSpatialRef + ROI
-            return SpatialDataOrgInfo         
-        
+            return SpatialDataOrgInfo
+
         except:
             arcpy.AddMessage("Error obtaining row/column count information for the raster data set. The count information will be left blank.\n")
-            
-            #Omit row, column, and band count if unable to extract. 
+
+            #Omit row, column, and band count if unable to extract.
             ROI = \
             "<rastinfo>" + \
             "<rasttype>" + RasterType + "</rasttype>" + \
             "</rastinfo>"
-            
+
             SpatialDataOrgInfo = DirectSpatialRef + ROI
-            return SpatialDataOrgInfo           
+            return SpatialDataOrgInfo
 
 def Get_NativeEnvironment():
     """
@@ -641,10 +645,10 @@ def Get_NativeEnvironment():
           1 (VER_PLATFORM_WIN32_WINDOWS) Windows 95/98/ME
           2 (VER_PLATFORM_WIN32_NT) Windows NT/2000/XP
           3 (VER_PLATFORM_WIN32_CE) Windows CE
-    
+
         (6, 1, 7601, 2, 'Service Pack 1')
     ------------------------------------
-    
+
     Windows 7    6.1
     Windows Server 2008 R2    6.1
     Windows Server 2008    6.0
@@ -654,7 +658,7 @@ def Get_NativeEnvironment():
     Windows XP 64-Bit Edition    5.2
     Windows XP    5.1
     Windows 2000    5.0
-    
+
     ------------------------------------
     sys.platform
         'win32'
@@ -667,7 +671,7 @@ def Get_NativeEnvironment():
     OS/2 EMX     'os2emx'
     RiscOS     'riscos'
     AtheOS     'atheos'
-    
+
     ------------------------------------
     os.name
     nt
@@ -676,15 +680,15 @@ def Get_NativeEnvironment():
 
 
     if os.name == 'nt':
-    
+
         try:
             osVer = os.sys.getwindowsversion()
-    
+
             OS_Ver = osVer[3], osVer[0], osVer[1]
             OS_VerStr = str(osVer[0]) + "." + str(osVer[1])
             OS_Build = str(osVer[2])
             OS_SP = str(osVer[4])
-    
+
             if OS_Ver == (2, 6, 1):
                 OS_Str = "Windows 7"
                 #OS_Str = "Windows Server 2008 R2"
@@ -720,38 +724,31 @@ def Get_NativeEnvironment():
         OS_VerStr = "[Unknown]"
         OS_Build = "[Unknown]"
         OS_SP = "[Unknown]"
-    
-    
-    
+
+
+
     # ESRI version
     try:
-        hkey = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, "SOFTWARE\ESRI\ArcGIS", 0, _winreg.KEY_READ)
-        ESRIVer,typ = _winreg.QueryValueEx(hkey, "RealVersion")
-        _winreg.CloseKey(hkey)        
-            
-        desktopVer = str(ESRIVer.split(".")[0] + "." + ESRIVer.split(".")[1])
-        desktopBuildVer = str(ESRIVer.split(".")[2])
-        hkey = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, "SOFTWARE\ESRI\Desktop" + desktopVer, 0, _winreg.KEY_READ)
+        agis = arcpy.GetInstallInfo()
+        desktopVer = agis["Version"]
+        desktopBuildVer = agis["BuildNumber"]
 
         try:
-            ESRI_SP_str,typ = (_winreg.QueryValueEx(hkey, "SPBuild"))            
-            ESRI_SP_str = str(ESRI_SP_str)
-            ESRI_SP = ESRI_SP_str.split(".")[2] 
-            ESRI_SP_Build = ESRI_SP_str.split(".")[3]
+            ESRI_SP = agis["SPNumber"]
+            ESRI_SP_Build = agis["SPBuild"]
         except:
             ESRI_SP = "[N/A]"
             ESRI_SP_Build = "[N/A]"
-        
-        _winreg.CloseKey(hkey)
-                
     except:
             desktopVer = "[Unknown]"
             desktopBuildVer = "[Unknown]"
             ESRI_SP = "[Unknown]"
             ESRI_SP_Build = "[Unknown]"
-    
-    NativeStr = "Environment as of Metadata Creation: Microsoft " + OS_Str + " Version " + OS_VerStr + " (Build " + OS_Build + ") " + OS_SP + \
-        "; ESRI ArcCatalog " + desktopVer + " (Build " + desktopBuildVer + ") Service Pack " +  ESRI_SP + " (Build " + ESRI_SP_Build + ")"
+
+    NativeStr = "Environment as of Metadata Creation: Microsoft %s Version %s (Build %s) %s; " % (
+        OS_Str, OS_VerStr, OS_Build, OS_SP)
+    NativeStr += "Esri ArcGIS %s (Build %s) Service Pack %s (Build %s)" % (
+            desktopVer, desktopBuildVer, ESRI_SP, ESRI_SP_Build)
 
     return NativeStr
 
@@ -798,5 +795,4 @@ if __name__ == '__main__':
 #                    False,
 #                    " "" ""])
     print "Tool has completed running."
-    
-    
+
