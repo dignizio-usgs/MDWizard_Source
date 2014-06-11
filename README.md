@@ -20,7 +20,7 @@ Metadata Wizard
  
 ##### Metadata Wizard version 1.1 (Updated 01272014)
 - Key element check implemented. Wizard now checks forensures the presence of the following ['idinfo', 'dataqual', 'spdoinfo', 'spref', 'eainfo', 'distinfo', 'metainfo'].
-This resolves the issue of the tool hanging up on “Updating Digital Transfer Info – Format Name” (and other instances resulting from missing nodes).
+This resolves the issue of the tool hanging up on ï¿½Updating Digital Transfer Info ï¿½ Format Nameï¿½ (and other instances resulting from missing nodes).
 - Microsoft Excel file provided as input will prompt user to export to .dbf.
 - Handling of State Plane coordinate systems has been updated.
 - XML output will now be well-formatted when viewed in raw XML. Thanks to P. Schweitzer for updates to the MP utility.
@@ -49,7 +49,7 @@ This resolves the issue of the tool hanging up on “Updating Digital Transfer Inf
 ##### Metadata Wizard tweaks by Curtis Price (06112014)
 - Built "clean" tbx file using ArcGIS 10.1 (saved as 10.0) to avoid double tool display
 - Various tweaks to USGS_MetadataTool.py to improve maintainability
-- Modified validation code in tbx:
+- **Modified validation code in tbx:**
 - Create working folder in user TEMP (not C:\temp)
 - Modified validation to use type "Folder" not "Workspace" for metadata working folder
 - If folder is not available, standard ArcGIS error message is displayed
