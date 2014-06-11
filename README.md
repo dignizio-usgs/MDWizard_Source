@@ -47,7 +47,7 @@ This resolves the issue of the tool hanging up on "Updating Digital Transfer Inf
 - Added a count check for certain node instances to avoid an 'Index out of Range' error in the VB code. This should resolve problems when loading the second GUI and using importcopy features within the form itself resulting from empty (repeating) nodes.
 
 ##### Metadata Wizard tweaks by Curtis Price (06112014)
-- Built "clean" tbx file using ArcGIS 10.1 (saved as 10.0) to avoid double tool display
+- Built "clean" tbx file using ArcGIS 10.1 (saved as 10.0) to avoid double tool display. This clean tbx should work with all ArcGIS 10.x.
 - Various tweaks to USGS_MetadataTool.py to improve maintainability (minor re-coding)
 - "WGS 1984.prj" file always used to avoid differences between prj files between ArcGIS versions
 - Used GetInstallInfo to populate ArcGIS versions (Get_NativeEnvironment)
