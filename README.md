@@ -51,7 +51,7 @@ This resolves the issue of the tool hanging up on "Updating Digital Transfer Inf
 - Various tweaks to USGS_MetadataTool.py to improve maintainability (minor re-coding)
 - "WGS 1984.prj" file always used to avoid differences between prj files between ArcGIS versions
 - Used GetInstallInfo to populate ArcGIS versions (Get_NativeEnvironment)
-- Native Environment string: Use GetInstallInfo to get install info, use string "ArcGIS 10.x" instead of "ArcCatalog 10.x" (changes to Get_NativeEnvironment, GetESRIVersion_WriteNativeEnv)
+- Native Environment string: Set and use string "ArcGIS 10.x" instead of "ArcCatalog 10.x" (changes to Get_NativeEnvironment, GetESRIVersion_WriteNativeEnv). 
 - **Modified validation code in tbx:**
 - Create working folder in user TEMP (USGS STIG does not allow creation of C:\TEMP folder)
 - Modified validation to use type "Folder" not "Workspace" for metadata working folder
