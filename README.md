@@ -10,7 +10,7 @@ Metadata Wizard
 - Updated default values for EntityAttribute overview.
 - Dedicated link in ScienceBase where the tool can be downloaded.
  
-##### Metadata Wizard version 1.0 (Updated 122014)
+##### Metadata Wizard version 1.0 (Updated 12/2014)
 - Handle null valuesall empty fields in input data sets.
 - Handles feature classes within file and personal GDB.
 - Internal VB.Net metadata preview capacity (no longer dependent on IE).
@@ -18,7 +18,7 @@ Metadata Wizard
 - Users can specify any metadata template of their choice.
 - Updated toolbox documentationtool input validation.
  
-##### Metadata Wizard version 1.1 (Updated 01272014)
+##### Metadata Wizard version 1.1 (Updated 012/7/2014)
 - Key element check implemented. Wizard now checks forensures the presence of the following ['idinfo', 'dataqual', 'spdoinfo', 'spref', 'eainfo', 'distinfo', 'metainfo'].
 This resolves the issue of the tool hanging up on "Updating Digital Transfer Info - Format Name" (and other instances resulting from missing nodes).
 - Microsoft Excel file provided as input will prompt user to export to .dbf.
