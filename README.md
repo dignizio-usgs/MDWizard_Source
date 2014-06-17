@@ -45,3 +45,7 @@ This resolves the issue of the tool hanging up on "Updating Digital Transfer Inf
 
 ##### Metadata Wizard version 1.2.4 (Updated 05/13/2014)
 - Added a count check for certain node instances to avoid an 'Index out of Range' error in the VB code. This should resolve problems when loading the second GUI and using importcopy features within the form itself resulting from empty (repeating) nodes.
+
+##### Metadata Wizard version 1.2.5 (Updated 6/17/2014)
+-Updated the VB.Net forms so that the ‘AutoScaleFormat’ is set to “DPI” and not “Font”. This should resolve the issue of the form looking strange if a user has something other than the default magnification/size selected for their profile in Windows. 
+-Included the updated ‘starter template’ with the toolbox bundle. 
