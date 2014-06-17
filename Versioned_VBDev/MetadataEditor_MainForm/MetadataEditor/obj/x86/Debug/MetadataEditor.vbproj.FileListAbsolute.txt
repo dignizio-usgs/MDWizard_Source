@@ -82,3 +82,15 @@ N:\Metadata\MetadataWizard\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainFo
 N:\Metadata\MetadataWizard\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\WindowsApplication1.Resources.resources
 N:\Metadata\MetadataWizard\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\MetadataEditor.vbprojResolveAssemblyReference.cache
 N:\Metadata\MetadataWizard\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\MetadataEditor.vbproj.GenerateResource.Cache
+C:\Users\dignizio\Documents\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\bin\Debug\MetadataEditor.exe.config
+C:\Users\dignizio\Documents\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\MetadataEditor.exe
+C:\Users\dignizio\Documents\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\MetadataEditor.xml
+C:\Users\dignizio\Documents\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\MetadataEditor.pdb
+C:\Users\dignizio\Documents\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\bin\Debug\MetadataEditor.exe
+C:\Users\dignizio\Documents\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\bin\Debug\MetadataEditor.pdb
+C:\Users\dignizio\Documents\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\bin\Debug\MetadataEditor.xml
+C:\Users\dignizio\Documents\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\MetadataEditor.vbprojResolveAssemblyReference.cache
+C:\Users\dignizio\Documents\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\WindowsApplication1.frmMetadataEditor.resources
+C:\Users\dignizio\Documents\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\WindowsApplication1.MD_previewer.resources
+C:\Users\dignizio\Documents\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\WindowsApplication1.Resources.resources
+C:\Users\dignizio\Documents\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\MetadataEditor.vbproj.GenerateResource.Cache

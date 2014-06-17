@@ -120,9 +120,6 @@
   <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>9, 14</value>
   </metadata>
-  <data name="Panel4.HelpString" xml:space="preserve">
-    <value>Provide details on on what is captured in the data set in relation to all real world occurrences of the phenomenon. For example, if the data represents a tree survey are ALL trees included or only those of a certain size or species? Given the limitations of the data were produced, how complete can the user expect the data to be? Provide as much information as possible.</value>
-  </data>
   <metadata name="HelpProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>104, 14</value>
   </metadata>
@@ -134,24 +131,6 @@
   </data>
   <data name="txtProcessStep1.HelpString" xml:space="preserve">
     <value>Every data set must have at least one processing step. An acceptable default value could be: "Development of the data set by the agency / individuals identified in the 'Originator' element in the Identification Info section of the record." A more detailed and complete lineage section for a GIS data set might have 4 processing steps: 1. Digitization of source inputs (describe). 2. Merging of secondary data set (describe). 3. Projection into final CRS (describe). 4. Quality assurance and Quality Control ('QAQC') process (describe).</value>
-  </data>
-  <data name="txtSource1Abbreviation.HelpString" xml:space="preserve">
-    <value>An abbreviation for the data source is required by the FGDC standard. This is just a short name that might be used to refer to the data set. For instance, "National Hydrography Dataset - Flowlines" could be abbreviated with "NHD Flow".</value>
-  </data>
-  <metadata name="DataGridViewTextBoxColumn7.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="cboSource1CurrentnessRef.HelpString" xml:space="preserve">
-    <value>Provide additional detail about the time period of the information in the source data set. How current is the source data set? ["Ground Condition": time period date(s) and the information in the data set reflect when a site was physically visited. This category may only be appropriate for certain data types.] ["Observed": time period date(s) and the information in the data set reflect conditions at a particular time of data capture. Physical presence not required; information may have been collected by an instrument or tool.] ["Publication": Additional information about how the data were captured is unavailable. Time period date(s) represent the publication date of the inputs used to produce the data set.]</value>
-  </data>
-  <data name="txtSource1BeginDate.HelpString" xml:space="preserve">
-    <value>Enter the earliest date of any information represented in the data. If the month and day are not known, simply enter the year (in the YYYY format).  If all the data represent information from a single point in time, enter the same value in both the 'Beginning Date' and 'End Date' fields.</value>
-  </data>
-  <data name="txtSource1EndDate.HelpString" xml:space="preserve">
-    <value>Enter the most recent date of any information represented in the data. If the month and day are not known, simply enter the year (in the YYYY format). If all the data represent information from a single point in time, enter the same value in both the 'Beginning Date' and 'End Date' fields.</value>
-  </data>
-  <data name="txtSource1PubDate.ToolTip" xml:space="preserve">
-    <value>Provide the date of publication. If a traditional 'publication date' is unknown, provide the date when the data set was finalized and / or made available. If month and day are not known, simply enter the year (in the YYYY format).</value>
   </data>
   <data name="txtDSCompletenessReport.HelpString" xml:space="preserve">
     <value>Provide details on what is captured in the data set in relation to all real world occurrences of the phenomenon. For example, if the data represents a tree survey, are ALL trees included or only those of a certain size or species? Given the limitations of how the data were produced, how complete can the user expect the data to be? Provide as much information as possible. This is a required element so if no tests were performed, simply state: "Data set is considered complete for the information presented, as described in the abstract. Users are advised to read the rest of the metadata record carefully for additional details."</value>
@@ -176,6 +155,27 @@ Were topology tests conducted to ensure the integrity of geospatial data? See he
     <value>How accurate are the values in the data set relative to "true" values? 
 Were any tests performed to assess the accuracy of values?
 Please describe any methods used to ensure quality / accuracy in the data. See help for more info.</value>
+  </data>
+  <data name="Panel4.HelpString" xml:space="preserve">
+    <value>Provide details on on what is captured in the data set in relation to all real world occurrences of the phenomenon. For example, if the data represents a tree survey are ALL trees included or only those of a certain size or species? Given the limitations of the data were produced, how complete can the user expect the data to be? Provide as much information as possible.</value>
+  </data>
+  <data name="txtSource1Abbreviation.HelpString" xml:space="preserve">
+    <value>An abbreviation for the data source is required by the FGDC standard. This is just a short name that might be used to refer to the data set. For instance, "National Hydrography Dataset - Flowlines" could be abbreviated with "NHD Flow".</value>
+  </data>
+  <metadata name="DataGridViewTextBoxColumn7.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cboSource1CurrentnessRef.HelpString" xml:space="preserve">
+    <value>Provide additional detail about the time period of the information in the source data set. How current is the source data set? ["Ground Condition": time period date(s) and the information in the data set reflect when a site was physically visited. This category may only be appropriate for certain data types.] ["Observed": time period date(s) and the information in the data set reflect conditions at a particular time of data capture. Physical presence not required; information may have been collected by an instrument or tool.] ["Publication": Additional information about how the data were captured is unavailable. Time period date(s) represent the publication date of the inputs used to produce the data set.]</value>
+  </data>
+  <data name="txtSource1BeginDate.HelpString" xml:space="preserve">
+    <value>Enter the earliest date of any information represented in the data. If the month and day are not known, simply enter the year (in the YYYY format).  If all the data represent information from a single point in time, enter the same value in both the 'Beginning Date' and 'End Date' fields.</value>
+  </data>
+  <data name="txtSource1EndDate.HelpString" xml:space="preserve">
+    <value>Enter the most recent date of any information represented in the data. If the month and day are not known, simply enter the year (in the YYYY format). If all the data represent information from a single point in time, enter the same value in both the 'Beginning Date' and 'End Date' fields.</value>
+  </data>
+  <data name="txtSource1PubDate.ToolTip" xml:space="preserve">
+    <value>Provide the date of publication. If a traditional 'publication date' is unknown, provide the date when the data set was finalized and / or made available. If month and day are not known, simply enter the year (in the YYYY format).</value>
   </data>
   <data name="txtDSDistFees.HelpString" xml:space="preserve">
     <value>List any fees associated with acquiring the data. This tool requires this element, so if no fees are associated with data acquisition, use the default value of: "None. No fees are applicable for obtaining the data set."</value>
@@ -232,32 +232,17 @@ remain unchanged and will be present in the output record.</value>
   <data name="cboMetaStandardVersion.HelpString" xml:space="preserve">
     <value>Please see the help info for the 'Metadata Standard Name' element above. If your record is in the basic FGDC-CSDGM format (most will be), the "FGDC-STD-001-1998" should be selected for this element. If your record contains elements from the Biological Data Profile (BDP) extension of the CSDGM, you should select "FGDC-STD-001.1-1999" from the drop-down menu.</value>
   </data>
-  <data name="cboDSTimePeriodCurrentRef.HelpString" xml:space="preserve">
-    <value>Provide additional detail about the time period of the information in the data set. How current is the data set? ["Ground Condition" = time period date(s) and the information in the data set reflect when a site was physically visited. This category may only be appropriate for certain data types.] ["Observed" = time period date(s) and the information in the data set reflect conditions at a particular time of data capture. Physical presence not required; information may have been collected by an instrument or tool.] ["Publication" = Additional information about how the data were captured is unavailable. Time period date(s) represent the publication date of the inputs used to produce the data set.]</value>
-  </data>
   <metadata name="DataGridViewTextBoxColumn4.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="txtDSLargerWorkSeriesName.HelpString" xml:space="preserve">
-    <value>What is the name of the data series that the LARGER WORK is part of?  This might be "USGS Data Series", if applicable. Alternatively, this could be the name of a publication or journal, or an online series in which the larger work is an installment.</value>
-  </data>
-  <data name="txtDSLargerWorkSeriesNum.HelpString" xml:space="preserve">
-    <value>What is the unique number or name that identifies this LARGER WORK within the series? This might correspond to a USGS 'Data Series' number, or the specific volume/edition of a peer-reviewed journal, etc.</value>
-  </data>
   <data name="txtDSLargerWorkPubDate.HelpString" xml:space="preserve">
     <value>Provide the date of publication. If a traditional 'publication date' is unknown, provide the date when the data set was finalized and / or made available. If month and day are not known, simply enter the year (in the YYYY format).</value>
   </data>
   <metadata name="DataGridViewTextBoxColumn3.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="txtDSTimePeriodSingleDate.HelpString" xml:space="preserve">
-    <value>If the data represent information captured or recorded at one point in time, enter the date using the single date option. If the month and day are not known, simply enter the year (in the YYYY format). </value>
-  </data>
-  <metadata name="DataGridViewTextBoxColumn5.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="dgvDSTimePeriodMultiDate.HelpString" xml:space="preserve">
-    <value>If the data represent information captured or recorded at various points through time, enter the individual dates here. This option should be used when the date range option is not appropriate – e.g., when data represent a disparate collection of measurements or when temporal currency of the data set can be linked to multiple distinct points in time. If the month and day are not known, simply enter the year (in the YYYY format). </value>
+  <data name="cboDSTimePeriodCurrentRef.HelpString" xml:space="preserve">
+    <value>Provide additional detail about the time period of the information in the data set. How current is the data set? ["Ground Condition" = time period date(s) and the information in the data set reflect when a site was physically visited. This category may only be appropriate for certain data types.] ["Observed" = time period date(s) and the information in the data set reflect conditions at a particular time of data capture. Physical presence not required; information may have been collected by an instrument or tool.] ["Publication" = Additional information about how the data were captured is unavailable. Time period date(s) represent the publication date of the inputs used to produce the data set.]</value>
   </data>
   <data name="txtDSPubDate.HelpString" xml:space="preserve">
     <value>Provide the date of publication. If a traditional 'publication date' is unknown, provide the date when the data set was finalized and / or made available. If month and day are not known, simply enter the year (in the YYYY format).</value>
@@ -284,18 +269,33 @@ restrictions or limitations on using the data set. </value>
   <data name="txtDSUseCon.HelpString" xml:space="preserve">
     <value>Provide details about any limitations regarding who can use the data set, if applicable. In some cases, restrictions on USE may differ from restrictions on ACCESS.For instance, a data set may only be available for download on a university's server, but available for use by anyone. (Limited access, but not use). Alternatively, a data set may be freely available but only usable by individuals with a particular type of software (Limited use, but not access).</value>
   </data>
-  <metadata name="DataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="DataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="cboDSDataStatus.HelpString" xml:space="preserve">
     <value>Describe the status of the data set. ["Complete": The data set is finalized and represents a finished product.] ["In Work" : The data set is not finalized and work on the data set is ongoing.] ["Planned" : The data set does not exist but its production is planned. The metadata record outlines the overall goals of the project at this point and will be updated as the data is created.]</value>
   </data>
   <data name="txtDSSeriesName.HelpString" xml:space="preserve">
     <value>What is the name of the data series that the data set is part of? This might be "USGS Data Series", if applicable. Alternatively, this could be the name of a publication or journal, or an online series in which the data set is an installment.</value>
   </data>
+  <data name="txtDSLargerWorkSeriesName.HelpString" xml:space="preserve">
+    <value>What is the name of the data series that the LARGER WORK is part of?  This might be "USGS Data Series", if applicable. Alternatively, this could be the name of a publication or journal, or an online series in which the larger work is an installment.</value>
+  </data>
+  <data name="txtDSLargerWorkSeriesNum.HelpString" xml:space="preserve">
+    <value>What is the unique number or name that identifies this LARGER WORK within the series? This might correspond to a USGS 'Data Series' number, or the specific volume/edition of a peer-reviewed journal, etc.</value>
+  </data>
+  <data name="txtDSTimePeriodSingleDate.HelpString" xml:space="preserve">
+    <value>If the data represent information captured or recorded at one point in time, enter the date using the single date option. If the month and day are not known, simply enter the year (in the YYYY format). </value>
+  </data>
+  <metadata name="DataGridViewTextBoxColumn5.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="dgvDSTimePeriodMultiDate.HelpString" xml:space="preserve">
+    <value>If the data represent information captured or recorded at various points through time, enter the individual dates here. This option should be used when the date range option is not appropriate – e.g., when data represent a disparate collection of measurements or when temporal currency of the data set can be linked to multiple distinct points in time. If the month and day are not known, simply enter the year (in the YYYY format). </value>
+  </data>
+  <metadata name="DataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="DataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>
