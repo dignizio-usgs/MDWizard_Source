@@ -46,7 +46,7 @@ This resolves the issue of the tool hanging up on "Updating Digital Transfer Inf
 ##### Metadata Wizard version 1.2.4 (Updated 05132014)
 - Added a count check for certain node instances to avoid an 'Index out of Range' error in the VB code. This should resolve problems when loading the second GUI and using importcopy features within the form itself resulting from empty (repeating) nodes.
 
-##### Metadata Wizard tweaks by Curtis Price (06112014)
+##### Metadata Wizard tweaks by Curtis Price (06192014)
 - Built "clean" tbx file using ArcGIS 10.1 (saved as 10.0) to avoid double tool display. This clean tbx should work with all ArcGIS 10.x.
 - Various tweaks to USGS_MetadataTool.py to improve maintainability (minor re-coding)
 - "WGS 1984.prj" file always used to avoid differences between prj files between ArcGIS versions
@@ -54,5 +54,6 @@ This resolves the issue of the tool hanging up on "Updating Digital Transfer Inf
 - Native Environment string: Set and use string "ArcGIS 10.x" instead of "ArcCatalog 10.x" (changes to Get_NativeEnvironment, GetESRIVersion_WriteNativeEnv). 
 - **Modified validation code in tbx:**
 - Create working folder in user TEMP (USGS STIG does not allow creation of C:\TEMP folder)
-- Modified validation to use type "Folder" not "Workspace" for metadata working folder
+- Modified validation to use type "Folder" not "Workspace" for metadata working folder, also did some cleanup of the validation code and added a check to make sure the template file is entered when the box is checked. 
 - If specified folder is not available, standard ArcGIS validation used (no longer populating instruction text into path variable -- to be consistent with other ArcGIS tools).
+- Made minor edits to the tool documentation (mostly formatting, using bullets, consistency)
