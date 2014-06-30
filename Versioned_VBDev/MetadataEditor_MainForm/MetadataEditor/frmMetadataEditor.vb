@@ -24,6 +24,7 @@ Public Class frmMetadataEditor
     Dim dgvSourceOnlineLink As DataGridView
     Dim gbxSourceTimePeriodInfo As GroupBox
     Dim txtSourceAbbreviation As TextBox
+    Dim txtSourceScaleDenom As TextBox
     Dim txtSourceContribution As TextBox
     Dim txtSourceBeginDate As TextBox
     Dim txtSourceEndDate As TextBox
@@ -486,6 +487,7 @@ Public Class frmMetadataEditor
             cboSource1CurrentnessRef.Text = ""
             txtSource1Abbreviation.Text = ""
             txtSource1Contribution.Text = ""
+            txtSource1ScaleDenom.Text = ""
 
             'Eliminate all other source input tabs, if any exist.
             For Each page As TabPage In tabCtrlDSSourceInputs.TabPages
@@ -1647,6 +1649,12 @@ Public Class frmMetadataEditor
                                             newNode.InnerText = subCtl.Text
                                         End If
 
+                                        If subCtl.Name.Contains("ScaleDenom") Then
+                                            Dim newNode As XmlNode = xmlMDOutput.CreateElement("srcscale")
+                                            srcInfoNode.AppendChild(newNode)
+                                            newNode.InnerText = subCtl.Text
+                                        End If
+
                                         If subCtl.Name.Contains("Contribution") Then
                                             Dim newNode As XmlNode = xmlMDOutput.CreateElement("srccontr")
                                             srcInfoNode.AppendChild(newNode)
@@ -2603,6 +2611,14 @@ Public Class frmMetadataEditor
             .Text = ("Source Input" & Str(tabCt))
         End With
 
+        txtSourceScaleDenom = New TextBox()
+        With txtSourceScaleDenom
+            .Name = ("txtSource" & CStr(tabCt) & "ScaleDenom")
+            .Location = txtSource1ScaleDenom.Location
+            .Size = txtSource1ScaleDenom.Size
+            .Tag = txtSource1ScaleDenom.Tag
+        End With
+
         txtSourceContribution = New TextBox()
         With txtSourceContribution
             .Name = ("txtSource" & CStr(tabCt) & "Contribution")
@@ -2612,8 +2628,6 @@ Public Class frmMetadataEditor
             .ForeColor = Color.SlateGray
             .Text = "Source information used in support of the development of the data set."
         End With
-
-
 
         Label1 = New Label()
         With Label1
@@ -2670,6 +2684,8 @@ Public Class frmMetadataEditor
             .Location = labSource1Abbreviation.Location
             .Size = labSource1Abbreviation.Size
         End With
+
+        'Code for the Source Scale Denominator Label (added 6/30/14) is below...
 
         Label9 = New Label()
         With Label9
@@ -2750,6 +2766,20 @@ Public Class frmMetadataEditor
             .Font = labSourceInputReq8.Font
         End With
 
+        Label18 = New Label()
+        With Label18
+            .Text = "Source Scale"
+            .Location = labSource1ScaleDenom.Location
+            .Size = labSource1ScaleDenom.Size
+        End With
+
+        Label19 = New Label()
+        With Label19
+            .Text = "1:"
+            .Location = labSource1Numerator.Location
+            .Size = labSource1Numerator.Size
+        End With
+
         tp.Controls.Add(txtSourceTitle)
         tp.Controls.Add(txtSourcePublisher)
         tp.Controls.Add(cboSourceDataType)
@@ -2762,6 +2792,7 @@ Public Class frmMetadataEditor
 
         tp.Controls.Add(txtSourceAbbreviation)
         tp.Controls.Add(txtSourceContribution)
+        tp.Controls.Add(txtSourceScaleDenom)
 
         tp.Controls.Add(Label1)
         tp.Controls.Add(Label2)
@@ -2780,6 +2811,8 @@ Public Class frmMetadataEditor
         tp.Controls.Add(Label15)
         tp.Controls.Add(Label16)
         tp.Controls.Add(Label17)
+        tp.Controls.Add(Label18)
+        tp.Controls.Add(Label19)
     End Sub
 
     Private Sub populateSourceInput1(node As XmlNode, tabCt As Integer)
@@ -2836,6 +2869,9 @@ Public Class frmMetadataEditor
 
         Dim Source1CurrentnessRef As String = getNodeTextAtNodeInstance(node, "srctime/srccurr")
         cboSource1CurrentnessRef.Text = Source1CurrentnessRef
+
+        Dim Source1ScaleDenom As String = getNodeTextAtNodeInstance(node, "srcscale")
+        txtSource1ScaleDenom.Text = Source1ScaleDenom
 
         Try
             Dim Source1Abbreviation As String = node.SelectSingleNode("srccitea").FirstChild.Value
@@ -2911,6 +2947,9 @@ Public Class frmMetadataEditor
 
         Dim SourceCurrentnessRef As String = getNodeTextAtNodeInstance(node, "srctime/srccurr")
         cboSourceCurrentnessRef.Text = SourceCurrentnessRef
+
+        Dim SourceScaleDenom As String = getNodeTextAtNodeInstance(node, "srcscale")
+        txtSourceScaleDenom.Text = SourceScaleDenom
 
         Try
             Dim SourceAbbreviation As String = node.SelectSingleNode("srccitea").FirstChild.Value
