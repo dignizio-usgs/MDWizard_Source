@@ -106,6 +106,7 @@ C:\Users\dignizio\Documents\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEdito
 \\IGSKBACBFS001\home$\DIgnizio\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\WindowsApplication1.MD_previewer.resources
 \\IGSKBACBFS001\home$\DIgnizio\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\WindowsApplication1.Resources.resources
 \\IGSKBACBFS001\home$\DIgnizio\GitHub\MDWizard_Source\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\MetadataEditor.vbproj.GenerateResource.Cache
+<<<<<<< HEAD
 N:\Metadata\MetadataWizard\MDWizard_New\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\bin\Debug\MetadataEditor.exe.config
 N:\Metadata\MetadataWizard\MDWizard_New\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\MetadataEditor.exe
 N:\Metadata\MetadataWizard\MDWizard_New\Versioned_VBDev\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\MetadataEditor.xml
@@ -132,3 +133,5 @@ C:\_Ignizio_RemoteWork2014\MetadataWizard\MetadataWizard_New\MetadataEditor_Main
 C:\_Ignizio_RemoteWork2014\MetadataWizard\MetadataWizard_New\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\WindowsApplication1.MP_Report_Previewer.resources
 C:\_Ignizio_RemoteWork2014\MetadataWizard\MetadataWizard_New\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\WindowsApplication1.Resources.resources
 C:\_Ignizio_RemoteWork2014\MetadataWizard\MetadataWizard_New\MetadataEditor_MainForm\MetadataEditor\obj\x86\Debug\MetadataEditor.vbproj.GenerateResource.Cache
+=======
+>>>>>>> origin/master

@@ -6942,6 +6942,7 @@ Partial Class frmMetadataEditor
     Friend WithEvents labSource1Numerator As System.Windows.Forms.Label
     Friend WithEvents labSource1ScaleDenom As System.Windows.Forms.Label
     Friend WithEvents txtSource1ScaleDenom As System.Windows.Forms.TextBox
+<<<<<<< HEAD
     Friend WithEvents TabPage5 As System.Windows.Forms.TabPage
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents btnGenerateErrorReport As System.Windows.Forms.Button
@@ -6951,5 +6952,7 @@ Partial Class frmMetadataEditor
     Friend WithEvents Label170 As System.Windows.Forms.Label
     Friend WithEvents Label171 As System.Windows.Forms.Label
     Friend WithEvents Label172 As System.Windows.Forms.Label
+=======
+>>>>>>> origin/master
 
 End Class
