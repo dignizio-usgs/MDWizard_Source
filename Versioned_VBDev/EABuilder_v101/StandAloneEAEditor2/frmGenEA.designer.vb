@@ -179,8 +179,8 @@ Partial Class frmGenEA
         'txtEadetcit
         '
         Me.txtEadetcit.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtEadetcit.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtEadetcit.Location = New System.Drawing.Point(3, 506)
         Me.txtEadetcit.Multiline = True
@@ -193,7 +193,7 @@ Partial Class frmGenEA
         'lstFields
         '
         Me.lstFields.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lstFields.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Attribute, Me.TypeX})
         Me.lstFields.FullRowSelect = True
         Me.lstFields.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
@@ -219,8 +219,8 @@ Partial Class frmGenEA
         'txtOverview
         '
         Me.txtOverview.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtOverview.ForeColor = System.Drawing.SystemColors.WindowText
         Me.txtOverview.Location = New System.Drawing.Point(3, 375)
         Me.txtOverview.Multiline = True
@@ -242,7 +242,7 @@ Partial Class frmGenEA
         'frmDomain
         '
         Me.frmDomain.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.frmDomain.Controls.Add(Me.optEnum)
         Me.frmDomain.Controls.Add(Me.optUnrep)
         Me.frmDomain.Controls.Add(Me.optRange)
@@ -305,7 +305,7 @@ Partial Class frmGenEA
         'txtAttDefSource
         '
         Me.txtAttDefSource.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtAttDefSource.Location = New System.Drawing.Point(140, 110)
         Me.txtAttDefSource.Multiline = True
         Me.txtAttDefSource.Name = "txtAttDefSource"
@@ -324,7 +324,7 @@ Partial Class frmGenEA
         'txtAttDef
         '
         Me.txtAttDef.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtAttDef.Location = New System.Drawing.Point(6, 26)
         Me.txtAttDef.Multiline = True
         Me.txtAttDef.Name = "txtAttDef"
@@ -343,8 +343,8 @@ Partial Class frmGenEA
         'pnlRange
         '
         Me.pnlRange.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pnlRange.Controls.Add(Me.Label24)
         Me.pnlRange.Controls.Add(Me.labelVATwarning)
         Me.pnlRange.Controls.Add(Me.Label22)
@@ -383,7 +383,7 @@ Partial Class frmGenEA
         Me.labelVATwarning.Size = New System.Drawing.Size(211, 64)
         Me.labelVATwarning.TabIndex = 12
         Me.labelVATwarning.Text = "If this raster contains categorical " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "data please close this tool, build " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "a rast" & _
-            "er attribute table for the data, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and then re-run this tool."
+    "er attribute table for the data, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and then re-run this tool."
         '
         'Label22
         '
@@ -447,9 +447,9 @@ Partial Class frmGenEA
         Me.Label10.AutoSize = True
         Me.Label10.Location = New System.Drawing.Point(15, 46)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(211, 13)
+        Me.Label10.Size = New System.Drawing.Size(172, 13)
         Me.Label10.TabIndex = 4
-        Me.Label10.Text = "Range Maximum (Numeric or YYYYMMDD)"
+        Me.Label10.Text = "Range Maximum (Numeric or Date)"
         '
         'txtRngMin
         '
@@ -463,9 +463,9 @@ Partial Class frmGenEA
         Me.Label8.AutoSize = True
         Me.Label8.Location = New System.Drawing.Point(15, 20)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(208, 13)
+        Me.Label8.Size = New System.Drawing.Size(169, 13)
         Me.Label8.TabIndex = 0
-        Me.Label8.Text = "Range Minimum (Numeric or YYYYMMDD)"
+        Me.Label8.Text = "Range Minimum (Numeric or Date)"
         '
         'pnlUnrepresentable
         '
@@ -510,8 +510,8 @@ Partial Class frmGenEA
         'txtUnrep
         '
         Me.txtUnrep.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtUnrep.Location = New System.Drawing.Point(15, 30)
         Me.txtUnrep.Multiline = True
         Me.txtUnrep.Name = "txtUnrep"
@@ -618,7 +618,7 @@ Partial Class frmGenEA
         'txtValDefSource
         '
         Me.txtValDefSource.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtValDefSource.Location = New System.Drawing.Point(213, 128)
         Me.txtValDefSource.Multiline = True
         Me.txtValDefSource.Name = "txtValDefSource"
@@ -628,7 +628,7 @@ Partial Class frmGenEA
         'txtValDef
         '
         Me.txtValDef.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtValDef.Location = New System.Drawing.Point(213, 26)
         Me.txtValDef.Multiline = True
         Me.txtValDef.Name = "txtValDef"
@@ -690,8 +690,8 @@ Partial Class frmGenEA
         '
         'frmGenEA
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(963, 632)
         Me.Controls.Add(Me.cmdCancel)

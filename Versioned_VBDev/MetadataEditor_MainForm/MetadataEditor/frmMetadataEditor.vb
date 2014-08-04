@@ -2,15 +2,20 @@
 Imports System.Xml
 Imports System.Windows.Forms
 
+Imports System.Text
+Imports System.Drawing
+Imports System.Runtime.InteropServices
+
 
 Public Class frmMetadataEditor
 
     Public xmlMD As New XmlDocument
     Public xmlMDOutput As New XmlDocument
+    Public xmlErrorReport As New XmlDocument
 
-    Private sPath As String
     Private sInFile As String
     Private sOutFile As String
+    Private s_MP_ErrorReportFile As String
     'Private sIExplorerPath As String
 
     Private sPreviewCount As Integer
@@ -24,6 +29,7 @@ Public Class frmMetadataEditor
     Dim dgvSourceOnlineLink As DataGridView
     Dim gbxSourceTimePeriodInfo As GroupBox
     Dim txtSourceAbbreviation As TextBox
+    Dim txtSourceScaleDenom As TextBox
     Dim txtSourceContribution As TextBox
     Dim txtSourceBeginDate As TextBox
     Dim txtSourceEndDate As TextBox
@@ -486,6 +492,7 @@ Public Class frmMetadataEditor
             cboSource1CurrentnessRef.Text = ""
             txtSource1Abbreviation.Text = ""
             txtSource1Contribution.Text = ""
+            txtSource1ScaleDenom.Text = ""
 
             'Eliminate all other source input tabs, if any exist.
             For Each page As TabPage In tabCtrlDSSourceInputs.TabPages
@@ -826,6 +833,7 @@ Public Class frmMetadataEditor
 
         sInFile = My.Application.CommandLineArgs(0)
         sOutFile = My.Application.CommandLineArgs(1)
+        s_MP_ErrorReportFile = (sOutFile.Substring(0, Int(sOutFile.Length - 4)) & "_MP_ErrorReport.xml")
         'sIExplorerPath = My.Application.CommandLineArgs(2)
 
         xmlMD.Load(sInFile)
@@ -1228,7 +1236,10 @@ Public Class frmMetadataEditor
 #Region "Save/Save and Close/Preview Metadata (Buttons)"
 
     'Save routine
-    Private Sub Save()
+    Private Sub Save(Optional UseBDPprofile As Boolean = True, Optional Create_XML_MP_ErrorReport As Boolean = False, Optional Create_TXT_MP_ErrorReport As Boolean = False)
+        'This routine just saves the content of the form to the stand-alone XML file. The options above pertain to how MP is run
+        'but are entirely optional. The default is for the Save() operation to take place, applying the BDP config and not create
+        'an error report.
 
         saveToInMemory()
         xmlMDOutput.Save(sOutFile)
@@ -1242,11 +1253,33 @@ Public Class frmMetadataEditor
         'This will ensure any optional BDP elements are also ordered properly. 
         'This config file also has a 'prune' line which removes empty nodes/branches.
 
+        Dim MP_ErrorReportOption As String
+        'Create an error report when MP is run (to re-order elements). Options are .XML, .TXT, or default of none.
+        If Create_TXT_MP_ErrorReport Then
+            MP_ErrorReportOption = " -e " & Chr(34) & s_MP_ErrorReportFile & Chr(34) 'Not used currently.
+        ElseIf Create_XML_MP_ErrorReport Then
+            MP_ErrorReportOption = " -e " & Chr(34) & s_MP_ErrorReportFile & Chr(34)
+        Else
+            MP_ErrorReportOption = ""
+        End If
+
+        Dim MP_ConfigOption As String = ""
+        'Specify which config file, if any will be used when running MP. BDP is the default.
+        If UseBDPprofile Then
+            MP_ConfigOption = " -c " & Chr(34) & configFile & Chr(34) 'Use the BDP profile referenced above when running MP.
+        Else
+            MP_ConfigOption = ""
+        End If
+
+
+
         Dim p As New ProcessStartInfo
         'Pad with quotes to handle any spaces in file names or paths when calling MP.
         p.FileName = Chr(34) & mpPath & Chr(34)
-        p.Arguments = "-x " & Chr(34) & sOutFile & Chr(34) & " -c " & Chr(34) & configFile & Chr(34) & " " & Chr(34) & sOutFile & Chr(34)
-        'p.Arguments = "-x " & Chr(34) & sOutFile & Chr(34) & " " & Chr(34) & sOutFile & Chr(34)
+
+        p.Arguments = "-x " & Chr(34) & sOutFile & Chr(34) & MP_ErrorReportOption & MP_ConfigOption & " " & Chr(34) & sOutFile & Chr(34)
+        'p.Arguments = "-x " & Chr(34) & sOutFile & Chr(34) & " " & Chr(34) & sOutFile & Chr(34) 'Simple constructed MP command, with no options other than output XML
+
         Try
             Process.Start(p)
             System.Threading.Thread.Sleep(500) 'Wait a moment for MP to run.
@@ -1647,6 +1680,12 @@ Public Class frmMetadataEditor
                                             newNode.InnerText = subCtl.Text
                                         End If
 
+                                        If subCtl.Name.Contains("ScaleDenom") Then
+                                            Dim newNode As XmlNode = xmlMDOutput.CreateElement("srcscale")
+                                            srcInfoNode.AppendChild(newNode)
+                                            newNode.InnerText = subCtl.Text
+                                        End If
+
                                         If subCtl.Name.Contains("Contribution") Then
                                             Dim newNode As XmlNode = xmlMDOutput.CreateElement("srccontr")
                                             srcInfoNode.AppendChild(newNode)
@@ -1839,22 +1878,40 @@ Public Class frmMetadataEditor
         xmlMDOutput.Save(sOutFile) 'Save the file with a direct system save. The other 'Save()' routine calls MP and removes the stylesheet, which we don't want to do in this case.
 
         Dim previewForm As New MD_previewer
-        previewForm.WebBrowser_Preview.Navigate(New Uri(sOutFile))
+        previewForm.WebBrowser_MetadataPreview.Navigate(New Uri(sOutFile))
         previewForm.Show()
 
+    End Sub
 
+    Private Sub btnGenerateErrorReport_Click(sender As System.Object, e As System.EventArgs) Handles btnGenerateErrorReport.Click
 
-        'DI: The code below uses Internet Explorer or user-provided browser location to open the XML Preview.
-        'The code above that uses the built-in VB web browser is more consistently reliable.
+        Dim MD_Type As String = cboMetaStandardName.Text
+        'Try to determine the type of metadata file we have (which profile) by looking at the field in Tab 3. Prompt user to specify if undefined.
 
-        'Dim p As New ProcessStartInfo
-        'p.FileName = sIExplorerPath
-        'p.Arguments = sOutFile
+        If MD_Type = "FGDC Content Standard for Digital Geospatial Metadata" Or (MD_Type.Contains("FGDC") And Not MD_Type.Contains("Bio")) Then
+            Save(False, True, False) 'generate an XML MP Error Report during the 'Save' routine, checking  against the standard profile.
+            MP_ErrorReport_Preview.Navigate(New Uri(s_MP_ErrorReportFile))
 
-        'Try
-        '    Process.Start(p)
-        'Catch ex As Exception
-        'End Try
+            xmlErrorReport.Load(s_MP_ErrorReportFile)
+            Dim ErrorCount As Collection
+            ErrorCount = getMultiNodeValues(xmlErrorReport, "report/error")
+            txtMP_ErrorCount.Text = Str(ErrorCount.Count)
+
+        ElseIf MD_Type = "FGDC Biological Data Profile of the Content Standard for Digital Geospatial Metadata" Or MD_Type.Contains("Biological") Or MD_Type.Contains("BDP") Then
+            Save(True, True, False) 'generate an XML MP Error Report during the 'Save' routine, checking against the BDP profile.
+            MP_ErrorReport_Preview.Navigate(New Uri(s_MP_ErrorReportFile))
+
+            xmlErrorReport.Load(s_MP_ErrorReportFile)
+            Dim ErrorCount As Collection
+            ErrorCount = getMultiNodeValues(xmlErrorReport, "report/error")
+            txtMP_ErrorCount.Text = Str(ErrorCount.Count)
+
+        Else
+            Using New Centered_MessageBox(Me)
+                MessageBox.Show("Please specify the profile of your FGDC-CSDGM metadata record in the 'Metadata Standard Name' field in Metadata Reference Info (Tab 3).")
+                'No MP validation will take place.
+            End Using
+        End If
 
     End Sub
 
@@ -2415,6 +2472,72 @@ Public Class frmMetadataEditor
 
 #Region "Utilities"
 
+    Class Centered_MessageBox
+        Implements IDisposable
+        Private mTries As Integer = 0
+        Private mOwner As Form
+
+        Public Sub New(owner As Form)
+            mOwner = owner
+            owner.BeginInvoke(New MethodInvoker(AddressOf findDialog))
+        End Sub
+
+        Private Sub findDialog()
+            ' Enumerate windows to find the message box
+            If mTries < 0 Then
+                Return
+            End If
+            Dim callback As New EnumThreadWndProc(AddressOf checkWindow)
+            If EnumThreadWindows(GetCurrentThreadId(), callback, IntPtr.Zero) Then
+                If System.Threading.Interlocked.Increment(mTries) < 10 Then
+                    mOwner.BeginInvoke(New MethodInvoker(AddressOf findDialog))
+                End If
+            End If
+        End Sub
+        Private Function checkWindow(hWnd As IntPtr, lp As IntPtr) As Boolean
+            ' Checks if <hWnd> is a dialog
+            Dim sb As New StringBuilder(260)
+            GetClassName(hWnd, sb, sb.Capacity)
+            If sb.ToString() <> "#32770" Then
+                Return True
+            End If
+            ' Got it
+            Dim frmRect As New Rectangle(mOwner.Location, mOwner.Size)
+            Dim dlgRect As RECT
+            GetWindowRect(hWnd, dlgRect)
+            MoveWindow(hWnd, frmRect.Left + (frmRect.Width - dlgRect.Right + dlgRect.Left) \ 2, frmRect.Top + (frmRect.Height - dlgRect.Bottom + dlgRect.Top) \ 2, dlgRect.Right - dlgRect.Left, dlgRect.Bottom - dlgRect.Top, True)
+            Return False
+        End Function
+        Public Sub Dispose() Implements IDisposable.Dispose
+            mTries = -1
+        End Sub
+
+        ' P/Invoke declarations
+        Private Delegate Function EnumThreadWndProc(hWnd As IntPtr, lp As IntPtr) As Boolean
+        <DllImport("user32.dll")> _
+        Private Shared Function EnumThreadWindows(tid As Integer, callback As EnumThreadWndProc, lp As IntPtr) As Boolean
+        End Function
+        <DllImport("kernel32.dll")> _
+        Private Shared Function GetCurrentThreadId() As Integer
+        End Function
+        <DllImport("user32.dll")> _
+        Private Shared Function GetClassName(hWnd As IntPtr, buffer As StringBuilder, buflen As Integer) As Integer
+        End Function
+        <DllImport("user32.dll")> _
+        Private Shared Function GetWindowRect(hWnd As IntPtr, ByRef rc As RECT) As Boolean
+        End Function
+        <DllImport("user32.dll")> _
+        Private Shared Function MoveWindow(hWnd As IntPtr, x As Integer, y As Integer, w As Integer, h As Integer, repaint As Boolean) As Boolean
+        End Function
+        Private Structure RECT
+            Public Left As Integer
+            Public Top As Integer
+            Public Right As Integer
+            Public Bottom As Integer
+        End Structure
+    End Class
+
+
 
     Private Sub cloneSourceInputTab(tabCt As Integer)
 
@@ -2603,6 +2726,14 @@ Public Class frmMetadataEditor
             .Text = ("Source Input" & Str(tabCt))
         End With
 
+        txtSourceScaleDenom = New TextBox()
+        With txtSourceScaleDenom
+            .Name = ("txtSource" & CStr(tabCt) & "ScaleDenom")
+            .Location = txtSource1ScaleDenom.Location
+            .Size = txtSource1ScaleDenom.Size
+            .Tag = txtSource1ScaleDenom.Tag
+        End With
+
         txtSourceContribution = New TextBox()
         With txtSourceContribution
             .Name = ("txtSource" & CStr(tabCt) & "Contribution")
@@ -2612,8 +2743,6 @@ Public Class frmMetadataEditor
             .ForeColor = Color.SlateGray
             .Text = "Source information used in support of the development of the data set."
         End With
-
-
 
         Label1 = New Label()
         With Label1
@@ -2670,6 +2799,8 @@ Public Class frmMetadataEditor
             .Location = labSource1Abbreviation.Location
             .Size = labSource1Abbreviation.Size
         End With
+
+        'Code for the Source Scale Denominator Label (added 6/30/14) is below...
 
         Label9 = New Label()
         With Label9
@@ -2750,6 +2881,20 @@ Public Class frmMetadataEditor
             .Font = labSourceInputReq8.Font
         End With
 
+        Label18 = New Label()
+        With Label18
+            .Text = "Source Scale"
+            .Location = labSource1ScaleDenom.Location
+            .Size = labSource1ScaleDenom.Size
+        End With
+
+        Label19 = New Label()
+        With Label19
+            .Text = "1:"
+            .Location = labSource1Numerator.Location
+            .Size = labSource1Numerator.Size
+        End With
+
         tp.Controls.Add(txtSourceTitle)
         tp.Controls.Add(txtSourcePublisher)
         tp.Controls.Add(cboSourceDataType)
@@ -2762,6 +2907,7 @@ Public Class frmMetadataEditor
 
         tp.Controls.Add(txtSourceAbbreviation)
         tp.Controls.Add(txtSourceContribution)
+        tp.Controls.Add(txtSourceScaleDenom)
 
         tp.Controls.Add(Label1)
         tp.Controls.Add(Label2)
@@ -2780,6 +2926,8 @@ Public Class frmMetadataEditor
         tp.Controls.Add(Label15)
         tp.Controls.Add(Label16)
         tp.Controls.Add(Label17)
+        tp.Controls.Add(Label18)
+        tp.Controls.Add(Label19)
     End Sub
 
     Private Sub populateSourceInput1(node As XmlNode, tabCt As Integer)
@@ -2836,6 +2984,9 @@ Public Class frmMetadataEditor
 
         Dim Source1CurrentnessRef As String = getNodeTextAtNodeInstance(node, "srctime/srccurr")
         cboSource1CurrentnessRef.Text = Source1CurrentnessRef
+
+        Dim Source1ScaleDenom As String = getNodeTextAtNodeInstance(node, "srcscale")
+        txtSource1ScaleDenom.Text = Source1ScaleDenom
 
         Try
             Dim Source1Abbreviation As String = node.SelectSingleNode("srccitea").FirstChild.Value
@@ -2911,6 +3062,9 @@ Public Class frmMetadataEditor
 
         Dim SourceCurrentnessRef As String = getNodeTextAtNodeInstance(node, "srctime/srccurr")
         cboSourceCurrentnessRef.Text = SourceCurrentnessRef
+
+        Dim SourceScaleDenom As String = getNodeTextAtNodeInstance(node, "srcscale")
+        txtSourceScaleDenom.Text = SourceScaleDenom
 
         Try
             Dim SourceAbbreviation As String = node.SelectSingleNode("srccitea").FirstChild.Value

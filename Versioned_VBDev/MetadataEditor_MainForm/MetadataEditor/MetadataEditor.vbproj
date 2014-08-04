@@ -104,6 +104,12 @@
     <Compile Include="MD_Previewer.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MP_Report_Previewer.Designer.vb">
+      <DependentUpon>MP_Report_Previewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MP_Report_Previewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -127,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MD_Previewer.resx">
       <DependentUpon>MD_Previewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MP_Report_Previewer.resx">
+      <DependentUpon>MP_Report_Previewer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

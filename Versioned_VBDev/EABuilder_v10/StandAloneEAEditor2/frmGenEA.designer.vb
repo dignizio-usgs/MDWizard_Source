@@ -447,9 +447,9 @@ Partial Class frmGenEA
         Me.Label10.AutoSize = True
         Me.Label10.Location = New System.Drawing.Point(15, 46)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(211, 13)
+        Me.Label10.Size = New System.Drawing.Size(172, 13)
         Me.Label10.TabIndex = 4
-        Me.Label10.Text = "Range Maximum (Numeric or YYYYMMDD)"
+        Me.Label10.Text = "Range Maximum (Numeric or Date)"
         '
         'txtRngMin
         '
@@ -463,9 +463,9 @@ Partial Class frmGenEA
         Me.Label8.AutoSize = True
         Me.Label8.Location = New System.Drawing.Point(15, 20)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(208, 13)
+        Me.Label8.Size = New System.Drawing.Size(169, 13)
         Me.Label8.TabIndex = 0
-        Me.Label8.Text = "Range Minimum (Numeric or YYYYMMDD)"
+        Me.Label8.Text = "Range Minimum (Numeric or Date)"
         '
         'pnlUnrepresentable
         '
@@ -690,8 +690,8 @@ Partial Class frmGenEA
         '
         'frmGenEA
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(963, 632)
         Me.Controls.Add(Me.cmdCancel)
