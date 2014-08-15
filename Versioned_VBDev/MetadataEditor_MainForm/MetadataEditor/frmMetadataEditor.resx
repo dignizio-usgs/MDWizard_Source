@@ -296,15 +296,12 @@ restrictions or limitations on using the data set. </value>
   <data name="txtDSSeriesName.HelpString" xml:space="preserve">
     <value>What is the name of the data series that the data set is part of? This might be "USGS Data Series", if applicable. Alternatively, this could be the name of a publication or journal, or an online series in which the data set is an installment.</value>
   </data>
-<<<<<<< HEAD
   <data name="Label87.Text" xml:space="preserve">
     <value>Metadata Parser (MP) is a utility for checking the compliance of an FGDC-CSDGM metadata record against the FGDC's official standard. The output provided below 
 will identify any errors in a record, and will provide the location in the XML file where the error is located. This location is listed as the 'xpath.' While this tool attempts 
 to populate (or provide the means to populate) all the necessary fields, some errors may require that a record be opened in external software for final editing. 
 </value>
   </data>
-=======
->>>>>>> origin/master
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>

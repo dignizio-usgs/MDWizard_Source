@@ -16,6 +16,8 @@ Public Class frmMetadataEditor
     Private sInFile As String
     Private sOutFile As String
     Private s_MP_ErrorReportFile As String
+    'See "Loading" region for details on how these are populated.
+
     'Private sIExplorerPath As String
 
     Private sPreviewCount As Integer
@@ -1249,8 +1251,11 @@ Public Class frmMetadataEditor
         Dim startUpPath As String = Application.StartupPath
         Dim mpPath As String = startUpPath & "\Resources\mp.exe"
 
-        Dim configFile As String = startUpPath & "\Resources\BDP_Mod.cfg"
+        Dim configFile_BDP As String = startUpPath & "\Resources\FGDC_BDP_Prune.cfg"
         'This will ensure any optional BDP elements are also ordered properly. 
+        'This config file also has a 'prune' line which removes empty nodes/branches.
+
+        Dim configFile_FGDC As String = startUpPath & "\Resources\FGDC_Classic_Prune.cfg"
         'This config file also has a 'prune' line which removes empty nodes/branches.
 
         Dim MP_ErrorReportOption As String
@@ -1266,9 +1271,9 @@ Public Class frmMetadataEditor
         Dim MP_ConfigOption As String = ""
         'Specify which config file, if any will be used when running MP. BDP is the default.
         If UseBDPprofile Then
-            MP_ConfigOption = " -c " & Chr(34) & configFile & Chr(34) 'Use the BDP profile referenced above when running MP.
+            MP_ConfigOption = " -c " & Chr(34) & configFile_BDP & Chr(34) 'Use the BDP profile referenced above when running MP. Prune will be applied.
         Else
-            MP_ConfigOption = ""
+            MP_ConfigOption = " -c " & Chr(34) & configFile_FGDC & Chr(34) 'Use the original FGDC profile referenced above when running MP. Prune will be applied.
         End If
 
 
@@ -1343,9 +1348,9 @@ Public Class frmMetadataEditor
                         ''''''''''''''''
                         'Handle all the other TextBox/ComboBox elements
                         Try
-                            If ctl.Text <> "" Then
-                                setNodeText(xmlMDOutput, CStr(ctl.Tag), ctl.Text, True)
-                            End If
+                            'If ctl.Text <> "" Then
+                            setNodeText(xmlMDOutput, CStr(ctl.Tag), ctl.Text, True)
+                            'End If
 
                             '*DI: 4/4/13 Consider removing the above 'If' to only write out elements if they contain content. This seems to be problematic
                             'for deleting element content and the 'Import Contact' features from tab to tab?
@@ -1883,25 +1888,36 @@ Public Class frmMetadataEditor
 
     End Sub
 
+    'Run MP Button
     Private Sub btnGenerateErrorReport_Click(sender As System.Object, e As System.EventArgs) Handles btnGenerateErrorReport.Click
+
+        labNoErrors.Visible = False
+        txtMP_ErrorCount.Text = ""
+
+        Dim startUpPath As String = Application.StartupPath
+        Dim styleSheetPath As String = startUpPath & "\Resources\MPErrorReportStylesheet.xsl"
 
         Dim MD_Type As String = cboMetaStandardName.Text
         'Try to determine the type of metadata file we have (which profile) by looking at the field in Tab 3. Prompt user to specify if undefined.
 
         If MD_Type = "FGDC Content Standard for Digital Geospatial Metadata" Or (MD_Type.Contains("FGDC") And Not MD_Type.Contains("Bio")) Then
             Save(False, True, False) 'generate an XML MP Error Report during the 'Save' routine, checking  against the standard profile.
-            MP_ErrorReport_Preview.Navigate(New Uri(s_MP_ErrorReportFile))
 
             xmlErrorReport.Load(s_MP_ErrorReportFile)
+            InsertStylesheet(xmlErrorReport, s_MP_ErrorReportFile, styleSheetPath, "report")
+            MP_ErrorReport_Preview.Navigate(New Uri(s_MP_ErrorReportFile))
+
             Dim ErrorCount As Collection
             ErrorCount = getMultiNodeValues(xmlErrorReport, "report/error")
             txtMP_ErrorCount.Text = Str(ErrorCount.Count)
 
         ElseIf MD_Type = "FGDC Biological Data Profile of the Content Standard for Digital Geospatial Metadata" Or MD_Type.Contains("Biological") Or MD_Type.Contains("BDP") Then
             Save(True, True, False) 'generate an XML MP Error Report during the 'Save' routine, checking against the BDP profile.
-            MP_ErrorReport_Preview.Navigate(New Uri(s_MP_ErrorReportFile))
 
             xmlErrorReport.Load(s_MP_ErrorReportFile)
+            InsertStylesheet(xmlErrorReport, s_MP_ErrorReportFile, styleSheetPath, "report")
+            MP_ErrorReport_Preview.Navigate(New Uri(s_MP_ErrorReportFile))
+
             Dim ErrorCount As Collection
             ErrorCount = getMultiNodeValues(xmlErrorReport, "report/error")
             txtMP_ErrorCount.Text = Str(ErrorCount.Count)
@@ -1913,7 +1929,25 @@ Public Class frmMetadataEditor
             End Using
         End If
 
+        If txtMP_ErrorCount.Text = " 0" Then 'Count gets padded with a space. Not sure why...
+            labNoErrors.Visible = True
+        End If
+
     End Sub
+
+
+    'Add a reference to a stylesheet for html-ized viewing of XML
+    Private Sub InsertStylesheet(XML_InMemory As XmlDocument, XML_SystemFile As String, styleSheetPath As String, firstNode As String)
+
+        Dim styleSheetReference As String = "href=" & Chr(34) & styleSheetPath & Chr(34) & " type=" & Chr(34) & "text/xsl" & Chr(34)
+        Dim newPI As XmlProcessingInstruction
+        newPI = XML_InMemory.CreateProcessingInstruction("xml-stylesheet", styleSheetReference)
+        XML_InMemory.InsertBefore(newPI, XML_InMemory.SelectSingleNode(firstNode))
+        XML_InMemory.Save(XML_SystemFile)
+
+    End Sub
+
+
 
 #End Region
 

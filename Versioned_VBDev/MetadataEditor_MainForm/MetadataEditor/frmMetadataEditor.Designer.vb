@@ -514,13 +514,14 @@ Partial Class frmMetadataEditor
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Label171 = New System.Windows.Forms.Label()
+        Me.Label172 = New System.Windows.Forms.Label()
         Me.txtMP_ErrorCount = New System.Windows.Forms.TextBox()
         Me.Label170 = New System.Windows.Forms.Label()
         Me.Label87 = New System.Windows.Forms.Label()
         Me.MP_ErrorReport_Preview = New System.Windows.Forms.WebBrowser()
         Me.btnGenerateErrorReport = New System.Windows.Forms.Button()
-        Me.Label171 = New System.Windows.Forms.Label()
-        Me.Label172 = New System.Windows.Forms.Label()
+        Me.labNoErrors = New System.Windows.Forms.Label()
         Me.Panel4.SuspendLayout()
         Me.GroupBox10.SuspendLayout()
         Me.GroupBox54.SuspendLayout()
@@ -611,7 +612,7 @@ Partial Class frmMetadataEditor
         'btnPreviewMetadata
         '
         Me.btnPreviewMetadata.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.btnPreviewMetadata.Location = New System.Drawing.Point(514, 638)
+        Me.btnPreviewMetadata.Location = New System.Drawing.Point(473, 633)
         Me.btnPreviewMetadata.Name = "btnPreviewMetadata"
         Me.btnPreviewMetadata.Size = New System.Drawing.Size(144, 23)
         Me.btnPreviewMetadata.TabIndex = 0
@@ -6116,7 +6117,7 @@ Partial Class frmMetadataEditor
         '
         Me.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btnSave.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.btnSave.Location = New System.Drawing.Point(434, 638)
+        Me.btnSave.Location = New System.Drawing.Point(392, 633)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 23)
         Me.btnSave.TabIndex = 1
@@ -6126,7 +6127,7 @@ Partial Class frmMetadataEditor
         'btnSaveAndClose
         '
         Me.btnSaveAndClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.btnSaveAndClose.Location = New System.Drawing.Point(664, 638)
+        Me.btnSaveAndClose.Location = New System.Drawing.Point(623, 633)
         Me.btnSaveAndClose.Name = "btnSaveAndClose"
         Me.btnSaveAndClose.Size = New System.Drawing.Size(151, 23)
         Me.btnSaveAndClose.TabIndex = 2
@@ -6222,6 +6223,7 @@ Partial Class frmMetadataEditor
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel3.BackColor = System.Drawing.SystemColors.Control
+        Me.Panel3.Controls.Add(Me.labNoErrors)
         Me.Panel3.Controls.Add(Me.Label171)
         Me.Panel3.Controls.Add(Me.Label172)
         Me.Panel3.Controls.Add(Me.txtMP_ErrorCount)
@@ -6233,6 +6235,28 @@ Partial Class frmMetadataEditor
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(1120, 570)
         Me.Panel3.TabIndex = 0
+        '
+        'Label171
+        '
+        Me.Label171.AutoSize = True
+        Me.Label171.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label171.ForeColor = System.Drawing.Color.DodgerBlue
+        Me.Label171.Location = New System.Drawing.Point(326, 11)
+        Me.Label171.Name = "Label171"
+        Me.Label171.Size = New System.Drawing.Size(218, 16)
+        Me.Label171.TabIndex = 30
+        Me.Label171.Text = "Check a metadata record for errors."
+        '
+        'Label172
+        '
+        Me.Label172.AutoSize = True
+        Me.Label172.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label172.ForeColor = System.Drawing.Color.DodgerBlue
+        Me.Label172.Location = New System.Drawing.Point(3, 4)
+        Me.Label172.Name = "Label172"
+        Me.Label172.Size = New System.Drawing.Size(203, 25)
+        Me.Label172.TabIndex = 29
+        Me.Label172.Text = "Metadata Validation"
         '
         'txtMP_ErrorCount
         '
@@ -6275,34 +6299,24 @@ Partial Class frmMetadataEditor
         'btnGenerateErrorReport
         '
         Me.btnGenerateErrorReport.BackColor = System.Drawing.Color.DeepSkyBlue
-        Me.btnGenerateErrorReport.Location = New System.Drawing.Point(436, 112)
+        Me.btnGenerateErrorReport.Location = New System.Drawing.Point(453, 112)
         Me.btnGenerateErrorReport.Name = "btnGenerateErrorReport"
         Me.btnGenerateErrorReport.Size = New System.Drawing.Size(183, 55)
         Me.btnGenerateErrorReport.TabIndex = 0
         Me.btnGenerateErrorReport.Text = "Run Metadata Parser (MP)"
         Me.btnGenerateErrorReport.UseVisualStyleBackColor = False
         '
-        'Label171
+        'labNoErrors
         '
-        Me.Label171.AutoSize = True
-        Me.Label171.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label171.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Label171.Location = New System.Drawing.Point(326, 11)
-        Me.Label171.Name = "Label171"
-        Me.Label171.Size = New System.Drawing.Size(218, 16)
-        Me.Label171.TabIndex = 30
-        Me.Label171.Text = "Check a metadata record for errors."
-        '
-        'Label172
-        '
-        Me.Label172.AutoSize = True
-        Me.Label172.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label172.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Label172.Location = New System.Drawing.Point(3, 4)
-        Me.Label172.Name = "Label172"
-        Me.Label172.Size = New System.Drawing.Size(203, 25)
-        Me.Label172.TabIndex = 29
-        Me.Label172.Text = "Metadata Validation"
+        Me.labNoErrors.AutoSize = True
+        Me.labNoErrors.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labNoErrors.ForeColor = System.Drawing.Color.DodgerBlue
+        Me.labNoErrors.Location = New System.Drawing.Point(399, 533)
+        Me.labNoErrors.Name = "labNoErrors"
+        Me.labNoErrors.Size = New System.Drawing.Size(319, 24)
+        Me.labNoErrors.TabIndex = 31
+        Me.labNoErrors.Text = "The metadata record is free of errors!"
+        Me.labNoErrors.Visible = False
         '
         'frmMetadataEditor
         '
@@ -6942,7 +6956,6 @@ Partial Class frmMetadataEditor
     Friend WithEvents labSource1Numerator As System.Windows.Forms.Label
     Friend WithEvents labSource1ScaleDenom As System.Windows.Forms.Label
     Friend WithEvents txtSource1ScaleDenom As System.Windows.Forms.TextBox
-<<<<<<< HEAD
     Friend WithEvents TabPage5 As System.Windows.Forms.TabPage
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents btnGenerateErrorReport As System.Windows.Forms.Button
@@ -6952,7 +6965,6 @@ Partial Class frmMetadataEditor
     Friend WithEvents Label170 As System.Windows.Forms.Label
     Friend WithEvents Label171 As System.Windows.Forms.Label
     Friend WithEvents Label172 As System.Windows.Forms.Label
-=======
->>>>>>> origin/master
+    Friend WithEvents labNoErrors As System.Windows.Forms.Label
 
 End Class
