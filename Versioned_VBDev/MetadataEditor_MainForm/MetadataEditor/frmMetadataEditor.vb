@@ -697,20 +697,16 @@ Public Class frmMetadataEditor
             'Data Distribution - Order Process
 
             '**We check these in this order so that if both a network resource and a custom order process are present in an existing record,
-            '**we will show the network resource (the custom order instructions will be kept as well, just not visible). If a user switches
-            '**from the network resource option to 'other', the network resource info and custom instructions will both be erased and replaced. 
-            '**The output XML will then only contain the custom instructions they provided.
+            '**we will show the network resource option in the GUI (the custom order instructions will be kept as well, just not visible). If a user switches
+            '**from the network resource option to 'other', the network resource info and custom instructions will both be erased.
+            '**The output XML will then only contain the custom instructions they provided in the GUI 'other distribution method' box.
 
             If nodeExists(xmlMD, "metadata/distinfo/custom") Then
-                Dim DSCustomDistOrder As String = getNodeText(xmlMD, "metadata/distinfo/custom")
-                txtDSCustomDistOrder.Text = DSCustomDistOrder
                 rbCustomDistribution.Checked = True
             End If
 
             '**Try to grab the first online linkage and use it for the Network Resource element.
             If nodeExists(xmlMD, "metadata/citation/citeinfo/onlink") Then
-                Dim OnlineLinkage As String = getNodeText(xmlMD, "metadata/citation/citeinfo/onlink[1]")
-                txtDSNetworkResource.Text = OnlineLinkage
                 rbOnlineDistribution.Checked = True
             End If
 
@@ -802,19 +798,49 @@ Public Class frmMetadataEditor
     Private Sub rbDistributionMethod_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbOnlineDistribution.CheckedChanged, rbStockDistributionText.CheckedChanged, rbCustomDistribution.CheckedChanged
 
         If rbOnlineDistribution.Checked = True Then
-
+            'In line 704, The 'Custom' option is checked for first, and the code for the radio button 'Custom' option will be run if "metadata/distinfo/custom" is present.
+            'The check for this 'Online' scenario is run second, which will return the xmlMDOutput content back to its original state (from xmlMD)
+            'for 'Format Name' and 'Fees'. The code that follows will do this. In this scenario any 'custom order' instructions from xmlMD will not 
+            'be shown in the GUI, but the content (if present) will be written out in the xmlMDoutput file.
             txtDSNetworkResource.Enabled = True
             txtDSCustomDistOrder.Enabled = False
             txtDSCustomDistOrder.Text = ""
+            If nodeExists(xmlMD, "metadata/citation/citeinfo/onlink") Then
+                Dim OnlineLinkage As String = getNodeText(xmlMD, "metadata/citation/citeinfo/onlink[1]")
+                txtDSNetworkResource.Text = OnlineLinkage
+            End If
+            If nodeExists(xmlMD, "metadata/distinfo/stdorder/digform/digtinfo/formname") Then
+                Dim FormatName As String = getNodeText(xmlMD, "metadata/distinfo/stdorder/digform/digtinfo/formname")
+                setNodeText(xmlMDOutput, "metadata/distinfo/stdorder/digform/digtinfo/formname", FormatName)
+            End If
+            If nodeExists(xmlMD, "metadata/distinfo/stdorder/fees") Then
+                Dim DSDistFees As String = getNodeText(xmlMD, "metadata/distinfo/stdorder/fees")
+                txtDSDistFees.ForeColor = Color.Black
+                txtDSDistFees.Text = DSDistFees
+            End If
         End If
+
 
         If rbCustomDistribution.Checked = True Then
 
             txtDSCustomDistOrder.Enabled = True
             txtDSNetworkResource.Enabled = False
             txtDSNetworkResource.Text = ""
-            txtDSDistFees.Text = "" '"Fees" are not an allowed element in FGDC if the 'custom' order option is selected.
+
+            Dim DSCustomDistOrder As String = getNodeText(xmlMD, "metadata/distinfo/custom")
+            txtDSCustomDistOrder.Text = DSCustomDistOrder
+            txtDSDistFees.Text = ""
+            '"Fees" are not an allowed element in FGDC if only the'Custom' order option is being written out. Set null -- will be pruned.
+            setNodeText(xmlMDOutput, "metadata/distinfo/stdorder/digform/digtinfo/formname", "")
+            'In the Metadata Wizard, the solitary "Format Name" (auto-populated upstream with Python) becomes problematic. Set null -- will be pruned. 
+
+            'The possible issue I can see arising from this approach is if a user submits a record with both 'custom' and 'online' info present.
+            'The order of the check is such that the GUI will be set to 'online' and all content preserved. If they don't need to make edits
+            'to the 'Custom' instructions, everything will be fine. However, if they THEN change the GUI to the 'custom' option, the remaining
+            'content in the 'Digital Transfer Option' will not fully be cleaned out, but "Fees" and "Format Name" will be removed which will leave
+            'the stdorder element incomplete.
         End If
+
 
         If rbStockDistributionText.Checked = True Then
 
@@ -1902,6 +1928,7 @@ Public Class frmMetadataEditor
 
         If MD_Type = "FGDC Content Standard for Digital Geospatial Metadata" Or (MD_Type.Contains("FGDC") And Not MD_Type.Contains("Bio")) Then
             Save(False, True, False) 'generate an XML MP Error Report during the 'Save' routine, checking  against the standard profile.
+            System.Threading.Thread.Sleep(1000) 'Wait a moment for the file to finish writing out. A. Freeman found an issue with lag.
 
             xmlErrorReport.Load(s_MP_ErrorReportFile)
             InsertStylesheet(xmlErrorReport, s_MP_ErrorReportFile, styleSheetPath, "report")

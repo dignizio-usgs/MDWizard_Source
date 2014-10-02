@@ -1581,7 +1581,7 @@ def Data_Type(desc):
             myFeatType = "Polyline"
         if desc.shapeType == "Point":
             myFeatType = "Point"
-        if desc.shapeType == "MultiPoint":
+        if desc.shapeType == "MultiPoint" or desc.shapeType == "Multipoint":
             myFeatType = "Point"
     elif myDataType == "Raster":
         myFeatType = "None"

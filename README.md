@@ -54,7 +54,7 @@ the "Originator" field.
 
 ##### Metadata Wizard version 1.3 (Updated 08012014)
 - The 'Source Scale' input has been added to the Source Inputs tab in the Main Metadata Editor form.
-- Single toolbox should now work across all versions of ESRA ArcGIS Desktop 10.x.
+- Single toolbox should now work across all versions of ESRI ArcGIS Desktop 10.x.
 - Added new "Metadata Validation" tab. This now allows a user to run MP and view metadata errors from directly within the Metadata Wizard tool. 
 
 - Thanks to Curtis Price for the following edits:

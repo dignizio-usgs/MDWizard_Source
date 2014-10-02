@@ -130,7 +130,7 @@ def DetermineMDType(RawXMLFile):
  
 
 
-def ConvertArc10toFGDC(SourceFile, OutputXML_inFGDCFormat):
+def ConvertArc10toFGDC(SourceFile, OutputXML_inFGDCFormat, TempDir):
         #print "Metadata type is 'Arc10.' Converting Arc10 metadata file to FGDC via USGS MP Translator tool and saving to xml..."
         #Find the ArcGis to FGDC Translator based on the install directory of the machine.
         installDir = arcpy.GetInstallInfo("desktop")["InstallDir"]
@@ -149,7 +149,7 @@ def ConvertArc10toFGDC(SourceFile, OutputXML_inFGDCFormat):
             #arcpy.ESRITranslator_conversion(SourceFile, Translator, OutputXML_inFGDCFormat)
             #This is causing problematic locks... steps below should avoid trouble.
             
-            TranslateOut = r"C:\temp\ArcpyTranslate.xml"
+            TranslateOut = os.path.join(TempDir, "ArcpyTranslate.xml")
             if os.path.exists(TranslateOut):
                 os.remove(TranslateOut)
             arcpy.ESRITranslator_conversion(SourceFile, Translator, TranslateOut)
@@ -234,7 +234,7 @@ def GetMDContent(argv):#string of args
     sourceFile = os.path.split(os.path.splitext(sourceDataFile)[0])[1]
     OutputFGDCXML = argv[2]
 ''' 
-def GetMDContent(sourceDataFile, OutputFGDCXML):
+def GetMDContent(sourceDataFile, OutputFGDCXML, TempDir):
     
     sourceFile = os.path.split(os.path.splitext(sourceDataFile)[0])[1]
     '''
@@ -265,7 +265,7 @@ def GetMDContent(sourceDataFile, OutputFGDCXML):
             CleanESRIFGDC(tmpXML, OutputFGDCXML)
         elif metadataType == "Arc10":
             arcpy.SynchronizeMetadata_conversion(sourceDataFile, "ALWAYS")
-            ConvertArc10toFGDC(sourceDataFile, OutputFGDCXML)
+            ConvertArc10toFGDC(sourceDataFile, OutputFGDCXML, TempDir)
         elif metadataType == "Unknown":
             raise Exception, "The format of the metadata could not be determined. Possible explanations include: the data layer is missing metadata, the metadata is a malformed xml, or the metadata record is in a format other than FGDC or ESRI. Please investigate the record visually or recreate the metadata record. If the record is intact, try converting it to FGDC or ESRI format before using this tool."      
     finally:

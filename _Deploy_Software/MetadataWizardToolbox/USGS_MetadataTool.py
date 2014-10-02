@@ -347,7 +347,7 @@ def Get_Data_Type():#Determine what type of data set is being evaluated
                 myFeatType = "Polyline"
             elif desc.shapeType == "Point":
                 myFeatType = "Point"
-            elif desc.shapeType == "MultiPoint":
+            elif desc.shapeType == "MultiPoint" or desc.shapeType == "Multipoint":
                 myFeatType = "Point"
             else:
                 arcpy.AddWarning("The feature type for the provided data set could not be determined. It will be set to 'None'.")
