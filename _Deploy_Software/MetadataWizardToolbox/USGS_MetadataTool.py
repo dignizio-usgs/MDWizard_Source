@@ -157,7 +157,7 @@ def ProcessRoutine(ArgVariables):
                 sys.exit(1)
 
         try:#Extract any existing metadata, and translate to FGDC format if necessary.
-            ExportFGDC_MD_Utility.GetMDContent(InputData, FGDCXML)#Export (translate if necessary) input metadata to FGDC format. Remove ESRI 'sync' & 'reminder' elements.
+            ExportFGDC_MD_Utility.GetMDContent(InputData, FGDCXML, WorkingDir)#Export (translate if necessary) input metadata to FGDC format. Remove ESRI 'sync' & 'reminder' elements.
         except:
             arcpy.AddMessage("No metadata could be found for this record. A new file will be created.\n")
             MDTools.CreateCopyMDRecord(GenericTemplate, FGDCXML)
@@ -302,6 +302,12 @@ def ProcessRoutine(ArgVariables):
                 arcpy.AddMessage("The Wizard will now remove the stand-alone FGDC XML, as requested in the tool interface...\n")
             except:
                 arcpy.AddMessage("There was a problem removing the stand-alone XML file. Try removing the file (%s) manually from the working directory.\n" % FGDCXML)
+                
+        #Remove the 'ArcpyTranslate.xml' temp file that gets created when exporting from ESRI metadata to FGDC.
+        try:
+            os.remove(os.path.join(WorkingDir, 'ArcpyTranslate.xml'))
+        except:
+            pass
 
 
     except arcpy.ExecuteError:
