@@ -11,7 +11,7 @@ Metadata Wizard
 - Dedicated link in ScienceBase where the tool can be downloaded.
  
 ##### Metadata Wizard version 1.0 (Updated 122014)
-- Handle null valuesall empty fields in input data sets.
+- Handle null values and empty fields in input data sets.
 - Handles feature classes within file and personal GDB.
 - Internal VB.Net metadata preview capacity (no longer dependent on IE).
 - Updated ESRI ArcToolbox interfaceparameter configuration.
@@ -47,9 +47,9 @@ This resolves the issue of the tool hanging up on "Updating Digital Transfer Inf
 - Added a count check for certain node instances to avoid an 'Index out of Range' error in the VB code. This should resolve problems when loading the second GUI and using importcopy features within the form itself resulting from empty (repeating) nodes.
 
 ##### Metadata Wizard version 1.2.5 (Updated 06172014)
--Updated the VB.Net forms so that the ëAutoScaleModeí is set to ìDPIî and not ìFontî. This should resolve the issue of the form looking strange if a user has something other than the default magnification/size selected for their profile in 
+-Updated the VB.Net forms so that the ‚ÄòAutoScaleMode‚Äô is set to ‚ÄúDPI‚Äù and not ‚ÄúFont‚Äù. This should resolve the issue of the form looking strange if a user has something other than the default magnification/size selected for their profile in 
 Windows. 
--Included the updated ëstarter templateí .XML file with the toolbox bundle. This file properly labels the dummy content in 
+-Included the updated ‚Äòstarter template‚Äô .XML file with the toolbox bundle. This file properly labels the dummy content in 
 the "Originator" field.
 
 ##### Metadata Wizard version 1.3 (Updated 08012014)
