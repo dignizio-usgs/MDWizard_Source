@@ -132,6 +132,9 @@
   <data name="txtProcessStep1.HelpString" xml:space="preserve">
     <value>Every data set must have at least one processing step. An acceptable default value could be: "Development of the data set by the agency / individuals identified in the 'Originator' element in the Identification Info section of the record." A more detailed and complete lineage section for a GIS data set might have 4 processing steps: 1. Digitization of source inputs (describe). 2. Merging of secondary data set (describe). 3. Projection into final CRS (describe). 4. Quality assurance and Quality Control ('QAQC') process (describe).</value>
   </data>
+  <data name="txtSource1ScaleDenom.HelpString" xml:space="preserve">
+    <value>Provide the denominator of the source scale. For instance, most USGS topo maps are at the 1:24,000 scale. In another example, if the source data was digitized, at what scale did digitizers capture the features on screen?</value>
+  </data>
   <data name="txtSource1Abbreviation.HelpString" xml:space="preserve">
     <value>An abbreviation for the data source is required by the FGDC standard. This is just a short name that might be used to refer to the data set. For instance, "National Hydrography Dataset - Flowlines" could be abbreviated with "NHD Flow".</value>
   </data>
@@ -303,7 +306,7 @@ to populate (or provide the means to populate) all the necessary fields, some er
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>34</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

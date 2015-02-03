@@ -206,6 +206,8 @@ Partial Class frmMetadataEditor
         Me.Label80 = New System.Windows.Forms.Label()
         Me.Label81 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.GroupBox50 = New System.Windows.Forms.GroupBox()
+        Me.txtDescGeography = New System.Windows.Forms.TextBox()
         Me.Label91 = New System.Windows.Forms.Label()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.GroupBox34 = New System.Windows.Forms.GroupBox()
@@ -514,6 +516,7 @@ Partial Class frmMetadataEditor
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.labNoErrors = New System.Windows.Forms.Label()
         Me.Label171 = New System.Windows.Forms.Label()
         Me.Label172 = New System.Windows.Forms.Label()
         Me.txtMP_ErrorCount = New System.Windows.Forms.TextBox()
@@ -521,7 +524,6 @@ Partial Class frmMetadataEditor
         Me.Label87 = New System.Windows.Forms.Label()
         Me.MP_ErrorReport_Preview = New System.Windows.Forms.WebBrowser()
         Me.btnGenerateErrorReport = New System.Windows.Forms.Button()
-        Me.labNoErrors = New System.Windows.Forms.Label()
         Me.Panel4.SuspendLayout()
         Me.GroupBox10.SuspendLayout()
         Me.GroupBox54.SuspendLayout()
@@ -548,6 +550,7 @@ Partial Class frmMetadataEditor
         Me.GroupBox29.SuspendLayout()
         Me.GroupBox30.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        Me.GroupBox50.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox34.SuspendLayout()
         Me.GroupBox26.SuspendLayout()
@@ -1036,8 +1039,10 @@ Partial Class frmMetadataEditor
         '
         'txtSource1ScaleDenom
         '
+        Me.HelpProvider1.SetHelpString(Me.txtSource1ScaleDenom, resources.GetString("txtSource1ScaleDenom.HelpString"))
         Me.txtSource1ScaleDenom.Location = New System.Drawing.Point(390, 280)
         Me.txtSource1ScaleDenom.Name = "txtSource1ScaleDenom"
+        Me.HelpProvider1.SetShowHelp(Me.txtSource1ScaleDenom, True)
         Me.txtSource1ScaleDenom.Size = New System.Drawing.Size(100, 20)
         Me.txtSource1ScaleDenom.TabIndex = 154
         Me.txtSource1ScaleDenom.Tag = "metadata/dataqual/lineage/srcinfo/srcscale"
@@ -1387,7 +1392,7 @@ Partial Class frmMetadataEditor
         Me.HelpProvider1.SetShowHelp(Me.cboSource1DataType, True)
         Me.cboSource1DataType.Size = New System.Drawing.Size(184, 21)
         Me.cboSource1DataType.TabIndex = 135
-        Me.cboSource1DataType.Tag = "metadata/dataqual/lineage/srcinfo/typesrc"
+        Me.cboSource1DataType.Tag = "metadata/dataqual/lineage/srcinfo/srccite/citeinfo/geoform"
         '
         'txtSource1PubDate
         '
@@ -2532,6 +2537,7 @@ Partial Class frmMetadataEditor
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.AutoScroll = True
+        Me.Panel2.Controls.Add(Me.GroupBox50)
         Me.Panel2.Controls.Add(Me.Label91)
         Me.Panel2.Controls.Add(Me.PictureBox2)
         Me.Panel2.Controls.Add(Me.GroupBox34)
@@ -2545,6 +2551,26 @@ Partial Class frmMetadataEditor
         Me.Panel2.TabIndex = 0
         Me.ToolTip1.SetToolTip(Me.Panel2, "For more information about what should be entered in a given element, click into " & _
         "the element and press F1.")
+        '
+        'GroupBox50
+        '
+        Me.GroupBox50.Controls.Add(Me.txtDescGeography)
+        Me.GroupBox50.Location = New System.Drawing.Point(695, 392)
+        Me.GroupBox50.Name = "GroupBox50"
+        Me.GroupBox50.Size = New System.Drawing.Size(395, 61)
+        Me.GroupBox50.TabIndex = 99
+        Me.GroupBox50.TabStop = False
+        Me.GroupBox50.Text = "General Description of Geographic Extent (Required for BDP Records Only)"
+        '
+        'txtDescGeography
+        '
+        Me.txtDescGeography.Enabled = False
+        Me.txtDescGeography.Location = New System.Drawing.Point(8, 21)
+        Me.txtDescGeography.Multiline = True
+        Me.txtDescGeography.Name = "txtDescGeography"
+        Me.txtDescGeography.Size = New System.Drawing.Size(355, 36)
+        Me.txtDescGeography.TabIndex = 0
+        Me.txtDescGeography.Tag = "metadata/idinfo/spdom/descgeog"
         '
         'Label91
         '
@@ -6236,6 +6262,18 @@ Partial Class frmMetadataEditor
         Me.Panel3.Size = New System.Drawing.Size(1120, 570)
         Me.Panel3.TabIndex = 0
         '
+        'labNoErrors
+        '
+        Me.labNoErrors.AutoSize = True
+        Me.labNoErrors.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labNoErrors.ForeColor = System.Drawing.Color.DodgerBlue
+        Me.labNoErrors.Location = New System.Drawing.Point(399, 533)
+        Me.labNoErrors.Name = "labNoErrors"
+        Me.labNoErrors.Size = New System.Drawing.Size(319, 24)
+        Me.labNoErrors.TabIndex = 31
+        Me.labNoErrors.Text = "The metadata record is free of errors!"
+        Me.labNoErrors.Visible = False
+        '
         'Label171
         '
         Me.Label171.AutoSize = True
@@ -6306,18 +6344,6 @@ Partial Class frmMetadataEditor
         Me.btnGenerateErrorReport.Text = "Run Metadata Parser (MP)"
         Me.btnGenerateErrorReport.UseVisualStyleBackColor = False
         '
-        'labNoErrors
-        '
-        Me.labNoErrors.AutoSize = True
-        Me.labNoErrors.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labNoErrors.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.labNoErrors.Location = New System.Drawing.Point(399, 533)
-        Me.labNoErrors.Name = "labNoErrors"
-        Me.labNoErrors.Size = New System.Drawing.Size(319, 24)
-        Me.labNoErrors.TabIndex = 31
-        Me.labNoErrors.Text = "The metadata record is free of errors!"
-        Me.labNoErrors.Visible = False
-        '
         'frmMetadataEditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -6383,6 +6409,8 @@ Partial Class frmMetadataEditor
         Me.GroupBox30.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        Me.GroupBox50.ResumeLayout(False)
+        Me.GroupBox50.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox34.ResumeLayout(False)
         Me.GroupBox34.PerformLayout()
@@ -6966,5 +6994,7 @@ Partial Class frmMetadataEditor
     Friend WithEvents Label171 As System.Windows.Forms.Label
     Friend WithEvents Label172 As System.Windows.Forms.Label
     Friend WithEvents labNoErrors As System.Windows.Forms.Label
+    Friend WithEvents GroupBox50 As System.Windows.Forms.GroupBox
+    Friend WithEvents txtDescGeography As System.Windows.Forms.TextBox
 
 End Class

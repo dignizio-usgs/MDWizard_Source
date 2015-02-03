@@ -101,9 +101,7 @@
     <Compile Include="MD_Previewer.Designer.vb">
       <DependentUpon>MD_Previewer.vb</DependentUpon>
     </Compile>
-    <Compile Include="MD_Previewer.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="MD_Previewer.vb" />
     <Compile Include="MP_Report_Previewer.Designer.vb">
       <DependentUpon>MP_Report_Previewer.vb</DependentUpon>
     </Compile>

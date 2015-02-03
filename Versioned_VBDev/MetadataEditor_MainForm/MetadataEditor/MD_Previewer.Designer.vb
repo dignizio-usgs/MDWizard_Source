@@ -48,4 +48,18 @@ Partial Class MD_previewer
 
     End Sub
     Friend WithEvents WebBrowser_MetadataPreview As System.Windows.Forms.WebBrowser
+
+    Private Sub MD_previewer_FormClosing(sender As System.Object, e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+
+
+        Dim sOutFile As String
+        sOutFile = My.Application.CommandLineArgs(1)
+        Dim sXMLPreview As String
+        sXMLPreview = Split(sOutFile, ".xml")(0) + "_Preview.xml"
+
+        If System.IO.File.Exists(sXMLPreview) = True Then
+            System.IO.File.Delete(sXMLPreview)
+        End If
+
+    End Sub
 End Class

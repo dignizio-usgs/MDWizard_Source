@@ -11,7 +11,10 @@ Public Class frmMetadataEditor
 
     Public xmlMD As New XmlDocument
     Public xmlMDOutput As New XmlDocument
+    Public xmlMDOutputPreview As New XmlDocument
     Public xmlErrorReport As New XmlDocument
+
+    Dim previewForm As New MD_previewer
 
     Private sInFile As String
     Private sOutFile As String
@@ -798,6 +801,7 @@ Public Class frmMetadataEditor
     Private Sub rbDistributionMethod_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbOnlineDistribution.CheckedChanged, rbStockDistributionText.CheckedChanged, rbCustomDistribution.CheckedChanged
 
         If rbOnlineDistribution.Checked = True Then
+
             'In line 704, The 'Custom' option is checked for first, and the code for the radio button 'Custom' option will be run if "metadata/distinfo/custom" is present.
             'The check for this 'Online' scenario is run second, which will return the xmlMDOutput content back to its original state (from xmlMD)
             'for 'Format Name' and 'Fees'. The code that follows will do this. In this scenario any 'custom order' instructions from xmlMD will not 
@@ -805,8 +809,8 @@ Public Class frmMetadataEditor
             txtDSNetworkResource.Enabled = True
             txtDSCustomDistOrder.Enabled = False
             txtDSCustomDistOrder.Text = ""
-            If nodeExists(xmlMD, "metadata/citation/citeinfo/onlink") Then
-                Dim OnlineLinkage As String = getNodeText(xmlMD, "metadata/citation/citeinfo/onlink[1]")
+            If nodeExists(xmlMD, "metadata/idinfo/citation/citeinfo/onlink") Then
+                Dim OnlineLinkage As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/onlink[1]")
                 txtDSNetworkResource.Text = OnlineLinkage
             End If
             If nodeExists(xmlMD, "metadata/distinfo/stdorder/digform/digtinfo/formname") Then
@@ -817,6 +821,7 @@ Public Class frmMetadataEditor
                 Dim DSDistFees As String = getNodeText(xmlMD, "metadata/distinfo/stdorder/fees")
                 txtDSDistFees.ForeColor = Color.Black
                 txtDSDistFees.Text = DSDistFees
+                txtDSDistFees.Enabled = True
             End If
         End If
 
@@ -830,11 +835,16 @@ Public Class frmMetadataEditor
             Dim DSCustomDistOrder As String = getNodeText(xmlMD, "metadata/distinfo/custom")
             txtDSCustomDistOrder.Text = DSCustomDistOrder
             txtDSDistFees.Text = ""
-            '"Fees" are not an allowed element in FGDC if only the'Custom' order option is being written out. Set null -- will be pruned.
-            setNodeText(xmlMDOutput, "metadata/distinfo/stdorder/digform/digtinfo/formname", "")
-            'In the Metadata Wizard, the solitary "Format Name" (auto-populated upstream with Python) becomes problematic. Set null -- will be pruned. 
+            txtDSDistFees.Enabled = False
 
-            'The possible issue I can see arising from this approach is if a user submits a record with both 'custom' and 'online' info present.
+            '"Fees" are not an allowed element in FGDC if only the'Custom' order option is being written out. Set null -- will be pruned.
+            'In the Metadata Wizard, the solitary "Format Name" (auto-populated upstream with Python) becomes problematic. Set null -- will be pruned.
+            removeNode(xmlMDOutput, "metadata/distinfo/stdorder")
+
+            'Other items could be present... in the event a user switches to 'Custom Distribution' we need to remove these pieces to avoid MP errors.
+            'UPDATE 2/2/15: I will remove the whole 'stdorder' node to avoid issues.
+
+            'One issue that can possibly arise from this approach is if a user submits a record with both 'custom' and 'online' info present.
             'The order of the check is such that the GUI will be set to 'online' and all content preserved. If they don't need to make edits
             'to the 'Custom' instructions, everything will be fine. However, if they THEN change the GUI to the 'custom' option, the remaining
             'content in the 'Digital Transfer Option' will not fully be cleaned out, but "Fees" and "Format Name" will be removed which will leave
@@ -1246,6 +1256,18 @@ Public Class frmMetadataEditor
         Else
             cboMetaStandardVersion.Text = "FGDC-STD-001-1998"
         End If
+
+        'Added 1/29/15
+        If nodeExists(xmlMD, "metadata/idinfo/spdom/descgeog") Then
+            Dim DescGeography As String = getNodeText(xmlMD, "metadata/idinfo/spdom/descgeog")
+            txtDescGeography.Enabled = True
+            txtDescGeography.Text = DescGeography
+        ElseIf cboMetaStandardVersion.Text = "FGDC-STD-001.1-1999" Or cboMetaStandardVersion.Text Like "*1999*" Then
+            txtDescGeography.Enabled = True
+        ElseIf cboMetaStandardName.Text Like "*Biological*" Or cboMetaStandardName.Text Like "*BDP*" Then
+            txtDescGeography.Enabled = True
+        End If
+
     End Sub
 
     Private Sub loadTab4()
@@ -1897,20 +1919,33 @@ Public Class frmMetadataEditor
         Dim styleSheetReference As String = "href=" & Chr(34) & styleSheetPath & Chr(34) & " type=" & Chr(34) & "text/xsl" & Chr(34)
 
 
-        'Add Stylesheet to Ouput XML when previewing for first time.
+        Dim sXMLPreview As String
+        sXMLPreview = Split(sOutFile, ".xml")(0) + "_Preview.xml"
+        xmlMDOutputPreview.Load(sOutFile)
+
+        'Add Stylesheet to Output XML when previewing for first time.
         Dim newPI As XmlProcessingInstruction
+        newPI = xmlMDOutputPreview.CreateProcessingInstruction("xml-stylesheet", styleSheetReference)
+        xmlMDOutputPreview.InsertBefore(newPI, xmlMDOutputPreview.SelectSingleNode("metadata"))
+        xmlMDOutputPreview.Save(sXMLPreview)
 
-        If sPreviewCount = 0 Then
-            newPI = xmlMDOutput.CreateProcessingInstruction("xml-stylesheet", styleSheetReference)
-            xmlMDOutput.InsertBefore(newPI, xmlMDOutput.SelectSingleNode("metadata"))
-            sPreviewCount = sPreviewCount + 1
-        End If
+        'If sPreviewCount = 0 Then
+        '    newPI = xmlMDOutput.CreateProcessingInstruction("xml-stylesheet", styleSheetReference)
+        '    xmlMDOutput.InsertBefore(newPI, xmlMDOutput.SelectSingleNode("metadata"))
+        '    sPreviewCount = sPreviewCount + 1
+        'End If
+        'xmlMDOutput.Save(sOutFile) 'Save the file with a direct system save. The other 'Save()' routine calls MP and removes the stylesheet, which we don't want to do in this case.
 
-        xmlMDOutput.Save(sOutFile) 'Save the file with a direct system save. The other 'Save()' routine calls MP and removes the stylesheet, which we don't want to do in this case.
+        Try
+            previewForm.WebBrowser_MetadataPreview.Navigate(New Uri(sXMLPreview))
+            previewForm.Show()
+        Catch ex As Exception
+            'Updates were made to always have the record open in the same window when the 'Preview' button is pressed. This should handle things if a user closes that window.
+            Dim previewForm As New MD_previewer
+            previewForm.WebBrowser_MetadataPreview.Navigate(New Uri(sXMLPreview))
+            previewForm.Show()
+        End Try
 
-        Dim previewForm As New MD_previewer
-        previewForm.WebBrowser_MetadataPreview.Navigate(New Uri(sOutFile))
-        previewForm.Show()
 
     End Sub
 
@@ -2615,6 +2650,7 @@ Public Class frmMetadataEditor
             .Location = txtSource1Title.Location
             .Size = txtSource1Title.Size
             .Tag = txtSource1Title.Tag
+            Me.HelpProvider1.SetHelpString(txtSourceTitle, "Enter the source data's title.")
         End With
 
         txtSourcePublisher = New TextBox()
@@ -2623,6 +2659,7 @@ Public Class frmMetadataEditor
             .Location = txtSource1Publisher.Location
             .Size = txtSource1Publisher.Size
             .Tag = txtSource1Publisher.Tag
+            Me.HelpProvider1.SetHelpString(txtSourcePublisher, "Who published the data or made it available? This might be the same as the Author/Originator.")
         End With
 
         cboSourceDataType = New ComboBox()
@@ -2634,6 +2671,7 @@ Public Class frmMetadataEditor
             For Each dType As Object In cboSource1DataType.Items
                 .Items.Add(dType.ToString())
             Next dType
+            Me.HelpProvider1.SetHelpString(cboSourceDataType, "Choose the option that best describes the data.")
         End With
 
         txtSourcePubDate = New TextBox()
@@ -2642,6 +2680,7 @@ Public Class frmMetadataEditor
             .Location = txtSource1PubDate.Location
             .Size = txtSource1PubDate.Size
             .Tag = txtSource1PubDate.Tag
+            Me.HelpProvider1.SetHelpString(txtSourcePubDate, "Enter the date the data was published or made officially available. If the month and day are not known, simply enter the year (in the YYYY format).")
         End With
 
         txtSourceOriginator = New TextBox()
@@ -2650,6 +2689,7 @@ Public Class frmMetadataEditor
             .Location = txtSource1Originator.Location
             .Size = txtSource1Originator.Size
             .Tag = txtSource1Originator.Tag
+            Me.HelpProvider1.SetHelpString(txtSourceOriginator, "Enter the author or producer of the data.")
         End With
 
         txtSourcePubPlace = New TextBox()
@@ -2658,6 +2698,7 @@ Public Class frmMetadataEditor
             .Location = txtSource1PubPlace.Location
             .Size = txtSource1PubPlace.Size
             .Tag = txtSource1PubPlace.Tag
+            Me.HelpProvider1.SetHelpString(txtSourcePubPlace, "Where was the data published? This usually corresponds to the physical location of the agency that produced the data, or could be listed as 'Online' if the data is available on the internet.")
         End With
 
         dgvSourceOnlineLink = New DataGridView()
@@ -2673,6 +2714,7 @@ Public Class frmMetadataEditor
             .RowHeadersVisible = False
             .Columns.Add("OnlineLink", "URL(s) List individually on each line.")
             .Columns(0).Width = 220
+            Me.HelpProvider1.SetHelpString(dgvSourceOnlineLink, "List the URL(s) for the website or GIS service where the data set can be obtained.")
         End With
 
 
@@ -2692,6 +2734,7 @@ Public Class frmMetadataEditor
             .Location = txtSource1BeginDate.Location
             .Size = txtSource1BeginDate.Size
             .Tag = txtSource1BeginDate.Tag
+            Me.HelpProvider1.SetHelpString(txtSourceBeginDate, "Enter the earliest date of any information represented in the data. If the month and day are not known, simply enter the year (in the YYYY format).  If all the data represent information from a single point in time, enter the same value in both the 'Beginning Date' and 'End Date' fields.")
         End With
 
         With txtSourceEndDate
@@ -2699,6 +2742,7 @@ Public Class frmMetadataEditor
             .Location = txtSource1EndDate.Location
             .Size = txtSource1EndDate.Size
             .Tag = txtSource1EndDate.Tag
+            Me.HelpProvider1.SetHelpString(txtSourceEndDate, "Enter the most recent date of any information represented in the data. If the month and day are not known, simply enter the year (in the YYYY format). If all the data represent information from a single point in time, enter the same value in both the 'Beginning Date' and 'End Date' fields.")
         End With
 
         With cboSourceCurrentnessRef
@@ -2709,6 +2753,7 @@ Public Class frmMetadataEditor
             For Each cReference As Object In cboSource1CurrentnessRef.Items
                 .Items.Add(cReference.ToString())
             Next cReference
+            Me.HelpProvider1.SetHelpString(cboSourceCurrentnessRef, "Provide additional detail about the time period of the information in the source data set. How current is the source data set? ['Ground Condition': time period date(s) and the information in the data set reflect when a site was physically visited. This category may only be appropriate for certain data types.] ['Observed': time period date(s) and the information in the data set reflect conditions at a particular time of data capture. Physical presence not required; information may have been collected by an instrument or tool.] ['Publication': Additional information about how the data were captured is unavailable. Time period date(s) represent the publication date of the inputs used to produce the data set.]")
         End With
 
         With labSourceBeginDate
@@ -2785,6 +2830,7 @@ Public Class frmMetadataEditor
             .Tag = txtSource1Abbreviation.Tag
             .ForeColor = Color.SlateGray
             .Text = ("Source Input" & Str(tabCt))
+            Me.HelpProvider1.SetHelpString(txtSourceAbbreviation, "An abbreviation for the data source is required by the FGDC standard. This is just a short name that might be used to refer to the data set. For instance, 'National Hydrography Dataset - Flowlines' could be abbreviated with 'NHD Flow'.")
         End With
 
         txtSourceScaleDenom = New TextBox()
@@ -2793,6 +2839,7 @@ Public Class frmMetadataEditor
             .Location = txtSource1ScaleDenom.Location
             .Size = txtSource1ScaleDenom.Size
             .Tag = txtSource1ScaleDenom.Tag
+            Me.HelpProvider1.SetHelpString(txtSourceScaleDenom, "Provide the denominator of the source scale. For instance, most USGS topo maps are at the 1:24,000 scale. In another example, if the source data was digitized, at what scale did digitizers capture the features on screen?")
         End With
 
         txtSourceContribution = New TextBox()
@@ -2803,6 +2850,7 @@ Public Class frmMetadataEditor
             .Tag = txtSource1Contribution.Tag
             .ForeColor = Color.SlateGray
             .Text = "Source information used in support of the development of the data set."
+            Me.HelpProvider1.SetHelpString(txtSourceContribution, "What did the source data contribute to the final data set, or to the production process? This is usually just a simple description of what was gained by using the source data.")
         End With
 
         Label1 = New Label()
@@ -2999,7 +3047,8 @@ Public Class frmMetadataEditor
         txtSource1Publisher.Text = Source1Publisher
 
 
-        Dim Source1DataType As String = getNodeTextAtNodeInstance(node, "typesrc")
+        'Dim Source1DataType As String = getNodeTextAtNodeInstance(node, "typesrc")
+        Dim Source1DataType As String = getNodeTextAtNodeInstance(node, "srccite/citeinfo/geoform")
         cboSource1DataType.Text = Source1DataType
 
 
@@ -3077,7 +3126,8 @@ Public Class frmMetadataEditor
         txtSourcePublisher.Text = SourcePublisher
 
 
-        Dim SourceDataType As String = getNodeTextAtNodeInstance(node, "typesrc")
+        'Dim SourceDataType As String = getNodeTextAtNodeInstance(node, "typesrc")
+        Dim SourceDataType As String = getNodeTextAtNodeInstance(node, "srccite/citeinfo/geoform")
         cboSourceDataType.Text = SourceDataType
 
 
@@ -3111,7 +3161,7 @@ Public Class frmMetadataEditor
         If nodeInstanceExists(node, "srctime/timeinfo/rngdates") Then
             Dim SourceBeginDate As String = getNodeTextAtNodeInstance(node, "srctime/timeinfo/rngdates/begdate")
             txtSourceBeginDate.Text = SourceBeginDate
-            Dim SourceEndDate As String = getNodeTextAtNodeInstance(node, "srctime/timeinfo/rngdates/begdate")
+            Dim SourceEndDate As String = getNodeTextAtNodeInstance(node, "srctime/timeinfo/rngdates/enddate")
             txtSourceEndDate.Text = SourceEndDate
         End If
         If nodeInstanceExists(node, "srctime/timeinfo/mdattim") Then
@@ -3160,6 +3210,7 @@ Public Class frmMetadataEditor
             .Size = txtProcessStep1.Size
             .ScrollBars = ScrollBars.Vertical
             .Multiline = True
+            Me.HelpProvider1.SetHelpString(txtProcessStep, "Every data set must have at least one processing step. An acceptable default value could be: 'Development of the data set by the agency / individuals identified in the 'Originator' element in the Identification Info section of the record.' A more detailed and complete lineage section for a GIS data set might have 4 processing steps: 1. Digitization of source inputs (describe). 2. Merging of secondary data set (describe). 3. Projection into final CRS (describe). 4. Quality assurance and Quality Control ('QAQC') process (describe).")
         End With
 
         txtProcessDate = New TextBox()
@@ -3167,6 +3218,7 @@ Public Class frmMetadataEditor
             .Name = ("txtProcessDate" & CStr(tabCt))
             .Location = txtProcessDate1.Location
             .Size = txtProcessDate1.Size
+            Me.HelpProvider1.SetHelpString(txtProcessDate, "Enter the date of the processing step. If the month and day are not known, simply enter the year (in the YYYY format).")
         End With
 
         Label1 = New Label()
@@ -3677,5 +3729,60 @@ Public Class frmMetadataEditor
         Next
     End Sub
 
+    Private Sub changeMetadataStandardName(sender As System.Object, e As System.EventArgs) Handles cboMetaStandardName.SelectedIndexChanged
+
+        If cboMetaStandardName.Text = "FGDC Biological Data Profile of the Content Standard for Digital Geospatial Metadata" Then
+            txtDescGeography.Enabled = True
+            Try
+                If nodeExists(xmlMD, "metadata/idinfo/spdom/descgeog") Then
+                    Dim DescGeography As String = getNodeText(xmlMD, "metadata/idinfo/spdom/descgeog")
+                    txtDescGeography.Text = DescGeography
+                End If
+            Catch ex As Exception
+            End Try
+            cboMetaStandardVersion.Text = "FGDC-STD-001.1-1999"
+
+        ElseIf cboMetaStandardName.Text = "FGDC Content Standard for Digital Geospatial Metadata" Then
+            txtDescGeography.Enabled = False
+            txtDescGeography.Text = ""
+            cboMetaStandardVersion.Text = "FGDC-STD-001-1998"
+        End If
+    End Sub
+
+    Private Sub changeMetadataStandardVersion(sender As System.Object, e As System.EventArgs) Handles cboMetaStandardVersion.SelectedIndexChanged
+        If cboMetaStandardVersion.Text = "FGDC-STD-001.1-1999" Then
+            txtDescGeography.Enabled = True
+            Try
+                If nodeExists(xmlMD, "metadata/idinfo/spdom/descgeog") Then
+                    Dim DescGeography As String = getNodeText(xmlMD, "metadata/idinfo/spdom/descgeog")
+                    txtDescGeography.Text = DescGeography
+                End If
+            Catch ex As Exception
+            End Try
+            cboMetaStandardName.Text = "FGDC Biological Data Profile of the Content Standard for Digital Geospatial Metadata"
+
+        ElseIf cboMetaStandardVersion.Text = "FGDC-STD-001-1998" Then
+            txtDescGeography.Enabled = False
+            txtDescGeography.Text = ""
+            cboMetaStandardName.Text = "FGDC Content Standard for Digital Geospatial Metadata"
+        End If
+    End Sub
+
+    Private Sub frmMetadataEditor_FormClosed(sender As System.Object, e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
+
+        Dim sXMLPreview As String
+        sXMLPreview = Split(sOutFile, ".xml")(0) + "_Preview.xml"
+
+        If System.IO.File.Exists(sXMLPreview) = True Then
+            System.IO.File.Delete(sXMLPreview)
+        End If
+
+        If System.IO.File.Exists(s_MP_ErrorReportFile) = True Then
+            System.IO.File.Delete(s_MP_ErrorReportFile)
+        End If
+
+
+
+    End Sub
 End Class
 
