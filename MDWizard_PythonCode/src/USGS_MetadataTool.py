@@ -23,7 +23,6 @@ import os, sys, subprocess, time, datetime
 import arcpy
 from arcpy import env
 from arcpy.sa import *
-arcpy.CheckOutExtension("Spatial")
 import _winreg
 
 import ExportFGDC_MD_Utility
@@ -43,6 +42,7 @@ installDir = os.path.dirname(os.path.realpath(__file__))
 EAtool_V10 = os.path.join(installDir, "StandAloneEAEditor2_V10.exe")
 EAtool_V101 = os.path.join(installDir, "StandAloneEAEditor2_V101.exe")
 EAtool_V102 = os.path.join(installDir, "StandAloneEAEditor2_V102.exe")
+EAtool_V103 = os.path.join(installDir, "StandAloneEAEditor2_V103.exe")
 MetadataEditor = os.path.join(installDir, "MetadataEditor.exe")
 WGS84file = os.path.join(installDir, "WGS 1984.prj")
 
@@ -63,6 +63,9 @@ if not os.path.exists(EAtool_V101):
     sys.exit(1)
 if not os.path.exists(EAtool_V102):
     arcpy.AddWarning("\nThe Entity & Attribute Builder tool for Arc 10.2 could not be found. Tool should be here: (" + EAtool_V102 + ")")
+    sys.exit(1)
+if not os.path.exists(EAtool_V103):
+    arcpy.AddWarning("\nThe Entity & Attribute Builder tool for Arc 10.2 could not be found. Tool should be here: (" + EAtool_V103 + ")")
     sys.exit(1)
 if not os.path.exists(MetadataEditor):
     arcpy.AddWarning("\nThe Metadata Editor (Stand-Alone) tool could not be found. Tool should be here: (" + MetadataEditor + ")")
@@ -218,9 +221,10 @@ def ProcessRoutine(ArgVariables):
         if InputIsXML == False:
             EAtextfile = os.path.join(WorkingDir, "EAInfo.txt")
 
-            if ESRIVersion == "10.2": EAtool = EAtool_V102
+            if ESRIVersion == "10.0": EAtool = EAtool_V10
             elif ESRIVersion == "10.1": EAtool = EAtool_V101
-            elif ESRIVersion == "10.0": EAtool = EAtool_V10
+            elif ESRIVersion == "10.2": EAtool = EAtool_V102
+            elif ESRIVersion == "10.3": EAtool = EAtool_V103
             else: raise Exception("This version of ArcGIS (%s) is not supported." % ESRIVersion)
 
             Arg = '"%s" "%s" "%s"' % (EAtool, InputData, EAtextfile) #Start and end quotes are necessary to handle spaces in file names when passing to Command Prompt.
@@ -390,6 +394,8 @@ def GetESRIVersion_WriteNativeEnv(FGDCXML):
         ESRIVersion = "10.1"
     elif "ArcGIS 10.2" in NativeInfo:
         ESRIVersion = "10.2"
+    elif "ArcGIS 10.3" in NativeInfo:
+        ESRIVersion = "10.3"
 
     return ESRIVersion
 

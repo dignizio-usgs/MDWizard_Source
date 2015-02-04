@@ -16,7 +16,7 @@ import sys
 import codecs
 import shutil
 
-arcpy.OverwriteOutput = True
+arcpy.env.overwriteOutput = True
 
 '''
 This code requires 2 inputs: 
