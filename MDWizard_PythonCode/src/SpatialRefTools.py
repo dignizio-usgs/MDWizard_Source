@@ -140,6 +140,12 @@ def XML_SpatialReference(SR_List, myDataType):
     ### ----------------------------------------------------------------------------
     ### Create compound element for spatial reference
     Open_SpatialRef()
+    
+        ### ------------------------------------- Include this in addition to horizontal when applicable
+    # Vertical coordinate system
+    if Vertical_CS_Switch == "Present" or SR_List["VCSname"] != "[Unknown]":
+        Vertical_CS(SR_List)
+    
     Open_Horizontal()
 
     ### ------------------------------------- Horizontal Coordinate System
@@ -151,13 +157,10 @@ def XML_SpatialReference(SR_List, myDataType):
         # Add geodetic Model now; this is used if using an ellipsoid or spheroid
         Geodetic(SR_List)
 
-    ### ------------------------------------- Include this in addition to horizontal when applicable
-    # Vertical coordinate system
-    if Vertical_CS_Switch == "Present" or SR_List["VCSname"] != "[Unknown]":
-        Vertical_CS(SR_List)
+
 
     # Projected map projection and Grid map projection
-    elif SR_List["PCSname"] != "[Unknown]":
+    if SR_List["PCSname"] != "[Unknown]":
         if SR_List["UTM_Zone"] == "[Unknown]" and SR_List["SPCS_Zone"] == "[Unknown]" and \
                 SR_List["UPS_Zone"] == "[Unknown]" and SR_List["Arc_Zone"] == "[Unknown]":
             
@@ -1542,16 +1545,16 @@ def Vertical_CS(SR_List):
 
     FileOutW = open(OutXML_Tmp, 'a')
 
-    FileOutW.write(ElemTab_2 + "<vertdef>")
-    FileOutW.write(ElemTab_3 + "<altsys>")
+    FileOutW.write(ElemTab_1 + "<vertdef>")
+    FileOutW.write(ElemTab_2 + "<altsys>")
 
-    FileOutW.write(ElemTab_4 + "<altdatum>" + SR_List["VCSdatum"] + "</altdatum>")
-    FileOutW.write(ElemTab_4 + "<altres>" + SR_List["VCS_res"] + "</altres>")
-    FileOutW.write(ElemTab_4 + "<altunits>" + SR_List["VCS_Units"] + "</altunits>")
-    FileOutW.write(ElemTab_4 + "<altenc>Explicit elevation coordinate included with horizontal coordinates</altenc>")
+    FileOutW.write(ElemTab_3 + "<altdatum>" + SR_List["VCSdatum"] + "</altdatum>")
+    FileOutW.write(ElemTab_3 + "<altres>" + SR_List["VCS_res"] + "</altres>")
+    FileOutW.write(ElemTab_3 + "<altunits>" + SR_List["VCS_Units"] + "</altunits>")
+    FileOutW.write(ElemTab_3 + "<altenc>Explicit elevation coordinate included with horizontal coordinates</altenc>")
 
-    FileOutW.write(ElemTab_3 + "</altsys>")
-    FileOutW.write(ElemTab_2 + "</vertdef>")
+    FileOutW.write(ElemTab_2 + "</altsys>")
+    FileOutW.write(ElemTab_1 + "</vertdef>")
 
     FileOutW.close()
     del FileOutW
