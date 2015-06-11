@@ -84,3 +84,6 @@ the "Originator" field.
 - Main Editor GUI will now pull values and write values from the 'metadata/dataqual/lineage/srccite/citeinfo/geoform' element for the 'Type of Data' field in the Source Input tab. Thanks to D. Hockman-Wert for identifying this issue.
 - Updated the handling of the metadata preview. MP will now be run to prune off and avoid showing empty nodes. Stylesheet will still be applied for clean viewing.
 - Updated the handling of the metadata preview. Upon subsequent user clicks of the 'Preview Metadata' button, the same pop-up window will be used, rather than spawning a new window each time.
+
+##### Metadata Wizard version 1.6 (Updated 06112015)
+- Bug fix to resolve an issue with the E/A Builder GUI crashing on raster datasets residing within an ArcGIS file geodatabase. Thanks to C. Jarchow for identifying this issue.
