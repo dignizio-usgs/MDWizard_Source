@@ -5,7 +5,7 @@ Metadata Wizard
 - Updated help tips and default values.
 - Ability to load from a template XML file.
 - Auto import contact now works for all USGS personnel.
-- Updated ESRI ArcToolbox interfaceparameter configuration.
+- Updated ESRI ArcToolbox interface parameter configuration.
 - Updated Python routine to calculate Longitudinal and Latitudinal resolution.
 - Updated default values for EntityAttribute overview.
 - Dedicated link in ScienceBase where the tool can be downloaded.
@@ -14,12 +14,12 @@ Metadata Wizard
 - Handle null values and empty fields in input data sets.
 - Handles feature classes within file and personal GDB.
 - Internal VB.Net metadata preview capacity (no longer dependent on IE).
-- Updated ESRI ArcToolbox interfaceparameter configuration.
+- Updated ESRI ArcToolbox interface parameter configuration.
 - Users can specify any metadata template of their choice.
-- Updated toolbox documentationtool input validation.
+- Updated toolbox documentation and tool input validation.
  
 ##### Metadata Wizard version 1.1 (Updated 01272014)
-- Key element check implemented. Wizard now checks forensures the presence of the following ['idinfo', 'dataqual', 'spdoinfo', 'spref', 'eainfo', 'distinfo', 'metainfo'].
+- Key element check implemented. Wizard now checks for and ensures the presence of the following ['idinfo', 'dataqual', 'spdoinfo', 'spref', 'eainfo', 'distinfo', 'metainfo'].
 This resolves the issue of the tool hanging up on "Updating Digital Transfer Info - Format Name" (and other instances resulting from missing nodes).
 - Microsoft Excel file provided as input will prompt user to export to .dbf.
 - Handling of State Plane coordinate systems has been updated.

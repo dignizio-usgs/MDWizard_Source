@@ -65,3 +65,12 @@ N:\Metadata\MetadataWizard\MDWizard_New\Versioned_VBDev\EABuilder_v102\StandAlon
 N:\Metadata\MetadataWizard\MDWizard_New\Versioned_VBDev\EABuilder_v102\StandAloneEAEditor2\obj\x86\Debug\StandAloneEAEditor.frmGenEA.resources
 N:\Metadata\MetadataWizard\MDWizard_New\Versioned_VBDev\EABuilder_v102\StandAloneEAEditor2\obj\x86\Debug\StandAloneEAEditor.Resources.resources
 N:\Metadata\MetadataWizard\MDWizard_New\Versioned_VBDev\EABuilder_v102\StandAloneEAEditor2\obj\x86\Debug\StandAloneEAEditor2.vbproj.GenerateResource.Cache
+H:\GitHub\MDWizard_Source\Versioned_VBDev\EABuilder_v102\StandAloneEAEditor2\obj\x86\Debug\StandAloneEAEditor2.exe
+H:\GitHub\MDWizard_Source\Versioned_VBDev\EABuilder_v102\StandAloneEAEditor2\obj\x86\Debug\StandAloneEAEditor2.xml
+H:\GitHub\MDWizard_Source\Versioned_VBDev\EABuilder_v102\StandAloneEAEditor2\obj\x86\Debug\StandAloneEAEditor2.pdb
+H:\GitHub\MDWizard_Source\Versioned_VBDev\EABuilder_v102\StandAloneEAEditor2\bin\Debug\StandAloneEAEditor2.exe
+H:\GitHub\MDWizard_Source\Versioned_VBDev\EABuilder_v102\StandAloneEAEditor2\bin\Debug\StandAloneEAEditor2.pdb
+H:\GitHub\MDWizard_Source\Versioned_VBDev\EABuilder_v102\StandAloneEAEditor2\bin\Debug\StandAloneEAEditor2.xml
+H:\GitHub\MDWizard_Source\Versioned_VBDev\EABuilder_v102\StandAloneEAEditor2\obj\x86\Debug\StandAloneEAEditor.frmGenEA.resources
+H:\GitHub\MDWizard_Source\Versioned_VBDev\EABuilder_v102\StandAloneEAEditor2\obj\x86\Debug\StandAloneEAEditor.Resources.resources
+H:\GitHub\MDWizard_Source\Versioned_VBDev\EABuilder_v102\StandAloneEAEditor2\obj\x86\Debug\StandAloneEAEditor2.vbproj.GenerateResource.Cache

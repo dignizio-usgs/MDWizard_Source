@@ -1576,7 +1576,13 @@ ErrorHandler:  'error handling routine
         objWriter.Write(outEAInfo)
         objWriter.Close()
 
-        pMD.Metadata = pXML
+        Try
+            pMD.Metadata = pXML
+        Catch ex As Exception
+            'DI Update 6/9/15. Not doing anything for the exception but the tool was bombing here on Raster datasets in a File GDB, which this should catch.
+            'Re-defining pMD.Metdata = pXML should not be necessary since we only load the form the first time. No updates are 
+            'being made to the actual dataset, we're simply saving the form's contents out to a .txt file for use by the Metadata Wizard.
+        End Try
 
     End Sub
 
