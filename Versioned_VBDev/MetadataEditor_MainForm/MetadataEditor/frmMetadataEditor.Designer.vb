@@ -38,12 +38,6 @@ Partial Class frmMetadataEditor
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnPreviewMetadata = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel4 = New System.Windows.Forms.Panel()
@@ -429,39 +423,48 @@ Partial Class frmMetadataEditor
         Me.txtDSUseCon = New System.Windows.Forms.TextBox()
         Me.GroupBox9 = New System.Windows.Forms.GroupBox()
         Me.GroupBox43 = New System.Windows.Forms.GroupBox()
-        Me.tabCtrlDSTopicKeywords = New System.Windows.Forms.TabControl()
-        Me.tabTopicKeywords1 = New System.Windows.Forms.TabPage()
-        Me.labTopicKeyTip1 = New System.Windows.Forms.Label()
-        Me.labTopicKeywordReq1 = New System.Windows.Forms.Label()
-        Me.dgvTopicKeywords1 = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.labTopicKeywordReq2 = New System.Windows.Forms.Label()
-        Me.labTopicKeyThesaurus1 = New System.Windows.Forms.Label()
-        Me.txtTopicKeyThesaurus1 = New System.Windows.Forms.TextBox()
-        Me.labListTopicKeywords1 = New System.Windows.Forms.Label()
-        Me.btnDeleteTopicKeywordSet = New System.Windows.Forms.Button()
+        Me.btnTopicBrowseISO = New System.Windows.Forms.Button()
+        Me.GroupBox51 = New System.Windows.Forms.GroupBox()
+        Me.btnTopicAddCustomKeyword = New System.Windows.Forms.Button()
+        Me.txtTopicCustomThesaurus = New System.Windows.Forms.TextBox()
+        Me.labTopicCustomThesaurus = New System.Windows.Forms.Label()
+        Me.txtTopicCustomKeyword = New System.Windows.Forms.TextBox()
+        Me.labTopicCustomKeyword = New System.Windows.Forms.Label()
+        Me.labTopicISORecommended = New System.Windows.Forms.Label()
+        Me.labTopicKeywordDetail = New System.Windows.Forms.Label()
+        Me.trvTopicMetadataKeywords = New System.Windows.Forms.TreeView()
+        Me.trvTopicSearchResults = New System.Windows.Forms.TreeView()
+        Me.txtTopicKeywordDetail = New System.Windows.Forms.RichTextBox()
+        Me.btnTopicKeywordDelete = New System.Windows.Forms.Button()
+        Me.btnTopicKeywordAdd = New System.Windows.Forms.Button()
+        Me.btnTopicSearch = New System.Windows.Forms.Button()
+        Me.labTopicSearchTerm = New System.Windows.Forms.Label()
+        Me.txtTopicSearchTerm = New System.Windows.Forms.TextBox()
+        Me.labTopicMetadataKeywords = New System.Windows.Forms.Label()
+        Me.labTopicSearchResults = New System.Windows.Forms.Label()
         Me.Label187 = New System.Windows.Forms.Label()
         Me.Label77 = New System.Windows.Forms.Label()
-        Me.btnAddTopicKeywordSet = New System.Windows.Forms.Button()
         Me.GroupBox42 = New System.Windows.Forms.GroupBox()
+        Me.trvPlaceMetadataKeywords = New System.Windows.Forms.TreeView()
+        Me.trvPlaceSearchResults = New System.Windows.Forms.TreeView()
+        Me.btnPlaceKeywordDelete = New System.Windows.Forms.Button()
+        Me.btnPlaceKeywordAdd = New System.Windows.Forms.Button()
+        Me.labPlaceMetadataKeywords = New System.Windows.Forms.Label()
+        Me.labPlaceSearchResults = New System.Windows.Forms.Label()
+        Me.GroupBox52 = New System.Windows.Forms.GroupBox()
+        Me.btnPlaceAddCustomKeyword = New System.Windows.Forms.Button()
+        Me.txtPlaceCustomThesaurus = New System.Windows.Forms.TextBox()
+        Me.labPlaceCustomThesaurus = New System.Windows.Forms.Label()
+        Me.txtPlaceCustomKeyword = New System.Windows.Forms.TextBox()
+        Me.labPlaceCustomKeyword = New System.Windows.Forms.Label()
+        Me.txtPlaceKeywordDetail = New System.Windows.Forms.RichTextBox()
+        Me.labPlaceKeywordDetail = New System.Windows.Forms.Label()
+        Me.btnPlaceSearch = New System.Windows.Forms.Button()
+        Me.labPlaceSearchTerm = New System.Windows.Forms.Label()
+        Me.txtPlaceSearchTerm = New System.Windows.Forms.TextBox()
         Me.rbPlaceKeywordsYes = New System.Windows.Forms.RadioButton()
-        Me.tabCtrlDSPlaceKeywords = New System.Windows.Forms.TabControl()
-        Me.tabPlaceKeywords1 = New System.Windows.Forms.TabPage()
-        Me.labPlaceKeyTip1 = New System.Windows.Forms.Label()
-        Me.labPlaceKeywordReq1 = New System.Windows.Forms.Label()
-        Me.dgvPlaceKeywords1 = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.labPlaceKeywordReq2 = New System.Windows.Forms.Label()
-        Me.gbxPlaceKeyReqNote1 = New System.Windows.Forms.GroupBox()
-        Me.labPlaceKeyReqNote1 = New System.Windows.Forms.Label()
-        Me.labPlaceKeyReqNote2 = New System.Windows.Forms.Label()
-        Me.labPlaceKeyThesaurus1 = New System.Windows.Forms.Label()
-        Me.txtPlaceKeyThesaurus1 = New System.Windows.Forms.TextBox()
-        Me.labListPlaceKeywords1 = New System.Windows.Forms.Label()
         Me.rbPlaceKeywordsNo = New System.Windows.Forms.RadioButton()
-        Me.btnDeletePlaceKeywordSet = New System.Windows.Forms.Button()
         Me.Label174 = New System.Windows.Forms.Label()
-        Me.btnAddPlaceKeywordSet = New System.Windows.Forms.Button()
         Me.Label288 = New System.Windows.Forms.Label()
         Me.Label72 = New System.Windows.Forms.Label()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
@@ -589,14 +592,9 @@ Partial Class frmMetadataEditor
         Me.GroupBox12.SuspendLayout()
         Me.GroupBox9.SuspendLayout()
         Me.GroupBox43.SuspendLayout()
-        Me.tabCtrlDSTopicKeywords.SuspendLayout()
-        Me.tabTopicKeywords1.SuspendLayout()
-        CType(Me.dgvTopicKeywords1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox51.SuspendLayout()
         Me.GroupBox42.SuspendLayout()
-        Me.tabCtrlDSPlaceKeywords.SuspendLayout()
-        Me.tabPlaceKeywords1.SuspendLayout()
-        CType(Me.dgvPlaceKeywords1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gbxPlaceKeyReqNote1.SuspendLayout()
+        Me.GroupBox52.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
@@ -3327,7 +3325,7 @@ Partial Class frmMetadataEditor
         Me.GroupBox23.Controls.Add(Me.Label68)
         Me.GroupBox23.Controls.Add(Me.txtDSCredit)
         Me.GroupBox23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox23.Location = New System.Drawing.Point(542, 1421)
+        Me.GroupBox23.Location = New System.Drawing.Point(551, 1635)
         Me.GroupBox23.Name = "GroupBox23"
         Me.GroupBox23.Size = New System.Drawing.Size(550, 96)
         Me.GroupBox23.TabIndex = 92
@@ -3961,7 +3959,7 @@ Partial Class frmMetadataEditor
         Me.GroupBox32.Controls.Add(Me.txtDSSuppInfo)
         Me.GroupBox32.Controls.Add(Me.Label125)
         Me.GroupBox32.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox32.Location = New System.Drawing.Point(542, 1523)
+        Me.GroupBox32.Location = New System.Drawing.Point(551, 1729)
         Me.GroupBox32.Name = "GroupBox32"
         Me.GroupBox32.Size = New System.Drawing.Size(550, 235)
         Me.GroupBox32.TabIndex = 90
@@ -5102,7 +5100,7 @@ Partial Class frmMetadataEditor
         Me.GroupBox13.Controls.Add(Me.txtDSAccessCon)
         Me.GroupBox13.Controls.Add(Me.Label89)
         Me.GroupBox13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox13.Location = New System.Drawing.Point(3, 1421)
+        Me.GroupBox13.Location = New System.Drawing.Point(3, 1635)
         Me.GroupBox13.Name = "GroupBox13"
         Me.GroupBox13.Size = New System.Drawing.Size(530, 159)
         Me.GroupBox13.TabIndex = 71
@@ -5161,7 +5159,7 @@ Partial Class frmMetadataEditor
         Me.GroupBox12.Controls.Add(Me.Label90)
         Me.GroupBox12.Controls.Add(Me.txtDSUseCon)
         Me.GroupBox12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox12.Location = New System.Drawing.Point(3, 1599)
+        Me.GroupBox12.Location = New System.Drawing.Point(3, 1804)
         Me.GroupBox12.Name = "GroupBox12"
         Me.GroupBox12.Size = New System.Drawing.Size(530, 159)
         Me.GroupBox12.TabIndex = 70
@@ -5223,179 +5221,223 @@ Partial Class frmMetadataEditor
         Me.GroupBox9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox9.Location = New System.Drawing.Point(3, 1098)
         Me.GroupBox9.Name = "GroupBox9"
-        Me.GroupBox9.Size = New System.Drawing.Size(1088, 317)
+        Me.GroupBox9.Size = New System.Drawing.Size(1098, 531)
         Me.GroupBox9.TabIndex = 65
         Me.GroupBox9.TabStop = False
         '
         'GroupBox43
         '
-        Me.GroupBox43.Controls.Add(Me.tabCtrlDSTopicKeywords)
-        Me.GroupBox43.Controls.Add(Me.btnDeleteTopicKeywordSet)
+        Me.GroupBox43.Controls.Add(Me.btnTopicBrowseISO)
+        Me.GroupBox43.Controls.Add(Me.GroupBox51)
+        Me.GroupBox43.Controls.Add(Me.labTopicISORecommended)
+        Me.GroupBox43.Controls.Add(Me.labTopicKeywordDetail)
+        Me.GroupBox43.Controls.Add(Me.trvTopicMetadataKeywords)
+        Me.GroupBox43.Controls.Add(Me.trvTopicSearchResults)
+        Me.GroupBox43.Controls.Add(Me.txtTopicKeywordDetail)
+        Me.GroupBox43.Controls.Add(Me.btnTopicKeywordDelete)
+        Me.GroupBox43.Controls.Add(Me.btnTopicKeywordAdd)
+        Me.GroupBox43.Controls.Add(Me.btnTopicSearch)
+        Me.GroupBox43.Controls.Add(Me.labTopicSearchTerm)
+        Me.GroupBox43.Controls.Add(Me.txtTopicSearchTerm)
+        Me.GroupBox43.Controls.Add(Me.labTopicMetadataKeywords)
+        Me.GroupBox43.Controls.Add(Me.labTopicSearchResults)
         Me.GroupBox43.Controls.Add(Me.Label187)
         Me.GroupBox43.Controls.Add(Me.Label77)
-        Me.GroupBox43.Controls.Add(Me.btnAddTopicKeywordSet)
-        Me.GroupBox43.Location = New System.Drawing.Point(10, 52)
+        Me.GroupBox43.Location = New System.Drawing.Point(6, 52)
         Me.GroupBox43.Name = "GroupBox43"
-        Me.GroupBox43.Size = New System.Drawing.Size(500, 255)
+        Me.GroupBox43.Size = New System.Drawing.Size(524, 473)
         Me.GroupBox43.TabIndex = 90
         Me.GroupBox43.TabStop = False
         '
-        'tabCtrlDSTopicKeywords
+        'btnTopicBrowseISO
         '
-        Me.tabCtrlDSTopicKeywords.Controls.Add(Me.tabTopicKeywords1)
-        Me.tabCtrlDSTopicKeywords.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tabCtrlDSTopicKeywords.Location = New System.Drawing.Point(15, 42)
-        Me.tabCtrlDSTopicKeywords.Name = "tabCtrlDSTopicKeywords"
-        Me.tabCtrlDSTopicKeywords.SelectedIndex = 0
-        Me.tabCtrlDSTopicKeywords.Size = New System.Drawing.Size(470, 172)
-        Me.tabCtrlDSTopicKeywords.TabIndex = 84
+        Me.btnTopicBrowseISO.Location = New System.Drawing.Point(409, 94)
+        Me.btnTopicBrowseISO.Name = "btnTopicBrowseISO"
+        Me.btnTopicBrowseISO.Size = New System.Drawing.Size(109, 23)
+        Me.btnTopicBrowseISO.TabIndex = 175
+        Me.btnTopicBrowseISO.Text = "Browse ISO 19115"
+        Me.btnTopicBrowseISO.UseVisualStyleBackColor = True
         '
-        'tabTopicKeywords1
+        'GroupBox51
         '
-        Me.tabTopicKeywords1.BackColor = System.Drawing.SystemColors.Control
-        Me.tabTopicKeywords1.Controls.Add(Me.labTopicKeyTip1)
-        Me.tabTopicKeywords1.Controls.Add(Me.labTopicKeywordReq1)
-        Me.tabTopicKeywords1.Controls.Add(Me.dgvTopicKeywords1)
-        Me.tabTopicKeywords1.Controls.Add(Me.labTopicKeywordReq2)
-        Me.tabTopicKeywords1.Controls.Add(Me.labTopicKeyThesaurus1)
-        Me.tabTopicKeywords1.Controls.Add(Me.txtTopicKeyThesaurus1)
-        Me.tabTopicKeywords1.Controls.Add(Me.labListTopicKeywords1)
-        Me.tabTopicKeywords1.Location = New System.Drawing.Point(4, 22)
-        Me.tabTopicKeywords1.Name = "tabTopicKeywords1"
-        Me.tabTopicKeywords1.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabTopicKeywords1.Size = New System.Drawing.Size(462, 146)
-        Me.tabTopicKeywords1.TabIndex = 0
-        Me.tabTopicKeywords1.Text = "Theme Keywords"
+        Me.GroupBox51.Controls.Add(Me.btnTopicAddCustomKeyword)
+        Me.GroupBox51.Controls.Add(Me.txtTopicCustomThesaurus)
+        Me.GroupBox51.Controls.Add(Me.labTopicCustomThesaurus)
+        Me.GroupBox51.Controls.Add(Me.txtTopicCustomKeyword)
+        Me.GroupBox51.Controls.Add(Me.labTopicCustomKeyword)
+        Me.GroupBox51.Location = New System.Drawing.Point(6, 406)
+        Me.GroupBox51.Name = "GroupBox51"
+        Me.GroupBox51.Size = New System.Drawing.Size(512, 61)
+        Me.GroupBox51.TabIndex = 174
+        Me.GroupBox51.TabStop = False
         '
-        'labTopicKeyTip1
+        'btnTopicAddCustomKeyword
         '
-        Me.labTopicKeyTip1.AutoSize = True
-        Me.labTopicKeyTip1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labTopicKeyTip1.Location = New System.Drawing.Point(248, 25)
-        Me.labTopicKeyTip1.Name = "labTopicKeyTip1"
-        Me.labTopicKeyTip1.Size = New System.Drawing.Size(206, 39)
-        Me.labTopicKeyTip1.TabIndex = 149
-        Me.labTopicKeyTip1.Text = "Unsure if the keywords have a thesaurus?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Simply enter them all on one tab " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and " & _
-    "leave ""None"" in the box below."
+        Me.btnTopicAddCustomKeyword.Location = New System.Drawing.Point(391, 30)
+        Me.btnTopicAddCustomKeyword.Name = "btnTopicAddCustomKeyword"
+        Me.btnTopicAddCustomKeyword.Size = New System.Drawing.Size(115, 23)
+        Me.btnTopicAddCustomKeyword.TabIndex = 170
+        Me.btnTopicAddCustomKeyword.Text = "Add Custom Term"
+        Me.btnTopicAddCustomKeyword.UseVisualStyleBackColor = True
         '
-        'labTopicKeywordReq1
+        'txtTopicCustomThesaurus
         '
-        Me.labTopicKeywordReq1.AutoSize = True
-        Me.labTopicKeywordReq1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labTopicKeywordReq1.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.labTopicKeywordReq1.Location = New System.Drawing.Point(188, 25)
-        Me.labTopicKeywordReq1.Name = "labTopicKeywordReq1"
-        Me.labTopicKeywordReq1.Size = New System.Drawing.Size(17, 24)
-        Me.labTopicKeywordReq1.TabIndex = 124
-        Me.labTopicKeywordReq1.Text = "*"
+        Me.txtTopicCustomThesaurus.Location = New System.Drawing.Point(219, 32)
+        Me.txtTopicCustomThesaurus.Name = "txtTopicCustomThesaurus"
+        Me.txtTopicCustomThesaurus.Size = New System.Drawing.Size(166, 20)
+        Me.txtTopicCustomThesaurus.TabIndex = 169
+        Me.txtTopicCustomThesaurus.Text = "None"
         '
-        'dgvTopicKeywords1
+        'labTopicCustomThesaurus
         '
-        Me.dgvTopicKeywords1.BackgroundColor = System.Drawing.SystemColors.Control
-        Me.dgvTopicKeywords1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvTopicKeywords1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
-        Me.dgvTopicKeywords1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvTopicKeywords1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1})
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvTopicKeywords1.DefaultCellStyle = DataGridViewCellStyle16
-        Me.dgvTopicKeywords1.GridColor = System.Drawing.SystemColors.Control
-        Me.HelpProvider1.SetHelpString(Me.dgvTopicKeywords1, "List topical or thematic keywords associated with your data set.")
-        Me.dgvTopicKeywords1.Location = New System.Drawing.Point(6, 25)
-        Me.dgvTopicKeywords1.Name = "dgvTopicKeywords1"
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvTopicKeywords1.RowHeadersDefaultCellStyle = DataGridViewCellStyle17
-        Me.dgvTopicKeywords1.RowHeadersVisible = False
-        Me.HelpProvider1.SetShowHelp(Me.dgvTopicKeywords1, True)
-        Me.dgvTopicKeywords1.Size = New System.Drawing.Size(234, 73)
-        Me.dgvTopicKeywords1.TabIndex = 148
-        Me.dgvTopicKeywords1.Tag = "metadata\idinfo\kewords\theme[|index|]\themekey"
+        Me.labTopicCustomThesaurus.AutoSize = True
+        Me.labTopicCustomThesaurus.Location = New System.Drawing.Point(217, 16)
+        Me.labTopicCustomThesaurus.Name = "labTopicCustomThesaurus"
+        Me.labTopicCustomThesaurus.Size = New System.Drawing.Size(142, 13)
+        Me.labTopicCustomThesaurus.TabIndex = 172
+        Me.labTopicCustomThesaurus.Text = "Custom Keyword Thesaurus:"
         '
-        'DataGridViewTextBoxColumn1
+        'txtTopicCustomKeyword
         '
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Enter one keyword per line."
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.Width = 175
+        Me.txtTopicCustomKeyword.Location = New System.Drawing.Point(6, 32)
+        Me.txtTopicCustomKeyword.Name = "txtTopicCustomKeyword"
+        Me.txtTopicCustomKeyword.Size = New System.Drawing.Size(207, 20)
+        Me.txtTopicCustomKeyword.TabIndex = 168
         '
-        'labTopicKeywordReq2
+        'labTopicCustomKeyword
         '
-        Me.labTopicKeywordReq2.AutoSize = True
-        Me.labTopicKeywordReq2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labTopicKeywordReq2.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.labTopicKeywordReq2.Location = New System.Drawing.Point(184, 115)
-        Me.labTopicKeywordReq2.Name = "labTopicKeywordReq2"
-        Me.labTopicKeywordReq2.Size = New System.Drawing.Size(17, 24)
-        Me.labTopicKeywordReq2.TabIndex = 123
-        Me.labTopicKeywordReq2.Text = "*"
+        Me.labTopicCustomKeyword.AutoSize = True
+        Me.labTopicCustomKeyword.Location = New System.Drawing.Point(6, 16)
+        Me.labTopicCustomKeyword.Name = "labTopicCustomKeyword"
+        Me.labTopicCustomKeyword.Size = New System.Drawing.Size(120, 13)
+        Me.labTopicCustomKeyword.TabIndex = 171
+        Me.labTopicCustomKeyword.Text = "Custom Keyword Name:"
         '
-        'labTopicKeyThesaurus1
+        'labTopicISORecommended
         '
-        Me.labTopicKeyThesaurus1.AutoSize = True
-        Me.labTopicKeyThesaurus1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labTopicKeyThesaurus1.Location = New System.Drawing.Point(3, 101)
-        Me.labTopicKeyThesaurus1.Name = "labTopicKeyThesaurus1"
-        Me.labTopicKeyThesaurus1.Size = New System.Drawing.Size(101, 13)
-        Me.labTopicKeyThesaurus1.TabIndex = 122
-        Me.labTopicKeyThesaurus1.Text = "Keyword Thesaurus"
+        Me.labTopicISORecommended.AutoSize = True
+        Me.labTopicISORecommended.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labTopicISORecommended.Location = New System.Drawing.Point(183, 91)
+        Me.labTopicISORecommended.Name = "labTopicISORecommended"
+        Me.labTopicISORecommended.Size = New System.Drawing.Size(220, 26)
+        Me.labTopicISORecommended.TabIndex = 173
+        Me.labTopicISORecommended.Text = "We recommend that you include at least one" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "keyword from the ISO 19115 Topic Cate" & _
+    "gory."
+        Me.labTopicISORecommended.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'txtTopicKeyThesaurus1
+        'labTopicKeywordDetail
         '
-        Me.txtTopicKeyThesaurus1.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.HelpProvider1.SetHelpString(Me.txtTopicKeyThesaurus1, "If a particular keyword thesaurus is being used, enter it here. Otherwise, leave " & _
+        Me.labTopicKeywordDetail.AutoSize = True
+        Me.labTopicKeywordDetail.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labTopicKeywordDetail.Location = New System.Drawing.Point(3, 302)
+        Me.labTopicKeywordDetail.Name = "labTopicKeywordDetail"
+        Me.labTopicKeywordDetail.Size = New System.Drawing.Size(124, 13)
+        Me.labTopicKeywordDetail.TabIndex = 167
+        Me.labTopicKeywordDetail.Text = "Thesaurus/Term Details:"
+        '
+        'trvTopicMetadataKeywords
+        '
+        Me.trvTopicMetadataKeywords.HideSelection = False
+        Me.trvTopicMetadataKeywords.Location = New System.Drawing.Point(303, 144)
+        Me.trvTopicMetadataKeywords.Name = "trvTopicMetadataKeywords"
+        Me.trvTopicMetadataKeywords.Size = New System.Drawing.Size(215, 155)
+        Me.trvTopicMetadataKeywords.TabIndex = 166
+        '
+        'trvTopicSearchResults
+        '
+        Me.trvTopicSearchResults.HideSelection = False
+        Me.trvTopicSearchResults.Location = New System.Drawing.Point(6, 144)
+        Me.trvTopicSearchResults.Name = "trvTopicSearchResults"
+        Me.trvTopicSearchResults.Size = New System.Drawing.Size(215, 155)
+        Me.trvTopicSearchResults.TabIndex = 165
+        '
+        'txtTopicKeywordDetail
+        '
+        Me.txtTopicKeywordDetail.BackColor = System.Drawing.SystemColors.Window
+        Me.txtTopicKeywordDetail.Location = New System.Drawing.Point(5, 318)
+        Me.txtTopicKeywordDetail.Name = "txtTopicKeywordDetail"
+        Me.txtTopicKeywordDetail.ReadOnly = True
+        Me.txtTopicKeywordDetail.Size = New System.Drawing.Size(513, 82)
+        Me.txtTopicKeywordDetail.TabIndex = 164
+        Me.txtTopicKeywordDetail.Text = "Select a term or thesaurus in the ""Search results"" pane."
+        '
+        'btnTopicKeywordDelete
+        '
+        Me.btnTopicKeywordDelete.Location = New System.Drawing.Point(227, 224)
+        Me.btnTopicKeywordDelete.Name = "btnTopicKeywordDelete"
+        Me.btnTopicKeywordDelete.Size = New System.Drawing.Size(70, 31)
+        Me.btnTopicKeywordDelete.TabIndex = 162
+        Me.btnTopicKeywordDelete.Text = "<< Delete"
+        Me.btnTopicKeywordDelete.UseVisualStyleBackColor = True
+        '
+        'btnTopicKeywordAdd
+        '
+        Me.btnTopicKeywordAdd.Location = New System.Drawing.Point(227, 183)
+        Me.btnTopicKeywordAdd.Name = "btnTopicKeywordAdd"
+        Me.btnTopicKeywordAdd.Size = New System.Drawing.Size(70, 31)
+        Me.btnTopicKeywordAdd.TabIndex = 163
+        Me.btnTopicKeywordAdd.Text = "Add >>"
+        Me.btnTopicKeywordAdd.UseVisualStyleBackColor = True
+        '
+        'btnTopicSearch
+        '
+        Me.btnTopicSearch.Location = New System.Drawing.Point(435, 56)
+        Me.btnTopicSearch.Name = "btnTopicSearch"
+        Me.btnTopicSearch.Size = New System.Drawing.Size(83, 23)
+        Me.btnTopicSearch.TabIndex = 161
+        Me.btnTopicSearch.Text = "Search"
+        Me.btnTopicSearch.UseVisualStyleBackColor = True
+        '
+        'labTopicSearchTerm
+        '
+        Me.labTopicSearchTerm.AutoSize = True
+        Me.labTopicSearchTerm.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labTopicSearchTerm.Location = New System.Drawing.Point(3, 42)
+        Me.labTopicSearchTerm.Name = "labTopicSearchTerm"
+        Me.labTopicSearchTerm.Size = New System.Drawing.Size(112, 13)
+        Me.labTopicSearchTerm.TabIndex = 160
+        Me.labTopicSearchTerm.Text = "Keyword Search Term"
+        '
+        'txtTopicSearchTerm
+        '
+        Me.txtTopicSearchTerm.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.HelpProvider1.SetHelpString(Me.txtTopicSearchTerm, "If a particular keyword thesaurus is being used, enter it here. Otherwise, leave " & _
         "this field populated with ""None.""")
-        Me.txtTopicKeyThesaurus1.Location = New System.Drawing.Point(6, 116)
-        Me.txtTopicKeyThesaurus1.Name = "txtTopicKeyThesaurus1"
-        Me.HelpProvider1.SetShowHelp(Me.txtTopicKeyThesaurus1, True)
-        Me.txtTopicKeyThesaurus1.Size = New System.Drawing.Size(176, 20)
-        Me.txtTopicKeyThesaurus1.TabIndex = 121
-        Me.txtTopicKeyThesaurus1.Text = "None"
+        Me.txtTopicSearchTerm.Location = New System.Drawing.Point(6, 58)
+        Me.txtTopicSearchTerm.Name = "txtTopicSearchTerm"
+        Me.HelpProvider1.SetShowHelp(Me.txtTopicSearchTerm, True)
+        Me.txtTopicSearchTerm.Size = New System.Drawing.Size(423, 20)
+        Me.txtTopicSearchTerm.TabIndex = 159
         '
-        'labListTopicKeywords1
+        'labTopicMetadataKeywords
         '
-        Me.labListTopicKeywords1.AutoSize = True
-        Me.labListTopicKeywords1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labListTopicKeywords1.Location = New System.Drawing.Point(3, 9)
-        Me.labListTopicKeywords1.Name = "labListTopicKeywords1"
-        Me.labListTopicKeywords1.Size = New System.Drawing.Size(131, 13)
-        Me.labListTopicKeywords1.TabIndex = 120
-        Me.labListTopicKeywords1.Text = "List topic keywords below:"
+        Me.labTopicMetadataKeywords.AutoSize = True
+        Me.labTopicMetadataKeywords.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labTopicMetadataKeywords.Location = New System.Drawing.Point(300, 128)
+        Me.labTopicMetadataKeywords.Name = "labTopicMetadataKeywords"
+        Me.labTopicMetadataKeywords.Size = New System.Drawing.Size(103, 13)
+        Me.labTopicMetadataKeywords.TabIndex = 157
+        Me.labTopicMetadataKeywords.Text = "Metadata keywords:"
         '
-        'btnDeleteTopicKeywordSet
+        'labTopicSearchResults
         '
-        Me.btnDeleteTopicKeywordSet.Location = New System.Drawing.Point(316, 226)
-        Me.btnDeleteTopicKeywordSet.Name = "btnDeleteTopicKeywordSet"
-        Me.btnDeleteTopicKeywordSet.Size = New System.Drawing.Size(170, 23)
-        Me.btnDeleteTopicKeywordSet.TabIndex = 85
-        Me.btnDeleteTopicKeywordSet.Text = "Remove Keywords (Current Tab)"
-        Me.btnDeleteTopicKeywordSet.UseVisualStyleBackColor = True
+        Me.labTopicSearchResults.AutoSize = True
+        Me.labTopicSearchResults.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labTopicSearchResults.Location = New System.Drawing.Point(3, 128)
+        Me.labTopicSearchResults.Name = "labTopicSearchResults"
+        Me.labTopicSearchResults.Size = New System.Drawing.Size(77, 13)
+        Me.labTopicSearchResults.TabIndex = 158
+        Me.labTopicSearchResults.Text = "Search results:"
         '
         'Label187
         '
         Me.Label187.AutoSize = True
         Me.Label187.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label187.Location = New System.Drawing.Point(12, 16)
+        Me.Label187.Location = New System.Drawing.Point(2, 16)
         Me.Label187.Name = "Label187"
-        Me.Label187.Size = New System.Drawing.Size(260, 13)
+        Me.Label187.Size = New System.Drawing.Size(252, 13)
         Me.Label187.TabIndex = 87
-        Me.Label187.Text = "Enter several topic / theme keywords below."
+        Me.Label187.Text = "Enter several topic/theme keywords below."
         '
         'Label77
         '
@@ -5408,215 +5450,203 @@ Partial Class frmMetadataEditor
         Me.Label77.TabIndex = 74
         Me.Label77.Text = "* "
         '
-        'btnAddTopicKeywordSet
-        '
-        Me.btnAddTopicKeywordSet.Location = New System.Drawing.Point(15, 226)
-        Me.btnAddTopicKeywordSet.Name = "btnAddTopicKeywordSet"
-        Me.btnAddTopicKeywordSet.Size = New System.Drawing.Size(189, 23)
-        Me.btnAddTopicKeywordSet.TabIndex = 86
-        Me.btnAddTopicKeywordSet.Text = "Add New Thesaurus / Keyword Set"
-        Me.btnAddTopicKeywordSet.UseVisualStyleBackColor = True
-        '
         'GroupBox42
         '
+        Me.GroupBox42.Controls.Add(Me.trvPlaceMetadataKeywords)
+        Me.GroupBox42.Controls.Add(Me.trvPlaceSearchResults)
+        Me.GroupBox42.Controls.Add(Me.btnPlaceKeywordDelete)
+        Me.GroupBox42.Controls.Add(Me.btnPlaceKeywordAdd)
+        Me.GroupBox42.Controls.Add(Me.labPlaceMetadataKeywords)
+        Me.GroupBox42.Controls.Add(Me.labPlaceSearchResults)
+        Me.GroupBox42.Controls.Add(Me.GroupBox52)
+        Me.GroupBox42.Controls.Add(Me.txtPlaceKeywordDetail)
+        Me.GroupBox42.Controls.Add(Me.labPlaceKeywordDetail)
+        Me.GroupBox42.Controls.Add(Me.btnPlaceSearch)
+        Me.GroupBox42.Controls.Add(Me.labPlaceSearchTerm)
+        Me.GroupBox42.Controls.Add(Me.txtPlaceSearchTerm)
         Me.GroupBox42.Controls.Add(Me.rbPlaceKeywordsYes)
-        Me.GroupBox42.Controls.Add(Me.tabCtrlDSPlaceKeywords)
         Me.GroupBox42.Controls.Add(Me.rbPlaceKeywordsNo)
-        Me.GroupBox42.Controls.Add(Me.btnDeletePlaceKeywordSet)
         Me.GroupBox42.Controls.Add(Me.Label174)
-        Me.GroupBox42.Controls.Add(Me.btnAddPlaceKeywordSet)
-        Me.GroupBox42.Location = New System.Drawing.Point(561, 52)
+        Me.GroupBox42.Location = New System.Drawing.Point(568, 52)
         Me.GroupBox42.Name = "GroupBox42"
-        Me.GroupBox42.Size = New System.Drawing.Size(500, 255)
+        Me.GroupBox42.Size = New System.Drawing.Size(524, 426)
         Me.GroupBox42.TabIndex = 89
         Me.GroupBox42.TabStop = False
+        '
+        'trvPlaceMetadataKeywords
+        '
+        Me.trvPlaceMetadataKeywords.HideSelection = False
+        Me.trvPlaceMetadataKeywords.Location = New System.Drawing.Point(303, 97)
+        Me.trvPlaceMetadataKeywords.Name = "trvPlaceMetadataKeywords"
+        Me.trvPlaceMetadataKeywords.Size = New System.Drawing.Size(215, 155)
+        Me.trvPlaceMetadataKeywords.TabIndex = 194
+        '
+        'trvPlaceSearchResults
+        '
+        Me.trvPlaceSearchResults.HideSelection = False
+        Me.trvPlaceSearchResults.Location = New System.Drawing.Point(6, 97)
+        Me.trvPlaceSearchResults.Name = "trvPlaceSearchResults"
+        Me.trvPlaceSearchResults.Size = New System.Drawing.Size(215, 155)
+        Me.trvPlaceSearchResults.TabIndex = 193
+        '
+        'btnPlaceKeywordDelete
+        '
+        Me.btnPlaceKeywordDelete.Location = New System.Drawing.Point(227, 177)
+        Me.btnPlaceKeywordDelete.Name = "btnPlaceKeywordDelete"
+        Me.btnPlaceKeywordDelete.Size = New System.Drawing.Size(70, 31)
+        Me.btnPlaceKeywordDelete.TabIndex = 191
+        Me.btnPlaceKeywordDelete.Text = "<< Delete"
+        Me.btnPlaceKeywordDelete.UseVisualStyleBackColor = True
+        '
+        'btnPlaceKeywordAdd
+        '
+        Me.btnPlaceKeywordAdd.Location = New System.Drawing.Point(227, 136)
+        Me.btnPlaceKeywordAdd.Name = "btnPlaceKeywordAdd"
+        Me.btnPlaceKeywordAdd.Size = New System.Drawing.Size(70, 31)
+        Me.btnPlaceKeywordAdd.TabIndex = 192
+        Me.btnPlaceKeywordAdd.Text = "Add >>"
+        Me.btnPlaceKeywordAdd.UseVisualStyleBackColor = True
+        '
+        'labPlaceMetadataKeywords
+        '
+        Me.labPlaceMetadataKeywords.AutoSize = True
+        Me.labPlaceMetadataKeywords.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labPlaceMetadataKeywords.Location = New System.Drawing.Point(300, 81)
+        Me.labPlaceMetadataKeywords.Name = "labPlaceMetadataKeywords"
+        Me.labPlaceMetadataKeywords.Size = New System.Drawing.Size(103, 13)
+        Me.labPlaceMetadataKeywords.TabIndex = 189
+        Me.labPlaceMetadataKeywords.Text = "Metadata keywords:"
+        '
+        'labPlaceSearchResults
+        '
+        Me.labPlaceSearchResults.AutoSize = True
+        Me.labPlaceSearchResults.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labPlaceSearchResults.Location = New System.Drawing.Point(3, 81)
+        Me.labPlaceSearchResults.Name = "labPlaceSearchResults"
+        Me.labPlaceSearchResults.Size = New System.Drawing.Size(77, 13)
+        Me.labPlaceSearchResults.TabIndex = 190
+        Me.labPlaceSearchResults.Text = "Search results:"
+        '
+        'GroupBox52
+        '
+        Me.GroupBox52.Controls.Add(Me.btnPlaceAddCustomKeyword)
+        Me.GroupBox52.Controls.Add(Me.txtPlaceCustomThesaurus)
+        Me.GroupBox52.Controls.Add(Me.labPlaceCustomThesaurus)
+        Me.GroupBox52.Controls.Add(Me.txtPlaceCustomKeyword)
+        Me.GroupBox52.Controls.Add(Me.labPlaceCustomKeyword)
+        Me.GroupBox52.Location = New System.Drawing.Point(6, 359)
+        Me.GroupBox52.Name = "GroupBox52"
+        Me.GroupBox52.Size = New System.Drawing.Size(512, 61)
+        Me.GroupBox52.TabIndex = 188
+        Me.GroupBox52.TabStop = False
+        '
+        'btnPlaceAddCustomKeyword
+        '
+        Me.btnPlaceAddCustomKeyword.Location = New System.Drawing.Point(391, 30)
+        Me.btnPlaceAddCustomKeyword.Name = "btnPlaceAddCustomKeyword"
+        Me.btnPlaceAddCustomKeyword.Size = New System.Drawing.Size(115, 23)
+        Me.btnPlaceAddCustomKeyword.TabIndex = 170
+        Me.btnPlaceAddCustomKeyword.Text = "Add Custom Term"
+        Me.btnPlaceAddCustomKeyword.UseVisualStyleBackColor = True
+        '
+        'txtPlaceCustomThesaurus
+        '
+        Me.txtPlaceCustomThesaurus.Location = New System.Drawing.Point(219, 32)
+        Me.txtPlaceCustomThesaurus.Name = "txtPlaceCustomThesaurus"
+        Me.txtPlaceCustomThesaurus.Size = New System.Drawing.Size(166, 20)
+        Me.txtPlaceCustomThesaurus.TabIndex = 169
+        Me.txtPlaceCustomThesaurus.Text = "None"
+        '
+        'labPlaceCustomThesaurus
+        '
+        Me.labPlaceCustomThesaurus.AutoSize = True
+        Me.labPlaceCustomThesaurus.Location = New System.Drawing.Point(217, 16)
+        Me.labPlaceCustomThesaurus.Name = "labPlaceCustomThesaurus"
+        Me.labPlaceCustomThesaurus.Size = New System.Drawing.Size(142, 13)
+        Me.labPlaceCustomThesaurus.TabIndex = 172
+        Me.labPlaceCustomThesaurus.Text = "Custom Keyword Thesaurus:"
+        '
+        'txtPlaceCustomKeyword
+        '
+        Me.txtPlaceCustomKeyword.Location = New System.Drawing.Point(6, 32)
+        Me.txtPlaceCustomKeyword.Name = "txtPlaceCustomKeyword"
+        Me.txtPlaceCustomKeyword.Size = New System.Drawing.Size(207, 20)
+        Me.txtPlaceCustomKeyword.TabIndex = 168
+        '
+        'labPlaceCustomKeyword
+        '
+        Me.labPlaceCustomKeyword.AutoSize = True
+        Me.labPlaceCustomKeyword.Location = New System.Drawing.Point(6, 16)
+        Me.labPlaceCustomKeyword.Name = "labPlaceCustomKeyword"
+        Me.labPlaceCustomKeyword.Size = New System.Drawing.Size(120, 13)
+        Me.labPlaceCustomKeyword.TabIndex = 171
+        Me.labPlaceCustomKeyword.Text = "Custom Keyword Name:"
+        '
+        'txtPlaceKeywordDetail
+        '
+        Me.txtPlaceKeywordDetail.BackColor = System.Drawing.SystemColors.Window
+        Me.txtPlaceKeywordDetail.Location = New System.Drawing.Point(5, 271)
+        Me.txtPlaceKeywordDetail.Name = "txtPlaceKeywordDetail"
+        Me.txtPlaceKeywordDetail.ReadOnly = True
+        Me.txtPlaceKeywordDetail.Size = New System.Drawing.Size(513, 82)
+        Me.txtPlaceKeywordDetail.TabIndex = 183
+        Me.txtPlaceKeywordDetail.Text = "Select a term or thesaurus in the ""Search results"" pane."
+        '
+        'labPlaceKeywordDetail
+        '
+        Me.labPlaceKeywordDetail.AutoSize = True
+        Me.labPlaceKeywordDetail.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labPlaceKeywordDetail.Location = New System.Drawing.Point(3, 255)
+        Me.labPlaceKeywordDetail.Name = "labPlaceKeywordDetail"
+        Me.labPlaceKeywordDetail.Size = New System.Drawing.Size(124, 13)
+        Me.labPlaceKeywordDetail.TabIndex = 186
+        Me.labPlaceKeywordDetail.Text = "Thesaurus/Term Details:"
+        '
+        'btnPlaceSearch
+        '
+        Me.btnPlaceSearch.Location = New System.Drawing.Point(435, 56)
+        Me.btnPlaceSearch.Name = "btnPlaceSearch"
+        Me.btnPlaceSearch.Size = New System.Drawing.Size(83, 23)
+        Me.btnPlaceSearch.TabIndex = 180
+        Me.btnPlaceSearch.Text = "Search"
+        Me.btnPlaceSearch.UseVisualStyleBackColor = True
+        '
+        'labPlaceSearchTerm
+        '
+        Me.labPlaceSearchTerm.AutoSize = True
+        Me.labPlaceSearchTerm.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labPlaceSearchTerm.Location = New System.Drawing.Point(3, 42)
+        Me.labPlaceSearchTerm.Name = "labPlaceSearchTerm"
+        Me.labPlaceSearchTerm.Size = New System.Drawing.Size(112, 13)
+        Me.labPlaceSearchTerm.TabIndex = 179
+        Me.labPlaceSearchTerm.Text = "Keyword Search Term"
+        '
+        'txtPlaceSearchTerm
+        '
+        Me.txtPlaceSearchTerm.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.HelpProvider1.SetHelpString(Me.txtPlaceSearchTerm, "If a particular keyword thesaurus is being used, enter it here. Otherwise, leave " & _
+        "this field populated with ""None.""")
+        Me.txtPlaceSearchTerm.Location = New System.Drawing.Point(6, 58)
+        Me.txtPlaceSearchTerm.Name = "txtPlaceSearchTerm"
+        Me.HelpProvider1.SetShowHelp(Me.txtPlaceSearchTerm, True)
+        Me.txtPlaceSearchTerm.Size = New System.Drawing.Size(423, 20)
+        Me.txtPlaceSearchTerm.TabIndex = 178
         '
         'rbPlaceKeywordsYes
         '
         Me.rbPlaceKeywordsYes.AutoSize = True
-        Me.rbPlaceKeywordsYes.Location = New System.Drawing.Point(382, 19)
+        Me.rbPlaceKeywordsYes.Location = New System.Drawing.Point(430, 19)
         Me.rbPlaceKeywordsYes.Name = "rbPlaceKeywordsYes"
         Me.rbPlaceKeywordsYes.Size = New System.Drawing.Size(43, 17)
         Me.rbPlaceKeywordsYes.TabIndex = 89
         Me.rbPlaceKeywordsYes.Text = "Yes"
         Me.rbPlaceKeywordsYes.UseVisualStyleBackColor = True
         '
-        'tabCtrlDSPlaceKeywords
-        '
-        Me.tabCtrlDSPlaceKeywords.Controls.Add(Me.tabPlaceKeywords1)
-        Me.tabCtrlDSPlaceKeywords.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tabCtrlDSPlaceKeywords.Location = New System.Drawing.Point(15, 42)
-        Me.tabCtrlDSPlaceKeywords.Name = "tabCtrlDSPlaceKeywords"
-        Me.tabCtrlDSPlaceKeywords.SelectedIndex = 0
-        Me.tabCtrlDSPlaceKeywords.Size = New System.Drawing.Size(470, 172)
-        Me.tabCtrlDSPlaceKeywords.TabIndex = 84
-        '
-        'tabPlaceKeywords1
-        '
-        Me.tabPlaceKeywords1.BackColor = System.Drawing.SystemColors.Control
-        Me.tabPlaceKeywords1.Controls.Add(Me.labPlaceKeyTip1)
-        Me.tabPlaceKeywords1.Controls.Add(Me.labPlaceKeywordReq1)
-        Me.tabPlaceKeywords1.Controls.Add(Me.dgvPlaceKeywords1)
-        Me.tabPlaceKeywords1.Controls.Add(Me.labPlaceKeywordReq2)
-        Me.tabPlaceKeywords1.Controls.Add(Me.gbxPlaceKeyReqNote1)
-        Me.tabPlaceKeywords1.Controls.Add(Me.labPlaceKeyThesaurus1)
-        Me.tabPlaceKeywords1.Controls.Add(Me.txtPlaceKeyThesaurus1)
-        Me.tabPlaceKeywords1.Controls.Add(Me.labListPlaceKeywords1)
-        Me.tabPlaceKeywords1.Location = New System.Drawing.Point(4, 22)
-        Me.tabPlaceKeywords1.Name = "tabPlaceKeywords1"
-        Me.tabPlaceKeywords1.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPlaceKeywords1.Size = New System.Drawing.Size(462, 146)
-        Me.tabPlaceKeywords1.TabIndex = 0
-        Me.tabPlaceKeywords1.Text = "Place Keywords"
-        '
-        'labPlaceKeyTip1
-        '
-        Me.labPlaceKeyTip1.AutoSize = True
-        Me.labPlaceKeyTip1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labPlaceKeyTip1.Location = New System.Drawing.Point(248, 25)
-        Me.labPlaceKeyTip1.Name = "labPlaceKeyTip1"
-        Me.labPlaceKeyTip1.Size = New System.Drawing.Size(206, 39)
-        Me.labPlaceKeyTip1.TabIndex = 149
-        Me.labPlaceKeyTip1.Text = "Unsure if the keywords have a thesaurus?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Simply enter them all on one tab " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and " & _
-    "leave ""None"" in the box below."
-        '
-        'labPlaceKeywordReq1
-        '
-        Me.labPlaceKeywordReq1.AutoSize = True
-        Me.labPlaceKeywordReq1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labPlaceKeywordReq1.ForeColor = System.Drawing.Color.DimGray
-        Me.labPlaceKeywordReq1.Location = New System.Drawing.Point(188, 25)
-        Me.labPlaceKeywordReq1.Name = "labPlaceKeywordReq1"
-        Me.labPlaceKeywordReq1.Size = New System.Drawing.Size(17, 24)
-        Me.labPlaceKeywordReq1.TabIndex = 124
-        Me.labPlaceKeywordReq1.Text = "*"
-        '
-        'dgvPlaceKeywords1
-        '
-        Me.dgvPlaceKeywords1.BackgroundColor = System.Drawing.SystemColors.Control
-        Me.dgvPlaceKeywords1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvPlaceKeywords1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle18
-        Me.dgvPlaceKeywords1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvPlaceKeywords1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn2})
-        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPlaceKeywords1.DefaultCellStyle = DataGridViewCellStyle19
-        Me.dgvPlaceKeywords1.GridColor = System.Drawing.SystemColors.Control
-        Me.HelpProvider1.SetHelpString(Me.dgvPlaceKeywords1, "List place or locational keywords associated with your data set.")
-        Me.dgvPlaceKeywords1.Location = New System.Drawing.Point(6, 25)
-        Me.dgvPlaceKeywords1.Name = "dgvPlaceKeywords1"
-        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvPlaceKeywords1.RowHeadersDefaultCellStyle = DataGridViewCellStyle20
-        Me.dgvPlaceKeywords1.RowHeadersVisible = False
-        Me.HelpProvider1.SetShowHelp(Me.dgvPlaceKeywords1, True)
-        Me.dgvPlaceKeywords1.Size = New System.Drawing.Size(234, 73)
-        Me.dgvPlaceKeywords1.TabIndex = 148
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Enter one keyword per line."
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.Width = 175
-        '
-        'labPlaceKeywordReq2
-        '
-        Me.labPlaceKeywordReq2.AutoSize = True
-        Me.labPlaceKeywordReq2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labPlaceKeywordReq2.ForeColor = System.Drawing.Color.DimGray
-        Me.labPlaceKeywordReq2.Location = New System.Drawing.Point(186, 115)
-        Me.labPlaceKeywordReq2.Name = "labPlaceKeywordReq2"
-        Me.labPlaceKeywordReq2.Size = New System.Drawing.Size(17, 24)
-        Me.labPlaceKeywordReq2.TabIndex = 123
-        Me.labPlaceKeywordReq2.Text = "*"
-        '
-        'gbxPlaceKeyReqNote1
-        '
-        Me.gbxPlaceKeyReqNote1.BackColor = System.Drawing.SystemColors.Control
-        Me.gbxPlaceKeyReqNote1.Controls.Add(Me.labPlaceKeyReqNote1)
-        Me.gbxPlaceKeyReqNote1.Controls.Add(Me.labPlaceKeyReqNote2)
-        Me.gbxPlaceKeyReqNote1.Location = New System.Drawing.Point(246, 101)
-        Me.gbxPlaceKeyReqNote1.Name = "gbxPlaceKeyReqNote1"
-        Me.gbxPlaceKeyReqNote1.Size = New System.Drawing.Size(204, 39)
-        Me.gbxPlaceKeyReqNote1.TabIndex = 69
-        Me.gbxPlaceKeyReqNote1.TabStop = False
-        '
-        'labPlaceKeyReqNote1
-        '
-        Me.labPlaceKeyReqNote1.AutoSize = True
-        Me.labPlaceKeyReqNote1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labPlaceKeyReqNote1.ForeColor = System.Drawing.Color.DimGray
-        Me.labPlaceKeyReqNote1.Location = New System.Drawing.Point(18, 13)
-        Me.labPlaceKeyReqNote1.Name = "labPlaceKeyReqNote1"
-        Me.labPlaceKeyReqNote1.Size = New System.Drawing.Size(173, 15)
-        Me.labPlaceKeyReqNote1.TabIndex = 33
-        Me.labPlaceKeyReqNote1.Text = "=  Required if  ""Yes"" is toggled."
-        '
-        'labPlaceKeyReqNote2
-        '
-        Me.labPlaceKeyReqNote2.AutoSize = True
-        Me.labPlaceKeyReqNote2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labPlaceKeyReqNote2.ForeColor = System.Drawing.Color.DimGray
-        Me.labPlaceKeyReqNote2.Location = New System.Drawing.Point(6, 13)
-        Me.labPlaceKeyReqNote2.Name = "labPlaceKeyReqNote2"
-        Me.labPlaceKeyReqNote2.Size = New System.Drawing.Size(22, 24)
-        Me.labPlaceKeyReqNote2.TabIndex = 32
-        Me.labPlaceKeyReqNote2.Text = "* "
-        '
-        'labPlaceKeyThesaurus1
-        '
-        Me.labPlaceKeyThesaurus1.AutoSize = True
-        Me.labPlaceKeyThesaurus1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labPlaceKeyThesaurus1.Location = New System.Drawing.Point(4, 101)
-        Me.labPlaceKeyThesaurus1.Name = "labPlaceKeyThesaurus1"
-        Me.labPlaceKeyThesaurus1.Size = New System.Drawing.Size(101, 13)
-        Me.labPlaceKeyThesaurus1.TabIndex = 122
-        Me.labPlaceKeyThesaurus1.Text = "Keyword Thesaurus"
-        '
-        'txtPlaceKeyThesaurus1
-        '
-        Me.txtPlaceKeyThesaurus1.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.HelpProvider1.SetHelpString(Me.txtPlaceKeyThesaurus1, "If a particular keyword thesaurus is being used, enter it here. Otherwise, leave " & _
-        "this field populated with ""None.""")
-        Me.txtPlaceKeyThesaurus1.Location = New System.Drawing.Point(8, 116)
-        Me.txtPlaceKeyThesaurus1.Name = "txtPlaceKeyThesaurus1"
-        Me.HelpProvider1.SetShowHelp(Me.txtPlaceKeyThesaurus1, True)
-        Me.txtPlaceKeyThesaurus1.Size = New System.Drawing.Size(176, 20)
-        Me.txtPlaceKeyThesaurus1.TabIndex = 121
-        Me.txtPlaceKeyThesaurus1.Text = "None"
-        '
-        'labListPlaceKeywords1
-        '
-        Me.labListPlaceKeywords1.AutoSize = True
-        Me.labListPlaceKeywords1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labListPlaceKeywords1.Location = New System.Drawing.Point(3, 9)
-        Me.labListPlaceKeywords1.Name = "labListPlaceKeywords1"
-        Me.labListPlaceKeywords1.Size = New System.Drawing.Size(134, 13)
-        Me.labListPlaceKeywords1.TabIndex = 120
-        Me.labListPlaceKeywords1.Text = "List place keywords below:"
-        '
         'rbPlaceKeywordsNo
         '
         Me.rbPlaceKeywordsNo.AutoSize = True
         Me.rbPlaceKeywordsNo.Checked = True
-        Me.rbPlaceKeywordsNo.Location = New System.Drawing.Point(446, 19)
+        Me.rbPlaceKeywordsNo.Location = New System.Drawing.Point(479, 19)
         Me.rbPlaceKeywordsNo.Name = "rbPlaceKeywordsNo"
         Me.rbPlaceKeywordsNo.Size = New System.Drawing.Size(39, 17)
         Me.rbPlaceKeywordsNo.TabIndex = 88
@@ -5624,33 +5654,15 @@ Partial Class frmMetadataEditor
         Me.rbPlaceKeywordsNo.Text = "No"
         Me.rbPlaceKeywordsNo.UseVisualStyleBackColor = True
         '
-        'btnDeletePlaceKeywordSet
-        '
-        Me.btnDeletePlaceKeywordSet.Location = New System.Drawing.Point(316, 226)
-        Me.btnDeletePlaceKeywordSet.Name = "btnDeletePlaceKeywordSet"
-        Me.btnDeletePlaceKeywordSet.Size = New System.Drawing.Size(170, 23)
-        Me.btnDeletePlaceKeywordSet.TabIndex = 85
-        Me.btnDeletePlaceKeywordSet.Text = "Remove Keywords (Current Tab)"
-        Me.btnDeletePlaceKeywordSet.UseVisualStyleBackColor = True
-        '
         'Label174
         '
         Me.Label174.AutoSize = True
         Me.Label174.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label174.Location = New System.Drawing.Point(12, 16)
+        Me.Label174.Location = New System.Drawing.Point(2, 16)
         Me.Label174.Name = "Label174"
         Me.Label174.Size = New System.Drawing.Size(239, 13)
         Me.Label174.TabIndex = 87
         Me.Label174.Text = "Does the data set have place keywords?"
-        '
-        'btnAddPlaceKeywordSet
-        '
-        Me.btnAddPlaceKeywordSet.Location = New System.Drawing.Point(15, 226)
-        Me.btnAddPlaceKeywordSet.Name = "btnAddPlaceKeywordSet"
-        Me.btnAddPlaceKeywordSet.Size = New System.Drawing.Size(189, 23)
-        Me.btnAddPlaceKeywordSet.TabIndex = 86
-        Me.btnAddPlaceKeywordSet.Text = "Add New Thesaurus / Keyword Set"
-        Me.btnAddPlaceKeywordSet.UseVisualStyleBackColor = True
         '
         'Label288
         '
@@ -6480,18 +6492,12 @@ Partial Class frmMetadataEditor
         Me.GroupBox9.PerformLayout()
         Me.GroupBox43.ResumeLayout(False)
         Me.GroupBox43.PerformLayout()
-        Me.tabCtrlDSTopicKeywords.ResumeLayout(False)
-        Me.tabTopicKeywords1.ResumeLayout(False)
-        Me.tabTopicKeywords1.PerformLayout()
-        CType(Me.dgvTopicKeywords1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox51.ResumeLayout(False)
+        Me.GroupBox51.PerformLayout()
         Me.GroupBox42.ResumeLayout(False)
         Me.GroupBox42.PerformLayout()
-        Me.tabCtrlDSPlaceKeywords.ResumeLayout(False)
-        Me.tabPlaceKeywords1.ResumeLayout(False)
-        Me.tabPlaceKeywords1.PerformLayout()
-        CType(Me.dgvPlaceKeywords1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.gbxPlaceKeyReqNote1.ResumeLayout(False)
-        Me.gbxPlaceKeyReqNote1.PerformLayout()
+        Me.GroupBox52.ResumeLayout(False)
+        Me.GroupBox52.PerformLayout()
         Me.GroupBox8.ResumeLayout(False)
         Me.GroupBox8.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)
@@ -6835,9 +6841,6 @@ Partial Class frmMetadataEditor
     Friend WithEvents Label90 As System.Windows.Forms.Label
     Friend WithEvents txtDSUseCon As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox9 As System.Windows.Forms.GroupBox
-    Friend WithEvents gbxPlaceKeyReqNote1 As System.Windows.Forms.GroupBox
-    Friend WithEvents labPlaceKeyReqNote1 As System.Windows.Forms.Label
-    Friend WithEvents labPlaceKeyReqNote2 As System.Windows.Forms.Label
     Friend WithEvents Label288 As System.Windows.Forms.Label
     Friend WithEvents Label77 As System.Windows.Forms.Label
     Friend WithEvents Label72 As System.Windows.Forms.Label
@@ -6930,38 +6933,11 @@ Partial Class frmMetadataEditor
     Friend WithEvents btnAddProcessStep As System.Windows.Forms.Button
     Friend WithEvents btnDeleteProcessStep As System.Windows.Forms.Button
     Friend WithEvents btnDeleteSourceInput As System.Windows.Forms.Button
-    Friend WithEvents tabCtrlDSPlaceKeywords As System.Windows.Forms.TabControl
-    Friend WithEvents tabPlaceKeywords1 As System.Windows.Forms.TabPage
-    Friend WithEvents labPlaceKeyTip1 As System.Windows.Forms.Label
-    Friend WithEvents labPlaceKeywordReq1 As System.Windows.Forms.Label
-    Friend WithEvents dgvPlaceKeywords1 As System.Windows.Forms.DataGridView
-    Friend WithEvents labPlaceKeywordReq2 As System.Windows.Forms.Label
-    Friend WithEvents labPlaceKeyThesaurus1 As System.Windows.Forms.Label
-    Friend WithEvents txtPlaceKeyThesaurus1 As System.Windows.Forms.TextBox
-    Friend WithEvents labListPlaceKeywords1 As System.Windows.Forms.Label
-    Friend WithEvents Label174 As System.Windows.Forms.Label
-    Friend WithEvents btnAddPlaceKeywordSet As System.Windows.Forms.Button
-    Friend WithEvents btnDeletePlaceKeywordSet As System.Windows.Forms.Button
     Friend WithEvents GroupBox43 As System.Windows.Forms.GroupBox
-    Friend WithEvents tabCtrlDSTopicKeywords As System.Windows.Forms.TabControl
-    Friend WithEvents tabTopicKeywords1 As System.Windows.Forms.TabPage
-    Friend WithEvents labTopicKeyTip1 As System.Windows.Forms.Label
-    Friend WithEvents labTopicKeywordReq1 As System.Windows.Forms.Label
-    Friend WithEvents dgvTopicKeywords1 As System.Windows.Forms.DataGridView
-    Friend WithEvents labTopicKeywordReq2 As System.Windows.Forms.Label
-    Friend WithEvents labTopicKeyThesaurus1 As System.Windows.Forms.Label
-    Friend WithEvents txtTopicKeyThesaurus1 As System.Windows.Forms.TextBox
-    Friend WithEvents labListTopicKeywords1 As System.Windows.Forms.Label
-    Friend WithEvents btnDeleteTopicKeywordSet As System.Windows.Forms.Button
     Friend WithEvents Label187 As System.Windows.Forms.Label
-    Friend WithEvents btnAddTopicKeywordSet As System.Windows.Forms.Button
     Friend WithEvents GroupBox42 As System.Windows.Forms.GroupBox
-    Friend WithEvents rbPlaceKeywordsYes As System.Windows.Forms.RadioButton
-    Friend WithEvents rbPlaceKeywordsNo As System.Windows.Forms.RadioButton
     Friend WithEvents Label35 As System.Windows.Forms.Label
     Friend WithEvents Label36 As System.Windows.Forms.Label
-    Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents GroupBox10 As System.Windows.Forms.GroupBox
     Friend WithEvents txtDSVertAccReport As System.Windows.Forms.TextBox
     Friend WithEvents txtDSHorizAccReport As System.Windows.Forms.TextBox
@@ -6996,5 +6972,44 @@ Partial Class frmMetadataEditor
     Friend WithEvents labNoErrors As System.Windows.Forms.Label
     Friend WithEvents GroupBox50 As System.Windows.Forms.GroupBox
     Friend WithEvents txtDescGeography As System.Windows.Forms.TextBox
+    Friend WithEvents trvTopicMetadataKeywords As System.Windows.Forms.TreeView
+    Friend WithEvents trvTopicSearchResults As System.Windows.Forms.TreeView
+    Friend WithEvents txtTopicKeywordDetail As System.Windows.Forms.RichTextBox
+    Friend WithEvents btnTopicKeywordDelete As System.Windows.Forms.Button
+    Friend WithEvents btnTopicKeywordAdd As System.Windows.Forms.Button
+    Friend WithEvents btnTopicSearch As System.Windows.Forms.Button
+    Friend WithEvents labTopicSearchTerm As System.Windows.Forms.Label
+    Friend WithEvents txtTopicSearchTerm As System.Windows.Forms.TextBox
+    Friend WithEvents labTopicMetadataKeywords As System.Windows.Forms.Label
+    Friend WithEvents labTopicSearchResults As System.Windows.Forms.Label
+    Friend WithEvents labTopicKeywordDetail As System.Windows.Forms.Label
+    Friend WithEvents GroupBox51 As System.Windows.Forms.GroupBox
+    Friend WithEvents btnTopicAddCustomKeyword As System.Windows.Forms.Button
+    Friend WithEvents txtTopicCustomThesaurus As System.Windows.Forms.TextBox
+    Friend WithEvents labTopicCustomThesaurus As System.Windows.Forms.Label
+    Friend WithEvents txtTopicCustomKeyword As System.Windows.Forms.TextBox
+    Friend WithEvents labTopicCustomKeyword As System.Windows.Forms.Label
+    Friend WithEvents labTopicISORecommended As System.Windows.Forms.Label
+    Friend WithEvents btnTopicBrowseISO As System.Windows.Forms.Button
+    Friend WithEvents rbPlaceKeywordsYes As System.Windows.Forms.RadioButton
+    Friend WithEvents rbPlaceKeywordsNo As System.Windows.Forms.RadioButton
+    Friend WithEvents Label174 As System.Windows.Forms.Label
+    Friend WithEvents GroupBox52 As System.Windows.Forms.GroupBox
+    Friend WithEvents btnPlaceAddCustomKeyword As System.Windows.Forms.Button
+    Friend WithEvents txtPlaceCustomThesaurus As System.Windows.Forms.TextBox
+    Friend WithEvents labPlaceCustomThesaurus As System.Windows.Forms.Label
+    Friend WithEvents txtPlaceCustomKeyword As System.Windows.Forms.TextBox
+    Friend WithEvents labPlaceCustomKeyword As System.Windows.Forms.Label
+    Friend WithEvents txtPlaceKeywordDetail As System.Windows.Forms.RichTextBox
+    Friend WithEvents labPlaceKeywordDetail As System.Windows.Forms.Label
+    Friend WithEvents btnPlaceSearch As System.Windows.Forms.Button
+    Friend WithEvents labPlaceSearchTerm As System.Windows.Forms.Label
+    Friend WithEvents txtPlaceSearchTerm As System.Windows.Forms.TextBox
+    Friend WithEvents trvPlaceMetadataKeywords As System.Windows.Forms.TreeView
+    Friend WithEvents trvPlaceSearchResults As System.Windows.Forms.TreeView
+    Friend WithEvents btnPlaceKeywordDelete As System.Windows.Forms.Button
+    Friend WithEvents btnPlaceKeywordAdd As System.Windows.Forms.Button
+    Friend WithEvents labPlaceMetadataKeywords As System.Windows.Forms.Label
+    Friend WithEvents labPlaceSearchResults As System.Windows.Forms.Label
 
 End Class

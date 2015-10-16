@@ -87,3 +87,6 @@ the "Originator" field.
 
 ##### Metadata Wizard version 1.6 (Updated 06112015)
 - Bug fix to resolve an issue with the E/A Builder GUI crashing on raster datasets residing within an ArcGIS file geodatabase. Thanks to C. Jarchow for identifying this issue.
+
+##### Metadata Wizard version 1.7 (Updated 10152015)
+- Updated the ‘Keywords’ section. Worked with Peter Schweitzer to connect the keywords section to his keywords JSON API service. Users can now search/choose from a standardized list of keywords for both ‘topic/theme’ and ‘place’ keywords. We also strongly encourage (but don’t require) the user to supply at least one ISO keyword. There is a new button which allows users to easily browse and select ISO keywords. An Internet connection is required to communicate with the keywords service. Users can still use the traditional method of creating their own custom keywords.

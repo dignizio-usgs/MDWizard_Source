@@ -6,6 +6,8 @@ Imports System.Text
 Imports System.Drawing
 Imports System.Runtime.InteropServices
 
+Imports Newtonsoft.Json
+Imports Newtonsoft.Json.Linq
 
 Public Class frmMetadataEditor
 
@@ -58,6 +60,12 @@ Public Class frmMetadataEditor
     Dim lab102 As Object
     Dim lab103 As Object
 
+    'Globals for "Topic Keywords" region
+    Dim lastTopicKeywordSearch As String = ""
+    Dim lastPlaceKeywordSearch As String = ""
+    Dim thesaurusDictionary As New Dictionary(Of String, String)
+    Dim thesaurusDictionaryKeys As New Dictionary(Of String, String)
+
 
 
 #Region "Radio Buttons Tab 1"
@@ -93,34 +101,34 @@ Public Class frmMetadataEditor
                 End If
 
             Catch ex As Exception
-        End Try
+            End Try
 
-        Dim DSLargerWorkTitle As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/title")
-        txtDSLargerWorkTitle.Text = DSLargerWorkTitle
+            Dim DSLargerWorkTitle As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/title")
+            txtDSLargerWorkTitle.Text = DSLargerWorkTitle
 
-        Dim DSLargerWorkFormat As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/geoform")
-        cboDSLargerWorkFormat.Text = DSLargerWorkFormat
+            Dim DSLargerWorkFormat As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/geoform")
+            cboDSLargerWorkFormat.Text = DSLargerWorkFormat
 
-        Dim DSLargerWorkPubDate As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/pubdate")
-        txtDSLargerWorkPubDate.Text = DSLargerWorkPubDate
+            Dim DSLargerWorkPubDate As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/pubdate")
+            txtDSLargerWorkPubDate.Text = DSLargerWorkPubDate
 
-        Dim DSLargerWorkPublisher As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/pubinfo/publish")
-        txtDSLargerWorkPublisher.Text = DSLargerWorkPublisher
+            Dim DSLargerWorkPublisher As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/pubinfo/publish")
+            txtDSLargerWorkPublisher.Text = DSLargerWorkPublisher
 
-        Dim DSLargerWorkPubPlace As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/pubinfo/pubplace")
-        txtDSLargerWorkPubPlace.Text = DSLargerWorkPubPlace
+            Dim DSLargerWorkPubPlace As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/pubinfo/pubplace")
+            txtDSLargerWorkPubPlace.Text = DSLargerWorkPubPlace
 
-        Dim DSLargerWorkSeriesName As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/serinfo/sername")
-        txtDSLargerWorkSeriesName.Text = DSLargerWorkSeriesName
+            Dim DSLargerWorkSeriesName As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/serinfo/sername")
+            txtDSLargerWorkSeriesName.Text = DSLargerWorkSeriesName
 
-        Dim DSLargerWorkSeriesNum As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/serinfo/issue")
-        txtDSLargerWorkSeriesNum.Text = DSLargerWorkSeriesNum
+            Dim DSLargerWorkSeriesNum As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/serinfo/issue")
+            txtDSLargerWorkSeriesNum.Text = DSLargerWorkSeriesNum
 
-        Dim DSLargerWorkOnlineLink As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/onlink")
-        txtDSLargerWorkOnlineLink.Text = DSLargerWorkOnlineLink
+            Dim DSLargerWorkOnlineLink As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/onlink")
+            txtDSLargerWorkOnlineLink.Text = DSLargerWorkOnlineLink
 
-        Dim DSLargerWorkEdition As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/edition")
-        txtDSLargerWorkEdition.Text = DSLargerWorkEdition
+            Dim DSLargerWorkEdition As String = getNodeText(xmlMD, "metadata/idinfo/citation/citeinfo/lworkcit/citeinfo/edition")
+            txtDSLargerWorkEdition.Text = DSLargerWorkEdition
 
         End If
     End Sub
@@ -232,86 +240,27 @@ Public Class frmMetadataEditor
         End If
     End Sub
 
-
     'Data Set Place Keywords Yes/No
-    Private Sub rbPlaceKeywordsYes_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbPlaceKeywordsYes.CheckedChanged
-        If rbPlaceKeywordsYes.Checked = True Then
+    Private Sub rbPlaceKeywordsYes_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbPlaceKeywordsYes.CheckedChanged, rbPlaceKeywordsNo.CheckedChanged
+        txtPlaceSearchTerm.Enabled = rbPlaceKeywordsYes.Checked
+        btnPlaceSearch.Enabled = rbPlaceKeywordsYes.Checked
+        trvPlaceSearchResults.Enabled = rbPlaceKeywordsYes.Checked
+        trvPlaceMetadataKeywords.Enabled = rbPlaceKeywordsYes.Checked
+        btnPlaceKeywordAdd.Enabled = rbPlaceKeywordsYes.Checked
+        btnPlaceKeywordDelete.Enabled = rbPlaceKeywordsYes.Checked
+        txtPlaceKeywordDetail.Enabled = rbPlaceKeywordsYes.Checked
+        txtPlaceCustomKeyword.Enabled = rbPlaceKeywordsYes.Checked
+        txtPlaceCustomThesaurus.Enabled = rbPlaceKeywordsYes.Checked
+        btnPlaceAddCustomKeyword.Enabled = rbPlaceKeywordsYes.Checked
 
-            tabCtrlDSPlaceKeywords.SelectedIndex = 0
-            tabCtrlDSPlaceKeywords.SelectedTab.Enabled = True
-
-            tabCtrlDSPlaceKeywords.Enabled = True
-
-            dgvPlaceKeywords1.Enabled = True
-            dgvPlaceKeywords1.DefaultCellStyle.BackColor = Color.White
-
-            btnAddPlaceKeywordSet.Enabled = True
-            btnDeletePlaceKeywordSet.Enabled = True
-            txtPlaceKeyThesaurus1.Enabled = True
-            txtPlaceKeyThesaurus1.Text = "None"
-
-            'Load Routine
-
-            Try
-                Dim tabCt As Integer = 1
-                Dim multiNodeList As XmlNodeList = xmlMD.SelectNodes("metadata/idinfo/keywords/place")
-                Dim node As XmlNode
-                If multiNodeList IsNot Nothing Then
-                    For Each node In multiNodeList
-
-                        If tabCt = 1 Then
-                            'For first instance of a place thesaurus/place keywords pairing, populate the existing tab.
-
-                            populatePlaceKeywords1(node, tabCt)
-
-                            tabCt = tabCt + 1
-
-                        ElseIf tabCt > 1 Then
-                            'For instance #2 and beyond, create new tabs as needed.
-
-                            clonePlaceKeywordsTab(tabCt)
-                            populateAdditionalPlaceKeywords(node, tabCt)
-
-                            tabCt = tabCt + 1
-
-                        End If
-
-                    Next node
-                End If
-            Catch ex As Exception
-            End Try
-
+        If rbPlaceKeywordsYes.Checked Then
+            trvPlaceSearchResults.BackColor = Color.White
+            trvPlaceMetadataKeywords.BackColor = Color.White
+        Else
+            trvPlaceSearchResults.BackColor = Control.DefaultBackColor
+            trvPlaceMetadataKeywords.BackColor = Control.DefaultBackColor
         End If
     End Sub
-
-    Private Sub rbPlaceKeywordsNo_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbPlaceKeywordsNo.CheckedChanged
-        If rbPlaceKeywordsNo.Checked = True Then
-
-            tabCtrlDSPlaceKeywords.Enabled = False
-
-            dgvPlaceKeywords1.Enabled = False
-            dgvPlaceKeywords1.Rows.Clear()
-            dgvPlaceKeywords1.DefaultCellStyle.BackColor = Color.WhiteSmoke
-
-            btnAddPlaceKeywordSet.Enabled = False
-            btnDeletePlaceKeywordSet.Enabled = False
-            txtPlaceKeyThesaurus1.Enabled = False
-            txtPlaceKeyThesaurus1.Text = ""
-
-            'Eliminate all other thesaurus/keyword pair tabs, if any exist.
-            For Each page As TabPage In tabCtrlDSPlaceKeywords.TabPages
-                If page.Name = "tabPlaceKeywords1" Then Continue For
-                tabCtrlDSPlaceKeywords.TabPages.Remove(page)
-            Next page
-
-            Try
-                deleteChildren(xmlMDOutput, "metadata/idinfo/keywords", "place")
-            Catch ex As Exception
-            End Try
-
-        End If
-    End Sub
-
 
     'Data Set Contact Yes/No
     Private Sub rbDSContactYes_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbDSContactYes.CheckedChanged
@@ -1000,39 +949,22 @@ Public Class frmMetadataEditor
         'Data Set Place Keywords
         If nodeExists(xmlMD, "metadata/idinfo/keywords/place") Then
             rbPlaceKeywordsYes.Checked = True
-            'The load routine is handled with the button check. See Radio Button section.
+            Try
+                For Each node As XmlNode In xmlMD.SelectNodes("metadata/idinfo/keywords/place")
+                    populatePlaceKeywords1(node)
+                Next node
+            Catch ex As Exception
+            End Try
         End If
 
         'Data Set Topic Keywords
         If nodeExists(xmlMD, "metadata/idinfo/keywords/theme") Then
             Try
-                Dim tabCt As Integer = 1
-                Dim multiNodeList As XmlNodeList = xmlMD.SelectNodes("metadata/idinfo/keywords/theme")
-                Dim node As XmlNode
-
-                For Each node In multiNodeList
-
-                    If tabCt = 1 Then
-                        'For first instance of a topic thesaurus/place keywords pairing, populate the existing tab.
-
-                        populateTopicKeywords1(node, tabCt)
-
-                        tabCt = tabCt + 1
-
-                    ElseIf tabCt > 1 Then
-                        'For instance #2 and beyond, create new tabs as needed.
-
-                        cloneTopicKeywordsTab(tabCt)
-                        populateAdditionalTopicKeywords(node, tabCt)
-
-                        tabCt = tabCt + 1
-
-                    End If
-
+                For Each node As XmlNode In xmlMD.SelectNodes("metadata/idinfo/keywords/theme")
+                    populateTopicKeywords1(node)
                 Next node
-
             Catch ex As Exception
-        End Try
+            End Try
         End If
 
         loadTab1_LargerWork()
@@ -1545,99 +1477,56 @@ Public Class frmMetadataEditor
                         End If
                     End If
 
-                    ''''''''''''''''''''''''''''
-                    If ctl.Name.Contains("tabCtrlDSTopicKeywords") Then
+                    ' ''''''''''''''''''''''''''''
+                    If ctl.Name.Contains("trvTopicMetadataKeywords") Then
                         deleteChildren(xmlMDOutput, "metadata/idinfo/keywords", "theme")
 
-                        Dim tabList As New List(Of TabPage)
-                        For Each iTab In tabCtrlDSTopicKeywords.TabPages
-                            If iTab.enabled Then
-                                tabList.Add(iTab)
-                            End If
-                        Next
+                        If nodeExists(xmlMDOutput, "metadata/idinfo/keywords") = False Then
+                            AddNode(xmlMDOutput, "metadata/idinfo/keywords")
+                        End If
+                        Dim stub As XmlNode = getNode(xmlMDOutput, "metadata/idinfo/keywords")
 
-                        For Each iTab In tabList
-                            If nodeExists(xmlMDOutput, "metadata/idinfo/keywords") = False Then
-                                AddNode(xmlMDOutput, "metadata/idinfo/keywords")
-                            End If
-                            Dim stub As XmlNode = getNode(xmlMDOutput, "metadata/idinfo/keywords")
+                        For Each thesaurus As TreeNode In trvTopicMetadataKeywords.Nodes
+                            Dim themeNode As XmlNode = xmlMDOutput.CreateElement("theme")
+                            Dim themeKT As XmlNode = xmlMDOutput.CreateElement("themekt")
 
-                            For Each subCtl As Control In iTab.Controls
-                                If subCtl.Name.Contains("txtTopicKeyThesaurus") Then
-                                    If subCtl.Text <> "" Then
-                                        Dim themeNode As XmlNode = xmlMDOutput.CreateElement("theme")
-                                        Dim themeKT As XmlNode = xmlMDOutput.CreateElement("themekt")
+                            stub.AppendChild(themeNode)
+                            themeNode.PrependChild(themeKT)
+                            themeKT.InnerText = thesaurus.Text
 
-                                        stub.AppendChild(themeNode)
-                                        themeNode.PrependChild(themeKT)
-                                        themeKT.InnerText = subCtl.Text
-
-                                        For Each iSubCtl As Control In iTab.Controls
-                                            If iSubCtl.Name.Contains("dgvTopicKeywords") Then
-
-                                                Dim RowList As List(Of String) = getDGVList(iSubCtl)
-                                                If RowList.Count > 0 Then
-
-                                                    For Each row In RowList
-                                                        Dim themeKey As XmlNode = xmlMDOutput.CreateElement("themekey")
-                                                        themeKey.InnerText = row
-                                                        themeNode.AppendChild(themeKey)
-                                                    Next
-                                                End If
-                                            End If
-                                        Next
-                                    End If
-                                End If
+                            For Each keyword As TreeNode In thesaurus.Nodes
+                                Dim themeKey As XmlNode = xmlMDOutput.CreateElement("themekey")
+                                themeKey.InnerText = keyword.Text
+                                themeNode.AppendChild(themeKey)
                             Next
                         Next
                     End If
 
                     '''''''''''''''''''''
-                    If ctl.Name.Contains("tabCtrlDSPlaceKeywords") Then
+                    If ctl.Name.Contains("trvPlaceMetadataKeywords") Then
                         deleteChildren(xmlMDOutput, "metadata/idinfo/keywords", "place")
 
-                        Dim tabList As New List(Of TabPage)
-                        For Each iTab In tabCtrlDSPlaceKeywords.TabPages
-                            If iTab.enabled Then
-                                tabList.Add(iTab)
-                            End If
-                        Next
+                        If nodeExists(xmlMDOutput, "metadata/idinfo/keywords") = False Then
+                            AddNode(xmlMDOutput, "metadata/idinfo/keywords")
+                        End If
+                        Dim stub As XmlNode = getNode(xmlMDOutput, "metadata/idinfo/keywords")
 
-                        For Each iTab In tabList
-                            If nodeExists(xmlMDOutput, "metadata/idinfo/keywords") = False Then
-                                AddNode(xmlMDOutput, "metadata/idinfo/keywords")
-                            End If
-                            Dim stub As XmlNode = getNode(xmlMDOutput, "metadata/idinfo/keywords")
+                        If rbPlaceKeywordsYes.Checked Then
+                            For Each thesaurus As TreeNode In trvPlaceMetadataKeywords.Nodes
+                                Dim placeNode As XmlNode = xmlMDOutput.CreateElement("place")
+                                Dim placeKT As XmlNode = xmlMDOutput.CreateElement("placekt")
 
-                            For Each subCtl As Control In iTab.Controls
-                                If subCtl.Name.Contains("txtPlaceKeyThesaurus") Then
+                                stub.AppendChild(placeNode)
+                                placeNode.PrependChild(placeKT)
+                                placeKT.InnerText = thesaurus.Text
 
-                                    If subCtl.Text <> "" Then
-                                        Dim placeNode As XmlNode = xmlMDOutput.CreateElement("place")
-                                        Dim placeKT As XmlNode = xmlMDOutput.CreateElement("placekt")
-
-                                        stub.AppendChild(placeNode)
-                                        placeNode.PrependChild(placeKT)
-                                        placeKT.InnerText = subCtl.Text
-
-                                        For Each iSubCtl As Control In iTab.Controls
-                                            If iSubCtl.Name.Contains("dgvPlaceKeywords") Then
-
-                                                Dim RowList As List(Of String) = getDGVList(iSubCtl)
-                                                If RowList.Count > 0 Then
-
-                                                    For Each row In RowList
-                                                        Dim placeKey As XmlNode = xmlMDOutput.CreateElement("placekey")
-                                                        placeKey.InnerText = row
-                                                        placeNode.AppendChild(placeKey)
-                                                    Next
-                                                End If
-                                            End If
-                                        Next
-                                    End If
-                                End If
+                                For Each keyword As TreeNode In thesaurus.Nodes
+                                    Dim placekey As XmlNode = xmlMDOutput.CreateElement("placekey")
+                                    placekey.InnerText = keyword.Text
+                                    placeNode.AppendChild(placekey)
+                                Next
                             Next
-                        Next
+                        End If
                     End If
 
                     ''''''''''''''''''''''''''''
@@ -2269,7 +2158,6 @@ Public Class frmMetadataEditor
         Dim inputEmailAddress As String = txtUSGSLookupDSContact.Text
         Dim lookupContact As String = inputEmailAddress.Replace("@usgs.gov", "")
 
-        'oHTTP.open("GET", "http://geo-nsdi.er.usgs.gov/contact-xml.php?email=dignizio", bGetAsAsync) ...EXAMPLE...
         oHTTP.open("GET", ("http://geo-nsdi.er.usgs.gov/contact-xml.php?email=" & lookupContact), bGetAsAsync)
         oHTTP.send()
 
@@ -2351,7 +2239,6 @@ Public Class frmMetadataEditor
         Dim inputEmailAddress As String = txtUSGSLookupMetaContact.Text
         Dim lookupContact As String = inputEmailAddress.Replace("@usgs.gov", "")
 
-        'oHTTP.open("GET", "http://geo-nsdi.er.usgs.gov/contact-xml.php?email=dignizio", bGetAsAsync) ...EXAMPLE...
         oHTTP.open("GET", ("http://geo-nsdi.er.usgs.gov/contact-xml.php?email=" & lookupContact), bGetAsAsync)
         oHTTP.send()
         Try
@@ -3292,143 +3179,24 @@ Public Class frmMetadataEditor
 
 
 
-    Private Sub clonePlaceKeywordsTab(tabCt As Integer)
-
-        'tabCtrlDSPlaceKeywords.Controls.Add(New TabPage("Place Keywords"))
-        'Dim tp As TabPage = tabCtrlDSPlaceKeywords.TabPages(tabCt - 1)
-
-        Dim tp As New TabPage
-        tp.Name = "tabPlaceKeywords" & CStr(tabCt)
-        tp.Text = "Place Keywords"
-
-        txtPlaceKeyThesaurus = New TextBox()
-        With txtPlaceKeyThesaurus
-            .Name = ("txtPlaceKeyThesaurus" & CStr(tabCt))
-            .Location = txtPlaceKeyThesaurus1.Location
-            .Size = txtPlaceKeyThesaurus1.Size
-        End With
-
-        labPlaceKeyTip = New Label()
-        With labPlaceKeyTip
-            .Text = labPlaceKeyTip1.Text
-            .Location = labPlaceKeyTip1.Location
-            .Size = labPlaceKeyTip1.Size
-            .ForeColor = labPlaceKeyTip1.ForeColor
-            .Font = labPlaceKeyTip1.Font
-        End With
-
-        Label1 = New Label()
-        With Label1
-            .Text = "List place keywords below:"
-            .Location = labListPlaceKeywords1.Location
-            .Size = labListPlaceKeywords1.Size
-            .ForeColor = labListPlaceKeywords1.ForeColor
-            .Font = labListPlaceKeywords1.Font
-        End With
-
-        Label2 = New Label()
-        With Label2
-            .Text = "Keyword Thesaurus"
-            .Location = labPlaceKeyThesaurus1.Location
-            .Size = labPlaceKeyThesaurus1.Size
-            .ForeColor = labPlaceKeyThesaurus1.ForeColor
-            .Font = labPlaceKeyThesaurus1.Font
-        End With
-
-        Label3 = New Label()
-        With Label3
-            .Text = "*"
-            .Location = labPlaceKeywordReq1.Location
-            .Size = labPlaceKeywordReq1.Size
-            .ForeColor = labPlaceKeywordReq1.ForeColor
-            .Font = labPlaceKeywordReq1.Font
-        End With
-
-        Label4 = New Label()
-        With Label4
-            .Text = "*"
-            .Location = labPlaceKeywordReq2.Location
-            .Size = labPlaceKeywordReq2.Size
-            .ForeColor = labPlaceKeywordReq2.ForeColor
-            .Font = labPlaceKeywordReq2.Font
-        End With
-
-        '-------------------------
-
-        gbxPlaceKeyReqNote = New GroupBox()
-        labAdditionalPlaceKeyReqNote1 = New Label()
-        labAdditionalPlaceKeyReqNote2 = New Label()
-
-
-        With labAdditionalPlaceKeyReqNote1
-            .Text = labPlaceKeyReqNote1.Text
-            .Location = labPlaceKeyReqNote1.Location
-            .Size = labPlaceKeyReqNote1.Size
-            .ForeColor = labPlaceKeyReqNote1.ForeColor
-            .Font = labPlaceKeyReqNote1.Font
-        End With
-
-        With labAdditionalPlaceKeyReqNote2
-            .Text = labPlaceKeyReqNote2.Text
-            .Location = labPlaceKeyReqNote2.Location
-            .Size = labPlaceKeyReqNote2.Size
-            .ForeColor = labPlaceKeyReqNote2.ForeColor
-            .Font = labPlaceKeyReqNote2.Font
-        End With
-
-        With gbxPlaceKeyReqNote
-            .Location = gbxPlaceKeyReqNote1.Location
-            .Size = gbxPlaceKeyReqNote1.Size
-            .Text = gbxPlaceKeyReqNote1.Text
-
-            .Controls.Add(labAdditionalPlaceKeyReqNote1)
-            .Controls.Add(labAdditionalPlaceKeyReqNote2)
-        End With
-        '-------------------------
-
-        dgvPlaceKeywords = New DataGridView()
-        With dgvPlaceKeywords
-            .Name = ("dgvPlaceKeywords" & Str(tabCt))
-            .Location = dgvPlaceKeywords1.Location
-            .Size = dgvPlaceKeywords1.Size
-            .BackgroundColor = System.Drawing.SystemColors.Control
-            .DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.Window
-            .DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.ControlText
-            .BorderStyle = dgvPlaceKeywords1.BorderStyle
-            .RowHeadersVisible = False
-            .Columns.Add("PlaceKeywords", "Enter one keyword per line.")
-            .Columns(0).Width = dgvPlaceKeywords1.Columns(0).Width
-        End With
-
-        tp.Controls.Add(labPlaceKeyTip)
-
-        tp.Controls.Add(txtPlaceKeyThesaurus)
-        tp.Controls.Add(Label1)
-        tp.Controls.Add(Label2)
-        tp.Controls.Add(Label3)
-        tp.Controls.Add(Label4)
-        tp.Controls.Add(gbxPlaceKeyReqNote)
-        tp.Controls.Add(dgvPlaceKeywords)
-
-        tabCtrlDSPlaceKeywords.Controls.Add(tp)
-
-    End Sub
-
-    Private Sub populatePlaceKeywords1(node As XmlNode, tabCt As Integer)
+    Private Sub populatePlaceKeywords1(node As XmlNode)
+        Dim thesaurus As String
 
         If nodeInstanceExists(node, "placekt") Then
-            Dim PlaceKeyThesaurus As String = getNodeTextAtNodeInstance(node, "placekt")
-            txtPlaceKeyThesaurus1.Text = PlaceKeyThesaurus
+            thesaurus = getNodeTextAtNodeInstance(node, "placekt")
         Else
-            txtPlaceKeyThesaurus1.Text = "None"
+            thesaurus = "None"
         End If
 
-        'dgvPlaceKeywords1.DefaultCellStyle.BackColor = Color.White
         Try
             Dim PlaceKeywordsList As Collection = getMultiNodeValuesAtNodeInstance(node, "placekey")
 
             For Each iWord In PlaceKeywordsList
-                dgvPlaceKeywords1.Rows.Add(iWord)
+                If trvPlaceMetadataKeywords.Nodes.ContainsKey(thesaurus) Then
+                    trvPlaceMetadataKeywords.Nodes(thesaurus).Nodes.Add(iWord, iWord)
+                Else
+                    trvPlaceMetadataKeywords.Nodes.Add(thesaurus, thesaurus).Nodes.Add(iWord, iWord)
+                End If
             Next iWord
 
         Catch ex As Exception
@@ -3436,162 +3204,29 @@ Public Class frmMetadataEditor
 
     End Sub
 
-    Private Sub populateAdditionalPlaceKeywords(node As XmlNode, tabCt As Integer)
-
-        If nodeInstanceExists(node, "placekt") Then
-            Dim PlaceKeyThesaurus As String = getNodeTextAtNodeInstance(node, "placekt")
-            txtPlaceKeyThesaurus.Text = PlaceKeyThesaurus
-        Else
-            txtPlaceKeyThesaurus.Text = "None"
-        End If
-
-        'dgvPlaceKeywords1.DefaultCellStyle.BackColor = Color.White
-        Try
-            Dim PlaceKeywordsList As Collection = getMultiNodeValuesAtNodeInstance(node, "placekey")
-
-            For Each iWord In PlaceKeywordsList
-                dgvPlaceKeywords.Rows.Add(iWord)
-            Next iWord
-
-        Catch ex As Exception
-        End Try
-    End Sub
-
-
-
-    Private Sub cloneTopicKeywordsTab(tabCt As Integer)
-
-        'tabCtrlDSTopicKeywords.Controls.Add(New TabPage("Theme Keywords"))
-        'Dim tp As TabPage = tabCtrlDSTopicKeywords.TabPages(tabCt - 1)
-
-        Dim tp As New TabPage
-        tp.Name = "tabTopicKeywords" & CStr(tabCt)
-        tp.Text = "Theme Keywords"
-
-
-        txtTopicKeyThesaurus = New TextBox()
-        With txtTopicKeyThesaurus
-            .Name = ("txtTopicKeyThesaurus" & CStr(tabCt))
-            .Location = txtTopicKeyThesaurus1.Location
-            .Size = txtTopicKeyThesaurus1.Size
-        End With
-
-        labTopicKeyTip = New Label()
-        With labTopicKeyTip
-            .Text = labTopicKeyTip1.Text
-            .Location = labTopicKeyTip1.Location
-            .Size = labTopicKeyTip1.Size
-            .ForeColor = labTopicKeyTip1.ForeColor
-            .Font = labTopicKeyTip1.Font
-        End With
-
-        Label1 = New Label()
-        With Label1
-            .Text = "List topic keywords below:"
-            .Location = labListTopicKeywords1.Location
-            .Size = labListTopicKeywords1.Size
-            .ForeColor = labListTopicKeywords1.ForeColor
-            .Font = labListTopicKeywords1.Font
-        End With
-
-        Label2 = New Label()
-        With Label2
-            .Text = "Keyword Thesaurus"
-            .Location = labTopicKeyThesaurus1.Location
-            .Size = labTopicKeyThesaurus1.Size
-            .ForeColor = labTopicKeyThesaurus1.ForeColor
-            .Font = labTopicKeyThesaurus1.Font
-        End With
-
-        Label3 = New Label()
-        With Label3
-            .Text = "*"
-            .Location = labTopicKeywordReq1.Location
-            .Size = labTopicKeywordReq1.Size
-            .ForeColor = labTopicKeywordReq1.ForeColor
-            .Font = labTopicKeywordReq1.Font
-        End With
-
-        Label4 = New Label()
-        With Label4
-            .Text = "*"
-            .Location = labTopicKeywordReq2.Location
-            .Size = labTopicKeywordReq2.Size
-            .ForeColor = labTopicKeywordReq2.ForeColor
-            .Font = labTopicKeywordReq2.Font
-        End With
-
-
-        dgvTopicKeywords = New DataGridView()
-        With dgvTopicKeywords
-            .Name = ("dgvTopicKeywords" & CStr(tabCt))
-            .Location = dgvTopicKeywords1.Location
-            .Size = dgvTopicKeywords1.Size
-            .BackgroundColor = System.Drawing.SystemColors.Control
-            .BorderStyle = dgvTopicKeywords1.BorderStyle
-            .DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.Window
-            .DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.ControlText
-            .RowHeadersVisible = False
-            .Columns.Add("TopicKeywords", "Enter one keyword per line.")
-            .Columns(0).Width = dgvTopicKeywords1.Columns(0).Width
-        End With
-
-        tp.Controls.Add(labTopicKeyTip)
-
-        tp.Controls.Add(txtTopicKeyThesaurus)
-        tp.Controls.Add(Label1)
-        tp.Controls.Add(Label2)
-        tp.Controls.Add(Label3)
-        tp.Controls.Add(Label4)
-
-        tp.Controls.Add(dgvTopicKeywords)
-
-        tabCtrlDSTopicKeywords.Controls.Add(tp)
-
-    End Sub
-
-    Private Sub populateTopicKeywords1(node As XmlNode, tabCt As Integer)
+    Private Sub populateTopicKeywords1(node As XmlNode)
+        Dim thesaurus As String
 
         If nodeInstanceExists(node, "themekt") Then
-            Dim TopicKeyThesaurus As String = getNodeTextAtNodeInstance(node, "themekt")
-            txtTopicKeyThesaurus1.Text = TopicKeyThesaurus
+            thesaurus = getNodeTextAtNodeInstance(node, "themekt")
         Else
-            txtTopicKeyThesaurus1.Text = "None"
+            thesaurus = "None"
         End If
 
         Try
             Dim TopicKeywordsList As Collection = getMultiNodeValuesAtNodeInstance(node, "themekey")
 
             For Each iWord In TopicKeywordsList
-                dgvTopicKeywords1.Rows.Add(iWord)
+                If trvTopicMetadataKeywords.Nodes.ContainsKey(thesaurus) Then
+                    trvTopicMetadataKeywords.Nodes(thesaurus).Nodes.Add(iWord, iWord)
+                Else
+                    trvTopicMetadataKeywords.Nodes.Add(thesaurus, thesaurus).Nodes.Add(iWord, iWord)
+                End If
             Next iWord
 
         Catch ex As Exception
         End Try
-
     End Sub
-
-    Private Sub populateAdditionalTopicKeywords(node As XmlNode, tabCt As Integer)
-
-        If nodeInstanceExists(node, "themekt") Then
-            Dim TopicKeyThesaurus As String = getNodeTextAtNodeInstance(node, "themekt")
-            txtTopicKeyThesaurus.Text = TopicKeyThesaurus
-        Else
-            txtTopicKeyThesaurus.Text = "None"
-        End If
-
-        Try
-            Dim TopicKeywordsList As Collection = getMultiNodeValuesAtNodeInstance(node, "themekey")
-
-            For Each iWord In TopicKeywordsList
-                dgvTopicKeywords.Rows.Add(iWord)
-            Next iWord
-
-        Catch ex As Exception
-        End Try
-
-    End Sub
-
 
     Public Function getDGVList(ctl As DataGridView)
         Try
@@ -3657,52 +3292,6 @@ Public Class frmMetadataEditor
         End If
 
     End Sub
-
-
-    Private Sub btnAddPlaceKeywordSet_Click(sender As System.Object, e As System.EventArgs) Handles btnAddPlaceKeywordSet.Click
-
-        Dim currentTabNumber As Integer = (tabCtrlDSPlaceKeywords.TabCount + 1)
-        clonePlaceKeywordsTab(currentTabNumber)
-
-    End Sub
-
-    Private Sub btnDeletePlaceKeywordSet_Click(sender As System.Object, e As System.EventArgs) Handles btnDeletePlaceKeywordSet.Click
-
-        Dim targetPage As Integer = tabCtrlDSPlaceKeywords.SelectedIndex
-
-        If tabCtrlDSPlaceKeywords.SelectedTab.Name = "tabPlaceKeywords1" Then
-            Dim tab As TabPage = tabCtrlDSPlaceKeywords.SelectedTab
-            ClearTabContents(tab)
-            dgvPlaceKeywords1.DefaultCellStyle.BackColor = Color.WhiteSmoke
-            tab.Enabled = False
-
-        Else
-            tabCtrlDSPlaceKeywords.TabPages.RemoveAt(targetPage)
-        End If
-    End Sub
-
-
-    Private Sub btnAddTopicKeywordSet_Click(sender As System.Object, e As System.EventArgs) Handles btnAddTopicKeywordSet.Click
-        Dim currentTabNumber As Integer = (tabCtrlDSTopicKeywords.TabCount + 1)
-        cloneTopicKeywordsTab(currentTabNumber)
-    End Sub
-
-    Private Sub btnDeleteTopicKeywordSet_Click(sender As System.Object, e As System.EventArgs) Handles btnDeleteTopicKeywordSet.Click
-        Dim targetPage As Integer = tabCtrlDSTopicKeywords.SelectedIndex
-
-        If tabCtrlDSTopicKeywords.TabCount = 1 Then
-
-            Dim tab As TabPage = tabCtrlDSTopicKeywords.SelectedTab
-            ClearTabContents(tab)
-            For Each dgv In tab.Controls.OfType(Of DataGridView)()
-                dgv.DefaultCellStyle.BackColor = Color.WhiteSmoke
-                tab.Enabled = False
-            Next
-        Else
-            tabCtrlDSTopicKeywords.TabPages.RemoveAt(targetPage)
-        End If
-    End Sub
-
 
     Private Sub ClearTabContents(tab As TabPage)
 
@@ -3780,9 +3369,572 @@ Public Class frmMetadataEditor
         If System.IO.File.Exists(s_MP_ErrorReportFile) = True Then
             System.IO.File.Delete(s_MP_ErrorReportFile)
         End If
+    End Sub
 
+#Region "Functions for Keywords"
+    Private Sub getThesaurusDictionary()
+        Dim oHTTP As Object
+        Dim bGetAsAsync As Boolean
+        Dim jsonThesaurus As JObject
 
+        'Fetch information about each thesaurus from the thesaurus service.
+        'This is used to get the name of each thesaurus from the codes that the keyword service returns.
+        If thesaurusDictionary.Count < 1 Then
+            oHTTP = CreateObject("Microsoft.XMLHTTP")
+
+            oHTTP.open("GET", ("http://www.usgs.gov/science/thesaurus.php?format=json"), bGetAsAsync)
+            oHTTP.send()
+            jsonThesaurus = JObject.Parse(oHTTP.responseText)
+
+            For Each searchResult As JObject In jsonThesaurus.GetValue("vocabulary").Children
+                thesaurusDictionary.Add(searchResult.GetValue("thcode"), searchResult.GetValue("name"))
+                thesaurusDictionaryKeys.Add(searchResult.GetValue("name"), searchResult.GetValue("thcode"))
+            Next
+        End If
+    End Sub
+
+    Private Sub addRichText(box As RichTextBox, text As String, font As Font)
+        Dim stringstart As Integer = box.TextLength
+        box.AppendText(text)
+        box.Select(stringstart, box.TextLength - stringstart)
+        box.SelectionFont = font
+        box.DeselectAll()
+    End Sub
+
+    Private Sub addRichText(box As RichTextBox, text As String, style As FontStyle)
+        addRichText(box, text, New Font(box.Font, style))
+    End Sub
+
+    Private Sub addRichText(box As RichTextBox, text As String)
+        box.AppendText(text)
+    End Sub
+
+    Private Sub findTopicDetails(searchResultsBox As TreeView, detailsBox As RichTextBox, lastSearch As String)
+        Dim oHTTP As Object
+        Dim bGetAsAsync As Boolean
+        Dim thesaurusNode As TreeNode
+        Dim thesaurusID As String
+
+        'Ensure that the global thesaurus dictionary has been set up.
+        Try
+            getThesaurusDictionary()
+        Catch ex As Exception
+            detailsBox.Clear()
+            detailsBox.Text = "The Metadata Wizard was unable to query the thesaurus service."
+            Return
+        End Try
+
+        If searchResultsBox.SelectedNode.Level > 0 Then
+            'Retrieve info about a given keyword
+            Dim selectedKeyword As String
+            Dim searchResultTerm As JObject
+            Dim searchResultArray, searchResultUF, searchResultBT, searchResultNT, searchResultRT As JArray
+            Dim termCount As Integer
+            Dim shownPreferred As Boolean
+
+            selectedKeyword = searchResultsBox.SelectedNode.Text
+            thesaurusID = ""
+
+            'The top-level ancestor of the selected node is the thesaurus.
+            thesaurusNode = searchResultsBox.SelectedNode.Parent
+            Do Until thesaurusNode.Level = 0
+                thesaurusNode = thesaurusNode.Parent
+            Loop
+
+            'Find out the ID of the thesaurus the keyword belongs to.
+            If Not thesaurusDictionaryKeys.TryGetValue(thesaurusNode.Text, thesaurusID) Then
+                thesaurusID = Nothing
+
+                detailsBox.Clear()
+                detailsBox.Text = "The thesaurus service has no information about this thesaurus."
+                Return
+            End If
+
+            Try
+                oHTTP = CreateObject("Microsoft.XMLHTTP")
+                oHTTP.open("GET", ("http://www.usgs.gov/science/term.php?thcode=" & thesaurusID & "&text=" & selectedKeyword), bGetAsAsync)
+                oHTTP.send()
+                Try
+                    'The normal case: the search for a single term returns one result.
+                    searchResultArray = New JArray(JObject.Parse(oHTTP.responseText))
+                Catch ex As Exception
+                    'The odd case: the search for a single term returns two USE-WITH terms.
+                    searchResultArray = JArray.Parse(oHTTP.responseText)
+                End Try
+
+                'Place the results in the details box.
+                detailsBox.Clear()
+                shownPreferred = False
+
+                For Each searchResult As JObject In searchResultArray
+                    searchResultTerm = searchResult.GetValue("term")
+                    searchResultUF = searchResult.GetValue("uf")
+                    searchResultBT = searchResult.GetValue("bt")
+                    searchResultNT = searchResult.GetValue("nt")
+                    searchResultRT = searchResult.GetValue("rt")
+
+                    'Show what matched the search, if not the term itself.
+                    If Not searchResultTerm.GetValue("name").ToString.ToLower.Contains(lastSearch.ToLower) And Not shownPreferred Then
+                        termCount = 0
+
+                        'Only show this message once in the case where more than one term's details are shown.
+                        shownPreferred = True
+
+                        'Loop though alterate non-preferred terms
+                        For Each alternateTerm As JObject In searchResultUF
+                            If alternateTerm.GetValue("name").ToString.ToLower.Contains(lastSearch.ToLower) Then
+                                termCount = termCount + 1
+
+                                If termCount = 1 Then
+                                    addRichText(detailsBox, "The query matches the following non-preferred terms: ", FontStyle.Regular)
+                                Else
+                                    'Add comma between matched terms
+                                    addRichText(detailsBox, ", ", FontStyle.Regular)
+                                End If
+
+                                'Print the term underlined.
+                                addRichText(detailsBox, alternateTerm.GetValue("name").ToString, FontStyle.Underline)
+                            End If
+                        Next
+
+                        If termCount > 0 Then detailsBox.AppendText(vbNewLine & vbNewLine)
+                    End If
+
+                    'Preferred keyword term
+                    addRichText(detailsBox, searchResultTerm.GetValue("name").ToString & vbNewLine, New Font("Microsoft Sans Serif", 10, FontStyle.Bold))
+
+                    'Keyword scope
+                    addRichText(detailsBox, searchResultTerm.GetValue("scope").ToString & vbNewLine & vbNewLine, FontStyle.Regular)
+
+                    'Parent terms. Print in reverse order to get descending hierarchy.
+                    If searchResultBT.Count > 0 Then
+                        detailsBox.AppendText("Broader terms: ")
+                        For i As Integer = searchResultBT.Count - 1 To 0 Step -1
+                            Dim parentTerm As JObject = searchResultBT(i)
+
+                            'Add comma between matched terms
+                            If i < searchResultBT.Count - 1 Then
+                                addRichText(detailsBox, " > ", FontStyle.Regular)
+                            End If
+
+                            'Print the term underlined.
+                            addRichText(detailsBox, parentTerm.GetValue("name").ToString, FontStyle.Underline)
+                        Next
+                        detailsBox.AppendText(vbNewLine)
+                    End If
+
+                    'Child terms
+                    If searchResultNT.Count > 0 Then
+                        termCount = 0
+                        detailsBox.AppendText("Narrower terms: ")
+                        For Each childTerm As JObject In searchResultNT
+                            'Add comma between matched terms
+                            If termCount > 0 Then
+                                addRichText(detailsBox, ", ", FontStyle.Regular)
+                            End If
+                            termCount = termCount + 1
+
+                            'Print the term underlined.
+                            addRichText(detailsBox, childTerm.GetValue("name").ToString, FontStyle.Underline)
+                        Next
+                        detailsBox.AppendText(vbNewLine)
+                    End If
+
+                    'Related terms
+                    If searchResultRT.Count > 0 Then
+                        termCount = 0
+                        detailsBox.AppendText("Related terms: ")
+                        For Each relatedTerm As JObject In searchResultRT
+                            'Add comma between matched terms
+                            If termCount > 0 Then
+                                addRichText(detailsBox, ", ", FontStyle.Regular)
+                            End If
+                            termCount = termCount + 1
+
+                            'Print the term underlined.
+                            addRichText(detailsBox, relatedTerm.GetValue("name").ToString, FontStyle.Underline)
+                        Next
+                        detailsBox.AppendText(vbNewLine)
+                    End If
+
+                    detailsBox.AppendText(vbNewLine)
+                Next
+            Catch ex As Exception
+                detailsBox.Clear()
+                detailsBox.Text = "The Metadata Wizard was unable to query the keyword service."
+            End Try
+        ElseIf searchResultsBox.SelectedNode.Level = 0 Then
+            'Retrieve info about a given thesaurus
+            Dim jsonKeyword As JObject
+
+            thesaurusID = ""
+            thesaurusNode = searchResultsBox.SelectedNode
+
+            'Find out the ID of the thesaurus the keyword belongs to.
+            If Not thesaurusDictionaryKeys.TryGetValue(thesaurusNode.Text, thesaurusID) Then
+                thesaurusID = Nothing
+
+                detailsBox.Clear()
+                detailsBox.Text = "The thesaurus service has no information about this thesaurus."
+                Return
+            End If
+
+            Try
+                oHTTP = CreateObject("Microsoft.XMLHTTP")
+                oHTTP.open("GET", ("http://www.usgs.gov/science/thesaurus.php?format=json&thcode=" & thesaurusID), bGetAsAsync)
+                oHTTP.send()
+                jsonKeyword = JObject.Parse(oHTTP.responseText).GetValue("vocabulary")
+                detailsBox.Clear()
+
+                'Thesaurus name, URI, and scope
+                addRichText(detailsBox, jsonKeyword.GetValue("name").ToString & vbNewLine, New Font("Microsoft Sans Serif", 10, FontStyle.Bold))
+                If jsonKeyword.GetValue("uri").ToString.Length > 0 Then addRichText(detailsBox, jsonKeyword.GetValue("uri").ToString & vbNewLine & vbNewLine, FontStyle.Regular)
+                addRichText(detailsBox, jsonKeyword.GetValue("scope").ToString & vbNewLine & vbNewLine, FontStyle.Regular)
+            Catch ex As Exception
+                detailsBox.Clear()
+                detailsBox.Text = "The Metadata Wizard was unable to query the thesaurus service."
+            End Try
+        End If
 
     End Sub
+#End Region
+
+#Region "Topic Keywords"
+    Private Sub btnTopicSearch_Click(sender As System.Object, e As System.EventArgs) Handles btnTopicSearch.Click
+        Dim oHTTP As Object
+        Dim bGetAsAsync As Boolean
+        Dim jsonKeyword As JArray
+        Dim resultThesaurus As String
+
+        bGetAsAsync = False
+        resultThesaurus = ""
+        lastTopicKeywordSearch = txtTopicSearchTerm.Text
+
+        'Ensure that the thesaurus dictionary has been set up.
+        Try
+            getThesaurusDictionary()
+        Catch ex As Exception
+            txtTopicKeywordDetail.Clear()
+            txtTopicKeywordDetail.Text = "The Metadata Wizard was unable to query the thesaurus service."
+            Return
+        End Try
+
+        'Contact the keyword service and place the search results in the correct pane.
+        Try
+            oHTTP = CreateObject("Microsoft.XMLHTTP")
+            oHTTP.open("GET", ("http://www.usgs.gov/science/term-search.php?thcode=any&term=" & txtTopicSearchTerm.Text), bGetAsAsync)
+            oHTTP.send()
+            jsonKeyword = JArray.Parse(oHTTP.responseText)
+
+            'Place the search results in the results box.
+            trvTopicSearchResults.Nodes.Clear()
+            For Each searchResult As JObject In jsonKeyword
+                'Find out which thesaurus the keyword belongs to.
+                If Not thesaurusDictionary.TryGetValue(searchResult.GetValue("thcode"), resultThesaurus) Then
+                    resultThesaurus = "None"
+                End If
+
+                'Exclude the "Common geographic areas" thesaurus, which is used for place keywords
+                If resultThesaurus.ToLower = "common geographic areas" Then
+                    Continue For
+                End If
+
+                If Not trvTopicSearchResults.Nodes.ContainsKey(resultThesaurus) Then
+                    'Create new thesaurus node.
+                    trvTopicSearchResults.Nodes.Add(resultThesaurus, resultThesaurus)
+                End If
+
+                'Find existing thesaurus node and add new keyword to it.
+                If Not trvTopicSearchResults.Nodes(resultThesaurus).Nodes.ContainsKey(searchResult.GetValue("value")) Then
+                    trvTopicSearchResults.Nodes(resultThesaurus).Nodes.Add(searchResult.GetValue("value"), searchResult.GetValue("value"))
+                End If
+            Next
+        Catch ex As Exception
+            txtTopicKeywordDetail.Clear()
+            txtTopicKeywordDetail.Text = "The Metadata Wizard was unable to query the keyword service."
+            trvTopicSearchResults.Nodes.Clear()
+        End Try
+    End Sub
+
+    Private Sub btnTopicBrowseISO_Click(sender As System.Object, e As System.EventArgs) Handles btnTopicBrowseISO.Click
+        Dim oHTTP As Object
+        Dim bGetAsAsync As Boolean
+        Dim jsonKeyword As JObject
+        Dim searchResultNT As JArray
+
+        bGetAsAsync = False
+
+        'Ensure that the thesaurus dictionary has been set up.
+        Try
+            getThesaurusDictionary()
+        Catch ex As Exception
+            txtTopicKeywordDetail.Clear()
+            txtTopicKeywordDetail.Text = "The Metadata Wizard was unable to query the thesaurus service."
+            Return
+        End Try
+
+        'Contact the keyword service and place the search results in the correct pane.
+        Try
+            oHTTP = CreateObject("Microsoft.XMLHTTP")
+            oHTTP.open("GET", ("http://www.usgs.gov/science/term.php?thcode=15&text=ISO 19115 Topic Category"), bGetAsAsync)
+            oHTTP.send()
+            jsonKeyword = JObject.Parse(oHTTP.responseText)
+
+            'Place the search results in the results box.
+            trvTopicSearchResults.Nodes.Clear()
+            trvTopicSearchResults.Nodes.Add("ISO 19115 Topic Category", "ISO 19115 Topic Category")
+            searchResultNT = jsonKeyword.GetValue("nt")
+
+            'Add all child nodes of the "ISO 19115 Topic Category" keyword to the search results.
+            For Each childTerm As JObject In searchResultNT
+                If Not trvTopicSearchResults.Nodes("ISO 19115 Topic Category").Nodes.ContainsKey(childTerm.GetValue("name")) Then
+                    trvTopicSearchResults.Nodes("ISO 19115 Topic Category").Nodes.Add(childTerm.GetValue("name"), childTerm.GetValue("name"))
+                End If
+            Next
+        Catch ex As Exception
+            txtTopicKeywordDetail.Clear()
+            txtTopicKeywordDetail.Text = "The Metadata Wizard was unable to query the keyword service."
+            trvTopicSearchResults.Nodes.Clear()
+        End Try
+    End Sub
+
+    Private Sub btnTopicKeywordAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnTopicKeywordAdd.Click
+        'Copy selected keyword to the other list box.
+        Dim thesaurusNode As TreeNode
+
+        'Don't copy thesauruses, just keywords.
+        If trvTopicSearchResults.SelectedNode.Level = 0 Then
+            Return
+        End If
+
+        'The top-level ancestor of the selected node is the thesaurus.
+        thesaurusNode = trvTopicSearchResults.SelectedNode.Parent
+        Do Until thesaurusNode.Level = 0
+            thesaurusNode = thesaurusNode.Parent
+        Loop
+
+        'Check for the thesaurus in the other pane and add it if necessary.
+        If Not trvTopicMetadataKeywords.Nodes.ContainsKey(thesaurusNode.Text) Then
+            trvTopicMetadataKeywords.Nodes.Add(thesaurusNode.Text, thesaurusNode.Text)
+        End If
+
+        'Add keyword(s) to the other pane if not already present.
+        If trvTopicSearchResults.SelectedNode.Text.Contains(" AND ") Then
+            'Combined keyword. Needs to be split before copying over.
+            For Each keyword As String In trvTopicSearchResults.SelectedNode.Text.Replace(" AND ", vbNewLine).Split(vbNewLine)
+                If Not trvTopicMetadataKeywords.Nodes(thesaurusNode.Text).Nodes.ContainsKey(keyword) Then
+                    trvTopicMetadataKeywords.Nodes(thesaurusNode.Text).Nodes.Add(keyword, keyword).EnsureVisible()
+                Else
+                    'Don't add a duplicate. Show the existing copy.
+                    trvTopicMetadataKeywords.Nodes(thesaurusNode.Text).Nodes(keyword).EnsureVisible()
+                End If
+            Next
+        Else
+            'Normal keyword. Simply copy over.
+            If Not trvTopicMetadataKeywords.Nodes(thesaurusNode.Text).Nodes.ContainsKey(trvTopicSearchResults.SelectedNode.Text) Then
+                trvTopicMetadataKeywords.Nodes(thesaurusNode.Text).Nodes.Add(trvTopicSearchResults.SelectedNode.Text, trvTopicSearchResults.SelectedNode.Text).EnsureVisible()
+            Else
+                'Don't add a duplicate. Show the existing copy.
+                trvTopicMetadataKeywords.Nodes(thesaurusNode.Text).Nodes(trvTopicSearchResults.SelectedNode.Text).EnsureVisible()
+            End If
+        End If
+    End Sub
+
+    Private Sub btnTopicKeywordDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnTopicKeywordDelete.Click
+        'Remove the selected keyword.
+        Dim currentNode As TreeNode
+        currentNode = trvTopicMetadataKeywords.SelectedNode
+
+        'Also remove any parent nodes whose only child node will be removed.
+        Do Until currentNode.Level = 0
+            If currentNode.Parent.Nodes.Count > 1 Then Exit Do
+            currentNode = currentNode.Parent
+        Loop
+
+        currentNode.Remove()
+    End Sub
+
+    Private Sub trvTopicSearchResults_AfterSelect(sender As System.Object, e As System.Windows.Forms.TreeViewEventArgs) Handles trvTopicSearchResults.AfterSelect
+        findTopicDetails(trvTopicSearchResults, txtTopicKeywordDetail, lastTopicKeywordSearch)
+    End Sub
+
+    Private Sub btnTopicAddCustomKeyword_Click(sender As System.Object, e As System.EventArgs) Handles btnTopicAddCustomKeyword.Click
+        'Add a custom term to the file's metadata.
+
+        If txtTopicCustomKeyword.Text.Length < 1 Then
+            'Fail if the input is empty.
+            txtTopicCustomKeyword.Focus()
+            Return
+        End If
+
+        If txtTopicCustomThesaurus.Text.Length < 1 Then
+            'If the thesaurus is empty, default to "None".
+            txtTopicCustomThesaurus.Text = "None"
+        End If
+
+        'Check for the thesaurus in the right pane and add it if necessary.
+        If Not trvTopicMetadataKeywords.Nodes.ContainsKey(txtTopicCustomThesaurus.Text) Then
+            trvTopicMetadataKeywords.Nodes.Add(txtTopicCustomThesaurus.Text, txtTopicCustomThesaurus.Text)
+        End If
+
+        'Add keyword to the other pane if it isn't there already.
+        If Not trvTopicMetadataKeywords.Nodes(txtTopicCustomThesaurus.Text).Nodes.ContainsKey(txtTopicCustomKeyword.Text) Then
+            trvTopicMetadataKeywords.Nodes(txtTopicCustomThesaurus.Text).Nodes.Add(txtTopicCustomKeyword.Text, txtTopicCustomKeyword.Text).EnsureVisible()
+        Else
+            'Don't add a duplicate. Show the existing copy.
+            trvTopicMetadataKeywords.Nodes(txtTopicCustomThesaurus.Text).Nodes(txtTopicCustomKeyword.Text).EnsureVisible()
+        End If
+
+        'Clear the custom term text box and focus it to prepare for another input.
+        txtTopicCustomKeyword.Focus()
+        txtTopicCustomKeyword.Text = ""
+    End Sub
+#End Region
+
+#Region "Place Keywords"
+    Private Sub btnPlaceSearch_Click(sender As System.Object, e As System.EventArgs) Handles btnPlaceSearch.Click
+        Dim oHTTP As Object
+        Dim bGetAsAsync As Boolean
+        Dim jsonKeyword As JArray
+        Dim resultThesaurus As String
+
+        bGetAsAsync = False
+        resultThesaurus = ""
+        lastPlaceKeywordSearch = txtPlaceSearchTerm.Text
+
+        'Ensure that the thesaurus dictionary has been set up.
+        Try
+            getThesaurusDictionary()
+        Catch ex As Exception
+            txtPlaceKeywordDetail.Clear()
+            txtPlaceKeywordDetail.Text = "The Metadata Wizard was unable to query the thesaurus service."
+            Return
+        End Try
+
+        'Contact the keyword service and place the search results in the correct pane.
+        Try
+            oHTTP = CreateObject("Microsoft.XMLHTTP")
+            oHTTP.open("GET", ("http://www.usgs.gov/science/term-search.php?thcode=1&term=" & txtPlaceSearchTerm.Text), bGetAsAsync)
+            oHTTP.send()
+            jsonKeyword = JArray.Parse(oHTTP.responseText)
+
+            'Place the search results in the results box.
+            trvPlaceSearchResults.Nodes.Clear()
+            For Each searchResult As JObject In jsonKeyword
+                'Find out which thesaurus the keyword belongs to.
+                If Not thesaurusDictionary.TryGetValue(searchResult.GetValue("thcode"), resultThesaurus) Then
+                    resultThesaurus = "None"
+                End If
+
+                If Not trvPlaceSearchResults.Nodes.ContainsKey(resultThesaurus) Then
+                    'Create new thesaurus node.
+                    trvPlaceSearchResults.Nodes.Add(resultThesaurus, resultThesaurus)
+                End If
+
+                'Find existing thesaurus node and add new keyword to it.
+                If Not trvPlaceSearchResults.Nodes(resultThesaurus).Nodes.ContainsKey(searchResult.GetValue("value")) Then
+                    trvPlaceSearchResults.Nodes(resultThesaurus).Nodes.Add(searchResult.GetValue("value"), searchResult.GetValue("value"))
+                End If
+            Next
+        Catch ex As Exception
+            txtPlaceKeywordDetail.Clear()
+            txtPlaceKeywordDetail.Text = "The Metadata Wizard was unable to query the keyword service."
+            trvPlaceSearchResults.Nodes.Clear()
+        End Try
+    End Sub
+
+    Private Sub btnPlaceKeywordAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnPlaceKeywordAdd.Click
+        'Copy selected keyword to the other list box.
+        Dim thesaurusNode As TreeNode
+
+        'Don't copy thesauruses, just keywords.
+        If trvPlaceSearchResults.SelectedNode.Level = 0 Then
+            Return
+        End If
+
+        'The top-level ancestor of the selected node is the thesaurus.
+        thesaurusNode = trvPlaceSearchResults.SelectedNode.Parent
+        Do Until thesaurusNode.Level = 0
+            thesaurusNode = thesaurusNode.Parent
+        Loop
+
+        'Check for the thesaurus in the other pane and add it if necessary.
+        If Not trvPlaceMetadataKeywords.Nodes.ContainsKey(thesaurusNode.Text) Then
+            trvPlaceMetadataKeywords.Nodes.Add(thesaurusNode.Text, thesaurusNode.Text)
+        End If
+
+        'Add keyword(s) to the other pane if not already present.
+        If trvPlaceSearchResults.SelectedNode.Text.Contains(" AND ") Then
+            'Combined keyword. Needs to be split before copying over.
+            For Each keyword As String In trvPlaceSearchResults.SelectedNode.Text.Replace(" AND ", vbNewLine).Split(vbNewLine)
+                If Not trvPlaceMetadataKeywords.Nodes(thesaurusNode.Text).Nodes.ContainsKey(keyword) Then
+                    trvPlaceMetadataKeywords.Nodes(thesaurusNode.Text).Nodes.Add(keyword, keyword).EnsureVisible()
+                Else
+                    'Don't add a duplicate. Show the existing copy.
+                    trvPlaceMetadataKeywords.Nodes(thesaurusNode.Text).Nodes(keyword).EnsureVisible()
+                End If
+            Next
+        Else
+            'Normal keyword. Simply copy over.
+            If Not trvPlaceMetadataKeywords.Nodes(thesaurusNode.Text).Nodes.ContainsKey(trvPlaceSearchResults.SelectedNode.Text) Then
+                trvPlaceMetadataKeywords.Nodes(thesaurusNode.Text).Nodes.Add(trvPlaceSearchResults.SelectedNode.Text, trvPlaceSearchResults.SelectedNode.Text).EnsureVisible()
+            Else
+                'Don't add a duplicate. Show the existing copy.
+                trvPlaceMetadataKeywords.Nodes(thesaurusNode.Text).Nodes(trvPlaceSearchResults.SelectedNode.Text).EnsureVisible()
+            End If
+        End If
+    End Sub
+
+    Private Sub btnPlaceKeywordDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnPlaceKeywordDelete.Click
+        'Remove the selected keyword.
+        Dim currentNode As TreeNode
+        currentNode = trvPlaceMetadataKeywords.SelectedNode
+
+        'Also remove any parent nodes whose only child node will be removed.
+        Do Until currentNode.Level = 0
+            If currentNode.Parent.Nodes.Count > 1 Then Exit Do
+            currentNode = currentNode.Parent
+        Loop
+
+        currentNode.Remove()
+    End Sub
+
+    Private Sub trvPlaceSearchResults_AfterSelect(sender As System.Object, e As System.Windows.Forms.TreeViewEventArgs) Handles trvPlaceSearchResults.AfterSelect
+        findTopicDetails(trvPlaceSearchResults, txtPlaceKeywordDetail, lastPlaceKeywordSearch)
+    End Sub
+
+    Private Sub btnPlaceAddCustomKeyword_Click(sender As System.Object, e As System.EventArgs) Handles btnPlaceAddCustomKeyword.Click
+        'Add a custom term to the file's metadata.
+
+        If txtPlaceCustomKeyword.Text.Length < 1 Then
+            'Fail if the input is empty.
+            txtPlaceCustomKeyword.Focus()
+            Return
+        End If
+
+        If txtPlaceCustomThesaurus.Text.Length < 1 Then
+            'If the thesaurus is empty, default to "None".
+            txtPlaceCustomThesaurus.Text = "None"
+        End If
+
+        'Check for the thesaurus in the right pane and add it if necessary.
+        If Not trvPlaceMetadataKeywords.Nodes.ContainsKey(txtPlaceCustomThesaurus.Text) Then
+            trvPlaceMetadataKeywords.Nodes.Add(txtPlaceCustomThesaurus.Text, txtPlaceCustomThesaurus.Text)
+        End If
+
+        'Add keyword to the other pane if it isn't there already.
+        If Not trvPlaceMetadataKeywords.Nodes(txtPlaceCustomThesaurus.Text).Nodes.ContainsKey(txtPlaceCustomKeyword.Text) Then
+            trvPlaceMetadataKeywords.Nodes(txtPlaceCustomThesaurus.Text).Nodes.Add(txtPlaceCustomKeyword.Text, txtPlaceCustomKeyword.Text).EnsureVisible()
+        Else
+            'Don't add a duplicate. Show the existing copy.
+            trvPlaceMetadataKeywords.Nodes(txtPlaceCustomThesaurus.Text).Nodes(txtPlaceCustomKeyword.Text).EnsureVisible()
+        End If
+
+        'Clear the custom term text box and focus it to prepare for another input.
+        txtPlaceCustomKeyword.Focus()
+        txtPlaceCustomKeyword.Text = ""
+    End Sub
+#End Region
+
 End Class
 
