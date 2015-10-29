@@ -120,6 +120,9 @@
   <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>9, 14</value>
   </metadata>
+  <data name="Panel4.HelpString" xml:space="preserve">
+    <value>Provide details on on what is captured in the data set in relation to all real world occurrences of the phenomenon. For example, if the data represents a tree survey are ALL trees included or only those of a certain size or species? Given the limitations of the data were produced, how complete can the user expect the data to be? Provide as much information as possible.</value>
+  </data>
   <metadata name="HelpProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>104, 14</value>
   </metadata>
@@ -176,9 +179,6 @@ Were topology tests conducted to ensure the integrity of geospatial data? See he
     <value>How accurate are the values in the data set relative to "true" values? 
 Were any tests performed to assess the accuracy of values?
 Please describe any methods used to ensure quality / accuracy in the data. See help for more info.</value>
-  </data>
-  <data name="Panel4.HelpString" xml:space="preserve">
-    <value>Provide details on on what is captured in the data set in relation to all real world occurrences of the phenomenon. For example, if the data represents a tree survey are ALL trees included or only those of a certain size or species? Given the limitations of the data were produced, how complete can the user expect the data to be? Provide as much information as possible.</value>
   </data>
   <data name="txtDSDistFees.HelpString" xml:space="preserve">
     <value>List any fees associated with acquiring the data. This tool requires this element, so if no fees are associated with data acquisition, use the default value of: "None. No fees are applicable for obtaining the data set."</value>
@@ -238,27 +238,12 @@ remain unchanged and will be present in the output record.</value>
   <metadata name="DataGridViewTextBoxColumn4.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="txtDSLargerWorkSeriesName.HelpString" xml:space="preserve">
-    <value>What is the name of the data series that the LARGER WORK is part of?  This might be "USGS Data Series", if applicable. Alternatively, this could be the name of a publication or journal, or an online series in which the larger work is an installment.</value>
-  </data>
-  <data name="txtDSLargerWorkSeriesNum.HelpString" xml:space="preserve">
-    <value>What is the unique number or name that identifies this LARGER WORK within the series? This might correspond to a USGS 'Data Series' number, or the specific volume/edition of a peer-reviewed journal, etc.</value>
-  </data>
   <data name="txtDSLargerWorkPubDate.HelpString" xml:space="preserve">
     <value>Provide the date of publication. If a traditional 'publication date' is unknown, provide the date when the data set was finalized and / or made available. If month and day are not known, simply enter the year (in the YYYY format).</value>
   </data>
   <metadata name="DataGridViewTextBoxColumn3.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="txtDSTimePeriodSingleDate.HelpString" xml:space="preserve">
-    <value>If the data represent information captured or recorded at one point in time, enter the date using the single date option. If the month and day are not known, simply enter the year (in the YYYY format). </value>
-  </data>
-  <metadata name="DataGridViewTextBoxColumn5.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="dgvDSTimePeriodMultiDate.HelpString" xml:space="preserve">
-    <value>If the data represent information captured or recorded at various points through time, enter the individual dates here. This option should be used when the date range option is not appropriate – e.g., when data represent a disparate collection of measurements or when temporal currency of the data set can be linked to multiple distinct points in time. If the month and day are not known, simply enter the year (in the YYYY format). </value>
-  </data>
   <data name="cboDSTimePeriodCurrentRef.HelpString" xml:space="preserve">
     <value>Provide additional detail about the time period of the information in the data set. How current is the data set? ["Ground Condition" = time period date(s) and the information in the data set reflect when a site was physically visited. This category may only be appropriate for certain data types.] ["Observed" = time period date(s) and the information in the data set reflect conditions at a particular time of data capture. Physical presence not required; information may have been collected by an instrument or tool.] ["Publication" = Additional information about how the data were captured is unavailable. Time period date(s) represent the publication date of the inputs used to produce the data set.]</value>
   </data>
@@ -287,11 +272,41 @@ restrictions or limitations on using the data set. </value>
   <data name="txtDSUseCon.HelpString" xml:space="preserve">
     <value>Provide details about any limitations regarding who can use the data set, if applicable. In some cases, restrictions on USE may differ from restrictions on ACCESS.For instance, a data set may only be available for download on a university's server, but available for use by anyone. (Limited access, but not use). Alternatively, a data set may be freely available but only usable by individuals with a particular type of software (Limited use, but not access).</value>
   </data>
+  <data name="trvPlaceMetadataKeywords.HelpString" xml:space="preserve">
+    <value>This window shows the place keyword/thesaurus pairings that are currently present in the metadata record. To add or remove terms, use the arrows to the left. Terms can also be added by using the free-text field below.</value>
+  </data>
+  <data name="txtPlaceKeywordDetail.HelpString" xml:space="preserve">
+    <value>When an element is selected in the 'Search results' field above, additional information about the specific term or the thesaurus from which it comes can be viewed here to help determine appropriate use.</value>
+  </data>
+  <data name="txtPlaceSearchTerm.HelpString" xml:space="preserve">
+    <value>Enter text in this field and press 'Search' to look for matching place terms in a controlled vocabulary (thesaurus). The Metadata Wizard currently searches for place terms in the "Common Geographic Areas" thesaurus (http://www.usgs.gov/science/CommonGeographicAreas), thanks to the help of Peter Schweitzer.</value>
+  </data>
   <data name="cboDSDataStatus.HelpString" xml:space="preserve">
     <value>Describe the status of the data set. ["Complete": The data set is finalized and represents a finished product.] ["In Work" : The data set is not finalized and work on the data set is ongoing.] ["Planned" : The data set does not exist but its production is planned. The metadata record outlines the overall goals of the project at this point and will be updated as the data is created.]</value>
   </data>
   <data name="txtDSSeriesName.HelpString" xml:space="preserve">
     <value>What is the name of the data series that the data set is part of? This might be "USGS Data Series", if applicable. Alternatively, this could be the name of a publication or journal, or an online series in which the data set is an installment.</value>
+  </data>
+  <data name="txtDSLargerWorkSeriesName.HelpString" xml:space="preserve">
+    <value>What is the name of the data series that the LARGER WORK is part of?  This might be "USGS Data Series", if applicable. Alternatively, this could be the name of a publication or journal, or an online series in which the larger work is an installment.</value>
+  </data>
+  <data name="txtDSLargerWorkSeriesNum.HelpString" xml:space="preserve">
+    <value>What is the unique number or name that identifies this LARGER WORK within the series? This might correspond to a USGS 'Data Series' number, or the specific volume/edition of a peer-reviewed journal, etc.</value>
+  </data>
+  <data name="txtDSTimePeriodSingleDate.HelpString" xml:space="preserve">
+    <value>If the data represent information captured or recorded at one point in time, enter the date using the single date option. If the month and day are not known, simply enter the year (in the YYYY format). </value>
+  </data>
+  <metadata name="DataGridViewTextBoxColumn5.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="dgvDSTimePeriodMultiDate.HelpString" xml:space="preserve">
+    <value>If the data represent information captured or recorded at various points through time, enter the individual dates here. This option should be used when the date range option is not appropriate – e.g., when data represent a disparate collection of measurements or when temporal currency of the data set can be linked to multiple distinct points in time. If the month and day are not known, simply enter the year (in the YYYY format). </value>
+  </data>
+  <data name="txtTopicKeywordDetail.HelpString" xml:space="preserve">
+    <value>When an element is selected in the 'Search results' field above, additional information about the specific term or the thesaurus from which it comes can be viewed here to help determine appropriate use.</value>
+  </data>
+  <data name="txtTopicSearchTerm.HelpString" xml:space="preserve">
+    <value>Enter text in this field and press 'Search' to look for matching terms in several known controlled vocabularies (thesauri). The Metadata Wizard currently searches for theme terms from a set of vocabularies served in an online service, thanks to the help of Peter Schweitzer. (For a list of the vocabularies that the service hosts, see: http://www.usgs.gov/science/thesaurus.php)</value>
   </data>
   <data name="Label87.Text" xml:space="preserve">
     <value>Metadata Parser (MP) is a utility for checking the compliance of an FGDC-CSDGM metadata record against the FGDC's official standard. The output provided below 
@@ -300,7 +315,7 @@ to populate (or provide the means to populate) all the necessary fields, some er
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>34</value>
+    <value>30</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

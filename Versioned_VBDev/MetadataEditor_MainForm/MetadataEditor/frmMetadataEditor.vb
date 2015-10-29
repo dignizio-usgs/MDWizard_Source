@@ -241,7 +241,7 @@ Public Class frmMetadataEditor
     End Sub
 
     'Data Set Place Keywords Yes/No
-    Private Sub rbPlaceKeywordsYes_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbPlaceKeywordsYes.CheckedChanged, rbPlaceKeywordsNo.CheckedChanged
+    Private Sub rbPlaceKeywordsYes_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbPlaceKeywordsYes.CheckedChanged
         txtPlaceSearchTerm.Enabled = rbPlaceKeywordsYes.Checked
         btnPlaceSearch.Enabled = rbPlaceKeywordsYes.Checked
         trvPlaceSearchResults.Enabled = rbPlaceKeywordsYes.Checked
@@ -253,12 +253,41 @@ Public Class frmMetadataEditor
         txtPlaceCustomThesaurus.Enabled = rbPlaceKeywordsYes.Checked
         btnPlaceAddCustomKeyword.Enabled = rbPlaceKeywordsYes.Checked
 
+        'Handle the "Yes" Radio Button
         If rbPlaceKeywordsYes.Checked Then
             trvPlaceSearchResults.BackColor = Color.White
             trvPlaceMetadataKeywords.BackColor = Color.White
+            Try
+                For Each node As XmlNode In xmlMD.SelectNodes("metadata/idinfo/keywords/place")
+                    populatePlaceKeywords1(node)
+                Next node
+            Catch ex As Exception
+            End Try
+
+            'Handle the "No" Radio Button
         Else
             trvPlaceSearchResults.BackColor = Control.DefaultBackColor
             trvPlaceMetadataKeywords.BackColor = Control.DefaultBackColor
+
+            Try
+                For Each iNode In trvPlaceSearchResults.Nodes
+                    Dim node As TreeNode = iNode
+                    node.Remove()
+                Next
+            Catch ex As Exception
+            End Try
+            Try
+                For Each iNode In trvPlaceMetadataKeywords.Nodes
+                    Dim node As TreeNode = iNode
+                    node.Remove()
+                Next
+            Catch ex As Exception
+            End Try
+            Try
+                deleteChildren(xmlMDOutput, "metadata/idinfo/keywords", "place")
+            Catch ex As Exception
+            End Try
+
         End If
     End Sub
 
@@ -949,12 +978,6 @@ Public Class frmMetadataEditor
         'Data Set Place Keywords
         If nodeExists(xmlMD, "metadata/idinfo/keywords/place") Then
             rbPlaceKeywordsYes.Checked = True
-            Try
-                For Each node As XmlNode In xmlMD.SelectNodes("metadata/idinfo/keywords/place")
-                    populatePlaceKeywords1(node)
-                Next node
-            Catch ex As Exception
-            End Try
         End If
 
         'Data Set Topic Keywords
@@ -3606,6 +3629,14 @@ Public Class frmMetadataEditor
         Dim jsonKeyword As JArray
         Dim resultThesaurus As String
 
+        If txtTopicSearchTerm.Text = "" Then
+            Using New Centered_MessageBox(Me)
+                MessageBox.Show("Please enter a search term.")
+            End Using
+            Exit Sub
+        End If
+
+
         bGetAsAsync = False
         resultThesaurus = ""
         lastTopicKeywordSearch = txtTopicSearchTerm.Text
@@ -3702,6 +3733,13 @@ Public Class frmMetadataEditor
         'Copy selected keyword to the other list box.
         Dim thesaurusNode As TreeNode
 
+        If trvTopicSearchResults.SelectedNode Is Nothing Then
+            Using New Centered_MessageBox(Me)
+                MessageBox.Show("A theme keyword to add to the record was not specified.")
+            End Using
+            Exit Sub
+        End If
+
         'Don't copy thesauruses, just keywords.
         If trvTopicSearchResults.SelectedNode.Level = 0 Then
             Return
@@ -3744,6 +3782,13 @@ Public Class frmMetadataEditor
         'Remove the selected keyword.
         Dim currentNode As TreeNode
         currentNode = trvTopicMetadataKeywords.SelectedNode
+
+        If currentNode Is Nothing Then
+            Using New Centered_MessageBox(Me)
+                MessageBox.Show("Please select a theme keyword to remove from the XML record.")
+            End Using
+            Exit Sub
+        End If
 
         'Also remove any parent nodes whose only child node will be removed.
         Do Until currentNode.Level = 0
@@ -3798,6 +3843,13 @@ Public Class frmMetadataEditor
         Dim jsonKeyword As JArray
         Dim resultThesaurus As String
 
+        If txtPlaceSearchTerm.Text = "" Then
+            Using New Centered_MessageBox(Me)
+                MessageBox.Show("Please enter a search term.")
+            End Using
+            Exit Sub
+        End If
+
         bGetAsAsync = False
         resultThesaurus = ""
         lastPlaceKeywordSearch = txtPlaceSearchTerm.Text
@@ -3847,6 +3899,13 @@ Public Class frmMetadataEditor
         'Copy selected keyword to the other list box.
         Dim thesaurusNode As TreeNode
 
+        If trvPlaceSearchResults.SelectedNode Is Nothing Then
+            Using New Centered_MessageBox(Me)
+                MessageBox.Show("A place keyword to add to the record was not specified.")
+            End Using
+            Exit Sub
+        End If
+
         'Don't copy thesauruses, just keywords.
         If trvPlaceSearchResults.SelectedNode.Level = 0 Then
             Return
@@ -3889,6 +3948,13 @@ Public Class frmMetadataEditor
         'Remove the selected keyword.
         Dim currentNode As TreeNode
         currentNode = trvPlaceMetadataKeywords.SelectedNode
+
+        If currentNode Is Nothing Then
+            Using New Centered_MessageBox(Me)
+                MessageBox.Show("Please select a place keyword to remove from the XML record.")
+            End Using
+            Exit Sub
+        End If
 
         'Also remove any parent nodes whose only child node will be removed.
         Do Until currentNode.Level = 0
@@ -3934,6 +4000,7 @@ Public Class frmMetadataEditor
         txtPlaceCustomKeyword.Focus()
         txtPlaceCustomKeyword.Text = ""
     End Sub
+
 #End Region
 
 End Class

@@ -90,3 +90,6 @@ the "Originator" field.
 
 ##### Metadata Wizard version 1.7 (Updated 10152015)
 - Updated the 'Keywords' section. Worked with Peter Schweitzer to connect the keywords section to his keywords JSON API service. Users can now search/choose from a standardized list of keywords for both 'topic/theme' and 'place' keywords. We also strongly encourage (but don't require) the user to supply at least one ISO keyword. There is a new button which allows users to easily browse and select ISO keywords. An Internet connection is required to communicate with the keywords service. Users can still use the traditional method of creating their own custom keywords.
+
+##### Metadata Wizard version 1.7.1 (Updated 10292015)
+- Minor updates for error handling and application UI after the revision to the ‘Keywords’ section. Updates should resolve unhandled application errors related to clicking the Add or Delete buttons when no keyword or thesaurus had been selected. User help tips have also been added for the new UI fields. Additionally, clicking “No Place Keywords” radio button will now properly remove any place keywords from the XML if toggled.

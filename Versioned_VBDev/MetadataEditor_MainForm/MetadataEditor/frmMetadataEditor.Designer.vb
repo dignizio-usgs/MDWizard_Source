@@ -24,20 +24,20 @@ Partial Class frmMetadataEditor
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMetadataEditor))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle71 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle72 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle73 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle74 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle75 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle76 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle77 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle78 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle82 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle83 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle84 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle79 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle80 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle81 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnPreviewMetadata = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel4 = New System.Windows.Forms.Panel()
@@ -647,7 +647,7 @@ Partial Class frmMetadataEditor
         Me.Panel4.Size = New System.Drawing.Size(1120, 570)
         Me.Panel4.TabIndex = 0
         Me.Panel4.Tag = "...dataqual\attacc{1}"
-        Me.ToolTip1.SetToolTip(Me.Panel4, "For more information about what should be entered in a given element, click into " & _
+        Me.ToolTip1.SetToolTip(Me.Panel4, "For more information about what should be entered in a given element, click into " &
         "the element and press F1.")
         '
         'GroupBox10
@@ -674,7 +674,7 @@ Partial Class frmMetadataEditor
         Me.txtDSVertAccReport.Size = New System.Drawing.Size(468, 97)
         Me.txtDSVertAccReport.TabIndex = 101
         Me.txtDSVertAccReport.Tag = "metadata/dataqual/posacc/vertacc/vertaccr"
-        Me.txtDSVertAccReport.Text = "A formal accuracy assessment of the vertical positional information in the data s" & _
+        Me.txtDSVertAccReport.Text = "A formal accuracy assessment of the vertical positional information in the data s" &
     "et has either not been conducted, or is not applicable." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'txtDSHorizAccReport
@@ -689,7 +689,7 @@ Partial Class frmMetadataEditor
         Me.txtDSHorizAccReport.Size = New System.Drawing.Size(468, 97)
         Me.txtDSHorizAccReport.TabIndex = 100
         Me.txtDSHorizAccReport.Tag = "metadata/dataqual/posacc/horizpa/horizpar"
-        Me.txtDSHorizAccReport.Text = "A formal accuracy assessment of the horizontal positional information in the data" & _
+        Me.txtDSHorizAccReport.Text = "A formal accuracy assessment of the horizontal positional information in the data" &
     " set has not been conducted."
         '
         'Label82
@@ -850,7 +850,7 @@ Partial Class frmMetadataEditor
         'txtProcessDate1
         '
         Me.txtProcessDate1.ForeColor = System.Drawing.Color.SlateGray
-        Me.HelpProvider1.SetHelpString(Me.txtProcessDate1, "Enter the date of the processing step. If the month and day are not known, simply" & _
+        Me.HelpProvider1.SetHelpString(Me.txtProcessDate1, "Enter the date of the processing step. If the month and day are not known, simply" &
         " enter the year (in the YYYY format).")
         Me.txtProcessDate1.Location = New System.Drawing.Point(9, 132)
         Me.txtProcessDate1.Name = "txtProcessDate1"
@@ -881,7 +881,7 @@ Partial Class frmMetadataEditor
         Me.HelpProvider1.SetShowHelp(Me.txtProcessStep1, True)
         Me.txtProcessStep1.Size = New System.Drawing.Size(482, 83)
         Me.txtProcessStep1.TabIndex = 119
-        Me.txtProcessStep1.Text = "Development of the data set by the agency / individuals identified in the 'Origin" & _
+        Me.txtProcessStep1.Text = "Development of the data set by the agency / individuals identified in the 'Origin" &
     "ator' element in the Identification Info section of the record."
         '
         'Label259
@@ -892,7 +892,7 @@ Partial Class frmMetadataEditor
         Me.Label259.Name = "Label259"
         Me.Label259.Size = New System.Drawing.Size(476, 13)
         Me.Label259.TabIndex = 0
-        Me.Label259.Text = "Describe the methods performed to collect or generate the data. Provide as much d" & _
+        Me.Label259.Text = "Describe the methods performed to collect or generate the data. Provide as much d" &
     "etail as possible."
         '
         'GroupBox21
@@ -948,7 +948,7 @@ Partial Class frmMetadataEditor
         Me.rbSourceInputs.Name = "rbSourceInputs"
         Me.rbSourceInputs.Size = New System.Drawing.Size(469, 17)
         Me.rbSourceInputs.TabIndex = 3
-        Me.rbSourceInputs.Text = "The source inputs are described below (reference imagery/materials, assorted GIS " & _
+        Me.rbSourceInputs.Text = "The source inputs are described below (reference imagery/materials, assorted GIS " &
     "inputs, etc.)"
         Me.rbSourceInputs.UseVisualStyleBackColor = True
         '
@@ -960,7 +960,7 @@ Partial Class frmMetadataEditor
         Me.Label285.Name = "Label285"
         Me.Label285.Size = New System.Drawing.Size(365, 13)
         Me.Label285.TabIndex = 2
-        Me.Label285.Text = "------------------------------------------------------   OR   -------------------" & _
+        Me.Label285.Text = "------------------------------------------------------   OR   -------------------" &
     "-----------------------------------"
         '
         'tabCtrlDSSourceInputs
@@ -1089,8 +1089,8 @@ Partial Class frmMetadataEditor
         '
         'txtSource1Contribution
         '
-        Me.HelpProvider1.SetHelpString(Me.txtSource1Contribution, "What did the source data contribute to the final data set, or to the production p" & _
-        "rocess? This is usually just a simple description of what was gained by using th" & _
+        Me.HelpProvider1.SetHelpString(Me.txtSource1Contribution, "What did the source data contribute to the final data set, or to the production p" &
+        "rocess? This is usually just a simple description of what was gained by using th" &
         "e source data.")
         Me.txtSource1Contribution.Location = New System.Drawing.Point(9, 319)
         Me.txtSource1Contribution.Name = "txtSource1Contribution"
@@ -1113,37 +1113,37 @@ Partial Class frmMetadataEditor
         '
         Me.dgvSource1OnlineLink.BackgroundColor = System.Drawing.SystemColors.Control
         Me.dgvSource1OnlineLink.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvSource1OnlineLink.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle71.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle71.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle71.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle71.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle71.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle71.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle71.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvSource1OnlineLink.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle71
         Me.dgvSource1OnlineLink.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvSource1OnlineLink.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn7})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvSource1OnlineLink.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle72.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle72.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle72.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle72.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle72.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle72.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle72.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvSource1OnlineLink.DefaultCellStyle = DataGridViewCellStyle72
         Me.dgvSource1OnlineLink.GridColor = System.Drawing.SystemColors.Control
-        Me.HelpProvider1.SetHelpString(Me.dgvSource1OnlineLink, "List the URL(s) for the website or GIS service where the data set can be obtained" & _
+        Me.HelpProvider1.SetHelpString(Me.dgvSource1OnlineLink, "List the URL(s) for the website or GIS service where the data set can be obtained" &
         ".")
         Me.dgvSource1OnlineLink.Location = New System.Drawing.Point(220, 107)
         Me.dgvSource1OnlineLink.Name = "dgvSource1OnlineLink"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvSource1OnlineLink.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle73.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle73.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle73.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle73.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle73.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle73.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle73.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvSource1OnlineLink.RowHeadersDefaultCellStyle = DataGridViewCellStyle73
         Me.dgvSource1OnlineLink.RowHeadersVisible = False
         Me.HelpProvider1.SetShowHelp(Me.dgvSource1OnlineLink, True)
         Me.dgvSource1OnlineLink.Size = New System.Drawing.Size(268, 77)
@@ -1394,7 +1394,7 @@ Partial Class frmMetadataEditor
         '
         'txtSource1PubDate
         '
-        Me.HelpProvider1.SetHelpString(Me.txtSource1PubDate, "Enter the date the data was published or made officially available. If the month " & _
+        Me.HelpProvider1.SetHelpString(Me.txtSource1PubDate, "Enter the date the data was published or made officially available. If the month " &
         "and day are not known, simply enter the year (in the YYYY format).")
         Me.txtSource1PubDate.Location = New System.Drawing.Point(9, 148)
         Me.txtSource1PubDate.Name = "txtSource1PubDate"
@@ -1426,8 +1426,8 @@ Partial Class frmMetadataEditor
         '
         'txtSource1PubPlace
         '
-        Me.HelpProvider1.SetHelpString(Me.txtSource1PubPlace, "Where was the data published? This usually corresponds to the physical location o" & _
-        "f the agency that produced the data, or could be listed as ""Online"" if the data " & _
+        Me.HelpProvider1.SetHelpString(Me.txtSource1PubPlace, "Where was the data published? This usually corresponds to the physical location o" &
+        "f the agency that produced the data, or could be listed as ""Online"" if the data " &
         "is available on the internet.")
         Me.txtSource1PubPlace.Location = New System.Drawing.Point(220, 66)
         Me.txtSource1PubPlace.Name = "txtSource1PubPlace"
@@ -1438,7 +1438,7 @@ Partial Class frmMetadataEditor
         '
         'txtSource1Publisher
         '
-        Me.HelpProvider1.SetHelpString(Me.txtSource1Publisher, "Who published the data or made it available? This might be the same as the Author" & _
+        Me.HelpProvider1.SetHelpString(Me.txtSource1Publisher, "Who published the data or made it available? This might be the same as the Author" &
         "/Originator.")
         Me.txtSource1Publisher.Location = New System.Drawing.Point(9, 66)
         Me.txtSource1Publisher.Name = "txtSource1Publisher"
@@ -1487,7 +1487,7 @@ Partial Class frmMetadataEditor
         Me.rbNoSourceInputs.Size = New System.Drawing.Size(534, 30)
         Me.rbNoSourceInputs.TabIndex = 0
         Me.rbNoSourceInputs.TabStop = True
-        Me.rbNoSourceInputs.Text = "No sources were used. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "The data set represents 100% original content, derived fi" & _
+        Me.rbNoSourceInputs.Text = "No sources were used. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "The data set represents 100% original content, derived fi" &
     "rst-hand (e.g., field collection, lab experiments, etc.)."
         Me.rbNoSourceInputs.UseVisualStyleBackColor = True
         '
@@ -1529,8 +1529,8 @@ Partial Class frmMetadataEditor
         Me.txtDSCompletenessReport.Size = New System.Drawing.Size(470, 104)
         Me.txtDSCompletenessReport.TabIndex = 89
         Me.txtDSCompletenessReport.Tag = "metadata/dataqual/complete"
-        Me.txtDSCompletenessReport.Text = "Data set is considered complete for the information presented, as described in th" & _
-    "e abstract. Users are advised to read the rest of the metadata record carefully " & _
+        Me.txtDSCompletenessReport.Text = "Data set is considered complete for the information presented, as described in th" &
+    "e abstract. Users are advised to read the rest of the metadata record carefully " &
     "for additional details."
         '
         'Label167
@@ -1650,7 +1650,7 @@ Partial Class frmMetadataEditor
         Me.Label78.Name = "Label78"
         Me.Label78.Size = New System.Drawing.Size(558, 16)
         Me.Label78.TabIndex = 28
-        Me.Label78.Text = "Provide information about the accuracy of the data set and details about how it w" & _
+        Me.Label78.Text = "Provide information about the accuracy of the data set and details about how it w" &
     "as produced."
         '
         'Label79
@@ -1682,7 +1682,7 @@ Partial Class frmMetadataEditor
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(1120, 570)
         Me.Panel5.TabIndex = 1
-        Me.ToolTip1.SetToolTip(Me.Panel5, "For more information about what should be entered in a given element, click into " & _
+        Me.ToolTip1.SetToolTip(Me.Panel5, "For more information about what should be entered in a given element, click into " &
         "the element and press F1.")
         '
         'GroupBox53
@@ -1746,7 +1746,7 @@ Partial Class frmMetadataEditor
         Me.Label312.Name = "Label312"
         Me.Label312.Size = New System.Drawing.Size(365, 13)
         Me.Label312.TabIndex = 93
-        Me.Label312.Text = "------------------------------------------------------   OR   -------------------" & _
+        Me.Label312.Text = "------------------------------------------------------   OR   -------------------" &
     "-----------------------------------"
         '
         'rbDSNoDistributionInfo
@@ -1758,7 +1758,7 @@ Partial Class frmMetadataEditor
         Me.rbDSNoDistributionInfo.Size = New System.Drawing.Size(349, 30)
         Me.rbDSNoDistributionInfo.TabIndex = 92
         Me.rbDSNoDistributionInfo.TabStop = True
-        Me.rbDSNoDistributionInfo.Text = "Data set is for internal use only and will NOT be shared or distributed." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "This me" & _
+        Me.rbDSNoDistributionInfo.Text = "Data set is for internal use only and will NOT be shared or distributed." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "This me" &
     "tadata record does not need distribution information."
         Me.rbDSNoDistributionInfo.UseVisualStyleBackColor = True
         '
@@ -1806,7 +1806,7 @@ Partial Class frmMetadataEditor
         '
         Me.txtDSCustomDistOrder.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDSCustomDistOrder.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.HelpProvider1.SetHelpString(Me.txtDSCustomDistOrder, "If there is a particular protocol for accessing the data (other than accessing it" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSCustomDistOrder, "If there is a particular protocol for accessing the data (other than accessing it" &
         " online), enter it here instead.")
         Me.txtDSCustomDistOrder.Location = New System.Drawing.Point(34, 178)
         Me.txtDSCustomDistOrder.Multiline = True
@@ -1827,8 +1827,8 @@ Partial Class frmMetadataEditor
         Me.rbStockDistributionText.Size = New System.Drawing.Size(418, 30)
         Me.rbStockDistributionText.TabIndex = 3
         Me.rbStockDistributionText.TabStop = True
-        Me.rbStockDistributionText.Text = "The data set is not available online. Interested parties should contact the distr" & _
-    "ibutor " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "for details on acquiring the data. (Provide 'Distributor Contact' infor" & _
+        Me.rbStockDistributionText.Text = "The data set is not available online. Interested parties should contact the distr" &
+    "ibutor " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "for details on acquiring the data. (Provide 'Distributor Contact' infor" &
     "mation)."
         Me.rbStockDistributionText.UseVisualStyleBackColor = True
         '
@@ -1951,7 +1951,7 @@ Partial Class frmMetadataEditor
         Me.txtDSDistLiability.Size = New System.Drawing.Size(458, 70)
         Me.txtDSDistLiability.TabIndex = 89
         Me.txtDSDistLiability.Tag = "metadata/distinfo/distliab"
-        Me.txtDSDistLiability.Text = "Distributor assumes no liability for misuse of data. Please read the metadata rec" & _
+        Me.txtDSDistLiability.Text = "Distributor assumes no liability for misuse of data. Please read the metadata rec" &
     "ord carefully to understand the data set and any limitations."
         '
         'Label132
@@ -2083,7 +2083,7 @@ Partial Class frmMetadataEditor
         Me.Label124.Name = "Label124"
         Me.Label124.Size = New System.Drawing.Size(437, 13)
         Me.Label124.TabIndex = 87
-        Me.Label124.Text = "Contact information for the person or organization responsible for the distributi" & _
+        Me.Label124.Text = "Contact information for the person or organization responsible for the distributi" &
     "on of the data."
         '
         'GroupBox29
@@ -2163,7 +2163,7 @@ Partial Class frmMetadataEditor
         '
         'txtDSDistFax
         '
-        Me.HelpProvider1.SetHelpString(Me.txtDSDistFax, "List the fax number of the agency responsible for distributing the data, if appli" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSDistFax, "List the fax number of the agency responsible for distributing the data, if appli" &
         "cable.")
         Me.txtDSDistFax.Location = New System.Drawing.Point(6, 184)
         Me.txtDSDistFax.Name = "txtDSDistFax"
@@ -2184,8 +2184,8 @@ Partial Class frmMetadataEditor
         '
         'txtDSDistPhone
         '
-        Me.HelpProvider1.SetHelpString(Me.txtDSDistPhone, "List the telephone number of the agency responsible for distributing the data. Th" & _
-        "is is a required element, so if no telephone number is available enter ""No Telep" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSDistPhone, "List the telephone number of the agency responsible for distributing the data. Th" &
+        "is is a required element, so if no telephone number is available enter ""No Telep" &
         "hone Contact Available"".")
         Me.txtDSDistPhone.Location = New System.Drawing.Point(6, 146)
         Me.txtDSDistPhone.Name = "txtDSDistPhone"
@@ -2206,7 +2206,7 @@ Partial Class frmMetadataEditor
         '
         'txtDSDistPersonTitle
         '
-        Me.HelpProvider1.SetHelpString(Me.txtDSDistPersonTitle, "List the position of the individual responsible for data distribution here, if ap" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSDistPersonTitle, "List the position of the individual responsible for data distribution here, if ap" &
         "plicable.")
         Me.txtDSDistPersonTitle.Location = New System.Drawing.Point(6, 109)
         Me.txtDSDistPersonTitle.Name = "txtDSDistPersonTitle"
@@ -2381,7 +2381,7 @@ Partial Class frmMetadataEditor
         '
         'txtDSDistZip
         '
-        Me.HelpProvider1.SetHelpString(Me.txtDSDistZip, "Enter the USPS Zip code or other postal code of the agency responsible for distri" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSDistZip, "Enter the USPS Zip code or other postal code of the agency responsible for distri" &
         "buting the data.")
         Me.txtDSDistZip.Location = New System.Drawing.Point(154, 185)
         Me.txtDSDistZip.Name = "txtDSDistZip"
@@ -2486,7 +2486,7 @@ Partial Class frmMetadataEditor
         Me.cboDSDistAddressType.AutoCompleteCustomSource.AddRange(New String() {"Mailing", "Physical", "Mailing and Physical"})
         Me.cboDSDistAddressType.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboDSDistAddressType.FormattingEnabled = True
-        Me.HelpProvider1.SetHelpString(Me.cboDSDistAddressType, "Identify whether the address is a physical address, just a mailing address, or bo" & _
+        Me.HelpProvider1.SetHelpString(Me.cboDSDistAddressType, "Identify whether the address is a physical address, just a mailing address, or bo" &
         "th.")
         Me.cboDSDistAddressType.Items.AddRange(New Object() {"Mailing", "Physical", "Mailing and Physical"})
         Me.cboDSDistAddressType.Location = New System.Drawing.Point(130, 223)
@@ -2515,7 +2515,7 @@ Partial Class frmMetadataEditor
         Me.Label80.Name = "Label80"
         Me.Label80.Size = New System.Drawing.Size(577, 16)
         Me.Label80.TabIndex = 28
-        Me.Label80.Text = "Provide information about access to the data, the data distribution format, and t" & _
+        Me.Label80.Text = "Provide information about access to the data, the data distribution format, and t" &
     "he data distributor."
         '
         'Label81
@@ -2547,7 +2547,7 @@ Partial Class frmMetadataEditor
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1120, 570)
         Me.Panel2.TabIndex = 0
-        Me.ToolTip1.SetToolTip(Me.Panel2, "For more information about what should be entered in a given element, click into " & _
+        Me.ToolTip1.SetToolTip(Me.Panel2, "For more information about what should be entered in a given element, click into " &
         "the element and press F1.")
         '
         'GroupBox50
@@ -2620,7 +2620,7 @@ Partial Class frmMetadataEditor
         Me.cboMetaStandardName.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cboMetaStandardName.FormattingEnabled = True
         Me.HelpProvider1.SetHelpString(Me.cboMetaStandardName, resources.GetString("cboMetaStandardName.HelpString"))
-        Me.cboMetaStandardName.Items.AddRange(New Object() {"FGDC Content Standard for Digital Geospatial Metadata", "FGDC Biological Data Profile of the Content Standard for Digital Geospatial Metad" & _
+        Me.cboMetaStandardName.Items.AddRange(New Object() {"FGDC Content Standard for Digital Geospatial Metadata", "FGDC Biological Data Profile of the Content Standard for Digital Geospatial Metad" &
                 "ata"})
         Me.cboMetaStandardName.Location = New System.Drawing.Point(9, 32)
         Me.cboMetaStandardName.Name = "cboMetaStandardName"
@@ -2714,7 +2714,7 @@ Partial Class frmMetadataEditor
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(498, 13)
         Me.Label3.TabIndex = 86
-        Me.Label3.Text = "Who wrote the metadata? Alternatively, who can be contacted for questions pertain" & _
+        Me.Label3.Text = "Who wrote the metadata? Alternatively, who can be contacted for questions pertain" &
     "ing to the metadata?"
         '
         'GroupBox1
@@ -2794,7 +2794,7 @@ Partial Class frmMetadataEditor
         Me.cboMetaContactAddressType.AutoCompleteCustomSource.AddRange(New String() {"Mailing", "Physical", "Mailing and Physical"})
         Me.cboMetaContactAddressType.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboMetaContactAddressType.FormattingEnabled = True
-        Me.HelpProvider1.SetHelpString(Me.cboMetaContactAddressType, "Identify whether the address is a physical address, just a mailing address, or bo" & _
+        Me.HelpProvider1.SetHelpString(Me.cboMetaContactAddressType, "Identify whether the address is a physical address, just a mailing address, or bo" &
         "th.")
         Me.cboMetaContactAddressType.Items.AddRange(New Object() {"Mailing", "Physical", "Mailing and Physical"})
         Me.cboMetaContactAddressType.Location = New System.Drawing.Point(134, 225)
@@ -3019,7 +3019,7 @@ Partial Class frmMetadataEditor
         '
         'txtMetaContactPerson
         '
-        Me.HelpProvider1.SetHelpString(Me.txtMetaContactPerson, "Enter the name of the individual responsible for creating the metadata. In most c" & _
+        Me.HelpProvider1.SetHelpString(Me.txtMetaContactPerson, "Enter the name of the individual responsible for creating the metadata. In most c" &
         "ases, this will be you, the tool user.")
         Me.txtMetaContactPerson.Location = New System.Drawing.Point(6, 30)
         Me.txtMetaContactPerson.Multiline = True
@@ -3113,8 +3113,8 @@ Partial Class frmMetadataEditor
         '
         'txtMetaContactPhone
         '
-        Me.HelpProvider1.SetHelpString(Me.txtMetaContactPhone, "Enter the telephone number of the metadata author or the agency where they work. " & _
-        "This is a required element so if no number is available, enter ""No Telephone Con" & _
+        Me.HelpProvider1.SetHelpString(Me.txtMetaContactPhone, "Enter the telephone number of the metadata author or the agency where they work. " &
+        "This is a required element so if no number is available, enter ""No Telephone Con" &
         "tact Available.""")
         Me.txtMetaContactPhone.Location = New System.Drawing.Point(6, 146)
         Me.txtMetaContactPhone.Name = "txtMetaContactPhone"
@@ -3226,7 +3226,7 @@ Partial Class frmMetadataEditor
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(445, 13)
         Me.Label25.TabIndex = 22
-        Me.Label25.Text = "(This would be the case if you are the PI and are writing metadata for your own d" & _
+        Me.Label25.Text = "(This would be the case if you are the PI and are writing metadata for your own d" &
     "ata outputs)."
         '
         'GroupBox3
@@ -3271,7 +3271,7 @@ Partial Class frmMetadataEditor
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(677, 16)
         Me.Label12.TabIndex = 3
-        Me.Label12.Text = "Provide information about the individual who wrote the metadata for the data set." & _
+        Me.Label12.Text = "Provide information about the individual who wrote the metadata for the data set." &
     " This is usually YOUR information."
         '
         'Label11
@@ -3316,7 +3316,7 @@ Partial Class frmMetadataEditor
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1120, 570)
         Me.Panel1.TabIndex = 4
-        Me.ToolTip1.SetToolTip(Me.Panel1, "For more information about what should be entered in a given element, click into " & _
+        Me.ToolTip1.SetToolTip(Me.Panel1, "For more information about what should be entered in a given element, click into " &
         "the element and press F1.")
         '
         'GroupBox23
@@ -3349,13 +3349,13 @@ Partial Class frmMetadataEditor
         Me.Label68.Name = "Label68"
         Me.Label68.Size = New System.Drawing.Size(536, 13)
         Me.Label68.TabIndex = 57
-        Me.Label68.Text = "Are there other organizations / individuals who should get credit for support, fu" & _
+        Me.Label68.Text = "Are there other organizations / individuals who should get credit for support, fu" &
     "nding, data collection, or analysis?"
         '
         'txtDSCredit
         '
         Me.txtDSCredit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.HelpProvider1.SetHelpString(Me.txtDSCredit, "List any other individuals or groups who should receive recognition for the data " & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSCredit, "List any other individuals or groups who should receive recognition for the data " &
         "set.")
         Me.txtDSCredit.Location = New System.Drawing.Point(9, 55)
         Me.txtDSCredit.Multiline = True
@@ -3391,37 +3391,37 @@ Partial Class frmMetadataEditor
         '
         Me.dgvDSOnlineLink.BackgroundColor = System.Drawing.SystemColors.Control
         Me.dgvDSOnlineLink.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvDSOnlineLink.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle74.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle74.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle74.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle74.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle74.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle74.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle74.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvDSOnlineLink.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle74
         Me.dgvDSOnlineLink.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDSOnlineLink.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4})
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvDSOnlineLink.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle75.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle75.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle75.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle75.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle75.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle75.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle75.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvDSOnlineLink.DefaultCellStyle = DataGridViewCellStyle75
         Me.dgvDSOnlineLink.GridColor = System.Drawing.SystemColors.Control
-        Me.HelpProvider1.SetHelpString(Me.dgvDSOnlineLink, "List the URL(s) for the website or GIS service where the data set can be obtained" & _
+        Me.HelpProvider1.SetHelpString(Me.dgvDSOnlineLink, "List the URL(s) for the website or GIS service where the data set can be obtained" &
         ".")
         Me.dgvDSOnlineLink.Location = New System.Drawing.Point(6, 40)
         Me.dgvDSOnlineLink.Name = "dgvDSOnlineLink"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvDSOnlineLink.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle76.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle76.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle76.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle76.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle76.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle76.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvDSOnlineLink.RowHeadersDefaultCellStyle = DataGridViewCellStyle76
         Me.dgvDSOnlineLink.RowHeadersVisible = False
         Me.dgvDSOnlineLink.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.HelpProvider1.SetShowHelp(Me.dgvDSOnlineLink, True)
@@ -3604,7 +3604,7 @@ Partial Class frmMetadataEditor
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtDSLargerWorkTitle.BackColor = System.Drawing.SystemColors.Window
         Me.txtDSLargerWorkTitle.Enabled = False
-        Me.HelpProvider1.SetHelpString(Me.txtDSLargerWorkTitle, "Enter the title of the larger work. Larger works might include dissertations, pub" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSLargerWorkTitle, "Enter the title of the larger work. Larger works might include dissertations, pub" &
         "lished articles/papers, or other ongoing long-term research projects.")
         Me.txtDSLargerWorkTitle.Location = New System.Drawing.Point(9, 75)
         Me.txtDSLargerWorkTitle.Name = "txtDSLargerWorkTitle"
@@ -3731,7 +3731,7 @@ Partial Class frmMetadataEditor
         '
         Me.txtDSLargerWorkPubPlace.BackColor = System.Drawing.SystemColors.Window
         Me.txtDSLargerWorkPubPlace.Enabled = False
-        Me.HelpProvider1.SetHelpString(Me.txtDSLargerWorkPubPlace, "Enter the publication place of the larger work. This is a required element-- ente" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSLargerWorkPubPlace, "Enter the publication place of the larger work. This is a required element-- ente" &
         "r 'Unknown' or 'Unpublished' if it is not known.")
         Me.txtDSLargerWorkPubPlace.Location = New System.Drawing.Point(290, 282)
         Me.txtDSLargerWorkPubPlace.Name = "txtDSLargerWorkPubPlace"
@@ -3748,7 +3748,7 @@ Partial Class frmMetadataEditor
         Me.Label103.Name = "Label103"
         Me.Label103.Size = New System.Drawing.Size(351, 13)
         Me.Label103.TabIndex = 64
-        Me.Label103.Text = "If the citation of a larger project is relevant, you may optionally cite it here." & _
+        Me.Label103.Text = "If the citation of a larger project is relevant, you may optionally cite it here." &
     ""
         '
         'Label102
@@ -3786,7 +3786,7 @@ Partial Class frmMetadataEditor
         '
         Me.txtDSLargerWorkEdition.BackColor = System.Drawing.SystemColors.Window
         Me.txtDSLargerWorkEdition.Enabled = False
-        Me.HelpProvider1.SetHelpString(Me.txtDSLargerWorkEdition, "If the larger work is has multiple versions or releases, enter the edition number" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSLargerWorkEdition, "If the larger work is has multiple versions or releases, enter the edition number" &
         " of the version used.")
         Me.txtDSLargerWorkEdition.Location = New System.Drawing.Point(22, 373)
         Me.txtDSLargerWorkEdition.Name = "txtDSLargerWorkEdition"
@@ -3799,7 +3799,7 @@ Partial Class frmMetadataEditor
         '
         Me.txtDSLargerWorkPublisher.BackColor = System.Drawing.SystemColors.Window
         Me.txtDSLargerWorkPublisher.Enabled = False
-        Me.HelpProvider1.SetHelpString(Me.txtDSLargerWorkPublisher, "Enter the publisher of the larger work. This is a required element-- enter 'Unkno" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSLargerWorkPublisher, "Enter the publisher of the larger work. This is a required element-- enter 'Unkno" &
         "wn' or 'Unpublished' if it is not known.")
         Me.txtDSLargerWorkPublisher.Location = New System.Drawing.Point(290, 241)
         Me.txtDSLargerWorkPublisher.Name = "txtDSLargerWorkPublisher"
@@ -3884,26 +3884,26 @@ Partial Class frmMetadataEditor
         '
         Me.dgvDSLargerWorkOriginator.BackgroundColor = System.Drawing.SystemColors.Control
         Me.dgvDSLargerWorkOriginator.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvDSLargerWorkOriginator.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle77.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle77.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle77.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle77.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle77.SelectionForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle77.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvDSLargerWorkOriginator.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle77
         Me.dgvDSLargerWorkOriginator.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDSLargerWorkOriginator.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3})
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvDSLargerWorkOriginator.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle78.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle78.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle78.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle78.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle78.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle78.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle78.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvDSLargerWorkOriginator.DefaultCellStyle = DataGridViewCellStyle78
         Me.dgvDSLargerWorkOriginator.GridColor = System.Drawing.SystemColors.Control
-        Me.HelpProvider1.SetHelpString(Me.dgvDSLargerWorkOriginator, "List the authors of the larger work.  If an organization should be credited, list" & _
+        Me.HelpProvider1.SetHelpString(Me.dgvDSLargerWorkOriginator, "List the authors of the larger work.  If an organization should be credited, list" &
         " it too.")
         Me.dgvDSLargerWorkOriginator.Location = New System.Drawing.Point(9, 126)
         Me.dgvDSLargerWorkOriginator.Name = "dgvDSLargerWorkOriginator"
@@ -3977,7 +3977,7 @@ Partial Class frmMetadataEditor
         '
         'txtDSSuppInfo
         '
-        Me.HelpProvider1.SetHelpString(Me.txtDSSuppInfo, "This is space to include any other important information that is not included els" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSSuppInfo, "This is space to include any other important information that is not included els" &
         "ewhere. ")
         Me.txtDSSuppInfo.Location = New System.Drawing.Point(9, 68)
         Me.txtDSSuppInfo.Multiline = True
@@ -3996,7 +3996,7 @@ Partial Class frmMetadataEditor
         Me.Label125.Name = "Label125"
         Me.Label125.Size = New System.Drawing.Size(456, 26)
         Me.Label125.TabIndex = 1
-        Me.Label125.Text = "Use this optional section to add ANY other details or information about the data " & _
+        Me.Label125.Text = "Use this optional section to add ANY other details or information about the data " &
     "set that may be " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "helpful to future users."
         '
         'GroupBox24
@@ -4328,7 +4328,7 @@ Partial Class frmMetadataEditor
         Me.cboDSContactAddressType.Enabled = False
         Me.cboDSContactAddressType.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboDSContactAddressType.FormattingEnabled = True
-        Me.HelpProvider1.SetHelpString(Me.cboDSContactAddressType, "Identify whether the address is a physical address, just a mailing address, or bo" & _
+        Me.HelpProvider1.SetHelpString(Me.cboDSContactAddressType, "Identify whether the address is a physical address, just a mailing address, or bo" &
         "th.")
         Me.cboDSContactAddressType.Items.AddRange(New Object() {"Mailing", "Physical", "Mailing and Physical"})
         Me.cboDSContactAddressType.Location = New System.Drawing.Point(132, 223)
@@ -4446,8 +4446,8 @@ Partial Class frmMetadataEditor
         'txtDSContactPhone
         '
         Me.txtDSContactPhone.Enabled = False
-        Me.HelpProvider1.SetHelpString(Me.txtDSContactPhone, "Enter a telephone contact for questions or information about the data. This is a " & _
-        "required element so if no phone number is available, enter ""No Phone Contact Num" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSContactPhone, "Enter a telephone contact for questions or information about the data. This is a " &
+        "required element so if no phone number is available, enter ""No Phone Contact Num" &
         "ber.""")
         Me.txtDSContactPhone.Location = New System.Drawing.Point(6, 146)
         Me.txtDSContactPhone.Name = "txtDSContactPhone"
@@ -4480,7 +4480,7 @@ Partial Class frmMetadataEditor
         'txtDSContactPerson
         '
         Me.txtDSContactPerson.Enabled = False
-        Me.HelpProvider1.SetHelpString(Me.txtDSContactPerson, "If an individual should be contacted directly (or would be the best resource for " & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSContactPerson, "If an individual should be contacted directly (or would be the best resource for " &
         "questions/information), list them here as well.")
         Me.txtDSContactPerson.Location = New System.Drawing.Point(6, 70)
         Me.txtDSContactPerson.Name = "txtDSContactPerson"
@@ -4492,8 +4492,8 @@ Partial Class frmMetadataEditor
         'txtDSContactOrg
         '
         Me.txtDSContactOrg.Enabled = False
-        Me.HelpProvider1.SetHelpString(Me.txtDSContactOrg, "Usually, it is most appropriate to list an organization or agency as a contact fo" & _
-        "r data rather than only an individual. If no agency is relevant here, simply ent" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSContactOrg, "Usually, it is most appropriate to list an organization or agency as a contact fo" &
+        "r data rather than only an individual. If no agency is relevant here, simply ent" &
         "er ""No Specific Agency/Organization.""")
         Me.txtDSContactOrg.Location = New System.Drawing.Point(6, 31)
         Me.txtDSContactOrg.Name = "txtDSContactOrg"
@@ -4530,7 +4530,7 @@ Partial Class frmMetadataEditor
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(356, 26)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "This is someone who could be contacted for questions about the data set." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Having " & _
+        Me.Label1.Text = "This is someone who could be contacted for questions about the data set." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Having " &
     "a data set contact is very helpful."
         '
         'GroupBox14
@@ -4645,7 +4645,7 @@ Partial Class frmMetadataEditor
         '
         'txtDSTimePeriodEndDate
         '
-        Me.HelpProvider1.SetHelpString(Me.txtDSTimePeriodEndDate, "Enter the end date bounding the range of the time period. If the day and month ar" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSTimePeriodEndDate, "Enter the end date bounding the range of the time period. If the day and month ar" &
         "e not known, simply enter the year (in the YYYY format).")
         Me.txtDSTimePeriodEndDate.Location = New System.Drawing.Point(164, 27)
         Me.txtDSTimePeriodEndDate.Name = "txtDSTimePeriodEndDate"
@@ -4666,7 +4666,7 @@ Partial Class frmMetadataEditor
         '
         'txtDSTimePeriodBegDate
         '
-        Me.HelpProvider1.SetHelpString(Me.txtDSTimePeriodBegDate, "Enter the beginning date bounding the range of the time period. If the day and mo" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSTimePeriodBegDate, "Enter the beginning date bounding the range of the time period. If the day and mo" &
         "nth are not known, simply enter the year (in the YYYY format).")
         Me.txtDSTimePeriodBegDate.Location = New System.Drawing.Point(6, 27)
         Me.txtDSTimePeriodBegDate.Name = "txtDSTimePeriodBegDate"
@@ -4700,36 +4700,36 @@ Partial Class frmMetadataEditor
         'dgvDSTimePeriodMultiDate
         '
         Me.dgvDSTimePeriodMultiDate.BackgroundColor = System.Drawing.SystemColors.ControlLightLight
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvDSTimePeriodMultiDate.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle82.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle82.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle82.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle82.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle82.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle82.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle82.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvDSTimePeriodMultiDate.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle82
         Me.dgvDSTimePeriodMultiDate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDSTimePeriodMultiDate.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn5})
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvDSTimePeriodMultiDate.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle83.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle83.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle83.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle83.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle83.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle83.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle83.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvDSTimePeriodMultiDate.DefaultCellStyle = DataGridViewCellStyle83
         Me.dgvDSTimePeriodMultiDate.GridColor = System.Drawing.SystemColors.Control
         Me.HelpProvider1.SetHelpString(Me.dgvDSTimePeriodMultiDate, resources.GetString("dgvDSTimePeriodMultiDate.HelpString"))
         Me.dgvDSTimePeriodMultiDate.Location = New System.Drawing.Point(34, 3)
         Me.dgvDSTimePeriodMultiDate.Name = "dgvDSTimePeriodMultiDate"
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvDSTimePeriodMultiDate.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle84.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle84.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle84.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle84.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle84.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle84.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle84.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvDSTimePeriodMultiDate.RowHeadersDefaultCellStyle = DataGridViewCellStyle84
         Me.dgvDSTimePeriodMultiDate.RowHeadersVisible = False
         Me.dgvDSTimePeriodMultiDate.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.HelpProvider1.SetShowHelp(Me.dgvDSTimePeriodMultiDate, True)
@@ -4883,7 +4883,7 @@ Partial Class frmMetadataEditor
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(669, 13)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "A good title includes 'What,' 'Where,' and 'When.' (Example: Point Locations of W" & _
+        Me.Label2.Text = "A good title includes 'What,' 'Where,' and 'When.' (Example: Point Locations of W" &
     "ind Turbines in Colorado, Derived from 2010 NAIP Imagery)"
         '
         'txtDSTitle
@@ -4956,37 +4956,37 @@ Partial Class frmMetadataEditor
         '
         Me.dgvDSOriginator.BackgroundColor = System.Drawing.SystemColors.Control
         Me.dgvDSOriginator.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvDSOriginator.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle79.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle79.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle79.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle79.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle79.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle79.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle79.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvDSOriginator.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle79
         Me.dgvDSOriginator.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDSOriginator.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.dgvOriginator})
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvDSOriginator.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle80.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle80.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle80.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle80.SelectionBackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle80.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle80.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvDSOriginator.DefaultCellStyle = DataGridViewCellStyle80
         Me.dgvDSOriginator.GridColor = System.Drawing.SystemColors.Control
-        Me.HelpProvider1.SetHelpString(Me.dgvDSOriginator, "List the authors of the data set.  If an organization should be credited, list it" & _
+        Me.HelpProvider1.SetHelpString(Me.dgvDSOriginator, "List the authors of the data set.  If an organization should be credited, list it" &
         " too.")
         Me.dgvDSOriginator.Location = New System.Drawing.Point(9, 44)
         Me.dgvDSOriginator.Name = "dgvDSOriginator"
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvDSOriginator.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle81.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle81.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle81.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle81.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle81.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle81.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle81.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvDSOriginator.RowHeadersDefaultCellStyle = DataGridViewCellStyle81
         Me.dgvDSOriginator.RowHeadersVisible = False
         Me.HelpProvider1.SetShowHelp(Me.dgvDSOriginator, True)
         Me.dgvDSOriginator.Size = New System.Drawing.Size(303, 77)
@@ -5209,7 +5209,7 @@ Partial Class frmMetadataEditor
         Me.txtDSUseCon.Size = New System.Drawing.Size(516, 60)
         Me.txtDSUseCon.TabIndex = 53
         Me.txtDSUseCon.Tag = "metadata/idinfo/useconst"
-        Me.txtDSUseCon.Text = "None. Users are advised to read the data set's metadata thoroughly to understand " & _
+        Me.txtDSUseCon.Text = "None. Users are advised to read the data set's metadata thoroughly to understand " &
     "appropriate use and data limitations."
         '
         'GroupBox9
@@ -5282,8 +5282,11 @@ Partial Class frmMetadataEditor
         '
         'txtTopicCustomThesaurus
         '
+        Me.HelpProvider1.SetHelpString(Me.txtTopicCustomThesaurus, "Use this field to specify the thesaurus for the free text (theme) keyword. ""None""" &
+        " is the default.")
         Me.txtTopicCustomThesaurus.Location = New System.Drawing.Point(219, 32)
         Me.txtTopicCustomThesaurus.Name = "txtTopicCustomThesaurus"
+        Me.HelpProvider1.SetShowHelp(Me.txtTopicCustomThesaurus, True)
         Me.txtTopicCustomThesaurus.Size = New System.Drawing.Size(166, 20)
         Me.txtTopicCustomThesaurus.TabIndex = 169
         Me.txtTopicCustomThesaurus.Text = "None"
@@ -5293,14 +5296,16 @@ Partial Class frmMetadataEditor
         Me.labTopicCustomThesaurus.AutoSize = True
         Me.labTopicCustomThesaurus.Location = New System.Drawing.Point(217, 16)
         Me.labTopicCustomThesaurus.Name = "labTopicCustomThesaurus"
-        Me.labTopicCustomThesaurus.Size = New System.Drawing.Size(142, 13)
+        Me.labTopicCustomThesaurus.Size = New System.Drawing.Size(140, 13)
         Me.labTopicCustomThesaurus.TabIndex = 172
-        Me.labTopicCustomThesaurus.Text = "Custom Keyword Thesaurus:"
+        Me.labTopicCustomThesaurus.Text = "Theme Keyword Thesaurus:"
         '
         'txtTopicCustomKeyword
         '
+        Me.HelpProvider1.SetHelpString(Me.txtTopicCustomKeyword, "Use this field to add free text (theme) keywords to the metadata record.")
         Me.txtTopicCustomKeyword.Location = New System.Drawing.Point(6, 32)
         Me.txtTopicCustomKeyword.Name = "txtTopicCustomKeyword"
+        Me.HelpProvider1.SetShowHelp(Me.txtTopicCustomKeyword, True)
         Me.txtTopicCustomKeyword.Size = New System.Drawing.Size(207, 20)
         Me.txtTopicCustomKeyword.TabIndex = 168
         '
@@ -5309,19 +5314,19 @@ Partial Class frmMetadataEditor
         Me.labTopicCustomKeyword.AutoSize = True
         Me.labTopicCustomKeyword.Location = New System.Drawing.Point(6, 16)
         Me.labTopicCustomKeyword.Name = "labTopicCustomKeyword"
-        Me.labTopicCustomKeyword.Size = New System.Drawing.Size(120, 13)
+        Me.labTopicCustomKeyword.Size = New System.Drawing.Size(157, 13)
         Me.labTopicCustomKeyword.TabIndex = 171
-        Me.labTopicCustomKeyword.Text = "Custom Keyword Name:"
+        Me.labTopicCustomKeyword.Text = "Add Free-Text Theme Keyword:"
         '
         'labTopicISORecommended
         '
         Me.labTopicISORecommended.AutoSize = True
         Me.labTopicISORecommended.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labTopicISORecommended.Location = New System.Drawing.Point(183, 91)
+        Me.labTopicISORecommended.Location = New System.Drawing.Point(187, 91)
         Me.labTopicISORecommended.Name = "labTopicISORecommended"
         Me.labTopicISORecommended.Size = New System.Drawing.Size(220, 26)
         Me.labTopicISORecommended.TabIndex = 173
-        Me.labTopicISORecommended.Text = "We recommend that you include at least one" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "keyword from the ISO 19115 Topic Cate" & _
+        Me.labTopicISORecommended.Text = "We recommend that you include at least one" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "keyword from the ISO 19115 Topic Cate" &
     "gory."
         Me.labTopicISORecommended.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -5337,26 +5342,35 @@ Partial Class frmMetadataEditor
         '
         'trvTopicMetadataKeywords
         '
+        Me.HelpProvider1.SetHelpString(Me.trvTopicMetadataKeywords, "This window shows the theme keywords that are currently present in the metadata r" &
+        "ecord. To add or remove terms, use the arrows to the left. Terms can also be add" &
+        "ed by using the free-text field below.")
         Me.trvTopicMetadataKeywords.HideSelection = False
         Me.trvTopicMetadataKeywords.Location = New System.Drawing.Point(303, 144)
         Me.trvTopicMetadataKeywords.Name = "trvTopicMetadataKeywords"
+        Me.HelpProvider1.SetShowHelp(Me.trvTopicMetadataKeywords, True)
         Me.trvTopicMetadataKeywords.Size = New System.Drawing.Size(215, 155)
         Me.trvTopicMetadataKeywords.TabIndex = 166
         '
         'trvTopicSearchResults
         '
+        Me.HelpProvider1.SetHelpString(Me.trvTopicSearchResults, "Results for matching terms (from a set of controlled vocabularies in an online se" &
+        "rvice) will be displayed in this field.")
         Me.trvTopicSearchResults.HideSelection = False
         Me.trvTopicSearchResults.Location = New System.Drawing.Point(6, 144)
         Me.trvTopicSearchResults.Name = "trvTopicSearchResults"
+        Me.HelpProvider1.SetShowHelp(Me.trvTopicSearchResults, True)
         Me.trvTopicSearchResults.Size = New System.Drawing.Size(215, 155)
         Me.trvTopicSearchResults.TabIndex = 165
         '
         'txtTopicKeywordDetail
         '
         Me.txtTopicKeywordDetail.BackColor = System.Drawing.SystemColors.Window
+        Me.HelpProvider1.SetHelpString(Me.txtTopicKeywordDetail, resources.GetString("txtTopicKeywordDetail.HelpString"))
         Me.txtTopicKeywordDetail.Location = New System.Drawing.Point(5, 318)
         Me.txtTopicKeywordDetail.Name = "txtTopicKeywordDetail"
         Me.txtTopicKeywordDetail.ReadOnly = True
+        Me.HelpProvider1.SetShowHelp(Me.txtTopicKeywordDetail, True)
         Me.txtTopicKeywordDetail.Size = New System.Drawing.Size(513, 82)
         Me.txtTopicKeywordDetail.TabIndex = 164
         Me.txtTopicKeywordDetail.Text = "Select a term or thesaurus in the ""Search results"" pane."
@@ -5394,15 +5408,14 @@ Partial Class frmMetadataEditor
         Me.labTopicSearchTerm.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labTopicSearchTerm.Location = New System.Drawing.Point(3, 42)
         Me.labTopicSearchTerm.Name = "labTopicSearchTerm"
-        Me.labTopicSearchTerm.Size = New System.Drawing.Size(112, 13)
+        Me.labTopicSearchTerm.Size = New System.Drawing.Size(301, 13)
         Me.labTopicSearchTerm.TabIndex = 160
-        Me.labTopicSearchTerm.Text = "Keyword Search Term"
+        Me.labTopicSearchTerm.Text = "Theme Keyword Search Term (search controlled vocabularies)"
         '
         'txtTopicSearchTerm
         '
         Me.txtTopicSearchTerm.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.HelpProvider1.SetHelpString(Me.txtTopicSearchTerm, "If a particular keyword thesaurus is being used, enter it here. Otherwise, leave " & _
-        "this field populated with ""None.""")
+        Me.HelpProvider1.SetHelpString(Me.txtTopicSearchTerm, resources.GetString("txtTopicSearchTerm.HelpString"))
         Me.txtTopicSearchTerm.Location = New System.Drawing.Point(6, 58)
         Me.txtTopicSearchTerm.Name = "txtTopicSearchTerm"
         Me.HelpProvider1.SetShowHelp(Me.txtTopicSearchTerm, True)
@@ -5415,9 +5428,9 @@ Partial Class frmMetadataEditor
         Me.labTopicMetadataKeywords.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labTopicMetadataKeywords.Location = New System.Drawing.Point(300, 128)
         Me.labTopicMetadataKeywords.Name = "labTopicMetadataKeywords"
-        Me.labTopicMetadataKeywords.Size = New System.Drawing.Size(103, 13)
+        Me.labTopicMetadataKeywords.Size = New System.Drawing.Size(170, 13)
         Me.labTopicMetadataKeywords.TabIndex = 157
-        Me.labTopicMetadataKeywords.Text = "Metadata keywords:"
+        Me.labTopicMetadataKeywords.Text = "Theme keywords currently in XML:"
         '
         'labTopicSearchResults
         '
@@ -5435,9 +5448,9 @@ Partial Class frmMetadataEditor
         Me.Label187.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label187.Location = New System.Drawing.Point(2, 16)
         Me.Label187.Name = "Label187"
-        Me.Label187.Size = New System.Drawing.Size(252, 13)
+        Me.Label187.Size = New System.Drawing.Size(215, 13)
         Me.Label187.TabIndex = 87
-        Me.Label187.Text = "Enter several topic/theme keywords below."
+        Me.Label187.Text = "Enter topic / theme keywords below."
         '
         'Label77
         '
@@ -5469,29 +5482,33 @@ Partial Class frmMetadataEditor
         Me.GroupBox42.Controls.Add(Me.Label174)
         Me.GroupBox42.Location = New System.Drawing.Point(568, 52)
         Me.GroupBox42.Name = "GroupBox42"
-        Me.GroupBox42.Size = New System.Drawing.Size(524, 426)
+        Me.GroupBox42.Size = New System.Drawing.Size(524, 473)
         Me.GroupBox42.TabIndex = 89
         Me.GroupBox42.TabStop = False
         '
         'trvPlaceMetadataKeywords
         '
+        Me.HelpProvider1.SetHelpString(Me.trvPlaceMetadataKeywords, resources.GetString("trvPlaceMetadataKeywords.HelpString"))
         Me.trvPlaceMetadataKeywords.HideSelection = False
-        Me.trvPlaceMetadataKeywords.Location = New System.Drawing.Point(303, 97)
+        Me.trvPlaceMetadataKeywords.Location = New System.Drawing.Point(304, 144)
         Me.trvPlaceMetadataKeywords.Name = "trvPlaceMetadataKeywords"
+        Me.HelpProvider1.SetShowHelp(Me.trvPlaceMetadataKeywords, True)
         Me.trvPlaceMetadataKeywords.Size = New System.Drawing.Size(215, 155)
         Me.trvPlaceMetadataKeywords.TabIndex = 194
         '
         'trvPlaceSearchResults
         '
+        Me.HelpProvider1.SetHelpString(Me.trvPlaceSearchResults, "Results for matching terms will be displayed in this field.")
         Me.trvPlaceSearchResults.HideSelection = False
-        Me.trvPlaceSearchResults.Location = New System.Drawing.Point(6, 97)
+        Me.trvPlaceSearchResults.Location = New System.Drawing.Point(9, 144)
         Me.trvPlaceSearchResults.Name = "trvPlaceSearchResults"
+        Me.HelpProvider1.SetShowHelp(Me.trvPlaceSearchResults, True)
         Me.trvPlaceSearchResults.Size = New System.Drawing.Size(215, 155)
         Me.trvPlaceSearchResults.TabIndex = 193
         '
         'btnPlaceKeywordDelete
         '
-        Me.btnPlaceKeywordDelete.Location = New System.Drawing.Point(227, 177)
+        Me.btnPlaceKeywordDelete.Location = New System.Drawing.Point(229, 224)
         Me.btnPlaceKeywordDelete.Name = "btnPlaceKeywordDelete"
         Me.btnPlaceKeywordDelete.Size = New System.Drawing.Size(70, 31)
         Me.btnPlaceKeywordDelete.TabIndex = 191
@@ -5500,7 +5517,7 @@ Partial Class frmMetadataEditor
         '
         'btnPlaceKeywordAdd
         '
-        Me.btnPlaceKeywordAdd.Location = New System.Drawing.Point(227, 136)
+        Me.btnPlaceKeywordAdd.Location = New System.Drawing.Point(229, 183)
         Me.btnPlaceKeywordAdd.Name = "btnPlaceKeywordAdd"
         Me.btnPlaceKeywordAdd.Size = New System.Drawing.Size(70, 31)
         Me.btnPlaceKeywordAdd.TabIndex = 192
@@ -5511,17 +5528,17 @@ Partial Class frmMetadataEditor
         '
         Me.labPlaceMetadataKeywords.AutoSize = True
         Me.labPlaceMetadataKeywords.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labPlaceMetadataKeywords.Location = New System.Drawing.Point(300, 81)
+        Me.labPlaceMetadataKeywords.Location = New System.Drawing.Point(302, 128)
         Me.labPlaceMetadataKeywords.Name = "labPlaceMetadataKeywords"
-        Me.labPlaceMetadataKeywords.Size = New System.Drawing.Size(103, 13)
+        Me.labPlaceMetadataKeywords.Size = New System.Drawing.Size(164, 13)
         Me.labPlaceMetadataKeywords.TabIndex = 189
-        Me.labPlaceMetadataKeywords.Text = "Metadata keywords:"
+        Me.labPlaceMetadataKeywords.Text = "Place keywords currently in XML:"
         '
         'labPlaceSearchResults
         '
         Me.labPlaceSearchResults.AutoSize = True
         Me.labPlaceSearchResults.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labPlaceSearchResults.Location = New System.Drawing.Point(3, 81)
+        Me.labPlaceSearchResults.Location = New System.Drawing.Point(8, 128)
         Me.labPlaceSearchResults.Name = "labPlaceSearchResults"
         Me.labPlaceSearchResults.Size = New System.Drawing.Size(77, 13)
         Me.labPlaceSearchResults.TabIndex = 190
@@ -5534,7 +5551,7 @@ Partial Class frmMetadataEditor
         Me.GroupBox52.Controls.Add(Me.labPlaceCustomThesaurus)
         Me.GroupBox52.Controls.Add(Me.txtPlaceCustomKeyword)
         Me.GroupBox52.Controls.Add(Me.labPlaceCustomKeyword)
-        Me.GroupBox52.Location = New System.Drawing.Point(6, 359)
+        Me.GroupBox52.Location = New System.Drawing.Point(5, 406)
         Me.GroupBox52.Name = "GroupBox52"
         Me.GroupBox52.Size = New System.Drawing.Size(512, 61)
         Me.GroupBox52.TabIndex = 188
@@ -5551,8 +5568,11 @@ Partial Class frmMetadataEditor
         '
         'txtPlaceCustomThesaurus
         '
+        Me.HelpProvider1.SetHelpString(Me.txtPlaceCustomThesaurus, "Use this field to specify the thesaurus for the free text (place) keyword. ""None""" &
+        " is the default.")
         Me.txtPlaceCustomThesaurus.Location = New System.Drawing.Point(219, 32)
         Me.txtPlaceCustomThesaurus.Name = "txtPlaceCustomThesaurus"
+        Me.HelpProvider1.SetShowHelp(Me.txtPlaceCustomThesaurus, True)
         Me.txtPlaceCustomThesaurus.Size = New System.Drawing.Size(166, 20)
         Me.txtPlaceCustomThesaurus.TabIndex = 169
         Me.txtPlaceCustomThesaurus.Text = "None"
@@ -5562,32 +5582,36 @@ Partial Class frmMetadataEditor
         Me.labPlaceCustomThesaurus.AutoSize = True
         Me.labPlaceCustomThesaurus.Location = New System.Drawing.Point(217, 16)
         Me.labPlaceCustomThesaurus.Name = "labPlaceCustomThesaurus"
-        Me.labPlaceCustomThesaurus.Size = New System.Drawing.Size(142, 13)
+        Me.labPlaceCustomThesaurus.Size = New System.Drawing.Size(134, 13)
         Me.labPlaceCustomThesaurus.TabIndex = 172
-        Me.labPlaceCustomThesaurus.Text = "Custom Keyword Thesaurus:"
+        Me.labPlaceCustomThesaurus.Text = "Place Keyword Thesaurus:"
         '
         'txtPlaceCustomKeyword
         '
+        Me.HelpProvider1.SetHelpString(Me.txtPlaceCustomKeyword, "Use this field to add free text (place) keywords to the metadata record.")
         Me.txtPlaceCustomKeyword.Location = New System.Drawing.Point(6, 32)
         Me.txtPlaceCustomKeyword.Name = "txtPlaceCustomKeyword"
+        Me.HelpProvider1.SetShowHelp(Me.txtPlaceCustomKeyword, True)
         Me.txtPlaceCustomKeyword.Size = New System.Drawing.Size(207, 20)
         Me.txtPlaceCustomKeyword.TabIndex = 168
         '
         'labPlaceCustomKeyword
         '
         Me.labPlaceCustomKeyword.AutoSize = True
-        Me.labPlaceCustomKeyword.Location = New System.Drawing.Point(6, 16)
+        Me.labPlaceCustomKeyword.Location = New System.Drawing.Point(3, 16)
         Me.labPlaceCustomKeyword.Name = "labPlaceCustomKeyword"
-        Me.labPlaceCustomKeyword.Size = New System.Drawing.Size(120, 13)
+        Me.labPlaceCustomKeyword.Size = New System.Drawing.Size(151, 13)
         Me.labPlaceCustomKeyword.TabIndex = 171
-        Me.labPlaceCustomKeyword.Text = "Custom Keyword Name:"
+        Me.labPlaceCustomKeyword.Text = "Add Free-Text Place Keyword:"
         '
         'txtPlaceKeywordDetail
         '
         Me.txtPlaceKeywordDetail.BackColor = System.Drawing.SystemColors.Window
-        Me.txtPlaceKeywordDetail.Location = New System.Drawing.Point(5, 271)
+        Me.HelpProvider1.SetHelpString(Me.txtPlaceKeywordDetail, resources.GetString("txtPlaceKeywordDetail.HelpString"))
+        Me.txtPlaceKeywordDetail.Location = New System.Drawing.Point(6, 318)
         Me.txtPlaceKeywordDetail.Name = "txtPlaceKeywordDetail"
         Me.txtPlaceKeywordDetail.ReadOnly = True
+        Me.HelpProvider1.SetShowHelp(Me.txtPlaceKeywordDetail, True)
         Me.txtPlaceKeywordDetail.Size = New System.Drawing.Size(513, 82)
         Me.txtPlaceKeywordDetail.TabIndex = 183
         Me.txtPlaceKeywordDetail.Text = "Select a term or thesaurus in the ""Search results"" pane."
@@ -5596,7 +5620,7 @@ Partial Class frmMetadataEditor
         '
         Me.labPlaceKeywordDetail.AutoSize = True
         Me.labPlaceKeywordDetail.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labPlaceKeywordDetail.Location = New System.Drawing.Point(3, 255)
+        Me.labPlaceKeywordDetail.Location = New System.Drawing.Point(6, 302)
         Me.labPlaceKeywordDetail.Name = "labPlaceKeywordDetail"
         Me.labPlaceKeywordDetail.Size = New System.Drawing.Size(124, 13)
         Me.labPlaceKeywordDetail.TabIndex = 186
@@ -5617,15 +5641,14 @@ Partial Class frmMetadataEditor
         Me.labPlaceSearchTerm.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labPlaceSearchTerm.Location = New System.Drawing.Point(3, 42)
         Me.labPlaceSearchTerm.Name = "labPlaceSearchTerm"
-        Me.labPlaceSearchTerm.Size = New System.Drawing.Size(112, 13)
+        Me.labPlaceSearchTerm.Size = New System.Drawing.Size(295, 13)
         Me.labPlaceSearchTerm.TabIndex = 179
-        Me.labPlaceSearchTerm.Text = "Keyword Search Term"
+        Me.labPlaceSearchTerm.Text = "Place Keyword Search Term (search controlled vocabularies)"
         '
         'txtPlaceSearchTerm
         '
         Me.txtPlaceSearchTerm.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.HelpProvider1.SetHelpString(Me.txtPlaceSearchTerm, "If a particular keyword thesaurus is being used, enter it here. Otherwise, leave " & _
-        "this field populated with ""None.""")
+        Me.HelpProvider1.SetHelpString(Me.txtPlaceSearchTerm, resources.GetString("txtPlaceSearchTerm.HelpString"))
         Me.txtPlaceSearchTerm.Location = New System.Drawing.Point(6, 58)
         Me.txtPlaceSearchTerm.Name = "txtPlaceSearchTerm"
         Me.HelpProvider1.SetShowHelp(Me.txtPlaceSearchTerm, True)
@@ -5682,8 +5705,8 @@ Partial Class frmMetadataEditor
         Me.Label72.Name = "Label72"
         Me.Label72.Size = New System.Drawing.Size(802, 13)
         Me.Label72.TabIndex = 66
-        Me.Label72.Text = "Keywords are often used in the search function of GIS data portals and data clear" & _
-    "inghouses. Provide a list of descriptive keywords related to the content of your" & _
+        Me.Label72.Text = "Keywords are often used in the search function of GIS data portals and data clear" &
+    "inghouses. Provide a list of descriptive keywords related to the content of your" &
     " data set."
         '
         'GroupBox8
@@ -5928,7 +5951,7 @@ Partial Class frmMetadataEditor
         'txtDSPubPlace
         '
         Me.txtDSPubPlace.Enabled = False
-        Me.HelpProvider1.SetHelpString(Me.txtDSPubPlace, "Where was the data set published? If the data is posted online, it might be appro" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSPubPlace, "Where was the data set published? If the data is posted online, it might be appro" &
         "priate to provide the physical location of the data clearinghouse or the URL.")
         Me.txtDSPubPlace.Location = New System.Drawing.Point(10, 73)
         Me.txtDSPubPlace.Name = "txtDSPubPlace"
@@ -5970,8 +5993,8 @@ Partial Class frmMetadataEditor
         'txtDSSeriesNumber
         '
         Me.txtDSSeriesNumber.Enabled = False
-        Me.HelpProvider1.SetHelpString(Me.txtDSSeriesNumber, "What is the unique number or name that identifies this data set within the series" & _
-        "? This might correspond to a USGS 'Data Series' number, or the specific volume/e" & _
+        Me.HelpProvider1.SetHelpString(Me.txtDSSeriesNumber, "What is the unique number or name that identifies this data set within the series" &
+        "? This might correspond to a USGS 'Data Series' number, or the specific volume/e" &
         "dition of a peer-reviewed journal, etc.")
         Me.txtDSSeriesNumber.Location = New System.Drawing.Point(297, 69)
         Me.txtDSSeriesNumber.Name = "txtDSSeriesNumber"
@@ -6073,7 +6096,7 @@ Partial Class frmMetadataEditor
         Me.Label45.Name = "Label45"
         Me.Label45.Size = New System.Drawing.Size(401, 13)
         Me.Label45.TabIndex = 42
-        Me.Label45.Text = "Is it a release with an assigned issue number (e.g., USGS Data Series, or a journ" & _
+        Me.Label45.Text = "Is it a release with an assigned issue number (e.g., USGS Data Series, or a journ" &
     "al)?"
         '
         'Label44
