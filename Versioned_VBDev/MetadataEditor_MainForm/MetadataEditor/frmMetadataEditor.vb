@@ -268,6 +268,9 @@ Public Class frmMetadataEditor
         Else
             trvPlaceSearchResults.BackColor = Control.DefaultBackColor
             trvPlaceMetadataKeywords.BackColor = Control.DefaultBackColor
+            Dim stockFont As New Font("Microsoft Sans Serif", 8.25, FontStyle.Regular)
+            txtPlaceKeywordDetail.Font = stockFont
+            txtPlaceKeywordDetail.Text = "Select a term or thesaurus in the " & Chr(34) & "Search results" & Chr(34) & " pane."
 
             Try
                 For Each iNode In trvPlaceSearchResults.Nodes
@@ -978,6 +981,8 @@ Public Class frmMetadataEditor
         'Data Set Place Keywords
         If nodeExists(xmlMD, "metadata/idinfo/keywords/place") Then
             rbPlaceKeywordsYes.Checked = True
+        Else
+            rbPlaceKeywordsNo.Checked = True
         End If
 
         'Data Set Topic Keywords
