@@ -93,3 +93,10 @@ the "Originator" field.
 
 ##### Metadata Wizard version 1.7.1 (Updated 10292015)
 - Minor updates for error handling and application UI after the revision to the Keywords section. Updates should resolve unhandled application errors related to clicking the Add or Delete buttons when no keyword or thesaurus had been selected. User help tips have also been added for the new UI fields. Additionally, clicking No Place Keywords radio button will now properly remove any place keywords from the XML if toggled.
+
+##### Metadata Wizard version 1.7.2 (Updated 04302016)
+- Compiled a version of the EA builder for ESRI ArcDesktop Version 10.4 Developer note: a bug in Visual Studio prevented the ability to do this with the Community 2015 edition. Visual Studio 2013 was used.
+- Updated the URL that the controlled vocabulary thesaurus uses to point to ‘www2.usgs.gov’ after a bureau-wide change to thesaurus resources. This feature of the tool should now work correctly.
+- Resolved an issue that prevented a user from providing a custom Codeset Name and Codeset Source in the EA builder. At v 1.7.2 this fix will only be available for the 10.4 version of the tool. Thanks to N. Nakagaki for identifying this issue.
+- There is a known issue with trying to connect to an ESRI Feature Class within a Geodatabase with the EA builder if the Feature Class and the Geodatabase have the same exact name. Thanks to K. Kovacs and J.C. Nelson for identifying this issue.
+- Minor updates to Python script and validation to streamline ESRI version compatibility. Thanks to C. Price for collaboration with this effort.

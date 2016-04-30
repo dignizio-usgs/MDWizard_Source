@@ -820,6 +820,7 @@ Public Class frmMetadataEditor
 
             '"Fees" are not an allowed element in FGDC if only the'Custom' order option is being written out. Set null -- will be pruned.
             'In the Metadata Wizard, the solitary "Format Name" (auto-populated upstream with Python) becomes problematic. Set null -- will be pruned.
+
             removeNode(xmlMDOutput, "metadata/distinfo/stdorder")
 
             'Other items could be present... in the event a user switches to 'Custom Distribution' we need to remove these pieces to avoid MP errors.
@@ -3410,7 +3411,7 @@ Public Class frmMetadataEditor
         If thesaurusDictionary.Count < 1 Then
             oHTTP = CreateObject("Microsoft.XMLHTTP")
 
-            oHTTP.open("GET", ("http://www.usgs.gov/science/thesaurus.php?format=json"), bGetAsAsync)
+            oHTTP.open("GET", ("http://www2.usgs.gov/science/thesaurus.php?format=json"), bGetAsAsync)
             oHTTP.send()
             jsonThesaurus = JObject.Parse(oHTTP.responseText)
 
@@ -3480,7 +3481,7 @@ Public Class frmMetadataEditor
 
             Try
                 oHTTP = CreateObject("Microsoft.XMLHTTP")
-                oHTTP.open("GET", ("http://www.usgs.gov/science/term.php?thcode=" & thesaurusID & "&text=" & selectedKeyword), bGetAsAsync)
+                oHTTP.open("GET", ("http://www2.usgs.gov/science/term.php?thcode=" & thesaurusID & "&text=" & selectedKeyword), bGetAsAsync)
                 oHTTP.send()
                 Try
                     'The normal case: the search for a single term returns one result.
@@ -3609,7 +3610,7 @@ Public Class frmMetadataEditor
 
             Try
                 oHTTP = CreateObject("Microsoft.XMLHTTP")
-                oHTTP.open("GET", ("http://www.usgs.gov/science/thesaurus.php?format=json&thcode=" & thesaurusID), bGetAsAsync)
+                oHTTP.open("GET", ("http://www2.usgs.gov/science/thesaurus.php?format=json&thcode=" & thesaurusID), bGetAsAsync)
                 oHTTP.send()
                 jsonKeyword = JObject.Parse(oHTTP.responseText).GetValue("vocabulary")
                 detailsBox.Clear()
@@ -3658,7 +3659,7 @@ Public Class frmMetadataEditor
         'Contact the keyword service and place the search results in the correct pane.
         Try
             oHTTP = CreateObject("Microsoft.XMLHTTP")
-            oHTTP.open("GET", ("http://www.usgs.gov/science/term-search.php?thcode=any&term=" & txtTopicSearchTerm.Text), bGetAsAsync)
+            oHTTP.open("GET", ("http://www2.usgs.gov/science/term-search.php?thcode=any&term=" & txtTopicSearchTerm.Text), bGetAsAsync)
             oHTTP.send()
             jsonKeyword = JArray.Parse(oHTTP.responseText)
 
@@ -3712,7 +3713,7 @@ Public Class frmMetadataEditor
         'Contact the keyword service and place the search results in the correct pane.
         Try
             oHTTP = CreateObject("Microsoft.XMLHTTP")
-            oHTTP.open("GET", ("http://www.usgs.gov/science/term.php?thcode=15&text=ISO 19115 Topic Category"), bGetAsAsync)
+            oHTTP.open("GET", ("http://www2.usgs.gov/science/term.php?thcode=15&text=ISO 19115 Topic Category"), bGetAsAsync)
             oHTTP.send()
             jsonKeyword = JObject.Parse(oHTTP.responseText)
 
@@ -3871,7 +3872,7 @@ Public Class frmMetadataEditor
         'Contact the keyword service and place the search results in the correct pane.
         Try
             oHTTP = CreateObject("Microsoft.XMLHTTP")
-            oHTTP.open("GET", ("http://www.usgs.gov/science/term-search.php?thcode=1&term=" & txtPlaceSearchTerm.Text), bGetAsAsync)
+            oHTTP.open("GET", ("http://www2.usgs.gov/science/term-search.php?thcode=1&term=" & txtPlaceSearchTerm.Text), bGetAsAsync)
             oHTTP.send()
             jsonKeyword = JArray.Parse(oHTTP.responseText)
 

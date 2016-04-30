@@ -30,6 +30,19 @@ import MDTools
 import SpatialRefTools
 import winsound
 
+# TO ADD A NEW VERSION (say, for 10.5)
+# - create file StandAloneEAEditor2_V105.exe
+# - add "10.5" to this list
+# Updates from C. Price. 
+
+# check for ArcGIS supported version
+arcvers = ["10.0", "10.1", "10.2", "10.3", "10.4"]
+arcver = arcpy.GetInstallInfo("Desktop")["Version"][:4] # "10.3"
+if arcver[:4] not in arcvers:
+    arcpy.AddError(("This version of ArcGIS (%s) is not supported "
+                    "by the metadata wizard.") % arcver)
+    sys.exit()
+
 InputData = arcpy.GetParameterAsText(0)
 WorkingDir = arcpy.GetParameterAsText(1)
 CreateStandAloneXML = arcpy.GetParameterAsText(2)#Toggle to delete/keep final modified stand-alone XML after it is re-imported into data set.
@@ -38,13 +51,23 @@ CustomStarterTemplate= arcpy.GetParameterAsText(4)
 GenericTemplate = os.path.join(os.path.dirname(sys.argv[0]), "GenericFGDCTemplate.xml")
 
 #'Entity and Attribute Builder' tool and 'Metadata Editor' will be shipped with Toolbox.
+# A new version of StandaloneEAEditor must be created for each supported version.
 installDir = os.path.dirname(os.path.realpath(__file__))
-EAtool_V10 = os.path.join(installDir, "StandAloneEAEditor2_V10.exe")
-EAtool_V101 = os.path.join(installDir, "StandAloneEAEditor2_V101.exe")
-EAtool_V102 = os.path.join(installDir, "StandAloneEAEditor2_V102.exe")
-EAtool_V103 = os.path.join(installDir, "StandAloneEAEditor2_V103.exe")
+# Standalone EA Editor exe filename tag list: ["10", "101", ...]
+arctags = ["10"] + [v.replace(".", "") for v in arcvers[1:]]
+SEAEditors = [os.path.join(installDir, "StandAloneEAEditor2_V%s.exe" % arctag) for arctag in arctags]
+# exe for for this version
+arctag = arctags[arcvers.index(arcver)]
+SEAEditor = os.path.join(installDir, "StandAloneEAEditor2_V%s.exe" % arctag)
+# other files to check for
 MetadataEditor = os.path.join(installDir, "MetadataEditor.exe")
 WGS84file = os.path.join(installDir, "WGS 1984.prj")
+
+#Check that the necessary install files are present
+for ifile in SEAEditors + [MetadataEditor, WGS84file]:
+    if not os.path.exists(ifile):
+        arcpy.AddError("\nInstall file missing: %s" % ifile)
+        sys.exit(1)
 
 #Check/create the working directory at the user-specified location. This is also checked for in the toolbox validation script.
 if not os.path.exists(WorkingDir):
@@ -53,26 +76,6 @@ if not os.path.exists(WorkingDir):
     except:
         arcpy.AddMessage("The user-specified working directory could not be located or created. Ensure that write access is granted.")
         sys.exit(1)
-
-#Check that the necessary VB.exe files are present
-if not os.path.exists(EAtool_V10):
-    arcpy.AddWarning("\nThe Entity & Attribute Builder tool for Arc 10.0 could not be found. Tool should be here: (" + EAtool_V10 + ")")
-    sys.exit(1)
-if not os.path.exists(EAtool_V101):
-    arcpy.AddWarning("\nThe Entity & Attribute Builder tool for Arc 10.1 could not be found. Tool should be here: (" + EAtool_V101 + ")")
-    sys.exit(1)
-if not os.path.exists(EAtool_V102):
-    arcpy.AddWarning("\nThe Entity & Attribute Builder tool for Arc 10.2 could not be found. Tool should be here: (" + EAtool_V102 + ")")
-    sys.exit(1)
-if not os.path.exists(EAtool_V103):
-    arcpy.AddWarning("\nThe Entity & Attribute Builder tool for Arc 10.2 could not be found. Tool should be here: (" + EAtool_V103 + ")")
-    sys.exit(1)
-if not os.path.exists(MetadataEditor):
-    arcpy.AddWarning("\nThe Metadata Editor (Stand-Alone) tool could not be found. Tool should be here: (" + MetadataEditor + ")")
-    sys.exit(1)
-if not os.path.exists(WGS84file):
-    arcpy.AddWarning("\nThe Metadata Editor (Stand-Alone) tool could not be found. Tool should be here: (" + MetadataEditor + ")")
-    sys.exit(1)
 
 ###Spatial Reference (reference objects set at global level)-----------------------------------------------
 GeogCoordUnits = ["Decimal degrees", "Decimal minutes", "Decimal seconds",
@@ -131,7 +134,10 @@ def ProcessRoutine(ArgVariables):
         arcpy.AddMessage("WorkingDir: " + WorkingDir)
         arcpy.AddMessage("CreateStandAloneXML: " + CreateStandAloneXML)
         arcpy.AddMessage("UseStartTemplate: " + UseStartTemplate)
-        arcpy.AddMessage("StarterTemplate: " + CustomStarterTemplate)
+        cst_note = CustomStarterTemplate
+        if not cst_note:
+            cst_note = "(none)"
+        arcpy.AddMessage("StarterTemplate: " + cst_note)
 
         myDataType, myFeatType = Get_Data_Type()#Determine data type, and feature type if applicable
         arcpy.AddMessage("Data type being evaluated: " + myDataType)
@@ -184,8 +190,8 @@ def ProcessRoutine(ArgVariables):
             Local_ExtentList = Get_LatLon_BndBox()[0]
             if "nan" in str(Local_ExtentList):
                 arcpy.AddWarning("No spatial extent could be found for the input spatial data set. Please review the 'Bounding Extent' in the final metadata record. (Values will be set to maximum global extent).\n")
-            arcpy.AddMessage("Bounding Coordinates (Local): " + str(Local_ExtentList))
-            arcpy.AddMessage("Bounding Coordinates (Geographic): " + str(GCS_ExtentList) + "\n")
+            arcpy.AddMessage("Bounding Coordinates (Local):        " + ("{:15.5f} " * 4).format(*Local_ExtentList) + "\n")
+            arcpy.AddMessage("Bounding Coordinates (Geographic):   " + ("{:15.5f} " * 4).format(*GCS_ExtentList) + "\n")
 
             WestBC = Get_LatLon_BndBox()[1][0]
             EastBC = Get_LatLon_BndBox()[1][2]
@@ -221,13 +227,14 @@ def ProcessRoutine(ArgVariables):
         if InputIsXML == False:
             EAtextfile = os.path.join(WorkingDir, "EAInfo.txt")
 
-            if ESRIVersion == "10.0": EAtool = EAtool_V10
-            elif ESRIVersion == "10.1": EAtool = EAtool_V101
-            elif ESRIVersion == "10.2": EAtool = EAtool_V102
-            elif ESRIVersion == "10.3": EAtool = EAtool_V103
-            else: raise Exception("This version of ArcGIS (%s) is not supported." % ESRIVersion)
+##            if ESRIVersion == "10.0":
+##                ftag = "10"
+##            else:
+##                ftag = ESRIVersion.replace(".", "") # 10.1 -> 101
+##            EATool = os.path.join(installDir,
+##                                  "StandAloneEAEditor2_V%s.exe" % ftag)
 
-            Arg = '"%s" "%s" "%s"' % (EAtool, InputData, EAtextfile) #Start and end quotes are necessary to handle spaces in file names when passing to Command Prompt.
+            Arg = '"%s" "%s" "%s"' % (SEAEditor, InputData, EAtextfile) #Start and end quotes are necessary to handle spaces in file names when passing to Command Prompt.
 
             arcpy.AddMessage("*************************")
             arcpy.AddMessage("\nPLEASE UPDATE THE ENTITY/ATTRIBUTE INFORMATION IN THE POP-UP WINDOW.")
@@ -306,7 +313,7 @@ def ProcessRoutine(ArgVariables):
                 arcpy.AddMessage("The Wizard will now remove the stand-alone FGDC XML, as requested in the tool interface...\n")
             except:
                 arcpy.AddMessage("There was a problem removing the stand-alone XML file. Try removing the file (%s) manually from the working directory.\n" % FGDCXML)
-                
+
         #Remove the 'ArcpyTranslate.xml' temp file that gets created when exporting from ESRI metadata to FGDC.
         try:
             os.remove(os.path.join(WorkingDir, 'ArcpyTranslate.xml'))
@@ -388,15 +395,13 @@ def GetESRIVersion_WriteNativeEnv(FGDCXML):
     NativeInfo = Get_NativeEnvironment()
     arcpy.AddMessage(NativeInfo + "\n")
     MDTools.WriteNativeEnvInfo(FGDCXML, NativeInfo)
-    if "ArcGIS 10.0" in NativeInfo:
-        ESRIVersion = "10.0"
-    elif "ArcGIS 10.1" in NativeInfo:
-        ESRIVersion = "10.1"
-    elif "ArcGIS 10.2" in NativeInfo:
-        ESRIVersion = "10.2"
-    elif "ArcGIS 10.3" in NativeInfo:
-        ESRIVersion = "10.3"
-
+    # Identify version of ArcGIS
+    Esri_version = "UNKNOWN"
+    # arcvers list was set up at the beginning of the script
+    for arcver in  arcvers:
+        if "ArcGIS %s" % arcver in NativeInfo:
+            ESRIVersion = arcver
+            break
     return ESRIVersion
 
 def Get_LatLon_BndBox(): # Determine lat/long bounding coordinates for input dataset, when applicable
