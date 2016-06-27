@@ -101,3 +101,5 @@ the "Originator" field.
 - There is a known issue in the EA Builder when the tool is run on an ESRI Feature Class inside of an ESRI Feature Dataset with the same exact name in an ESRI Geodatabase. The tool will run successfully if the respective names of the Feature Class and Feature Dataset are not identical. Thanks to K. Kovacs and J.C. Nelson for identifying this issue.
 - Minor updates to Python script and validation to streamline ESRI version compatibility. Thanks to C. Price for collaboration with this effort.
 
+##### Metadata Wizard version 1.7.3 (Updated 06272016)
+- Updated the URL that the controlled vocabulary thesaurus uses to implement the 'https' protocol after another bureau-wide change to thesaurus resources. This feature of the tool should now work correctly.
