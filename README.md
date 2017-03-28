@@ -47,9 +47,9 @@ This resolves the issue of the tool hanging up on "Updating Digital Transfer Inf
 - Added a count check for certain node instances to avoid an 'Index out of Range' error in the VB code. This should resolve problems when loading the second GUI and using importcopy features within the form itself resulting from empty (repeating) nodes.
 
 ##### Metadata Wizard version 1.2.5 (Updated 06172014)
--Updated the VB.Net forms so that the 'AutoScaleMode' is set to 'DPI' and not 'Font'. This should resolve the issue of the form looking strange if a user has something other than the default magnification/size selected for their profile in 
+- Updated the VB.Net forms so that the 'AutoScaleMode' is set to 'DPI' and not 'Font'. This should resolve the issue of the form looking strange if a user has something other than the default magnification/size selected for their profile in 
 Windows. 
--Included the updated 'starter template' .XML file with the toolbox bundle. This file properly labels the dummy content in 
+- Included the updated 'starter template' .XML file with the toolbox bundle. This file properly labels the dummy content in 
 the "Originator" field.
 
 ##### Metadata Wizard version 1.3 (Updated 08012014)
