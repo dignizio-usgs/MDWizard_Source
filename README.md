@@ -103,3 +103,8 @@ the "Originator" field.
 
 ##### Metadata Wizard version 1.7.3 (Updated 06272016)
 - Updated the URL that the controlled vocabulary thesaurus uses to implement the 'https' protocol after another bureau-wide change to thesaurus resources. This feature of the tool should now work correctly.
+
+##### Metadata Wizard version 1.8 (Updated 01052017)
+- Compiled a version of the EA builder for ESRI ArcDesktop Version 10.5 Developer note: a bug in Visual Studio prevented the ability to do this with the Community 2015 edition. Visual Studio 2013 was used.
+- Updated the URL that the controlled vocabulary thesaurus uses to implement the 'https' protocol after another bureau-wide change to thesaurus resources. This feature of the tool should now work correctly.
+- Replaced MP with version 2.9.26 (slightly older version) to retain white space in certain elements after running the parser.

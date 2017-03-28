@@ -2187,7 +2187,7 @@ Public Class frmMetadataEditor
         Dim inputEmailAddress As String = txtUSGSLookupDSContact.Text
         Dim lookupContact As String = inputEmailAddress.Replace("@usgs.gov", "")
 
-        oHTTP.open("GET", ("http://geo-nsdi.er.usgs.gov/contact-xml.php?email=" & lookupContact), bGetAsAsync)
+        oHTTP.open("GET", ("https://geo-nsdi.er.usgs.gov/contact-xml.php?email=" & lookupContact), bGetAsAsync)
         oHTTP.send()
 
         Try
@@ -2268,7 +2268,7 @@ Public Class frmMetadataEditor
         Dim inputEmailAddress As String = txtUSGSLookupMetaContact.Text
         Dim lookupContact As String = inputEmailAddress.Replace("@usgs.gov", "")
 
-        oHTTP.open("GET", ("http://geo-nsdi.er.usgs.gov/contact-xml.php?email=" & lookupContact), bGetAsAsync)
+        oHTTP.open("GET", ("https://geo-nsdi.er.usgs.gov/contact-xml.php?email=" & lookupContact), bGetAsAsync)
         oHTTP.send()
         Try
             Dim xmlString As String = (oHTTP.responseText)
@@ -2348,8 +2348,8 @@ Public Class frmMetadataEditor
         Dim inputEmailAddress As String = txtUSGSLookupDistContact.Text
         Dim lookupContact As String = inputEmailAddress.Replace("@usgs.gov", "")
 
-        'oHTTP.open("GET", "http://geo-nsdi.er.usgs.gov/contact-xml.php?email=dignizio", bGetAsAsync) ...EXAMPLE...
-        oHTTP.open("GET", ("http://geo-nsdi.er.usgs.gov/contact-xml.php?email=" & lookupContact), bGetAsAsync)
+        'oHTTP.open("GET", "https://geo-nsdi.er.usgs.gov/contact-xml.php?email=dignizio", bGetAsAsync) ...EXAMPLE...
+        oHTTP.open("GET", ("https://geo-nsdi.er.usgs.gov/contact-xml.php?email=" & lookupContact), bGetAsAsync)
         oHTTP.send()
         Try
             Dim xmlString As String = (oHTTP.responseText)

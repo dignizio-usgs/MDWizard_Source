@@ -1,0 +1,76 @@
+Changed framework from 3.5 to 4.5.2
+
+
+ESRI.ArcGIS.System
+Embed Interop Types (change from TRUE to FALSE)
+
+ESRI.ArcGIS.DataSourcesFile
+Embed Interop Types (change from TRUE to FALSE)
+
+Fix found here: http://gis.stackexchange.com/questions/5782/no-constructor-defined
+
+
+
+Line 534
+Windows.Forms.Control
+Change to: System.Windows.Forms.Control
+(Suggested in VB.Net Help 'Ctrl+ for Options')
+
+
+Line 624, 810, 861
+Windows.Forms.ListViewItem
+Change to: System.Windows.Forms.ListViewItem
+(Suggested in VB.Net Help 'Ctrl+ for Options')
+
+
+
+Line 890, 891
+.Ascending(sFieldName) = True
+Change to: 
+.setAscending(sFieldName, True)
+
+See: http://edndoc.esri.com/arcobjects/9.2/NET/52284974-38c8-4272-b5a2-f56f38ad94a2.htm
+
+994, 995, 1235, 1236, 1268, 1305, 1306
+
+.Ascending(sFieldName) = True
+.CaseSensitive(sFieldName) = False
+
+.setAscending(sFieldName) = True
+.setCaseSensitive(sFieldName) = False
+
+
+-------------------------------------------------
+
+-VisStudio 2013, modify on SDK 10.4 on top
+
+IQueryDef2
+
+-Reproduce bug with Freddie's code, remap data to local.
+
+-Copied Freddie's SDE test stuff to E:\FORT\MetadataWizard\MDWizardTesting_QAQC
+
+Esri Case #01769616
+
+Hi Drew,
+
+This is Freddie with Esri Support Services. I am a senior ArcObjects SDK analyst. It was a pleasure speaking with you on the phone today. The issue you're seeing is related to a bug in the Visual Studio 2015 compiler. As a workaround you can try installing Visual Studio 2013 next to your Visual Studio 2015 install, run a repair the ArcObjects .NET SDK to reinstall the integration features, and then recompile your code in Visual Studio 2013. I have attached this case to the following bug in our system.
+
+BUG-000095459 : Some write only properties are missing in ArcObjects, VB.NET, and Visual Studio 2015 and the "BC30643 Property is of an unsupported type" compile error shows up on those properties.
+
+Let me know if the workaround works for you. Also, in regards to your question about using the TableSort against SDE try testing your SDE data against the sample I provided you during the screenshare. If the code fails to work against your SDE data we can have another case logged to look into that issue. 
+
+Thank you,
+Freddie
+Esri Premium Support Services
+(888) 377-4575 (USA)
+support@esri.com
+http://support.esri.com/en/
+
+
+
+---
+
+EA Upates
+
+-Changed spelling of 'citatation' to correct, line 687

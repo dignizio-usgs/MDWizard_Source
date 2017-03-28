@@ -36,7 +36,7 @@ import winsound
 # Updates from C. Price. 
 
 # check for ArcGIS supported version
-arcvers = ["10.0", "10.1", "10.2", "10.3", "10.4"]
+arcvers = ["10.0", "10.1", "10.2", "10.3", "10.4", "10.5"]
 arcver = arcpy.GetInstallInfo("Desktop")["Version"][:4] # "10.3"
 if arcver[:4] not in arcvers:
     arcpy.AddError(("This version of ArcGIS (%s) is not supported "
