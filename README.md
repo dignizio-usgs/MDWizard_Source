@@ -108,3 +108,6 @@ the "Originator" field.
 - Compiled a version of the EA builder for ESRI ArcDesktop Version 10.5 Developer note: a bug in Visual Studio prevented the ability to do this with the Community 2015 edition. Visual Studio 2013 was used.
 - Updated the URL that the controlled vocabulary thesaurus uses to implement the 'https' protocol after another bureau-wide change to thesaurus resources. This feature of the tool should now work correctly.
 - Replaced MP with version 2.9.26 (slightly older version) to retain white space in certain elements after running the parser.
+
+##### Metadata Wizard version 1.8.1 (Updated 04102017)
+- Downsaved the toolbox bundle within ESRI as a version 10.0 toolbox to ensure backwards compatibility with earlier versions of ArcDesktop.
