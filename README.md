@@ -111,3 +111,6 @@ the "Originator" field.
 
 ##### Metadata Wizard version 1.8.1 (Updated 04102017)
 - Downsaved the toolbox bundle within ESRI as a version 10.0 toolbox to ensure backwards compatibility with earlier versions of ArcDesktop.
+
+##### Metadata Wizard version 1.8.2 (Updated 04252017)
+- Again, downsaved the toolbox bundle within ESRI as a version 10.0 toolbox to ensure backwards compatibility with earlier versions of ArcDesktop to resolve issue.
