@@ -146,7 +146,7 @@ def XML_SpatialReference(SR_List, myDataType):
     # Geographic coordinate system--"GCSname" is defined for map projections so
     #   check whether PCSname is unknown
     if SR_List["PCSname"] == "[Unknown]":
-        Geographic(SR_List)
+        Geographic(SR_List, myDataType)
 
         # Add geodetic Model now; this is used if using an ellipsoid or spheroid
         Geodetic(SR_List)
@@ -252,13 +252,20 @@ def XML_SpatialReference(SR_List, myDataType):
     ### Close compound element for spatial reference
     Close_SpatialRef()
     
-def Geographic(SR_List):
+def Geographic(SR_List, myDataType):
     FileOutW = open(OutXML_Tmp, 'a')
     FileOutW.write(ElemTab_3 + "<geograph>")
     FileOutW.write(ElemTab_4 + "<latres>" + str(SR_List["Lat_res"]) + "</latres>")
     FileOutW.write(ElemTab_4 + "<longres>" + str(SR_List["Lon_res"]) + "</longres>")
-    #FileOutW.write(ElemTab_4 + "<geogunit>" + SR_List["GCS_Units"] + "</geogunit>")
-    FileOutW.write(ElemTab_4 + "<geogunit>Decimal seconds</geogunit>")#Calculation will always return value in Decimal Seconds
+    if myDataType == "Raster":
+        FileOutW.write(ElemTab_4 + "<geogunit>" + SR_List["GCS_Units"] + "</geogunit>")
+        # Should pull appropriate value (e.g., 'Degrees') from desc.SpatialReference.exporttostring()
+        # For raster, we'll just use cell size for Lat Res / Lon Res
+    else:
+
+        FileOutW.write(ElemTab_4 + "<geogunit>Decimal seconds</geogunit>")
+        #Calculation returns value in Decimal Seconds
+        #DI: We now only use FGDC method for calculating value for Lat Res / Lon Res for vector.
     FileOutW.write(ElemTab_3 + "</geograph>")
     FileOutW.close()
     del FileOutW
