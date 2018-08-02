@@ -118,3 +118,6 @@ the "Originator" field.
 ##### Metadata Wizard version 1.8.3 (Updated 03062018)
 - Compiled a version of the EA builder for ESRI ArcDesktop Version 10.6.
 - Downsaved the toolbox bundle within ESRI as a version 10.0 toolbox to ensure backwards compatibility with earlier versions of ArcDesktop.
+
+##### Metadata Wizard version 1.8.4 (Updated 08022018)
+- Updated process for capturing 'geogunit' element for a raster file in GCS. Metadata Wizard will use the cell size for both Lat Res / Lon Res and for abscissa res / ordinate res. The unit will be the linear unit for the GCS. Thanks to D. Hockman-Wert for feedback.
