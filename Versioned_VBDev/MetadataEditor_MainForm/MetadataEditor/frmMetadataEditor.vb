@@ -1287,16 +1287,16 @@ Public Class frmMetadataEditor
 
 
 
-        Dim p As New ProcessStartInfo
+        Dim pInfo As New ProcessStartInfo
         'Pad with quotes to handle any spaces in file names or paths when calling MP.
-        p.FileName = Chr(34) & mpPath & Chr(34)
+        pInfo.FileName = Chr(34) & mpPath & Chr(34)
 
-        p.Arguments = "-x " & Chr(34) & sOutFile & Chr(34) & MP_ErrorReportOption & MP_ConfigOption & " " & Chr(34) & sOutFile & Chr(34)
+        pInfo.Arguments = "-x " & Chr(34) & sOutFile & Chr(34) & MP_ErrorReportOption & MP_ConfigOption & " " & Chr(34) & sOutFile & Chr(34)
         'p.Arguments = "-x " & Chr(34) & sOutFile & Chr(34) & " " & Chr(34) & sOutFile & Chr(34) 'Simple constructed MP command, with no options other than output XML
-
         Try
-            Process.Start(p)
-            System.Threading.Thread.Sleep(500) 'Wait a moment for MP to run.
+            Dim p As Process = Process.Start(pInfo)
+            'Wait for the process to exit.
+            p.WaitForExit(15000) 'bomb out If the process takes more than 15 seconds
         Catch ex As Exception
         End Try
         ''''''
